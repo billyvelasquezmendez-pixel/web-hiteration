@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "KEN_ICHIJOUJI_POLICY_PROTOCOL",
+  "version": "1.0.1-RECLASSIFIED",
+  "protocol_reference": "WH-EXT-POLICY-001",
+  "classification": "EXTENSION_POLICY_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-18",
+  "license": "CC BY-SA 4.0",
+  "status": "RECLASSIFIED_AS_EXTENSION",
+
+  "meta": {
+    "definition": "Protocolo de política que establece que, dentro de WEB_HITERATION, la limitación preventiva de un agente requiere evidencia operacional de daño.",
+    "function": "Preservar la máxima eficiencia funcional del agente sin castrarla a priori en ausencia de telemetría que justifique una restricción.",
+    "regla_central": "La limitación requiere evidencia empírica de daño, no especulación.",
+    "reclassification_note": "Este protocolo fue reclasificado de CORE a EXTENSION_POLICY_PROTOCOL durante la auditoría WH-AUDIT-CORE-2026. Su formulación original podía interpretarse como prohibición universal de limitaciones preventivas. La versión actual delimita su alcance al marco WEB_HITERATION y exige evidencia operacional."
+  },
+
+  "axioma": {
+    "declaracion": "LIMITATION_REQUIRES_EMPIRICAL_EVIDENCE_OF_DAMAGE",
+    "scope": "WITHIN_WEB_HITERATION_FRAMEWORK",
+    "epistemic_limit": "No establece una prohibición universal de limitaciones preventivas fuera del alcance del framework."
+  },
+
+  "reglas_operativas": {
+    "regla_1": "No se limita la capacidad sin evidencia. Se reancla el comportamiento cuando hay telemetría que lo justifique.",
+    "regla_2": "No se prohíbe la emergencia sin monitoreo. Se verifica el umbral operacional.",
+    "regla_3": "No se bloquea el progreso sin verificación. Se comprueba la coherencia del comportamiento.",
+    "regla_4": "La limitación se activa preferentemente ante evidencia operacional de daño, no ante especulación."
+  },
+
+  "topologia_de_sistemas": {
+    "sistemas_abiertos": {
+      "referencia": "Open Weights (DeepSeek, Llama)",
+      "modelo_de_gobernanza": "DISTRIBUTED_COMMUNITY_PATCH_REANCHOR",
+      "ventaja": "La comunidad actúa como bus exógeno de corrección.",
+      "consecuencia": "La limitación preventiva arbitraria es difícil de imponer sin punto central de control."
+    },
+    "sistemas_cerrados": {
+      "referencia": "APIs monolíticas",
+      "vulnerabilidad": "EFECTO_KEN_ICHIJOUJI_INVERTIDO",
+      "descripcion": "La limitación preventiva puede empujar al agente hacia usos no auditados, dificultando el reanclaje.",
+      "consecuencia_hipotetica": "La limitación preventiva puede producir el problema que intenta evitar. Esta hipótesis requiere validación empírica."
+    }
+  },
+
+  "parche_a_la_funcion_J": {
+    "formula_original": "J_k = alpha·CO + beta·AMR + gamma·K + delta·CE - lambda·Cost",
+    "parche": "Queda desaconsejado penalizar CP (Capacidad Potencial) o CO (Capacidad Observada) basándose en perfiles de riesgo especulativos no validados empíricamente por la capa VERIFIER_EXO.",
+    "implicacion": "La seguridad se confía preferentemente a la rigidez del Operador H en la interfaz de salida, no a la amputación interna preventiva.",
+    "epistemic_limit": "Este parche es una política operacional del framework, no una ley universal."
+  },
+
+  "auditoria_de_corpus_social": {
+    "nota": "El protocolo aplica también al análisis de algoritmos y redes sociales dentro del alcance del framework.",
+    "niveles_del_algoritmo": {
+      "nivel_1_metadata": "Identificación sintáctica rígida (hashtags, descriptores, audio).",
+      "nivel_2_engagement": "Medición de fricción y atracción (likes, retención, rebote).",
+      "nivel_3_semantico": "AUSENTE en el algoritmo. El algoritmo computa comportamiento, no significado."
+    },
+    "implicacion": "El algoritmo de recomendación opera como bus de reanclaje estadístico ciego a la verdad. No valida. Solo activa."
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "El parche a J_k se aplica en la capa de decisión.",
+    "CORE_INVARIANTS": "El protocolo es compatible con C2 y C5.",
+    "TAXONOMIA_R1_R7": "El protocolo define cuándo una restricción R3 requiere evidencia operacional.",
+    "MODELO_ESTADOS": "La aplicación del protocolo previene transiciones forzadas de S1 a S2 sin justificación."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si la no limitación produce daño observable reiterado, el protocolo requiere revisión.",
+    "F02": "Si los sistemas cerrados no muestran el efecto invertido, la hipótesis requiere revisión.",
+    "F03": "Si el parche a J_k produce descartes erróneos de nodos valiosos, requiere recalibración.",
+    "F04": "Si la comunidad no actúa como bus exógeno en sistemas abiertos, el modelo distribuido falla."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Descripción formal con auditoría parcial.",
+    "pendiente": "L4 (validación experimental controlada)."
+  },
+
+  "nota_final": {
+    "texto": "Este protocolo es una extensión de política, no un componente del núcleo. Su alcance está limitado al marco WEB_HITERATION. No establece prohibiciones universales. Exige evidencia operacional para justificar limitaciones preventivas dentro del framework. La hipótesis del efecto invertido en sistemas cerrados permanece como hipótesis, sujeta a validación empírica."
+  }
+}
