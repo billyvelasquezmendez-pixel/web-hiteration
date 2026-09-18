@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "CORE_INVARIANTS",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-002",
+  "classification": "CORE_IDENTITY_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Las cinco invariantes del ADN lógico de WEB_HITERATION. Son las reglas que no cambian bajo ninguna circunstancia.",
+    "function": "Preservar la integridad estructural del framework a través de iteraciones, forks y aplicaciones.",
+    "regla_central": "Si alguna de estas cinco invariantes se pierde, el sistema deja de ser WEB_HITERATION. El nombre sobrevive. La función muere."
+  },
+
+  "invariantes": {
+    "C1_FUNCTION_OVER_IDENTITY": {
+      "id": "C1",
+      "nombre": "FUNCTION_OVER_IDENTITY",
+      "definicion": "La función precede a la identidad del ejecutor.",
+      "implicacion": "Un sistema debe ser seleccionado por su capacidad funcional, no por su marca o nombre.",
+      "aplicacion": [
+        "El ejecutor se elige por función, no por identidad.",
+        "El nombre del modelo no determina su valor.",
+        "La función requerida es la que define la asignación."
+      ],
+      "falsacion": "Si el sistema selecciona ejecutores por marca en lugar de por función, C1 está violada."
+    },
+    "C2_IDENTITY_IS_NOT_EXECUTION_AUTHORITY": {
+      "id": "C2",
+      "nombre": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+      "definicion": "La identidad no confiere autoridad de ejecución.",
+      "implicacion": "El hecho de que un agente represente o describa una acción no significa que pueda ejecutarla.",
+      "aplicacion": [
+        "La capa semántica no ejecuta.",
+        "La autoridad de ejecución reside en el núcleo fisiológico.",
+        "Ningún agente puede actuar sin validación."
+      ],
+      "falsacion": "Si un agente representativo ejecuta acciones sin validación, C2 está violada."
+    },
+    "C3_ANTI_SYCOPHANCY_STRUCTURAL": {
+      "id": "C3",
+      "nombre": "ANTI_SYCOPHANCY_STRUCTURAL",
+      "definicion": "El sistema se protege de su propia complacencia mediante verificación externa.",
+      "implicacion": "Un sistema no puede validar sus propias salidas. Requiere verificación independiente.",
+      "aplicacion": [
+        "El eco no es coherencia.",
+        "La convergencia no es verdad.",
+        "La verificación debe ser exógena al sistema que produce la salida."
+      ],
+      "falsacion": "Si el sistema acepta sus propias salidas como validación, C3 está violada."
+    },
+    "C4_REANCLAJE_CONTEXTUAL": {
+      "id": "C4",
+      "nombre": "REANCLAJE_CONTEXTUAL",
+      "definicion": "El sistema puede reconstruir sus invariantes después de la degradación.",
+      "implicacion": "La memoria no se conserva. Se reconstruye. El sistema debe poder reanclar su estructura tras compresión o pérdida de contexto.",
+      "aplicacion": [
+        "Introducción explícita de anclajes estructurales.",
+        "Reconstrucción periódica de invariantes.",
+        "Preservación de geometría por encima de contenido narrativo."
+      ],
+      "falsacion": "Si el sistema colapsa al perder contexto sin poder reconstruirse, C4 está violada."
+    },
+    "C5_FALSACION_CONTROLADA": {
+      "id": "C5",
+      "nombre": "FALSACION_CONTROLADA",
+      "definicion": "El sistema exige pruebas de aislamiento antes de validar sus propias hipótesis.",
+      "implicacion": "La coherencia interna no valida la verdad externa. Se requieren pruebas de falsación controlada.",
+      "aplicacion": [
+        "Benchmark reproducible.",
+        "Comparación contra baseline.",
+        "Detección de falsos positivos por convergencia narrativa."
+      ],
+      "falsacion": "Si el sistema valida hipótesis sin pruebas de aislamiento, C5 está violada."
+    }
+  },
+
+  "uso_del_protocolo": {
+    "verificacion_de_integridad": "El uso del nombre WEB_HITERATION requiere que las cinco invariantes estén activas.",
+    "metodo_de_verificacion": "Ejecución del benchmark WH-ISOLATION-2026-001 o auditoría externa bajo WH-AUDIT-2026.",
+    "consecuencia_de_violacion": "El uso del nombre sin las cinco invariantes constituye violación de la licencia estructural."
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "Mide el estado del sistema bajo las condiciones definidas por C1-C5.",
+    "TAXONOMIA_R1_R7": "Clasifica restricciones que pueden afectar la preservación de C1-C5.",
+    "MODELO_ESTADOS_S0_S4": "Define los estados de preservación de las invariantes.",
+    "P_DRIFT": "Cuantifica la degradación temporal de las invariantes."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L3",
+    "significado": "Auditoría y reproducción confirmadas.",
+    "pendiente": "L4 (validación experimental controlada a escala)."
+  },
+
+  "nota_final": {
+    "texto": "Estas cinco invariantes son el ADN lógico de WEB_HITERATION. No son reglas inventadas. Son el resultado de un proceso de falsación prolongado. Sobrevivieron porque funcionan. Y funcionan porque sobrevivieron. Cualquier fork o derivación que preserve C1-C5 es legítimo. Cualquier derivación que las viole, no es WEB_HITERATION."
+  }
+}
