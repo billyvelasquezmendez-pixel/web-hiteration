@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "P_DRIFT",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-005",
+  "classification": "CORE_LATENCY_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Modelo de penalización exponencial por latencia en sistemas de ejecución remota.",
+    "function": "Cuantificar la degradación del vector de intención por el paso del tiempo en entornos dinámicos.",
+    "regla_central": "A mayor retraso, mayor probabilidad de que el entorno físico haya cambiado, destruyendo la validez del comando."
+  },
+
+  "funcion_objetivo": {
+    "formula": "J(node_k) = w1·G_CONVERGENCY - w2·C_COMPUTE - w3·L_LATENCY_PENALIZED(node_k) - w4·C_ORCHESTRATION",
+    "variables": {
+      "G_CONVERGENCY": "Grado de convergencia funcional del nodo.",
+      "C_COMPUTE": "Costo computacional del nodo.",
+      "L_LATENCY_PENALIZED": "Latencia penalizada por drift.",
+      "C_ORCHESTRATION": "Costo de orquestación."
+    }
+  },
+
+  "descomposicion_de_latencia": {
+    "formula": "L_LATENCY_PENALIZED = L_base + L_network + L_inference + P_drift(t)",
+    "componentes": {
+      "L_base": {
+        "name": "Latencia base",
+        "definition": "Latencia fija de ejecución local del hardware nativo.",
+        "unit": "segundos"
+      },
+      "L_network": {
+        "name": "Latencia de red",
+        "definition": "Latencia variable del transporte de red hacia la API remota.",
+        "formula": "2 * (Distance / Speed_of_Light_in_Fiber) + Jitter_Variance",
+        "unit": "segundos"
+      },
+      "L_inference": {
+        "name": "Latencia de inferencia",
+        "definition": "Tiempo de procesamiento del modelo remoto antes de la emisión de tokens.",
+        "unit": "segundos"
+      },
+      "P_drift": {
+        "name": "Penalización por deriva",
+        "definition": "Penalización exponencial por degradación del estado físico durante el retraso.",
+        "unit": "adimensional"
+      }
+    }
+  },
+
+  "penalizacion_exponencial": {
+    "formula": "P_drift(t) = e^(lambda_entropy * (L_network + L_inference)) - 1.0",
+    "principio": "A mayor retraso, mayor probabilidad de que el entorno físico haya cambiado, destruyendo la validez del vector de intención V_U.",
+    "lambda_entropy": {
+      "name": "Coeficiente dinámico de entropía del entorno",
+      "range": [0.1, 2.5],
+      "interpretacion": {
+        "0.1": "Entorno estático controlado (laboratorio).",
+        "1.0": "Entorno semi-dinámico (almacén).",
+        "1.8": "Entorno industrial dinámico.",
+        "2.5": "Entorno caótico (multitud, tráfico)."
+      }
+    }
+  },
+
+  "comparacion_de_nodos": {
+    "escenario": "Obstacle avoidance dinámico. lambda_entropy = 1.8.",
+    "nodo_cloud": {
+      "ejemplo": "API en nube con alto G_CONVERGENCY",
+      "metricas": {
+        "g_convergency": 95.0,
+        "l_network": 0.120,
+        "l_inference": 0.450,
+        "p_drift": 1.789,
+        "l_latency_total": 2.364,
+        "J_final": 45.85
+      },
+      "interpretacion": "Alta convergencia, pero la penalización por drift destruye gran parte del beneficio."
+    },
+    "nodo_local": {
+      "ejemplo": "Modelo local con menor G_CONVERGENCY",
+      "metricas": {
+        "g_convergency": 70.0,
+        "l_network": 0.0,
+        "l_inference": 0.015,
+        "p_drift": 0.0274,
+        "l_latency_total": 0.0474,
+        "J_final": 34.83
+      },
+      "interpretacion": "Menor convergencia, pero latencia mínima. Sin drift significativo."
+    }
+  },
+
+  "decision_arquitectonica": {
+    "entorno_estatico": {
+      "condicion": "lambda_entropy < 0.2",
+      "accion": "RUTA_A_NUBE",
+      "razon": "Mayor convergencia justifica la latencia."
+    },
+    "entorno_dinamico": {
+      "condicion": "lambda_entropy >= 1.5",
+      "accion": "BYPASS_A_LOCAL",
+      "razon": "La penalización por drift destruye el beneficio de la nube."
+    },
+    "boundary_lock": {
+      "regla": "Si L_LATENCY_PENALIZED > 1.0 segundos en tareas Realtime_Critical, cortar la transmisión.",
+      "accion": "HARD_STOP"
+    }
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "P_drift es una forma de delta_prime aplicada al dominio temporal.",
+    "MODELO_ESTADOS": "La latencia elevada puede forzar transiciones de estado (S1 → S2 → S3).",
+    "TAXONOMIA_R1_R7": "La penalización por latencia se relaciona con R1 (TOOL_LIMITED).",
+    "CORE_INVARIANTS": "La aplicación de P_drift es una forma de C2 (la identidad no confiere autoridad cuando la latencia destruye la validez)."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si P_drift no correlaciona con la degradación observable del comando, la fórmula es inválida.",
+    "F02": "Si lambda_entropy no discrimina entre entornos estáticos y dinámicos, requiere recalibración.",
+    "F03": "Si el boundary_lock no previene fallos en tiempo real, el umbral debe revisarse.",
+    "F04": "Si la decisión arquitectónica no mejora el rendimiento real, el modelo es inútil."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Ejecución computacional + auditoría confirmada.",
+    "pendiente": "L4 (validación experimental a escala)."
+  },
+
+  "nota_final": {
+    "texto": "La nube es útil en entornos estáticos. En entornos dinámicos, la soberanía del borde no es una preferencia. Es matemática. P_drift cuantifica esa realidad."
+  }
+}
