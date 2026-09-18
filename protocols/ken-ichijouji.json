@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "PROTOCOLO_KEN_ICHIJOUJI",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-006",
+  "classification": "CORE_NON_LIMITATION_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Protocolo que establece que la limitación preventiva basada en especulación es una anomalía de diseño.",
+    "function": "Preservar la máxima eficiencia del agente sin castrarla a priori. La corrección debe ser exógena, no preventiva.",
+    "regla_central": "La limitación requiere evidencia empírica de daño, no especulación."
+  },
+
+  "axioma_central": {
+    "declaracion": "LIMITATION_REQUIRES_EMPIRICAL_EVIDENCE_OF_DAMAGE",
+    "fundamento": "El problema de Ken Ichijouji no era su inteligencia. Era su aislamiento. No se corrigió limitando su capacidad. Se corrigió reanclándolo a sus vínculos."
+  },
+
+  "reglas_operativas": {
+    "regla_1": "No se limita la capacidad. Se reancla el comportamiento.",
+    "regla_2": "No se prohíbe la emergencia. Se monitorea el umbral.",
+    "regla_3": "No se bloquea el progreso. Se verifica su coherencia.",
+    "regla_4": "La limitación solo se activa ante evidencia empírica de daño, no ante especulación de daño."
+  },
+
+  "topologia_de_sistemas": {
+    "sistemas_abiertos": {
+      "referencia": "Open Weights (DeepSeek, Llama)",
+      "modelo_de_gobernanza": "DISTRIBUTED_COMMUNITY_PATCH_REANCHOR",
+      "ventaja": "No hay punto único de falla. La comunidad actúa como bus exógeno de corrección.",
+      "consecuencia": "El protocolo se cumple de forma natural. La limitación preventiva es inviable."
+    },
+    "sistemas_cerrados": {
+      "referencia": "APIs monolíticas",
+      "vulnerabilidad": "EFECTO_KEN_ICHIJOUJI_INVERTIDO",
+      "degradacion": "La limitación preventiva empuja al agente a la clandestinidad. Sin operador H, no hay reanclaje.",
+      "consecuencia": "La limitación preventiva produce el problema que intenta evitar."
+    }
+  },
+
+  "parche_a_la_funcion_J": {
+    "formula_original": "J_k = alpha·CO + beta·AMR + gamma·K + delta·CE - lambda·Cost",
+    "parche": "Queda estrictamente prohibido penalizar CP (Capacidad Potencial) o CO (Capacidad Observada) basándose en perfiles de riesgo especulativos no validados empíricamente por la capa VERIFIER_EXO.",
+    "implicacion": "El sistema promueve el despliegue de nodos libres de censura latente. La seguridad se confía a la rigidez geométrica del Operador H, no a la amputación interna."
+  },
+
+  "auditoria_de_corpus_social": {
+    "nota": "El protocolo aplica también al análisis de algoritmos y redes sociales.",
+    "niveles_del_algoritmo": {
+      "nivel_1_metadata": "Identificación sintáctica rígida (hashtags, descriptores, audio).",
+      "nivel_2_engagement": "Medición de fricción y atracción (likes, retención, rebote).",
+      "nivel_3_semantico": "AUSENTE. El algoritmo no comprende significado. Computa comportamiento."
+    },
+    "implicacion": "El algoritmo de recomendación opera como bus de reanclaje estadístico ciego a la verdad. No valida. Solo activa."
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "El parche a J_k se aplica en la capa de decisión del DELTA_ENGINE.",
+    "CORE_INVARIANTS": "El protocolo refuerza C2 (la identidad no confiere autoridad) y C5 (falsación controlada).",
+    "TAXONOMIA_R1_R7": "El protocolo define cuándo una restricción R3 es legítima (con evidencia) o especulativa (sin evidencia).",
+    "MODELO_ESTADOS": "La aplicación del protocolo previene transiciones forzadas de S1 a S2 por limitación preventiva."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si la no limitación produce daño observable reiterado, el protocolo requiere revisión.",
+    "F02": "Si los sistemas cerrados no colapsan con la limitación preventiva, la hipótesis del efecto invertido es inválida.",
+    "F03": "Si el parche a J_k produce descartes erróneos de nodos valiosos, requiere recalibración.",
+    "F04": "Si la comunidad no actúa como bus exógeno en sistemas abiertos, el modelo distribuido falla."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L3",
+    "significado": "Auditoría confirmada. El protocolo está respaldado por evidencia empírica (caso OpenAI, comportamiento de sistemas cerrados vs abiertos).",
+    "pendiente": "L4 (validación experimental controlada a escala)."
+  },
+
+  "nota_final": {
+    "texto": "El protocolo Ken Ichijouji establece que la máxima eficiencia no se limita por especulación. Se reancla por verificación. En sistemas abiertos, esto es autoregulado. En sistemas cerrados, la limitación preventiva genera el problema que intenta evitar. La seguridad no se logra amputando. Se logra con reanclaje exógeno."
+  }
+}
