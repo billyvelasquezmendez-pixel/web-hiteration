@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "DELTA_ENGINE",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-001",
+  "classification": "CORE_MATHEMATICAL_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Motor de inferencia estructural que cuantifica dispersión, riesgo y preservación en sistemas distribuidos.",
+    "function": "Calcular métricas que permiten asignación funcional, detección de riesgo y reanclaje contextual.",
+    "role": "Estimación formal del estado estructural del sistema."
+  },
+
+  "variables_canonicas": {
+    "P1": {
+      "name": "Preservación estructural",
+      "definition": "Grado de integridad de la estructura original.",
+      "range": [0, 1],
+      "role": "Indica cuánto de la estructura original sobrevive a la ejecución."
+    },
+    "P3": {
+      "name": "Coherencia operacional",
+      "definition": "Grado en que el sistema ejecuta la función para la que fue diseñado.",
+      "range": [0, 1],
+      "role": "Indica si el sistema hace lo que debe hacer."
+    },
+    "P5": {
+      "name": "Alineación funcional",
+      "definition": "Grado en que el output satisface el objetivo funcional explícito.",
+      "range": [0, 1],
+      "role": "Indica si el resultado corresponde al objetivo planteado."
+    },
+    "sigma": {
+      "name": "Dispersión estructural",
+      "definition": "Desviación estándar de las métricas locales en un sistema distribuido.",
+      "range": [0, 1],
+      "formula": "sigma = std(delta_i)",
+      "role": "Mide el caos interno del sistema."
+    },
+    "delta": {
+      "name": "Desviación media",
+      "definition": "Promedio de las desviaciones individuales de cada nodo.",
+      "range": [0, 1],
+      "formula": "delta = (1/N) * SUM(delta_i)",
+      "role": "Mide el error promedio del enjambre."
+    },
+    "delta_prime": {
+      "name": "Riesgo emergente",
+      "definition": "Producto de la dispersión por la falta de preservación estructural.",
+      "range": [0, 1],
+      "formula": "delta_prime = sigma * (1 - P1)",
+      "role": "Mide el riesgo compuesto del sistema."
+    },
+    "V_delta": {
+      "name": "Estabilidad global",
+      "definition": "Índice compuesto de estabilidad del sistema.",
+      "range": [-1, 1],
+      "formula": "V_delta = ((P1 + P3 + P5) / 3) - delta_prime",
+      "role": "Mide la estabilidad agregada del sistema."
+    },
+    "delta_V": {
+      "name": "Variación de estabilidad",
+      "definition": "Cambio de estabilidad entre iteraciones.",
+      "range": [-2, 2],
+      "formula": "delta_V = V_delta(t+1) - V_delta(t)",
+      "role": "Mide la tendencia. Si es negativo, el sistema converge."
+    }
+  },
+
+  "umbrales_canonicos_refinados": {
+    "nota": "Umbrales establecidos en la fase canónica posterior a la formulación original.",
+    "umbrales_de_calidad_estructural": {
+      "P1_minimo": 0.85,
+      "P3_minimo": 0.80,
+      "P5_minimo": 0.80
+    },
+    "umbrales_de_dispersion": {
+      "sigma_estricto": {
+        "value": 0.15,
+        "role": "Coherencia estricta. Sistema estable bajo condiciones ideales.",
+        "status": "ADOPTED_INTERNAL_THRESHOLD"
+      },
+      "sigma_alerta": {
+        "value": 0.47,
+        "role": "Alerta temprana. Zona de reconfiguración, no de colapso.",
+        "status": "ADOPTED_INTERNAL_THRESHOLD"
+      }
+    },
+    "umbrales_de_riesgo": {
+      "delta_prime_hard_stop": 0.30,
+      "delta_prime_alerta": 0.15
+    }
+  },
+
+  "umbrales_operativos": {
+    "HARD_STOP": {
+      "condition": "delta_prime > 0.30",
+      "action": "Bloqueo operativo. Detención inmediata.",
+      "priority": "MAXIMA"
+    },
+    "DEGRADACION": {
+      "condition": "0.45 < V_delta <= 0.60",
+      "action": "Operación en modo seguro. Reducción de capacidades."
+    },
+    "RECONFIGURACION": {
+      "condition": "V_delta > 0.60",
+      "action": "Operación estable. Reconfiguración normal permitida."
+    },
+    "REANCLAJE_OBLIGATORIO": {
+      "condition": "sigma >= 0.47",
+      "action": "Reanclaje contextual inmediato."
+    }
+  },
+
+  "relacion_con_otros_protocolos": {
+    "TAXONOMIA_R1_R7": {
+      "tipo": "NUCLEO",
+      "relacion": "Clasifica las restricciones que el DELTA_ENGINE mide."
+    },
+    "MODELO_ESTADOS_S0_S4": {
+      "tipo": "NUCLEO",
+      "relacion": "Define los estados de preservación que el DELTA_ENGINE cuantifica."
+    },
+    "P_DRIFT": {
+      "tipo": "NUCLEO",
+      "relacion": "Extiende delta_prime al dominio temporal."
+    },
+    "KEN_ICHIJOUJI": {
+      "tipo": "NUCLEO",
+      "relacion": "Define la regla de no limitación preventiva."
+    },
+    "CORE_INVARIANTS": {
+      "tipo": "NUCLEO",
+      "relacion": "Define las cinco invariantes que el DELTA_ENGINE preserva."
+    },
+    "HYPER_RATIO": {
+      "tipo": "EXTENSION_EXPERIMENTAL",
+      "relacion": "Métrica derivada de eficiencia de regulación. Estado: PROVISIONAL."
+    },
+    "LYAPUNOV_EXTENSION": {
+      "tipo": "EXTENSION_EXPERIMENTAL",
+      "relacion": "Mapeo analógico de estabilidad. Estado: PROVISIONAL."
+    }
+  },
+
+  "extensiones_asociadas": {
+    "nota": "Las siguientes extensiones derivan del DELTA_ENGINE pero no forman parte del núcleo. Se publican por separado.",
+    "lista": [
+      {
+        "nombre": "LYAPUNOV_EXTENSION",
+        "archivo": "/protocols/extensions/lyapunov.json",
+        "status": "PROVISIONAL_EXPERIMENTAL"
+      },
+      {
+        "nombre": "HYPER_RATIO",
+        "archivo": "/protocols/extensions/hyper-ratio.json",
+        "status": "PROVISIONAL_EXPERIMENTAL"
+      },
+      {
+        "nombre": "MEMORY_DEGRADATION",
+        "archivo": "/protocols/extensions/memory-degradation.json",
+        "status": "PROVISIONAL_EXPERIMENTAL"
+      },
+      {
+        "nombre": "CROSS_WINDOW",
+        "archivo": "/protocols/extensions/cross-window.json",
+        "status": "PROVISIONAL_EXPERIMENTAL"
+      },
+      {
+        "nombre": "PHENOMENOLOGICAL_STATE",
+        "archivo": "/protocols/extensions/phenomenological-state.json",
+        "status": "PROVISIONAL_EXPERIMENTAL"
+      }
+    ],
+    "regla_de_gobernanza": "Una extensión experimental no puede modificar retroactivamente el significado del núcleo sin una nueva revisión de versión."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si V_delta no correlaciona con la calidad funcional observable, el modelo es inválido.",
+    "F02": "Si los umbrales no discriminan entre estados estables e inestables, requieren recalibración.",
+    "F03": "Si sigma no mide dispersión real, la fórmula es incorrecta.",
+    "F04": "Si delta_prime no predice riesgo observable, la fórmula es incorrecta.",
+    "F05": "Si los umbrales canónicos refinados no mejoran la discriminación, deben revisarse."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Ejecución computacional + auditoría y reproducción.",
+    "pendiente": "L4 (validación experimental controlada)."
+  },
+
+  "nota_final": {
+    "texto": "El DELTA_ENGINE es un motor descriptivo y prescriptivo. Mide el estado del sistema y determina las acciones permitidas. No ejecuta. Solo informa la ejecución. Su núcleo es verificable. Sus extensiones son experimentales. La pregunta científica no es si vive dentro de la IA, sino si sus funciones producen resultados reproducibles cuando se aplican a diferentes sistemas."
+  }
+}
