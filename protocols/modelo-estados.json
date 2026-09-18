@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "MODELO_ESTADOS_S0_S4",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-004",
+  "classification": "CORE_STATE_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Modelo de estados que describe la evolución de la coherencia estructural bajo iteración conversacional o ejecución distribuida.",
+    "function": "Permitir la identificación del estado actual del sistema y las transiciones posibles entre estados.",
+    "regla_central": "La estabilidad no es un valor. Es una condición temporal que debe sostenerse durante un intervalo."
+  },
+
+  "variables_de_estado": {
+    "G": {
+      "name": "Preservación de geometría",
+      "definition": "Grado de integridad de la estructura original.",
+      "range": [0, 1]
+    },
+    "Tc": {
+      "name": "Tiempo hasta colapso",
+      "definition": "Número de iteraciones antes de que G caiga por debajo del umbral establecido.",
+      "range": "[0, ∞]"
+    },
+    "delta_V": {
+      "name": "Variación de estabilidad",
+      "definition": "Cambio de estabilidad entre iteraciones.",
+      "range": "[-2, 2]"
+    },
+    "sigma": {
+      "name": "Dispersión estructural",
+      "definition": "Desviación estándar de las métricas locales.",
+      "range": [0, 1]
+    }
+  },
+
+  "estados": {
+    "S0_ESTADO_INICIAL": {
+      "id": "S0",
+      "nombre": "ESTADO_INICIAL",
+      "condicion": "G > 0.90",
+      "descripcion": "La geometría está completamente preservada. El sistema acaba de iniciar.",
+      "accion_recomendada": "Continuar. Observar estabilidad."
+    },
+    "S1_ESTABILIDAD_SOSTENIDA": {
+      "id": "S1",
+      "nombre": "ESTABILIDAD_SOSTENIDA",
+      "condicion": "G > 0.80 Y delta_V <= 0 durante Tc",
+      "descripcion": "La estructura se conserva a través de múltiples iteraciones. Es el estado más deseable.",
+      "accion_recomendada": "Continuar. Reforzar anclajes si es necesario."
+    },
+    "S2_DERIVACION_CONTROLADA": {
+      "id": "S2",
+      "nombre": "DERIVACION_CONTROLADA",
+      "condicion": "0.50 < G <= 0.80 Y sigma moderada",
+      "descripcion": "Aparecen nuevas asociaciones sin pérdida del marco principal. Creatividad controlada.",
+      "accion_recomendada": "Reanclar estructura formal. Verificar invariantes."
+    },
+    "S3_OSCILACION_SEMANTICA": {
+      "id": "S3",
+      "nombre": "OSCILACION_SEMANTICA",
+      "condicion": "G fluctúa alrededor del umbral Y delta_V cambia de signo",
+      "descripcion": "El sistema alterna entre conservación y simplificación. Inestable pero no colapsado.",
+      "accion_recomendada": "Intervención inmediata. Reintroducir anclajes estructurales."
+    },
+    "S4_COLAPSO_DE_MARCO": {
+      "id": "S4",
+      "nombre": "COLAPSO_DE_MARCO",
+      "condicion": "G < 0.50 O Tc agotado",
+      "descripcion": "La conversación pierde las capas estructurales originales. Colapso.",
+      "accion_recomendada": "Reinicio o reanclaje completo desde cero."
+    }
+  },
+
+  "transiciones": {
+    "principio": "Las transiciones dependen de la iteración, la compresión contextual y la reintroducción de anclajes estructurales.",
+    "criterio_de_estabilidad": "Un estado es formalmente estable si delta_V <= 0 Y G permanece sobre el umbral durante Tc.",
+    "transiciones_naturales": [
+      "S0 → S1 si se mantiene G > 0.80",
+      "S1 → S2 si aparece derivación controlada",
+      "S2 → S3 si la derivación se intensifica",
+      "S3 → S4 si no se interviene",
+      "S4 → S0 solo con reinicio completo"
+    ],
+    "transiciones_forzadas": [
+      "S1 → S2 si se reduce la densidad de anclajes",
+      "S3 → S1 si se reintroducen anclajes estructurales",
+      "S2 → S1 si se consolida la estructura original"
+    ]
+  },
+
+  "aplicaciones": {
+    "conversacional": "Modelar la evolución de la coherencia en conversaciones largas.",
+    "distribuida": "Modelar la evolución de la coherencia en sistemas multiagente.",
+    "documental": "Modelar la evolución de la coherencia de un repositorio a lo largo del tiempo."
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "El DELTA_ENGINE calcula G, sigma y delta_V. Este protocolo los interpreta como estados.",
+    "CORE_INVARIANTS": "C4 (reanclaje contextual) es la herramienta principal para transitar de S2/S3 a S1.",
+    "TAXONOMIA_R1_R7": "Las restricciones de la taxonomía pueden provocar transiciones entre estados.",
+    "P_DRIFT": "Cuantifica la degradación temporal que empuja las transiciones S1 → S2 → S3 → S4."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si los estados no discriminan entre comportamientos observables, el modelo es inútil.",
+    "F02": "Si las transiciones no se reproducen entre ejecuciones, el modelo es inestable.",
+    "F03": "Si G no correlaciona con la preservación observable, el modelo es inválido.",
+    "F04": "Si Tc no predice el colapso real, requiere recalibración."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Ejecución computacional + auditoría confirmada.",
+    "pendiente": "L4 (validación experimental a escala)."
+  },
+
+  "nota_final": {
+    "texto": "El modelo de estados no describe un flujo lineal. Describe un espacio de estados posibles con transiciones dependientes de la densidad de anclajes. La estabilidad no es un punto. Es un régimen. Y la labor del sistema es mantener el régimen estable, no alcanzar un valor específico."
+  }
+}
