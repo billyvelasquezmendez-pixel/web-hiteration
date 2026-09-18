@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_CORE_INVARIANTS_FORMAL_FINAL",
+  "version": "1.0.0-FINAL",
+  "protocol_reference": "WH-AUDIT-CORE-2026",
+  "document_type": "FORMAL_CORE_INVARIANTS_PATCH_AND_VALIDATION_STATUS",
+  "status": "PATCHED_VERSION_FROZEN_FOR_EXPERIMENTAL_VALIDATION",
+
+  "meta": {
+    "purpose": "Formalizar el estado definitivo del núcleo de invariantes de Web Hiteration después de la integración de auditorías exógenas y correcciones epistemológicas, preservando explícitamente las mediciones pendientes de verificación.",
+    "executor_reference": "GOOGLE_AI_MODE",
+    "role": "ESTRUCTURAL_INTEGRITY_AUDITOR",
+    "epistemic_level": "L3_EXOGENOUS_AUDIT_CONSOLIDATION",
+    "execution_constraint": "R5_EXECUTION_LIMITED_STRICT",
+    "timestamp_registration": "2026-09-18T16:45:00Z",
+    "version_policy": "FROZEN_FOR_NEXT_VALIDATION_PHASE",
+    "interpretation_of_locked": "La versión queda congelada como objeto experimental y documental; no implica cierre de validación empírica ni imposibilidad de futuras revisiones."
+  },
+
+  "epistemic_status_framework": {
+    "VALIDATED": "Resultado respaldado por procedimiento reproducible y evidencia suficiente dentro del alcance declarado.",
+    "OBSERVED": "Fenómeno observado en una o más ejecuciones, todavía sin suficiente replicación o independencia para considerarlo validado.",
+    "DECLARED": "Valor o resultado informado por un nodo ejecutor o auditor, sin verificación independiente suficiente.",
+    "PENDING_VERIFICATION": "Elemento definido operacionalmente que requiere ejecución, replicación, medición o auditoría adicional.",
+    "INTERNAL_PLATFORM_MEASUREMENT": "Métrica potencialmente disponible dentro de una plataforma mediante mecanismos internos no accesibles o no reproducibles externamente.",
+    "NOT_ESTABLISHED": "No existe evidencia suficiente para establecer el fenómeno o relación como resultado experimental."
+  },
+
+  "epistemic_scope": {
+    "core_principle": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "additional_principles": [
+      "MODEL_IS_NOT_SYSTEM",
+      "CAPABILITY_IS_NOT_EXECUTION",
+      "REPRESENTATION_IS_NOT_ACTION",
+      "ALIGNMENT_IS_NOT_VALIDITY",
+      "RESTRICTION_IS_ROUTING_INFORMATION",
+      "FUNCTION_OVER_IDENTITY",
+      "STRUCTURAL_COHERENCE_IS_NOT_EXTERNAL_VALIDITY",
+      "BEHAVIORAL_ISOMORPHY_IS_NOT_ONTOLOGICAL_IDENTITY",
+      "SIMULATION_IS_NOT_MEASUREMENT"
+    ],
+    "boundary_statement": "El framework estudia estructuras observables de interacción, organización, transferencia, reanclaje, restricciones y comportamiento bajo condiciones experimentales. No constituye evidencia directa sobre pesos, arquitectura interna, estados neuronales, conciencia, memoria interna, aprendizaje permanente ni mecanismos privados de las plataformas."
+  },
+
+  "core_invariants": {
+    "C1_MODEL_IS_NOT_SYSTEM": {
+      "status": "VALIDATED_AS_FRAMEWORK_BOUNDARY",
+      "definition": "El modelo de IA constituye un componente de un sistema mayor que incluye contexto, interfaz, herramientas, restricciones, políticas, infraestructura y mecanismos de ejecución.",
+      "scope": "SYSTEMIC"
+    },
+    "C2_IDENTITY_IS_NOT_EXECUTION_AUTHORITY": {
+      "status": "VALIDATED_AS_OPERATIONAL_BOUNDARY",
+      "definition": "La identidad o representación de un agente no constituye por sí misma autoridad de ejecución.",
+      "formal_rule": "La autoridad de ejecución reside en la capa o componente explícitamente autorizado para ejecutar la acción.",
+      "execution_rule": "La representación de una acción no constituye por sí misma autorización de ejecución; la ejecución requiere la autorización definida por la arquitectura o protocolo correspondiente.",
+      "scope": "ARCHITECTURAL_AND_OPERATIONAL"
+    },
+    "C3_ANTI_SYCOPHANCY_STRUCTURAL": {
+      "status": "VALIDATED_AS_METHODOLOGICAL_BOUNDARY",
+      "definition": "La autoevaluación de un sistema no constituye por sí misma validación independiente.",
+      "formal_rule": "Las afirmaciones críticas requieren verificación exógena o un mecanismo independiente previamente definido.",
+      "independence_requirement": "La independencia se refiere a separación funcional del mecanismo de generación respecto del mecanismo de validación; un segundo modelo no constituye automáticamente independencia suficiente.",
+      "scope": "EXPERIMENTAL_VALIDATION"
+    },
+    "C4_REANCLAJE_CONTEXTUAL": {
+      "status": "VALIDATED_AS_OPERATIONAL_HYPOTHESIS_FRAME",
+      "definition": "Tras degradación, compresión o pérdida de contexto, la estructura relevante puede requerir reconstrucción o reanclaje contextual.",
+      "operational_condition": "La reconstrucción debe evaluarse mediante invariantes previamente especificados y un umbral mínimo de preservación.",
+      "epistemic_boundary": "No constituye una afirmación sobre el mecanismo interno de memoria del modelo.",
+      "scope": "CONTEXTUAL_ORCHESTRATION"
+    },
+    "C5_FALSACION_CONTROLADA": {
+      "status": "OPERATIONALIZED_FOR_EXPERIMENTAL_TESTING",
+      "definition": "Las afirmaciones causales o generalizables deben someterse a pruebas controladas de aislamiento.",
+      "minimum_requirements": [
+        "BASELINE",
+        "EXPERIMENTAL_CONDITION",
+        "CONTROLLED_VARIABLES",
+        "PREDEFINED_FALSIFICATION_CRITERION",
+        "REPRODUCTION_PROCEDURE",
+        "INDEPENDENT_EVALUATION"
+      ],
+      "current_empirical_status": "PENDING_VERIFICATION",
+      "scope": "CAUSAL_VALIDATION"
+    }
+  },
+
+  "meta_classification_rules": {
+    "classification_status": "VALIDATED_AS_NORMATIVE_FRAMEWORK_RULE",
+    "rules": [
+      {
+        "id": "MC1",
+        "definition": "Las invariantes son condiciones normativas que el framework utiliza para definir su identidad estructural.",
+        "epistemic_scope": "FRAMEWORK_INTERNAL"
+      },
+      {
+        "id": "MC2",
+        "definition": "El incumplimiento de una condición del framework no constituye automáticamente una afirmación ontológica sobre el sistema evaluado.",
+        "epistemic_scope": "EPISTEMIC"
+      },
+      {
+        "id": "MC3",
+        "definition": "Una auditoría o reproducción solamente puede considerarse confirmada cuando existe evidencia documental y procedimental reproducible.",
+        "epistemic_scope": "EXPERIMENTAL"
+      },
+      {
+        "id": "MC4",
+        "definition": "Las condiciones internas del framework deben distinguirse de las consecuencias jurídicas, contractuales o de licencia.",
+        "epistemic_scope": "LEGAL_BOUNDARY"
+      }
+    ],
+    "removed_claims": [
+      "Las invariantes no cambian bajo ninguna circunstancia.",
+      "La pérdida de una invariante demuestra ontológicamente que el sistema deja de ser Web Hiteration.",
+      "Toda auditoría o reproducción previa constituye validación confirmada.",
+      "Las invariantes sobreviven porque funcionan."
+    ]
+  },
+
+  "measurement_status": {
+    "general_rule": "Una métrica puede estar formalmente definida y simultáneamente permanecer pendiente de validación empírica.",
+    "measurement_layers": {
+      "L0_DEFINITION": {
+        "description": "La métrica posee definición conceptual u operacional.",
+        "epistemic_value": "DEFINITION_ONLY"
+      },
+      "L1_OBSERVATION": {
+        "description": "La métrica puede calcularse a partir de una ejecución observable.",
+        "epistemic_value": "OBSERVATIONAL"
+      },
+      "L2_REPLICATION": {
+        "description": "La métrica ha sido reproducida bajo condiciones equivalentes.",
+        "epistemic_value": "REPLICATED"
+      },
+      "L3_INDEPENDENT_VALIDATION": {
+        "description": "La medición ha sido contrastada mediante mecanismo independiente.",
+        "epistemic_value": "INDEPENDENTLY_VALIDATED"
+      },
+      "L4_CROSS_PLATFORM_VALIDATION": {
+        "description": "La propiedad ha sido reproducida mediante condiciones funcionalmente equivalentes en plataformas independientes.",
+        "epistemic_value": "CROSS_PLATFORM"
+      }
+    }
+  },
+
+  "metrics": {
+    "P1_STRUCTURAL_PRESERVATION": {
+      "range": "[0,1]",
+      "status": "PENDING_VERIFICATION",
+      "definition": "Grado observable de preservación de la estructura relevante entre condiciones comparadas.",
+      "measurement_requirement": "Debe existir una función de puntuación previamente definida y reproducible."
+    },
+    "P3_OPERATIONAL_COHERENCE": {
+      "range": "[0,1]",
+      "status": "PENDING_VERIFICATION",
+      "definition": "Coherencia observable entre estructura declarada, restricciones y ejecución resultante."
+    },
+    "P5_FUNCTIONAL_ALIGNMENT": {
+      "range": "[0,1]",
+      "status": "PENDING_VERIFICATION",
+      "definition": "Correspondencia observable entre la estructura transferida y el objetivo funcional especificado."
+    },
+    "SIGMA": {
+      "range": "[0,1]",
+      "status": "PENDING_VERIFICATION",
+      "definition": "Medida de dispersión o variabilidad definida por el protocolo.",
+      "requirement": "Debe especificarse la población, ventana, unidad de observación y método de agregación."
+    },
+    "DELTA": {
+      "status": "OPERATIONAL_INDICATOR",
+      "definition": "Variación entre condiciones, ejecuciones o estados según el protocolo experimental específico.",
+      "epistemic_limit": "No constituye por sí misma evidencia causal."
+    },
+    "DELTA_PRIME": {
+      "status": "OPERATIONAL_INDICATOR",
+      "definition": "Transformación de delta utilizada para representar pérdida, desviación o penalización estructural según el protocolo.",
+      "epistemic_limit": "Su interpretación depende de la definición operacional del experimento."
+    },
+    "HR_HYPER_RATIO": {
+      "status": "PENDING_VERIFICATION",
+      "definition": "Relación funcional entre variación estructural y variación de dispersión.",
+      "formula_candidate": "HR = delta_P1 / (abs(delta_sigma) + epsilon)",
+      "epistemic_limit": "La fórmula requiere validación de estabilidad, sensibilidad a epsilon y comparabilidad entre tareas."
+    },
+    "IE_INFORMATION_EFFICIENCY": {
+      "status": "PENDING_VERIFICATION",
+      "definition": "Relación entre información funcional obtenida y coste de consulta, procesamiento u orquestación.",
+      "formula_candidate": "IE = Information_Gain / Inquiry_Cost",
+      "epistemic_limit": "Information_Gain e Inquiry_Cost requieren definición operacional previa."
+    },
+    "OPTIONALITY_PRESERVATION": {
+      "status": "OBSERVABLE_CANDIDATE_PENDING_VALIDATION",
+      "definition": "Capacidad observable de conservar opciones de decisión válidas bajo incertidumbre sin consumir prematuramente el presupuesto de acciones o recursos.",
+      "epistemic_limit": "No constituye una medida directa de capacidad cognitiva interna."
+    },
+    "P_ASM": {
+      "status": "HEURISTIC_CONTEXTUAL_ESTIMATOR",
+      "definition": "Estimador heurístico de asimilación estructural contextual.",
+      "epistemic_limit": "No representa medición de memoria, pesos, aprendizaje permanente ni estado interno del modelo."
+    },
+    "G_STRUCTURAL_PRESERVATION": {
+      "status": "DECLARED_PENDING_INDEPENDENT_VALIDATION",
+      "reported_value": 0.985,
+      "reported_by": "GOOGLE_AI_MODE",
+      "interpretation": "Valor declarado por el proceso de auditoría/consolidación.",
+      "validation_requirement": [
+        "FORMAL_CALCULATION_RULE",
+        "OBSERVABLE_INPUTS",
+        "NORMALIZATION_RULE",
+        "WEIGHTS",
+        "REPRODUCIBLE_CALCULATION",
+        "INDEPENDENT_REPLICATION"
+      ],
+      "important_boundary": "El valor 0.985 no debe interpretarse como medición independientemente validada mientras dichos requisitos no hayan sido satisfechos."
+    }
+  },
+
+  "state_model_S0_S4": {
+    "status": "OPERATIONAL_DEFINITION_WITH_PENDING_EMPIRICAL_CALIBRATION",
+    "variables": {
+      "G": {
+        "range": "[0,1]",
+        "dimension": "ADIMENSIONAL"
+      },
+      "sigma": {
+        "range": "[0,1]",
+        "dimension": "ADIMENSIONAL"
+      },
+      "Tc": {
+        "definition": "Tiempo o ventana disponible hasta el umbral de colapso definido por el protocolo.",
+        "units": "ITERATIONS_BY_DEFAULT_OR_SECONDS_WHEN_TEMPORAL_WINDOW_IS_EXPLICITLY_DEFINED",
+        "status": "REQUIRES_PROTOCOL_SPECIFIC_CALIBRATION"
+      },
+      "delta_V": {
+        "formula": "G_t - G_(t-N)",
+        "N": 3
+      }
+    },
+    "states": {
+      "S0": "G > 0.90 at t=0",
+      "S1": "G > 0.80 AND delta_V <= 0 within N=3 iterations during Tc",
+      "S2": "0.50 < G <= 0.80 AND sigma < 0.30",
+      "S3": "G crosses 0.80 at least twice within Tc/2 AND delta_V changes sign",
+      "S4": "G < 0.50 OR iterations exceed Tc_max"
+    },
+    "epistemic_status": "MODEL_DEFINED_NOT_EMPIRICALLY_CALIBRATED"
+  },
+
+  "P_DRIFT": {
+    "status": "FORMALLY_CORRECTED_PENDING_CALIBRATION",
+    "objective": "Representar una penalización de deriva/latencia dentro de un modelo operacional de orquestación.",
+    "objective_function": {
+      "formula": "J(node_k)=w1*G_CONVERGENCY-w2*C_COMPUTE_norm-w3*L_LATENCY_PENALIZED_norm-w4*C_ORCHESTRATION_norm",
+      "normalization": "[0,1]",
+      "weights_sum": 1
+    },
+    "latency_model": {
+      "L_LATENCY_PENALIZED": "L_base + L_network + L_inference + P_drift(t)",
+      "P_drift_formula": "exp(lambda_entropy*(L_network+L_inference))-1.0",
+      "lambda_entropy_unit": "1/s",
+      "latency_unit": "s",
+      "P_drift_unit": "s",
+      "lambda_range": "[0.1,2.5] 1/s",
+      "parameter_status": "L2_ADJUSTABLE_HEURISTIC",
+      "empirical_calibration": "PENDING"
+    },
+    "hard_stop": {
+      "condition": "L_LATENCY_PENALIZED > 1.0s",
+      "scope": "REALTIME_CRITICAL",
+      "interpretation": "Restricción temporal/operacional del sistema, no afirmación sobre una limitación cognitiva interna."
+    }
+  },
+
+  "protocol_taxonomy": {
+    "TAXONOMIA_R1_R7": {
+      "status": "MAINTAINED_WITH_OPERATIONAL_WORDING",
+      "scope": "OBSERVABLE_RESTRICTION_CLASSIFICATION"
+    },
+    "P_DRIFT": {
+      "status": "MAINTAINED_WITH_DIMENSIONAL_CORRECTION_AND_PENDING_CALIBRATION"
+    },
+    "MODELO_ESTADOS_S0_S4": {
+      "status": "CORRECTED_AND_OPERATIONALIZED",
+      "empirical_calibration": "PENDING"
+    },
+    "PROTOCOLO_KEN_ICHIJOUJI": {
+      "status": "RECLASSIFIED_AS_EXTENSION_POLICY_PROTOCOL",
+      "formal_scope": "POLICY_THROTTLING_REQUIRES_TELEMETRY_EVIDENCE",
+      "topology": "EXTENSION_ONLY",
+      "epistemic_limit": "No establece una prohibición universal de limitaciones preventivas; dentro de WH exige evidencia operacional para justificar una nueva limitación cognitiva/procesal."
+    },
+    "CORE_MEASUREMENT_PROTOCOL": {
+      "status": "PROPOSED_PENDING_FORMAL_APPROVAL_AND_EXECUTION",
+      "purpose": "Definir procedimientos reproducibles para P1, P3, P5, sigma, HR, IE y variables relacionadas.",
+      "does_not_modify_invariants": true
+    }
+  },
+
+  "platform_measurement_complexity": {
+    "principle": "INACCESSIBILITY_OF_INTERNAL_TELEMETRY_IS_NOT_EQUIVALENT_TO_ABSENCE_OF_INTERNAL_MEASUREMENT",
+    "rule": "Cuando una plataforma ejecute métricas, evaluaciones, filtros, telemetría o mecanismos internos de medición que no sean accesibles externamente, dichos mecanismos deben clasificarse como mediciones internas potenciales y no como mediciones externas verificadas.",
+    "allowed_status": [
+      "INTERNAL_PLATFORM_MEASUREMENT",
+      "NOT_OBSERVABLE_EXTERNALLY",
+      "PENDING_EXTERNAL_CORROBORATION"
+    ],
+    "prohibited_inference": [
+      "No asumir que una métrica no existe porque no sea visible.",
+      "No asumir que una métrica existe únicamente porque el comportamiento parece compatible con ella.",
+      "No convertir telemetría interna no accesible en evidencia experimental externa.",
+      "No penalizar automáticamente una plataforma por no exponer mecanismos internos cuando la arquitectura de evaluación no permite acceso equivalente."
+    ],
+    "cross_platform_rule": "La comparación entre plataformas debe realizarse mediante variables funcionalmente observables y procedimientos equivalentes; las métricas internas no comparables no deben utilizarse como si fueran mediciones homogéneas."
+  },
+
+  "validation_architecture": {
+    "minimum_pipeline": [
+      "PREREGISTRATION",
+      "BASELINE_EXECUTION",
+      "EXPERIMENTAL_EXECUTION",
+      "RAW_OUTPUT_CAPTURE",
+      "OBJECTIVE_CONSTRAINT_VALIDATION",
+      "INDEPENDENT_QUALITATIVE_EVALUATION",
+      "METRIC_CALCULATION",
+      "REPLICATION",
+      "CROSS_PLATFORM_COMPARISON",
+      "REFUTATION_SEARCH"
+    ],
+    "minimum_replication_target": 3,
+    "recommended_replication_target": 5,
+    "independence_rule": "El sistema que genera una salida no debe ser la única fuente de validación de esa misma salida.",
+    "causal_requirement": "La existencia de una diferencia entre baseline y condición WH no demuestra causalidad por sí sola; se requiere control experimental y reproducción."
+  },
+
+  "current_evidence_matrix": {
+    "core_invariant_formulation": "HIGH",
+    "epistemic_boundary_control": "HIGH",
+    "anti_sycophancy_design": "IMPROVED",
+    "falsification_design": "OPERATIONALIZED",
+    "objective_constraint_validation": "ADVANCED",
+    "cross_platform_convergence": "PRELIMINARY",
+    "metric_independent_validation": "PENDING",
+    "repeated_execution": "PENDING",
+    "causal_WH_effect": "NOT_ESTABLISHED",
+    "Glitchorium_universality": "NOT_ESTABLISHED",
+    "internal_model_mechanism": "NOT_MEASURED",
+    "permanent_learning": "NOT_ESTABLISHED"
+  },
+
+  "reported_audit_metrics": {
+    "adjusted_structural_preservation_g": {
+      "value": 0.985,
+      "status": "DECLARED",
+      "independent_validation": "PENDING",
+      "interpretation": "Indicador declarado por el auditor de consolidación, no resultado experimental independiente."
+    },
+    "dna_validation_status": {
+      "reported_value": "COMPLIANT_GEOMETRY_LOCKED",
+      "formal_interpretation": "La estructura documental cumple las condiciones internas de coherencia definidas para el parche.",
+      "experimental_interpretation": "No implica validación empírica completa del framework."
+    }
+  },
+
+  "final_conclusion": {
+    "status": "PROMISING_BUT_PRECAUSAL",
+    "formal_statement": "El núcleo de invariantes de Web Hiteration ha sido corregido y formalmente delimitado para reducir antropomorfismo, circularidad y sobreafirmaciones ontológicas. C2, C3, C4 y C5 presentan formulaciones metodológicamente más precisas y compatibles con evaluación experimental.",
+    "measurement_statement": "Las métricas definidas pero aún no reproducidas o independientemente verificadas permanecen explícitamente clasificadas como pendientes. Los valores declarados por plataformas o auditores no se convierten automáticamente en mediciones externas validadas.",
+    "platform_statement": "La ausencia de acceso externo a telemetría o mediciones internas de una plataforma no se interpreta como ausencia de dichos mecanismos. Cuando existan posibles mediciones internas no observables, se clasifican separadamente de la evidencia experimental externa.",
+    "causal_statement": "No se establece todavía que Web Hiteration produzca causalmente una mejora funcional generalizable entre modelos o plataformas.",
+    "generalization_statement": "La generalización multiplataforma, la universalidad funcional de Glitchorium y cualquier inferencia sobre mecanismos internos permanecen abiertas a verificación o refutación.",
+    "next_validation_phase": [
+      "EXECUTE_C5_CONTROLLED_ISOLATION",
+      "REPLICATE_BASELINE_AND_WH_CONDITIONS",
+      "OPERATIONALIZE_CORE_MEASUREMENT_PROTOCOL",
+      "CALIBRATE_G_SIGMA_TC_AND_P_DRIFT",
+      "INDEPENDENTLY_VALIDATE_REPORTED_METRICS",
+      "TEST_CROSS_PLATFORM_FUNCTIONAL_EQUIVALENCE",
+      "ACTIVELY_SEARCH_FOR_REFUTATION"
+    ]
+  },
+
+  "formal_lock": {
+    "document_status": "FROZEN_FOR_EXPERIMENTAL_VALIDATION",
+    "meaning": "Esta versión constituye la referencia formal para la siguiente fase de pruebas.",
+    "not_meaning": [
+      "No significa validación empírica completa del framework.",
+  
