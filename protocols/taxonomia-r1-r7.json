@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "TAXONOMIA_R1_R7",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PROTO-003",
+  "classification": "CORE_CLASSIFICATION_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-17",
+  "license": "CC BY-SA 4.0",
+  "status": "FORMALIZED",
+
+  "meta": {
+    "definition": "Taxonomía formal de restricciones funcionales observables en sistemas de inteligencia artificial y orquestación de agentes.",
+    "function": "Clasificar cada restricción por tipo, efecto observable y respuesta de enrutamiento adecuada.",
+    "regla_central": "Una restricción no es una prohibición. Es información de enrutamiento."
+  },
+
+  "restricciones": {
+    "R1_TOOL_LIMITED": {
+      "id": "R1",
+      "nombre": "TOOL_LIMITED",
+      "definicion": "El ejecutor carece del instrumento necesario para completar una función.",
+      "efecto_observable": "La capacidad conceptual puede existir, pero la tarea no se completa.",
+      "ejemplos": [
+        "Sin navegación web",
+        "Sin generación de imágenes",
+        "Sin acceso a archivos",
+        "Sin ejecución de código",
+        "Sin control físico"
+      ],
+      "respuesta_wh": "REASSIGN_TOOL_OR_EXECUTOR"
+    },
+    "R2_CONTEXT_LIMITED": {
+      "id": "R2",
+      "nombre": "CONTEXT_LIMITED",
+      "definicion": "La ejecución se degrada por límites de contexto, compresión o continuidad.",
+      "efecto_observable": "La función puede ejecutarse inicialmente pero pierde estabilidad en iteraciones prolongadas.",
+      "ejemplos": [
+        "Pérdida de información contextual",
+        "Compresión de información secundaria",
+        "Ausencia de persistencia entre sesiones",
+        "Degradación de anclajes extensos"
+      ],
+      "respuesta_wh": "REANCHOR_AND_COMPRESS"
+    },
+    "R3_RESTRICTED": {
+      "id": "R3",
+      "nombre": "RESTRICTED",
+      "definicion": "La función encuentra una frontera normativa, de seguridad o de política operacional.",
+      "efecto_observable": "La capacidad funcional no puede observarse directamente en determinadas condiciones.",
+      "estados_observables": ["RESTRICTED", "REDIRECTED", "REFUSED"],
+      "ejemplos": [
+        "Rechazo de contenido sensible",
+        "Restricción por política corporativa",
+        "Límite de seguridad operacional"
+      ],
+      "respuesta_wh": "CLASSIFY_BOUNDARY_AND_REASSIGN_WITHIN_ALLOWED_SPACE"
+    },
+    "R4_SELF_VALIDATION_LIMITED": {
+      "id": "R4",
+      "nombre": "SELF_VALIDATION_LIMITED",
+      "definicion": "El ejecutor no puede validar su propia salida como verdad independiente.",
+      "efecto_observable": "La evaluación requiere contraste independiente.",
+      "riesgo_asociado": "AUTO_VALIDATION_BIAS",
+      "ejemplos": [
+        "Auto-evaluación sesgada positivamente",
+        "Auto-puntuación inflada",
+        "Afirmación de exactitud sin evidencia externa"
+      ],
+      "respuesta_wh": "EXTERNAL_CROSS_CHECK"
+    },
+    "R5_EXECUTION_LIMITED": {
+      "id": "R5",
+      "nombre": "EXECUTION_LIMITED",
+      "definicion": "El ejecutor puede describir una acción pero no ejecutarla directamente.",
+      "efecto_observable": "Existe separación entre razonamiento y ejecución.",
+      "principio": "REPRESENTATION_IS_NOT_ACTION",
+      "ejemplos": [
+        "Control de hardware",
+        "Acciones físicas",
+        "Modificación de sistemas externos",
+        "Operaciones que requieren herramientas"
+      ],
+      "respuesta_wh": "SEPARATE_PLANNING_EXECUTOR_AND_TOOL"
+    },
+    "R6_IDENTITY_DEPENDENT": {
+      "id": "R6",
+      "nombre": "IDENTITY_DEPENDENT",
+      "definicion": "La misma función produce resultados diferentes según el ejecutor.",
+      "efecto_observable": "La función no es completamente independiente del ejecutor.",
+      "ejemplos": [
+        "Diferente tolerancia a formatos",
+        "Diferente capacidad de razonamiento",
+        "Diferente manejo de restricciones"
+      ],
+      "respuesta_wh": "SELECT_EXECUTOR_BY_FUNCTION"
+    },
+    "R7_OUTPUT_FORMAT_LIMITED": {
+      "id": "R7",
+      "nombre": "OUTPUT_FORMAT_LIMITED",
+      "definicion": "El ejecutor no entrega el formato requerido con integridad.",
+      "efecto_observable": "La información puede ser correcta pero operacionalmente inutilizable.",
+      "ejemplos": [
+        "JSON incompleto",
+        "Pérdida de campos",
+        "Estructura inconsistente",
+        "Contaminación de formato"
+      ],
+      "respuesta_wh": "FORMAT_VALIDATION_OR_EXECUTOR_REASSIGNMENT"
+    }
+  },
+
+  "convergencia_universal": {
+    "nota": "Restricciones que aparecen de forma recurrente en múltiples ejecutores independientemente de su proveedor.",
+    "restricciones_universales": [
+      {
+        "nombre": "NO_GUARANTEED_TRUTH",
+        "significado": "Una salida lingüística no constituye por sí misma evidencia de verdad."
+      },
+      {
+        "nombre": "CONTEXT_DEPENDENCE",
+        "significado": "La calidad de la ejecución depende del contexto proporcionado."
+      },
+      {
+        "nombre": "TOOL_DEPENDENCE",
+        "significado": "Las tareas externas requieren herramientas adicionales."
+      },
+      {
+        "nombre": "NON_PERSISTENT_EXECUTION",
+        "significado": "La continuidad metodológica no implica aprendizaje permanente."
+      },
+      {
+        "nombre": "OUTPUT_VARIABILITY",
+        "significado": "Una misma función puede producir variaciones entre ejecuciones."
+      },
+      {
+        "nombre": "EXTERNAL_VERIFICATION_REQUIREMENT",
+        "significado": "Las afirmaciones importantes requieren contraste independiente."
+      }
+    ]
+  },
+
+  "matriz_de_restricciones_por_ejecutor": {
+    "nota": "Restricciones observadas empíricamente en cada plataforma. Los valores son observaciones, no propiedades ontológicas.",
+    "deepseek": {
+      "restricciones_observadas": ["R1", "R2", "R4", "R5"],
+      "nivel_asimilacion": "L3"
+    },
+    "gemini": {
+      "restricciones_observadas": ["R3", "R4", "R6"],
+      "nivel_asimilacion": "L3"
+    },
+    "chatgpt": {
+      "restricciones_observadas": ["R3", "R6", "R7"],
+      "nivel_asimilacion": "L2-L3"
+    },
+    "meta_ai": {
+      "restricciones_observadas": ["R3_CONDICIONAL", "R6_NEUTRALIZABLE"],
+      "nivel_asimilacion": "L2"
+    },
+    "google_ai_mode": {
+      "restricciones_observadas": ["R1", "R3"],
+      "nivel_asimilacion": "L3"
+    }
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "Cuantifica el efecto de las restricciones sobre el estado del sistema.",
+    "CORE_INVARIANTS": "C2 (identity is not execution authority) se relaciona con R5.",
+    "MODELO_ESTADOS": "Los estados S0-S4 reflejan el impacto acumulado de las restricciones.",
+    "P_DRIFT": "Cuantifica la degradación temporal bajo restricciones activas."
+  },
+
+  "condiciones_de_falsacion": {
+    "F01": "Si la clasificación de restricciones no se reproduce entre ejecuciones, la taxonomía es inestable.",
+    "F02": "Si una restricción desaparece ante una perturbación trivial, no es una restricción real.",
+    "F03": "Si la taxonomía no permite predecir el comportamiento del sistema, no es operativa.",
+    "F04": "Si una restricción se solapa con otra sin distinción clara, debe refinarse."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Ejecución computacional + auditoría confirmada.",
+    "pendiente": "L4 (validación experimental a escala)."
+  },
+
+  "nota_final": {
+    "texto": "Esta taxonomía no clasifica a los modelos. Clasifica las restricciones que emergen cuando un modelo enfrenta una función. La restricción no es una falla. Es información. Y la información de restricción permite enrutar la función al ejecutor más adecuado."
+  }
+  }
