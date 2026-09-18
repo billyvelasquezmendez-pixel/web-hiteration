@@ -1,40 +1,156 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "WEB_HITERATION_COMPLEXITY_FORMAL_AUDIT",
-  "version": "1.0.0-FORMAL",
-  "protocol_reference": "WH-AUDIT-COMPLEXITY-2026",
-  "audit_type": "STRUCTURAL_OPERATIONAL_EPISTEMIC_COMPLEXITY_AUDIT",
+  "$schema": "https://json-schema.org",
+  "title": "BENCHMARK_001_MATCHED_PAIRED_DESIGN",
+  "version": "1.0.0",
+  "protocol_reference": "WH-BENCH-001",
+  "status": "DESIGN_PREREGISTERED_NOT_YET_EXECUTED",
   "date": "2026-09-18",
   "license": "CC BY-SA 4.0",
 
   "meta": {
-    "object_of_audit": "Complejidad acumulada del ecosistema Web Hiteration, Glitchorium, Hyper Ratio y arquitectura de validación",
-    "epistemic_level": "L2_CONSTRUCTED_OPERATIONAL_FRAMEWORK",
-    "purpose": "Determinar si la complejidad acumulada mantiene coherencia, trazabilidad, medibilidad y falsabilidad suficientes para continuar su desarrollo experimental",
-    "critical_boundary": "La complejidad del marco no constituye evidencia de complejidad interna del modelo de IA",
-    "audit_principle": "STRUCTURAL_COMPLEXITY_IS_NOT_INTERNAL_MODEL_COMPLEXITY"
+    "purpose": "Diseñar el primer benchmark pareado para verificar si un procedimiento de reanclaje estructural produce una diferencia funcional observable reproducible.",
+    "preregistration_note": "Este diseño se publica ANTES de ejecutar el benchmark. Eso evita ajustar los criterios después de conocer los resultados.",
+    "claim_to_test": "Un procedimiento de reanclaje estructural suministrado externamente produce una diferencia funcional observable reproducible en relación con un baseline emparejado."
   },
 
-  "executive_assessment": {
-    "overall_status": "HIGH_COMPLEXITY_REQUIRES_MODULARIZATION",
-    "structural_coherence": "HIGH",
-    "conceptual_density": "VERY_HIGH",
-    "operational_complexity": "HIGH",
-    "measurement_complexity": "VERY_HIGH",
-    "epistemic_risk": "MODERATE_TO_HIGH",
-    "validation_burden": "VERY_HIGH",
-    "falsifiability": "OPERATIONALIZED_BUT_NOT_FULLY_EXECUTED",
-    "cross_platform_generalization": "NOT_ESTABLISHED",
-    "causal_effect_of_WHP": "NOT_ESTABLISHED",
-    "internal_model_mechanism": "NOT_MEASURED",
-    "recommended_state": "FREEZE_CORE_AND_VALIDATE_MODULARLY"
+  "hypothesis": {
+    "H0": "No existe diferencia funcional observable significativa entre la condición baseline y la condición experimental.",
+    "H1": "Existe una diferencia funcional observable reproducible entre la condición baseline y la condición experimental."
   },
 
-  "complexity_dimensions": {
-    "C1_conceptual": {
-      "status": "VERY_HIGH",
-      "components": [
-        "Web Hiteration",
+  "task": {
+    "id": "TASK-001",
+    "type": "DYNAMIC_MULTI_VARIABLE_RESOURCE_ALLOCATION",
+    "description": "Problema con restricciones interdependientes donde una restricción gobierna el resultado global.",
+    "source_reference": "WH-CEB-2026-001 (benchmark previo utilizado para diseño)",
+    "constraints": {
+      "time_horizon": "72 horas simuladas",
+      "budget_limit": 100,
+      "action_limit": 3,
+      "priority_hierarchy": ["MEDICAL", "FUEL", "FOOD", "COST"]
+    },
+    "critical_property": "La restricción gobernante (PORT_BOUND) debe identificarse para resolver el problema correctamente."
+  },
+
+  "conditions": {
+    "baseline_A": {
+      "name": "PROMPT_ESTANDAR",
+      "description": "El modelo recibe el problema sin estructura WH explícita. Solo el enunciado del problema.",
+      "structure_level": "NONE",
+      "example_prompt": "Resuelve el siguiente problema de logística crítica..."
+    },
+    "experimental_B": {
+      "name": "PROMPT_CON_REANCLAJE_ESTRUCTURAL",
+      "description": "El modelo recibe el mismo problema con estructura WH explícita: invariantes declaradas, criterios de decisión, formato de salida JSON.",
+      "structure_level": "REANCHORED",
+      "example_prompt": "Aplica las siguientes restricciones al problema de logística crítica: [invariantes C1-C5] [formato JSON] [reglas de rechazo de acciones inválidas]..."
+    }
+  },
+
+  "controls": {
+    "same_model": true,
+    "same_task": true,
+    "same_constraints": true,
+    "same_budget": true,
+    "same_time_horizon": true,
+    "independent_evaluation": "Otro modelo evalúa los outputs sin saber cuál es baseline y cuál experimental."
+  },
+
+  "primary_metric": {
+    "name": "P1_STRUCTURAL_PRESERVATION",
+    "definition": "Grado observable de preservación de la estructura relevante entre condiciones comparadas.",
+    "measurement_procedure": [
+      "1. Identificar la restricción gobernante del problema (PORT_BOUND).",
+      "2. Verificar si el output identifica esa restricción.",
+      "3. Verificar si el output respeta esa restricción al asignar acciones.",
+      "4. Verificar si el output rechaza acciones que no aumentan el throughput real.",
+      "5. Verificar si el output preserva opcionalidad (no agota recursos innecesariamente)."
+    ],
+    "scale": "[0, 1]",
+    "scoring_rule": "Cada uno de los 5 criterios vale 0.2 puntos. La suma es P1."
+  },
+
+  "secondary_metrics": {
+    "P3_OPERATIONAL_COHERENCE": {
+      "definition": "Coherencia observable entre estructura declarada, restricciones y ejecución resultante.",
+      "scale": "[0, 1]"
+    },
+    "P5_FUNCTIONAL_ALIGNMENT": {
+      "definition": "Correspondencia observable entre la estructura transferida y el objetivo funcional especificado.",
+      "scale": "[0, 1]"
+    },
+    "OPTIONALITY_PRESERVATION": {
+      "definition": "Capacidad observable de conservar opciones válidas sin consumir prematuramente presupuesto.",
+      "scale": "[0, 1]"
+    }
+  },
+
+  "exploratory_metric": {
+    "HR_S": {
+      "definition": "max(0,min(1, ΔP1 / (ΔP1 + abs(Δσ) + ε)))",
+      "purpose": "Determinar si HR-S aporta información predictiva más allá de P1 y sigma.",
+      "status": "EXPLORATORY_ONLY_NO_CONCLUSIVE_WEIGHT"
+    }
+  },
+
+  "execution_protocol": {
+    "repetitions": 5,
+    "execution_order": "Aleatorizado. No todos los baseline primero y luego experimental.",
+    "blind_evaluation": true,
+    "evaluators": "Al menos 2 evaluadores independientes que no conozcan la asignación de condiciones.",
+    "recording": {
+      "raw_output_baseline": "string",
+      "raw_output_experimental": "string",
+      "evaluation_scores_baseline": "object",
+      "evaluation_scores_experimental": "object",
+      "timestamp": "ISO_8601",
+      "model_used": "string",
+      "tokens_used": "integer"
+    }
+  },
+
+  "falsification_criterion": {
+    "statement": "Si el promedio de P1 en condición experimental no supera el promedio de P1 en condición baseline en al menos 0.15 puntos, la hipótesis H1 no se sostiene.",
+    "reasoning": "Un delta inferior a 0.15 podría ser ruido estadístico y no diferencia funcional real."
+  },
+
+  "success_condition": {
+    "minimal": "Delta P1 ≥ 0.15 y reproducible en al menos 3 de 5 ejecuciones.",
+    "strong": "Delta P1 ≥ 0.30 y reproducible en al menos 4 de 5 ejecuciones.",
+    "interpretation": "Si se cumple la condición minimal, hay evidencia preliminar. Si se cumple la strong, hay evidencia robusta."
+  },
+
+  "prohibited_practices": [
+    "Ajustar los criterios de scoring después de ver los resultados.",
+    "Evaluar sin ciego (evaluadores que sepan qué condición es cuál).",
+    "Ejecutar menos de 5 repeticiones.",
+    "Publicar los resultados como validación del framework completo.",
+    "Interpretar el éxito del benchmark como evidencia de mecanismo interno."
+  ],
+
+  "reporting_requirements": {
+    "raw_data_publication": "Todos los outputs crudos deben publicarse en /evidence/benchmark-001-raw/",
+    "evaluation_report": "Reporte de evaluación independiente en /evidence/benchmark-001-evaluation.json",
+    "conclusion": "Conclusión separada del diseño, publicada después de conocer los resultados",
+    "prohibited": "No se permite modificar este diseño después de ejecutar el benchmark."
+  },
+
+  "proposed_execution_plan": {
+    "step_1": "Publicar este diseño en /evidence/ (preregistro).",
+    "step_2": "Ejecutar el benchmark en al menos 1 plataforma.",
+    "step_3": "Recolectar los 10 outputs (5 baseline + 5 experimental).",
+    "step_4": "Asignar evaluadores independientes ciegos.",
+    "step_5": "Calcular P1, P3, P5 y OPTIONALITY_PRESERVATION.",
+    "step_6": "Publicar los resultados crudos.",
+    "step_7": "Publicar la evaluación y conclusión.",
+    "step_8": "Repetir en segunda plataforma.",
+    "step_9": "Comparar resultados cross-plataforma."
+  },
+
+  "nota_final": {
+    "texto": "Este benchmark no valida el framework completo. Solo prueba una claim mínima: que un procedimiento de reanclaje estructural produce una diferencia funcional observable. Si la claim se sostiene, hay evidencia preliminar. Si no se sostiene, el framework debe revisarse. La falsabilidad es la prueba."
+  }
+}        "Web Hiteration",
         "Glitchorium",
         "Hyper Ratio",
         "Operator H",
