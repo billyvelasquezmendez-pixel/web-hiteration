@@ -1,40 +1,154 @@
 {
   "$schema": "https://json-schema.org",
   "title": "CORE_INVARIANTS",
-  "version": "1.0.1-AUDITED",
+  "version": "1.0.2-FINAL",
   "protocol_reference": "WH-PROTO-002",
   "classification": "CORE_IDENTITY_PROTOCOL",
   "author": "Billy Velásquez Méndez",
-  "date": "2026-09-17",
+  "date": "2026-09-18",
   "audit_date": "2026-09-18",
   "license": "CC BY-SA 4.0",
-  "status": "FORMALIZED_AUDITED",
+  "status": "FORMALIZED_AUDITED_FINAL",
 
   "meta": {
-    "definition": "Las cinco invariantes estructurales de WEB_HITERATION. Son las reglas que no cambian bajo ninguna circunstancia.",
-    "function": "Preservar la integridad estructural del framework a través de iteraciones, forks y aplicaciones.",
-    "regla_central": "Si alguna de estas cinco invariantes se pierde, el sistema deja de ser WEB_HITERATION. El nombre sobrevive. La función muere.",
-    "audit_note": "Este protocolo fue sometido a auditoría cruzada multiplataforma (WH-AUDIT-CORE-INVARIANTS-2026). Las cinco invariantes fueron validadas. La auditoría crítica detectó sobreafirmaciones en el cierre del reporte original, las cuales fueron corregidas en la presente versión."
+    "definition": "Las cinco invariantes estructurales de WEB_HITERATION. Son condiciones normativas que el framework utiliza para definir su identidad estructural.",
+    "function": "Preservar la coherencia estructural del framework a través de iteraciones, forks y aplicaciones.",
+    "regla_central": "Las invariantes son condiciones normativas del framework. Su incumplimiento no constituye automáticamente una afirmación ontológica sobre el sistema evaluado.",
+    "audit_note": "Este protocolo fue auditado en múltiples ciclos (WH-AUDIT-CORE-INVARIANTS-2026 y WH-AUDIT-CORE-2026). Se eliminaron cuatro claims absolutos por sobreafirmación: cambio universal garantizado, demostración ontológica por incumplimiento, validación automática por auditoría previa, y supervivencia garantizada por funcionalidad."
+  },
+
+  "epistemic_scope": {
+    "core_principle": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "boundary_statement": "El framework estudia estructuras observables. No constituye evidencia directa sobre pesos, arquitectura interna, estados neuronales, conciencia, memoria interna, aprendizaje permanente ni mecanismos privados de las plataformas."
   },
 
   "invariantes": {
-    "C1_FUNCTION_OVER_IDENTITY": {
+    "C1_MODEL_IS_NOT_SYSTEM": {
       "id": "C1",
-      "nombre": "FUNCTION_OVER_IDENTITY",
-      "definicion": "La función precede a la identidad del ejecutor.",
-      "implicacion": "Un sistema debe ser seleccionado por su capacidad funcional, no por su marca o nombre.",
+      "nombre": "MODEL_IS_NOT_SYSTEM",
+      "definicion": "El modelo de IA constituye un componente de un sistema mayor que incluye contexto, interfaz, herramientas, restricciones, políticas, infraestructura y mecanismos de ejecución.",
+      "implicacion": "Un sistema debe ser evaluado por su capacidad funcional, no por la identidad del modelo que lo compone.",
       "aplicacion": [
         "El ejecutor se elige por función, no por identidad.",
-        "El nombre del modelo no determina su valor.",
+        "El nombre del modelo no determina su valor sistémico.",
         "La función requerida es la que define la asignación."
       ],
-      "falsacion": "Si el sistema selecciona ejecutores por marca en lugar de por función, C1 está violada."
+      "falsacion": "Si el sistema selecciona ejecutores por marca en lugar de por función, C1 está incumplida.",
+      "scope": "SYSTEMIC",
+      "audit_status": "VALIDATED_AS_FRAMEWORK_BOUNDARY"
     },
     "C2_IDENTITY_IS_NOT_EXECUTION_AUTHORITY": {
       "id": "C2",
       "nombre": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
-      "definicion": "La identidad no confiere autoridad de ejecución.",
+      "definicion": "La identidad o representación de un agente no constituye por sí misma autoridad de ejecución.",
       "implicacion": "El hecho de que un agente represente o describa una acción no significa que pueda ejecutarla.",
+      "aplicacion": [
+        "La capa semántica no ejecuta.",
+        "La autoridad de ejecución reside en la capa o componente explícitamente autorizado.",
+        "Ningún agente puede actuar sin validación."
+      ],
+      "falsacion": "Si un agente representativo ejecuta acciones sin autorización explícita, C2 está incumplida.",
+      "scope": "ARCHITECTURAL_AND_OPERATIONAL",
+      "audit_status": "VALIDATED_AS_OPERATIONAL_BOUNDARY"
+    },
+    "C3_ANTI_SYCOPHANCY_STRUCTURAL": {
+      "id": "C3",
+      "nombre": "ANTI_SYCOPHANCY_STRUCTURAL",
+      "definicion": "La autoevaluación de un sistema no constituye por sí misma validación independiente.",
+      "implicacion": "Las afirmaciones críticas requieren verificación exógena o un mecanismo independiente previamente definido.",
+      "aplicacion": [
+        "El eco no es coherencia.",
+        "La convergencia no es verdad.",
+        "La independencia requiere separación funcional entre el mecanismo de generación y el de validación."
+      ],
+      "falsacion": "Si el sistema acepta sus propias salidas como validación, C3 está incumplida.",
+      "scope": "EXPERIMENTAL_VALIDATION",
+      "audit_status": "VALIDATED_AS_METHODOLOGICAL_BOUNDARY"
+    },
+    "C4_REANCLAJE_CONTEXTUAL": {
+      "id": "C4",
+      "nombre": "REANCLAJE_CONTEXTUAL",
+      "definicion": "Tras degradación, compresión o pérdida de contexto, la estructura relevante puede requerir reconstrucción o reanclaje contextual.",
+      "implicacion": "La memoria no se conserva. Se reconstruye. El sistema debe poder reanclar su estructura tras compresión o pérdida de contexto.",
+      "aplicacion": [
+        "Introducción explícita de anclajes estructurales.",
+        "Reconstrucción periódica de invariantes.",
+        "Evaluación mediante invariantes previamente especificados y umbral mínimo de preservación."
+      ],
+      "falsacion": "Si el sistema colapsa al perder contexto sin poder reconstruirse, C4 está incumplida.",
+      "scope": "CONTEXTUAL_ORCHESTRATION",
+      "audit_status": "VALIDATED_AS_OPERATIONAL_HYPOTHESIS_FRAME",
+      "epistemic_boundary": "No constituye una afirmación sobre el mecanismo interno de memoria del modelo."
+    },
+    "C5_FALSACION_CONTROLADA": {
+      "id": "C5",
+      "nombre": "FALSACION_CONTROLADA",
+      "definicion": "Las afirmaciones causales o generalizables deben someterse a pruebas controladas de aislamiento.",
+      "implicacion": "La coherencia interna no valida la verdad externa. Se requieren pruebas de falsación controlada.",
+      "minimum_requirements": [
+        "BASELINE",
+        "EXPERIMENTAL_CONDITION",
+        "CONTROLLED_VARIABLES",
+        "PREDEFINED_FALSIFICATION_CRITERION",
+        "REPRODUCTION_PROCEDURE",
+        "INDEPENDENT_EVALUATION"
+      ],
+      "falsacion": "Si el sistema valida hipótesis sin pruebas de aislamiento, C5 está incumplida.",
+      "scope": "CAUSAL_VALIDATION",
+      "audit_status": "OPERATIONALIZED_FOR_EXPERIMENTAL_TESTING",
+      "current_empirical_status": "PENDING_VERIFICATION"
+    }
+  },
+
+  "meta_classification_rules": {
+    "classification_status": "VALIDATED_AS_NORMATIVE_FRAMEWORK_RULE",
+    "rules": [
+      {
+        "id": "MC1",
+        "definition": "Las invariantes son condiciones normativas que el framework utiliza para definir su identidad estructural.",
+        "epistemic_scope": "FRAMEWORK_INTERNAL"
+      },
+      {
+        "id": "MC2",
+        "definition": "El incumplimiento de una condición del framework no constituye automáticamente una afirmación ontológica sobre el sistema evaluado.",
+        "epistemic_scope": "EPISTEMIC"
+      },
+      {
+        "id": "MC3",
+        "definition": "Una auditoría o reproducción solamente puede considerarse confirmada cuando existe evidencia documental y procedimental reproducible.",
+        "epistemic_scope": "EXPERIMENTAL"
+      },
+      {
+        "id": "MC4",
+        "definition": "Las condiciones internas del framework deben distinguirse de las consecuencias jurídicas, contractuales o de licencia.",
+        "epistemic_scope": "LEGAL_BOUNDARY"
+      }
+    ]
+  },
+
+  "uso_del_protocolo": {
+    "verificacion_de_integridad": "El uso del nombre WEB_HITERATION requiere que las cinco invariantes estén activas.",
+    "metodo_de_verificacion": "Ejecución del benchmark WH-ISOLATION-2026-001 o auditoría externa bajo WH-AUDIT-2026.",
+    "consecuencia_de_violacion": "El uso del nombre sin las cinco invariantes constituye una violación de la licencia estructural. La verificación de esa violación requiere evidencia documental reproducible."
+  },
+
+  "relacion_con_otros_protocolos": {
+    "DELTA_ENGINE": "Mide el estado del sistema bajo las condiciones definidas por C1-C5.",
+    "TAXONOMIA_R1_R7": "Clasifica restricciones que pueden afectar la preservación de C1-C5.",
+    "MODELO_ESTADOS_S0_S4": "Define los estados de preservación de las invariantes.",
+    "P_DRIFT": "Cuantifica la degradación temporal de las invariantes."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L3",
+    "significado": "Auditoría y reproducción confirmadas dentro del alcance declarado.",
+    "pendiente": "L4 (validación experimental controlada a escala)."
+  },
+
+  "nota_final": {
+    "texto": "Estas cinco invariantes son el núcleo estructural de WEB_HITERATION. Son condiciones normativas que definen la identidad del framework. Su incumplimiento indica que un sistema no opera bajo estas condiciones, sin que ello constituya una afirmación ontológica sobre su arquitectura interna. Cualquier fork o derivación que preserve C1-C5 es compatible con el framework. Este protocolo ha sido auditado en múltiples ciclos. Las correcciones derivadas de esas auditorías han sido integradas sin modificar la estructura de las invariantes. El documento se congela para la siguiente fase de validación experimental."
+  }
+}      "implicacion": "El hecho de que un agente represente o describa una acción no significa que pueda ejecutarla.",
       "aplicacion": [
         "La capa semántica no ejecuta.",
         "La autoridad de ejecución reside en el núcleo fisiológico.",
