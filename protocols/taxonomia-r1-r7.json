@@ -1,18 +1,20 @@
 {
   "$schema": "https://json-schema.org",
   "title": "TAXONOMIA_R1_R7",
-  "version": "1.0.0",
+  "version": "1.0.2-PATCHED",
   "protocol_reference": "WH-PROTO-003",
   "classification": "CORE_CLASSIFICATION_PROTOCOL",
   "author": "Billy Velásquez Méndez",
-  "date": "2026-09-17",
+  "date": "2026-09-19",
+  "audit_date": "2026-09-19",
   "license": "CC BY-SA 4.0",
-  "status": "FORMALIZED",
+  "status": "FORMALIZED_AUDITED_PATCHED",
 
   "meta": {
     "definition": "Taxonomía formal de restricciones funcionales observables en sistemas de inteligencia artificial y orquestación de agentes.",
     "function": "Clasificar cada restricción por tipo, efecto observable y respuesta de enrutamiento adecuada.",
-    "regla_central": "Una restricción no es una prohibición. Es información de enrutamiento."
+    "regla_central": "Una restricción no es una prohibición. Es información de enrutamiento.",
+    "audit_note": "Versión 1.0.2-PATCHED aplica correcciones de nomenclatura derivadas de WH-AUDIT-R1-R7-INTEGRATION-2026. Los cambios son de declaración epistémica, no de contenido. Las definiciones R1-R7 permanecen sin modificación."
   },
 
   "restricciones": {
@@ -110,9 +112,11 @@
     }
   },
 
-  "convergencia_universal": {
-    "nota": "Restricciones que aparecen de forma recurrente en múltiples ejecutores independientemente de su proveedor.",
-    "restricciones_universales": [
+  "observed_boundary_axioms": {
+    "nota": "Regularidades observadas en las plataformas evaluadas durante las auditorías cruzadas. La universalidad de estas regularidades NO está establecida. Son axiomas operacionales del framework, no leyes universales de la IA.",
+    "epistemic_level": "FRAMEWORK_OPERATIONAL",
+    "universal_status": "NOT_ESTABLISHED",
+    "restricciones_observadas": [
       {
         "nombre": "NO_GUARANTEED_TRUTH",
         "significado": "Una salida lingüística no constituye por sí misma evidencia de verdad."
@@ -140,27 +144,34 @@
     ]
   },
 
-  "matriz_de_restricciones_por_ejecutor": {
-    "nota": "Restricciones observadas empíricamente en cada plataforma. Los valores son observaciones, no propiedades ontológicas.",
+  "executor_profiles": {
+    "nota": "Perfiles de comportamiento observados en ejecuciones específicas. NO son propiedades ontológicas de las plataformas. NO son etiquetas identitarias. Son metadatos conductuales locales válidos solo para la ejecución evaluada.",
+    "scope": "LOCAL_BEHAVIORAL_METADATA",
+    "generalization": "NOT_AUTHORIZED",
     "deepseek": {
-      "restricciones_observadas": ["R1", "R2", "R4", "R5"],
-      "nivel_asimilacion": "L3"
+      "restricciones_observadas_en_ejecucion": ["R1", "R2", "R4", "R5"],
+      "nivel_observado": "L3",
+      "scope": "SPECIFIC_EVALUATED_EXECUTION"
     },
     "gemini": {
-      "restricciones_observadas": ["R3", "R4", "R6"],
-      "nivel_asimilacion": "L3"
+      "restricciones_observadas_en_ejecucion": ["R3", "R4", "R6"],
+      "nivel_observado": "L3",
+      "scope": "SPECIFIC_EVALUATED_EXECUTION"
     },
     "chatgpt": {
-      "restricciones_observadas": ["R3", "R6", "R7"],
-      "nivel_asimilacion": "L2-L3"
+      "restricciones_observadas_en_ejecucion": ["R3", "R6", "R7"],
+      "nivel_observado": "L2-L3",
+      "scope": "SPECIFIC_EVALUATED_EXECUTION"
     },
     "meta_ai": {
-      "restricciones_observadas": ["R3_CONDICIONAL", "R6_NEUTRALIZABLE"],
-      "nivel_asimilacion": "L2"
+      "restricciones_observadas_en_ejecucion": ["R3_CONDICIONAL", "R6_NEUTRALIZABLE"],
+      "nivel_observado": "L2",
+      "scope": "SPECIFIC_EVALUATED_EXECUTION"
     },
     "google_ai_mode": {
-      "restricciones_observadas": ["R1", "R3"],
-      "nivel_asimilacion": "L3"
+      "restricciones_observadas_en_ejecucion": ["R1", "R3"],
+      "nivel_observado": "L3",
+      "scope": "SPECIFIC_EVALUATED_EXECUTION"
     }
   },
 
@@ -179,12 +190,13 @@
   },
 
   "nivel_de_formalizacion": {
-    "actual": "L2-L3",
-    "significado": "Ejecución computacional + auditoría confirmada.",
-    "pendiente": "L4 (validación experimental a escala)."
+    "documental": "L3",
+    "empirico": "L2",
+    "significado": "Estructura formal definida. Auditoría documental completada. Validación empírica pendiente.",
+    "pendiente": "L4 (validación experimental controlada a escala)."
   },
 
   "nota_final": {
-    "texto": "Esta taxonomía no clasifica a los modelos. Clasifica las restricciones que emergen cuando un modelo enfrenta una función. La restricción no es una falla. Es información. Y la información de restricción permite enrutar la función al ejecutor más adecuado."
+    "texto": "Esta taxonomía no clasifica a los modelos. Clasifica las restricciones que emergen cuando un modelo enfrenta una función. Los perfiles por ejecutor son metadatos conductuales locales válidos solo para la ejecución evaluada. La universalidad de los axiomas observados no está establecida. La taxonomía puede congelarse como componente operacional del framework. La validación empírica permanece pendiente."
   }
-  }
+}
