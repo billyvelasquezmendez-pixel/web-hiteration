@@ -12,78 +12,47 @@
       --text-muted: #8892A6;
       --accent-green: #00FFAA;
       --accent-pink: #FF006E;
-      --accent-blue: #4A9EFF;
       --border: #1F2740;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
       min-height: 100vh;
-      padding: 0;
     }
-
     .container {
       max-width: 780px;
       margin: 0 auto;
       padding: 80px 24px 120px;
     }
-
     header {
       margin-bottom: 64px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 40px;
     }
-
     h1 {
       font-size: 3.2rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      color: var(--text);
       margin-bottom: 12px;
     }
-
-    h1 .accent {
-      color: var(--accent-green);
-    }
-
+    h1 .accent { color: var(--accent-green); }
     .subtitle {
       font-size: 1.15rem;
       color: var(--text-muted);
       font-style: italic;
     }
-
     h2 {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--accent-pink);
       margin: 56px 0 20px;
-      letter-spacing: -0.01em;
     }
-
-    p {
-      margin-bottom: 20px;
-      font-size: 1.05rem;
-    }
-
-    .manifesto p {
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
-    .invariants {
-      list-style: none;
-      margin: 24px 0;
-    }
-
+    p { margin-bottom: 20px; font-size: 1.05rem; }
+    .manifesto p { font-size: 1.1rem; }
+    .invariants { list-style: none; margin: 24px 0; }
     .invariants li {
       padding: 16px 20px;
       background: var(--bg-card);
@@ -93,19 +62,12 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.95rem;
     }
-
     .invariants li strong {
       color: var(--accent-green);
       font-weight: 700;
       margin-right: 8px;
     }
-
-    .links {
-      display: grid;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
+    .links { display: grid; gap: 12px; margin-top: 24px; }
     .links a {
       display: block;
       padding: 16px 20px;
@@ -117,19 +79,16 @@
       transition: all 0.2s ease;
       font-size: 1rem;
     }
-
     .links a:hover {
       border-color: var(--accent-green);
       color: var(--accent-green);
       transform: translateX(4px);
     }
-
     .links a .arrow {
       color: var(--accent-pink);
       margin-right: 12px;
       font-weight: 700;
     }
-
     .author {
       margin-top: 64px;
       padding-top: 32px;
@@ -137,11 +96,7 @@
       color: var(--text-muted);
       font-size: 0.95rem;
     }
-
-    .author strong {
-      color: var(--text);
-    }
-
+    .author strong { color: var(--text); }
     .footer {
       margin-top: 64px;
       padding-top: 24px;
@@ -150,13 +105,11 @@
       font-size: 0.85rem;
       text-align: center;
     }
-
     .footer a {
       color: var(--text-muted);
       text-decoration: none;
       border-bottom: 1px dotted var(--text-muted);
     }
-
     .footer a:hover {
       color: var(--accent-green);
       border-color: var(--accent-green);
@@ -180,7 +133,7 @@
     <section>
       <h2>Invariantes</h2>
       <ul class="invariants">
-        <li><strong>C1</strong> FUNCTION_OVER_IDENTITY</li>
+        <li><strong>C1</strong> MODEL_IS_NOT_SYSTEM</li>
         <li><strong>C2</strong> IDENTITY_IS_NOT_EXECUTION_AUTHORITY</li>
         <li><strong>C3</strong> ANTI_SYCOPHANCY_STRUCTURAL</li>
         <li><strong>C4</strong> REANCLAJE_CONTEXTUAL</li>
@@ -191,9 +144,15 @@
     <section>
       <h2>Documentación</h2>
       <div class="links">
-        <a href="manifesto.md"><span class="arrow">→</span> Manifiesto de Autoría</a>
-        <a href="LICENSE.md"><span class="arrow">→</span> Licencia Estructural</a>
-        <a href="protocols/README.md"><span class="arrow">→</span> Protocolos del Núcleo (6/6)</a>
+        <a href="https://github.com/billyvelasquezmendez-pixel/web-hiteration/blob/main/manifesto.md" target="_blank" rel="noopener">
+          <span class="arrow">→</span> Manifiesto de Autoría
+        </a>
+        <a href="https://github.com/billyvelasquezmendez-pixel/web-hiteration/blob/main/LICENSE.md" target="_blank" rel="noopener">
+          <span class="arrow">→</span> Licencia Estructural
+        </a>
+        <a href="https://github.com/billyvelasquezmendez-pixel/web-hiteration/blob/main/protocols/README.md" target="_blank" rel="noopener">
+          <span class="arrow">→</span> Protocolos del Núcleo
+        </a>
       </div>
     </section>
 
@@ -202,19 +161,9 @@
     </div>
 
     <div class="footer">
-      <p>© 2026 · Licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a></p>
+      <p>© 2026 · Licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
     </div>
 
   </div>
 </body>
-</html>  </ul>
-
-  <h2>Autor</h2>
-  <p>Billy Velásquez Méndez — Padre Las Casas, Chile.</p>
-
-  <div class="footer">
-    <p>© 2026 · Licencia CC BY-SA 4.0</p>
-  </div>
-
-</body>
-</html>
+  </html>
