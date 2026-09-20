@@ -1,20 +1,21 @@
 {
   "$schema": "https://json-schema.org",
   "title": "CORE_INVARIANTS",
-  "version": "1.0.3-CLEAN",
+  "version": "1.0.4-FINAL",
   "protocol_reference": "WH-PROTO-002",
   "classification": "CORE_IDENTITY_PROTOCOL",
   "author": "Billy Velásquez Méndez",
-  "date": "2026-09-19",
-  "audit_date": "2026-09-18",
+  "date": "2026-09-18",
+  "audit_date": "2026-09-19",
   "license": "CC BY-SA 4.0",
-  "status": "FORMALIZED_AUDITED_CLEAN",
+  "status": "CANONICAL_CORE_READY",
+  "patch_note": "v1.0.3 → v1.0.4: aplicados cuatro parches de precisión epistémica y legal. C1 falsación acotada. C2 scope precisado. L3 alineado con jerarquía de evidencia del corpus. License language separado en dominio epistémico y legal. Ninguna función de las invariantes fue alterada.",
 
   "meta": {
     "definition": "Las cinco invariantes estructurales de WEB_HITERATION. Son condiciones normativas que el framework utiliza para definir su identidad estructural.",
     "function": "Preservar la coherencia estructural del framework a través de iteraciones, forks y aplicaciones.",
     "regla_central": "Las invariantes son condiciones normativas del framework. Su incumplimiento no constituye automáticamente una afirmación ontológica sobre el sistema evaluado.",
-    "audit_note": "Este protocolo fue auditado en múltiples ciclos. La versión 1.0.3-CLEAN elimina residuos de versiones anteriores que invalidaban la estructura JSON. El contenido semántico es idéntico a la versión 1.0.2-FINAL."
+    "audit_note": "Este protocolo fue auditado en múltiples ciclos (WH-AUDIT-CORE-INVARIANTS-2026, WH-AUDIT-CORE-2026, CROSS_MODEL_AUDIT_CORE_INVARIANTS y WH_RESP_CHATGPT_2026-09-19). Se eliminaron seis claims absolutos por sobreafirmación: cambio universal garantizado, demostración ontológica por incumplimiento, validación automática por auditoría previa, supervivencia garantizada por funcionalidad, afirmación sobre memoria interna del modelo en C4 (v1.0.3), y en v1.0.4: universalidad no acotada en C1, vaguedad de identidad en C2, reproducción autodeclarada en L3, y mezcla de dominios epistémico/legal en uso del protocolo."
   },
 
   "epistemic_scope": {
@@ -33,21 +34,21 @@
         "El nombre del modelo no determina su valor sistémico.",
         "La función requerida es la que define la asignación."
       ],
-      "falsacion": "Si el sistema selecciona ejecutores por marca en lugar de por función, C1 está incumplida.",
+      "falsacion": "Si el sistema selecciona ejecutores tomando la marca como criterio determinante por encima de la función observable, C1 está incumplida.",
       "scope": "SYSTEMIC",
       "audit_status": "VALIDATED_AS_FRAMEWORK_BOUNDARY"
     },
     "C2_IDENTITY_IS_NOT_EXECUTION_AUTHORITY": {
       "id": "C2",
       "nombre": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
-      "definicion": "La identidad o representación de un agente no constituye por sí misma autoridad de ejecución.",
+      "definicion": "La identidad nominal o representacional de un agente no constituye por sí misma autoridad de ejecución. La autoridad requiere validación independiente.",
       "implicacion": "El hecho de que un agente represente o describa una acción no significa que pueda ejecutarla.",
       "aplicacion": [
         "La capa semántica no ejecuta.",
         "La autoridad de ejecución reside en la capa o componente explícitamente autorizado.",
-        "Ningún agente puede actuar sin validación."
+        "La autoridad de ejecución no se deriva automáticamente de la identidad o representación del agente."
       ],
-      "falsacion": "Si un agente representativo ejecuta acciones sin autorización explícita, C2 está incumplida.",
+      "falsacion": "Si un agente ejecuta acciones invocando su identidad o representación como autorización suficiente, sin validación independiente, C2 está incumplida.",
       "scope": "ARCHITECTURAL_AND_OPERATIONAL",
       "audit_status": "VALIDATED_AS_OPERATIONAL_BOUNDARY"
     },
@@ -69,13 +70,13 @@
       "id": "C4",
       "nombre": "REANCLAJE_CONTEXTUAL",
       "definicion": "Tras degradación, compresión o pérdida de contexto, la estructura relevante puede requerir reconstrucción o reanclaje contextual.",
-      "implicacion": "La memoria no se conserva. Se reconstruye. El sistema debe poder reanclar su estructura tras compresión o pérdida de contexto.",
+      "implicacion": "La continuidad estructural observable puede requerir reconstrucción o reanclaje tras compresión o pérdida de contexto. No se afirma nada sobre la memoria interna del modelo.",
       "aplicacion": [
         "Introducción explícita de anclajes estructurales.",
         "Reconstrucción periódica de invariantes.",
         "Evaluación mediante invariantes previamente especificados y umbral mínimo de preservación."
       ],
-      "falsacion": "Si el sistema colapsa al perder contexto sin poder reconstruirse, C4 está incumplida.",
+      "falsacion": "Si la continuidad estructural observable no puede reconstruirse tras pérdida de contexto en las condiciones declaradas, C4 no se cumple en ese caso.",
       "scope": "CONTEXTUAL_ORCHESTRATION",
       "audit_status": "VALIDATED_AS_OPERATIONAL_HYPOTHESIS_FRAME",
       "epistemic_boundary": "No constituye una afirmación sobre el mecanismo interno de memoria del modelo."
@@ -127,9 +128,18 @@
   },
 
   "uso_del_protocolo": {
-    "verificacion_de_integridad": "El uso del nombre WEB_HITERATION requiere que las cinco invariantes estén activas.",
+    "verificacion_de_integridad_epistemica": "El uso del nombre WEB_HITERATION requiere que las cinco invariantes estén activas en la aplicación declarada.",
     "metodo_de_verificacion": "Ejecución del benchmark WH-ISOLATION-2026-001 o auditoría externa bajo WH-AUDIT-2026.",
-    "consecuencia_de_violacion": "El uso del nombre sin las cinco invariantes constituye una violación de la licencia estructural. La verificación de esa violación requiere evidencia documental reproducible."
+    "consecuencia_epistemica": "Si las cinco invariantes no están activas, la aplicación no opera bajo el marco WEB_HITERATION. Esta consecuencia es de alcance epistémico y no constituye por sí misma una determinación jurídica."
+  },
+
+  "license_boundary": {
+    "base_license": "CC BY-SA 4.0",
+    "additional_clause": "Cláusula de integridad estructural asociada al uso del nombre WEB_HITERATION.",
+    "declared_in": "LICENSE.md",
+    "domain": "CONTRACTUAL_AND_LEGAL",
+    "boundary_statement": "La verificación del cumplimiento de la cláusula de integridad estructural se rige por estándares jurídicos y contractuales. No se rige por los criterios epistémicos internos del framework. La consecuencia epistémica descrita en 'uso_del_protocolo' y la consecuencia legal descrita en este campo operan en dominios distintos y no deben confundirse.",
+    "epistemic_note": "Este campo delimita el alcance legal. No emite juicio jurídico ni sustituye asesoría legal."
   },
 
   "relacion_con_otros_protocolos": {
@@ -141,11 +151,27 @@
 
   "nivel_de_formalizacion": {
     "actual": "L3",
-    "significado": "Auditoría y reproducción confirmadas dentro del alcance declarado.",
-    "pendiente": "L4 (validación experimental controlada a escala)."
+    "significado": "L3 — Ejecución objetiva. Auditoría cruzada completada y formalización consolidada dentro del alcance declarado. La reproducción independiente y la replicación se clasifican como L4.",
+    "pendiente": "L4 — Reproducción independiente y replicación sistemática. Actualmente PENDING en todo el corpus.",
+    "evidence_layer_reference": "Alineado con WH_CURRENT_EVIDENCE_DIAGNOSTIC_AND_DEVELOPMENT_STATE: L0_DECLARATION, L1_FORMALIZATION, L2_EXECUTION_DESIGN, L3_OBJECTIVE_EXECUTION, L4_INDEPENDENT_REPLICATION.",
+    "important_note": "L3 no implica validación causal. Indica que la capa de diseño y ejecución objetiva está consolidada, no que el efecto causal del framework esté establecido."
+  },
+
+  "patch_history": {
+    "v1_0_0": "Versión inicial.",
+    "v1_0_1": "Primera auditoría estructural.",
+    "v1_0_2": "Auditoría WH-AUDIT-CORE-INVARIANTS-2026. Eliminados cuatro claims absolutos.",
+    "v1_0_3": "C4 corregido: eliminada afirmación sobre memoria interna. Eliminada contradicción entre 'implicacion' y 'epistemic_boundary'.",
+    "v1_0_4": {
+      "C1_falsation": "Acotada: la marca no debe ser criterio determinante sobre la función observable.",
+      "C2_scope": "Precisado: identidad nominal o representacional. Aplicación tercera reformulada. Falsación acotada a invocación de identidad como autorización suficiente.",
+      "L3_definition": "Alineado con jerarquía de evidencia del corpus. Añadido campo evidence_layer_reference. Añadida nota de que L3 no implica validación causal.",
+      "license_language": "Separado en dominio epistémico (uso_del_protocolo) y dominio legal (license_boundary). Eliminada mezcla entre verificación empírica y consecuencia jurídica."
+    }
   },
 
   "nota_final": {
-    "texto": "Estas cinco invariantes son el núcleo estructural de WEB_HITERATION. Son condiciones normativas que definen la identidad del framework. Su incumplimiento indica que un sistema no opera bajo estas condiciones, sin que ello constituya una afirmación ontológica sobre su arquitectura interna. Cualquier fork o derivación que preserve C1-C5 es compatible con el framework. Este protocolo ha sido auditado en múltiples ciclos. Las correcciones derivadas de esas auditorías han sido integradas sin modificar la estructura de las invariantes. El documento se congela para la siguiente fase de validación experimental."
+    "texto": "Estas cinco invariantes son el núcleo estructural de WEB_HITERATION. Son condiciones normativas que definen la identidad del framework. Su incumplimiento indica que un sistema no opera bajo estas condiciones, sin que ello constituya una afirmación ontológica sobre su arquitectura interna. Cualquier fork o derivación que preserve C1-C5 es compatible con el framework. Este protocolo ha sido auditado en múltiples ciclos. Las correcciones derivadas de esas auditorías han sido integradas sin modificar la función de las invariantes. El documento se congela para la siguiente fase de validación experimental.",
+    "status_declaration": "CANONICAL_CORE_READY. El núcleo está listo para la fase de preregistro E1-E10. La validación causal permanece PENDING y su establecimiento requiere la ejecución del pipeline de evidencia."
   }
-}
+    }
