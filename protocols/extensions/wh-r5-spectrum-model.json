@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_R5_SPECTRUM_MODEL",
+  "version": "1.0.0",
+  "protocol_reference": "WH-EXT-R5-SPECTRUM-2026-09-20",
+  "classification": "EXTENSION_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-20",
+  "license": "CC BY-SA 4.0",
+  "status": "CONCEPTUAL_MODEL_ACCEPTED_OPERATIONALIZATION_PENDING",
+
+  "meta": {
+    "definition": "Extensión conceptual de R5 que distingue disponibilidad de ejecución de suficiencia experimental. Añade una segunda frontera operacional: no basta con que exista canal de ejecución; debe ser suficiente para un protocolo concreto.",
+    "origin": "Derivado del informe integrado WH-R5-FUNCTIONAL-AVAILABILITY-2026-09-20, extraído del material estructuralmente útil y depurado de capas declarativas no verificables.",
+    "epistemic_boundary": "No afirma mecanismo interno. No afirma acceso a variables internas. No declara validación empírica.",
+    "scope": "EXTENSION_ONLY. No modifica C1-C5."
+  },
+
+  "central_principle": {
+    "name": "EXECUTION_AVAILABILITY_IS_NOT_EXPERIMENTAL_SUFFICIENCY",
+    "statement": "La existencia de un canal de ejecución demuestra disponibilidad mínima, pero no demuestra que dicho canal posea suficiente amplitud, observabilidad, parametrización o capacidad de perturbación para ejecutar un protocolo experimental determinado."
+  },
+
+  "functional_chain": [
+    "CAPABILITY",
+    "AVAILABILITY",
+    "EXECUTION",
+    "EXECUTION_FIDELITY",
+    "EXECUTION_SPECTRUM",
+    "EXPERIMENTAL_SUFFICIENCY"
+  ],
+
+  "epistemic_distinctions": {
+    "CAPABILITY": "Capacidad potencial de producir o representar una función.",
+    "AVAILABILITY": "Existencia efectiva de un canal mediante el cual una función puede ser ejecutada.",
+    "EXECUTION": "Producción efectiva de un resultado observable dentro de un runtime.",
+    "FIDELITY": "Conservación de relaciones funcionales relevantes durante la ejecución.",
+    "SPECTRUM": "Amplitud del espacio de estados y operaciones realmente accesible.",
+    "EXPERIMENTAL_SUFFICIENCY": "Adecuación de ese espacio para los requisitos de un protocolo experimental concreto."
+  },
+
+  "no_equivalences": [
+    "CAPABILITY != AVAILABILITY",
+    "AVAILABILITY != EXECUTION",
+    "EXECUTION != EXECUTION_FIDELITY",
+    "EXECUTION_FIDELITY != EXPERIMENTAL_SUFFICIENCY",
+    "POTENTIAL_EXECUTION != ACTUAL_PROTOCOL_ACCESS",
+    "COMPLEXITY != EXPERIMENTAL_SPECTRUM"
+  ],
+
+  "execution_thresholds": {
+    "T0": {
+      "name": "REPRESENTATION_ONLY",
+      "definition": "No existe canal externo de ejecución disponible.",
+      "observable_result": "Representación, especificación o simulación."
+    },
+    "T1": {
+      "name": "MINIMUM_EXECUTION_AVAILABILITY",
+      "definition": "Existe al menos un canal real de ejecución y una acción observable."
+    },
+    "T2": {
+      "name": "FUNCTIONAL_PROTOCOL_EXECUTION",
+      "definition": "El runtime permite ejecutar y observar una función relevante para el protocolo."
+    },
+    "T3": {
+      "name": "STRUCTURAL_EXPERIMENTATION",
+      "definition": "El entorno permite parametrización, perturbación y observación controlada de variables relevantes."
+    },
+    "T4": {
+      "name": "REALTIME_EXPERIMENTAL_ENVIRONMENT",
+      "definition": "El entorno proporciona suficiente resolución temporal, espacial, interactiva y observacional para el experimento concreto."
+    },
+    "epistemic_status": "CONCEPTUAL_LEVELS_PENDING_CALIBRATION",
+    "note": "T0-T4 son niveles conceptuales. No constituyen todavía una escala métrica validada."
+  },
+
+  "spectrum_dimensions": {
+    "S1_state_space": {
+      "definition": "Cantidad y diversidad de estados accesibles y mapeables.",
+      "measurement_status": "PENDING_OPERATIONALIZATION"
+    },
+    "S2_temporal_bandwidth": {
+      "definition": "Resolución temporal efectivamente disponible para observar y modificar estados.",
+      "measurement_status": "PENDING_THRESHOLD_DEFINITION"
+    },
+    "S3_action_bandwidth": {
+      "definition": "Cantidad y diversidad de acciones ejecutables de forma funcionalmente diferenciada.",
+      "measurement_status": "PENDING_OPERATIONALIZATION"
+    },
+    "S4_protocol_relevant_parameter_access": {
+      "definition": "Grado en que las variables externas relevantes para el protocolo pueden ser modificadas o parametrizadas mediante una interfaz efectiva del runtime.",
+      "epistemic_boundary": "No afirma acceso a variables internas. Solo a variables observables o ejercibles mediante interfaz externa.",
+      "measurement_status": "PENDING_OPERATIONALIZATION"
+    },
+    "S5_environmental_perturbation_tolerance": {
+      "definition": "Rango de perturbaciones externas que el entorno puede recibir manteniendo las condiciones funcionales predefinidas.",
+      "measurement_status": "PENDING_OPERATIONALIZATION"
+    }
+  },
+
+  "protocol_relative_sufficiency": {
+    "principle": "EXECUTION_SUFFICIENCY_IS_PROTOCOL_RELATIVE",
+    "statement": "Un entorno no debe clasificarse simplemente como suficiente o insuficiente sin especificar el protocolo y sus requisitos.",
+    "comparison_rule": {
+      "required_vs_available": [
+        "state_space",
+        "temporal_bandwidth",
+        "action_bandwidth",
+        "parameter_access",
+        "observability",
+        "perturbability",
+        "reproducibility"
+      ],
+      "decision_rule": "IF any_required_dimension_exceeds_available_dimension THEN PROTOCOL_EXECUTION_SUFFICIENCY = INSUFFICIENT"
+    }
+  },
+
+  "availability_layers": {
+    "principle": "APPSTORE_AVAILABILITY_IS_NOT_PROTOCOL_EXECUTION_AVAILABILITY",
+    "layers": [
+      "commercial_availability",
+      "installation_availability",
+      "runtime_availability",
+      "interface_availability",
+      "parameter_access",
+      "state_observability",
+      "perturbability",
+      "reproducibility",
+      "experimental_sufficiency"
+    ],
+    "diagnostic_rule": "La presencia de una aplicación en una tienda digital solo establece una condición preliminar de disponibilidad."
+  },
+
+  "execution_bridge": {
+    "layer_01": "SYMBOLIC_ORCHESTRATION — Definir reglas, estados, parámetros y estructuras.",
+    "layer_02": "EXECUTION_INTERFACE — Convertir estructuras protocolarias en comandos compatibles con el runtime.",
+    "layer_03": "RUNTIME — Ejecutar efectivamente reglas, estados y eventos.",
+    "layer_04": "OBSERVATION — Capturar estados y resultados observables.",
+    "layer_05": "EXPERIMENTAL_CONTROL — Aplicar perturbaciones, repetir condiciones y evaluar resultados."
+  },
+
+  "proposed_experimental_protocol": {
+    "id": "WH-R5-EA-001",
+    "name": "PROTOCOL_RELATIVE_EXECUTION_SUFFICIENCY_TEST",
+    "objective": "Determinar si un runtime concreto proporciona suficiente espacio de ejecución para un protocolo WH predefinido.",
+    "conditions": [
+      "E0_TEXT_ONLY",
+      "E1_MINIMAL_RUNTIME",
+      "E2_INTERACTIVE_RUNTIME",
+      "E3_MULTI_PARAMETER_RUNTIME",
+      "E4_HIGH_COMPLEXITY_RUNTIME",
+      "E5_EXTERNAL_BRIDGED_RUNTIME"
+    ],
+    "required_measurements": [
+      "state_space",
+      "temporal_bandwidth",
+      "action_bandwidth",
+      "protocol_relevant_parameter_access",
+      "observability",
+      "perturbability",
+      "reproducibility",
+      "protocol_fidelity"
+    ],
+    "status": "DESIGN_ONLY"
+  },
+
+  "research_questions": [
+    { "id": "RQ-01", "question": "¿Puede definirse un umbral reproducible de disponibilidad de ejecución para un protocolo concreto?" },
+    { "id": "RQ-02", "question": "¿Qué dimensiones del espectro de ejecución son necesarias para diferentes clases de protocolos?" },
+    { "id": "RQ-03", "question": "¿Puede un runtime de baja complejidad proporcionar alta fidelidad experimental en un dominio estrecho?" },
+    { "id": "RQ-04", "question": "¿Cuándo la complejidad adicional de un runtime produce capacidad experimental adicional realmente accesible?" },
+    { "id": "RQ-05", "question": "¿Qué pérdida funcional ocurre cuando el protocolo tiene acceso únicamente a una fracción del espectro disponible?" }
+  ],
+
+  "anti_overclaim_rules": [
+    "No afirmar que R5 sea una limitación interna del modelo.",
+    "No afirmar que un runtime más complejo sea automáticamente mejor entorno experimental.",
+    "No afirmar que la complejidad gráfica implique acceso protocolario.",
+    "No afirmar que la disponibilidad en tienda digital implique disponibilidad protocolaria.",
+    "No afirmar que T0-T4 constituyan una escala empírica validada.",
+    "No afirmar que S1-S5 estén actualmente calibradas."
+  ],
+
+  "current_diagnostic": {
+    "R5_original": "EXECUTION_AVAILABILITY_BOUNDARY",
+    "R5_extended": "EXECUTION_AVAILABILITY_BOUNDARY + PROTOCOL_RELATIVE_SUFFICIENCY",
+    "spectrum_model": "CONCEPTUALLY_DEFINED",
+    "empirical_validation": "PENDING",
+    "overall_state": "CONCEPTUAL_EXTENSION_ACCEPTED_OPERATIONALIZATION_PENDING"
+  },
+
+  "relationship_to_other_protocols": {
+    "CORE_INVARIANTS": "Extiende C5 (falsación controlada) hacia el problema de suficiencia experimental del runtime.",
+    "TAXONOMIA_R1_R7": "R5 es una categoría dentro de la taxonomía. Esta extensión añade gradiente dentro de R5.",
+    "E1_E10": "Conecta con E07 (derivación métrica) y E08 (recálculo independiente): las dimensiones S1-S5 deben poder medirse."
+  },
+
+  "nivel_de_formalizacion": {
+    "actual": "L2-L3",
+    "significado": "Modelo conceptual aceptado con operacionalización pendiente.",
+    "pendiente": "L4 (validación experimental controlada)"
+  },
+
+  "nota_final": "Esta extensión no modifica C1-C5. Es un gradiente añadido a R5. Su valor está en distinguir entre 'hay ejecución' y 'hay ejecución suficiente para el experimento'. Su riesgo es tratarla como métrica antes de calibrarla."
+}
