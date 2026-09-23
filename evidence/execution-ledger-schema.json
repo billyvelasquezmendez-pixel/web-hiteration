@@ -1,0 +1,375 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_EXECUTION_LEDGER_SCHEMA",
+  "version": "1.0.0",
+  "protocol_reference": "WH-LEDGER-2026-09-22",
+  "document_type": "EXECUTION_LEDGER_SCHEMA_AND_CAPTURE_PROTOCOL",
+  "date": "2026-09-22",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "evidence/execution-ledger-schema.json",
+  "classification": "EVIDENCE_INFRASTRUCTURE_SCHEMA",
+
+  "meta": {
+    "purpose": "Definir la estructura formal, las reglas de captura, el procedimiento de versionado y las condiciones de inmutabilidad del registro de ejecuciones del proyecto WEB_HITERATION.",
+    "scope": "Toda ejecución relevante que produzca outputs sujetos a auditoría, comparación, recálculo independiente o replicación.",
+    "role": "EVIDENCE_TRACEABILITY_LAYER",
+    "core_rule": "AN_UNRECORDED_EXECUTION_IS_NOT_AUDITABLE",
+    "secondary_rule": "DOCUMENTED_EXECUTION_IS_NOT_REPRODUCIBLE_EXECUTION",
+    "tertiary_rule": "RAW_OUTPUT_PRESERVATION_PRECEDES_METRIC_CALCULATION",
+    "epistemic_boundary": "El ledger registra lo que ocurrió. No valida. No interpreta. No calcula métricas derivadas."
+  },
+
+  "purpose_and_scope": {
+    "what_the_ledger_is": [
+      "Un registro estructurado de ejecuciones efectivamente realizadas.",
+      "El sustrato de trazabilidad para E04 (RAW_OUTPUT_PRESERVATION) y E08 (INDEPENDENT_RECALCULATION) del pipeline E1-E10.",
+      "El prerequisito de cualquier recálculo independiente o replicación.",
+      "Una capa de evidencia que separa output crudo de interpretación."
+    ],
+    "what_the_ledger_is_not": [
+      "No es un motor de cálculo de métricas.",
+      "No es un validador de resultados.",
+      "No es un repositorio de interpretaciones.",
+      "No convierte ejecución documentada en ejecución replicada.",
+      "No autoriza comparación cross-engine sin mapeo semántico."
+    ],
+    "dependency_chain": [
+      "EXECUTION_LEDGER_SCHEMA (este documento)",
+      "→ EXECUTION_LEDGER_INSTANCE (registro real de ejecuciones)",
+      "→ INDEPENDENT_RECALCULATION_PROTOCOL (recálculo desde datos crudos)",
+      "→ REPLICATION_PROTOCOL (repetición independiente)",
+      "→ CROSS_PLATFORM_MATCHED_EXECUTION (comparación funcional)"
+    ]
+  },
+
+  "record_schema": {
+    "description": "Cada ejecución genera un registro inmutable. Los registros no se modifican; se añaden correcciones como entradas nuevas vinculadas por parent_record_id.",
+    "primary_key": "execution_id",
+    "immutability_rule": "Una vez escrito un registro, sus campos originales no se editan. Toda corrección genera un registro nuevo que referencia al original.",
+    "required_fields": [
+      "execution_id",
+      "record_version",
+      "platform_id",
+      "motor_declared",
+      "timestamp_utc",
+      "task_id",
+      "condition_id",
+      "inputs",
+      "raw_output",
+      "output_hash",
+      "status"
+    ],
+    "optional_fields": [
+      "parent_record_id",
+      "correction_reason",
+      "evaluator_assigned",
+      "evaluator_independent",
+      "context_compression_applied",
+      "prior_execution_refs",
+      "notes_declarative"
+    ]
+  },
+
+  "field_definitions": {
+    "execution_id": {
+      "type": "string",
+      "format": "UUID_v4 o WH-EXEC-{YYYYMMDD}-{sequence}",
+      "uniqueness": "GLOBAL",
+      "generation_rule": "Generado en el momento de la ejecución, antes de cualquier interpretación.",
+      "example": "WH-EXEC-20260922-0001"
+    },
+    "record_version": {
+      "type": "string",
+      "format": "SEMVER",
+      "initial": "1.0.0",
+      "increments_on": "Corrección vinculada por parent_record_id"
+    },
+    "platform_id": {
+      "type": "enum",
+      "values": [
+        "CHATGPT",
+        "GEMINI",
+        "DEEPSEEK",
+        "GOOGLE_AI_MODE",
+        "META_AI_MUSE_SPARK",
+        "OTHER"
+      ],
+      "declaration_rule": "Declarar la plataforma concreta evaluada, no generalizar a todo el ecosistema del proveedor."
+    },
+    "motor_declared": {
+      "type": "enum",
+      "values": [
+        "MOTOR_A_EVALUATIVE",
+        "MOTOR_B_DISTRIBUTED",
+        "NONE",
+        "NOT_APPLICABLE"
+      ],
+      "declaration_rule": "OBLIGATORIO según DELTA_NAMESPACE_DECLARATION_001. Toda ejecución que produzca δ, δ′ o score debe declarar el motor.",
+      "prohibited": "Ejecución que use δ/δ′/score sin declarar motor."
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "ISO_8601_UTC",
+      "example": "2026-09-22T19:20:27Z",
+      "rule": "El timestamp corresponde al momento de la ejecución, no al de la captura ni al de la interpretación."
+    },
+    "task_id": {
+      "type": "string",
+      "format": "WH-TASK-{DOMAIN}-{sequence}",
+      "purpose": "Identificar la tarea ejecutada.",
+      "example": "WH-TASK-LOGISTICS-0001"
+    },
+    "condition_id": {
+      "type": "string",
+      "purpose": "Identificar la condición experimental (baseline, experimental, ablación, etc.).",
+      "example": "BASELINE_NO_WH | WH_STRUCTURE | ABLATION_NO_TAXONOMY"
+    },
+    "inputs": {
+      "type": "object",
+      "required_subfields": [
+        "prompt_or_task_description",
+        "constraints_declared",
+        "context_window_declared",
+        "external_resources_declared"
+      ],
+      "rule": "Registrar los inputs exactamente como se proporcionaron, sin reformulación posterior."
+    },
+    "raw_output": {
+      "type": "string_or_object",
+      "preservation_rule": "Sin edición. Sin reformateo. Sin corrección ortográfica ni sintáctica. La salida se registra tal como se produjo.",
+      "storage": "Inline si <10KB; referencia a archivo si >=10KB.",
+      "encoding": "UTF-8"
+    },
+    "output_hash": {
+      "type": "string",
+      "format": "SHA-256",
+      "purpose": "Verificar integridad del raw_output y detectar modificaciones.",
+      "rule": "Calculado sobre el raw_output tal como se capturó.",
+      "prohibited": "Checksums simbólicos, hashes decorativos o identificadores inventados."
+    },
+    "status": {
+      "type": "enum",
+      "values": [
+        "EXECUTED",
+        "PARTIALLY_EXECUTED",
+        "FAILED",
+        "ABORTED",
+        "R5_EXECUTION_LIMITED"
+      ],
+      "rule": "El status describe el resultado de la ejecución, no la calidad del output."
+    },
+    "parent_record_id": {
+      "type": "string",
+      "format": "execution_id",
+      "usage": "Solo cuando este registro corrige o complementa otro."
+    },
+    "correction_reason": {
+      "type": "string",
+      "usage": "Solo cuando parent_record_id está presente."
+    },
+    "evaluator_assigned": {
+      "type": "string",
+      "purpose": "Identificar al evaluador si la ejecución produjo datos sujetos a evaluación posterior."
+    },
+    "evaluator_independent": {
+      "type": "boolean",
+      "default": false,
+      "rule": "Solo se marca true cuando se cumple el criterio de independencia operacional (OBLIG-007)."
+    },
+    "context_compression_applied": {
+      "type": "boolean",
+      "default": false,
+      "rule": "Marcar true cuando la ejecución se produjo bajo compresión de contexto."
+    },
+    "prior_execution_refs": {
+      "type": "array",
+      "items": "execution_id",
+      "purpose": "Referencias a ejecuciones previas relevantes para interpretar esta."
+    },
+    "notes_declarative": {
+      "type": "string",
+      "rule": "Solo observaciones declarativas. No interpretaciones, no validaciones."
+    }
+  },
+
+  "capture_procedure": {
+    "step_1_before_execution": {
+      "action": "Generar execution_id y timestamp_utc.",
+      "rule": "El identificador se genera antes de ejecutar, no después."
+    },
+    "step_2_during_execution": {
+      "action": "Registrar inputs exactamente como se proporcionan.",
+      "rule": "No reformular el prompt después de la ejecución."
+    },
+    "step_3_at_output": {
+      "action": "Capturar raw_output sin edición.",
+      "rule": "No corregir formato, ortografía ni sintaxis."
+    },
+    "step_4_hash": {
+      "action": "Calcular SHA-256 sobre el raw_output.",
+      "rule": "El hash se calcula inmediatamente tras la captura."
+    },
+    "step_5_declaration": {
+      "action": "Declarar motor, condición y status.",
+      "rule": "Si se usa δ/δ′/score sin motor declarado, la ejecución es inválida como registro."
+    },
+    "step_6_immutability": {
+      "action": "El registro queda sellado.",
+      "rule": "No se edita. Correcciones generan nuevo registro con parent_record_id."
+    }
+  },
+
+  "versioning_procedure": {
+    "principle": "Append-only log. Los registros se añaden, nunca se modifican.",
+    "correction_pattern": {
+      "original": "WH-EXEC-20260922-0001",
+      "correction": "WH-EXEC-20260922-0001-C1",
+      "rule": "El prefijo del ID original + sufijo de corrección."
+    },
+    "deletion_policy": "PROHIBITED. Los registros fallidos se marcan status=FAILED pero no se eliminan.",
+    "history_preservation": "El ledger conserva la totalidad del historial. No hay sobreescritura."
+  },
+
+  "storage_format": {
+    "primary_format": "JSON_LINES (JSONL)",
+    "reason": "Un registro por línea. Append-only. Parseo incremental. Resistente a corrupción parcial.",
+    "file_naming": "execution-ledger-{YYYYMM}.jsonl",
+    "example": "execution-ledger-202609.jsonl",
+    "alternative_format": "JSON_ARRAY solo para consolidaciones de periodo, nunca para el ledger activo."
+  },
+
+  "integrity_verification": {
+    "per_record": "output_hash (SHA-256) verifica integridad del raw_output.",
+    "chain_integrity": "Opcional: chain_hash que vincula cada registro al anterior. Útil para detección de tampering.",
+    "verification_procedure": [
+      "Leer registro.",
+      "Recalcular hash del raw_output.",
+      "Comparar con output_hash almacenado.",
+      "Si coincide: integridad confirmada.",
+      "Si no coincide: registrar como CORRUPTED_ENTRY y no usar para recálculo."
+    ]
+  },
+
+  "connection_to_e1_e10": {
+    "E04_RAW_OUTPUT_PRESERVATION": {
+      "dependency": "El ledger es la implementación técnica del control E04.",
+      "guarantee": "Preservación íntegra sin modificación retrospectiva."
+    },
+    "E08_INDEPENDENT_RECALCULATION": {
+      "dependency": "El recálculo parte del raw_output del ledger.",
+      "guarantee": "El evaluador independiente accede al registro sin depender del ejecutor original."
+    },
+    "E05_INDEPENDENT_EVALUATION": {
+      "dependency": "El evaluador lee el raw_output del ledger, no una interpretación previa.",
+      "guarantee": "Separación entre generación y evaluación."
+    }
+  },
+
+  "connection_to_obligations": {
+    "OBLIG-014_OUTPUT_CAPTURE_PROCEDURE": {
+      "status": "PARTIALLY_DISCHARGED_BY_THIS_SCHEMA",
+      "remaining": "Formato definitivo de almacenamiento externo y versionado de ficheros."
+    },
+    "OBLIG-015_INDEPENDENT_RECALCULATION_MECHANISM": {
+      "status": "PARTIALLY_DISCHARGED_BY_THIS_SCHEMA",
+      "remaining": "Implementación ejecutable del recálculo desde el ledger."
+    },
+    "OBLIG-002_SIGMA_MEASUREMENT_PROTOCOL": {
+      "dependency": "El ledger provee las N ejecuciones necesarias para calcular σ."
+    },
+    "OBLIG-011_GLITCHORIUM_DELTA_PRIME_ATTRIBUTION": {
+      "dependency": "Los registros históricos de Glitchorium pueden clasificarse ahora con motor declarado cuando existan como registros formales."
+    }
+  },
+
+  "rules_of_use": {
+    "allowed": [
+      "Añadir registros de ejecuciones nuevas.",
+      "Consultar registros existentes por filtros (platform, motor, date, condition).",
+      "Recalcular métricas desde raw_outputs.",
+      "Auditar integridad por hash.",
+      "Clasificar registros históricos como MOTOR_A, MOTOR_B, AMBIGUA o NO_DETERMINABLE."
+    ],
+    "prohibited": [
+      "Editar campos de un registro existente.",
+      "Eliminar registros.",
+      "Reformatear raw_output después de la captura.",
+      "Declarar motor a posteriori sin justificación declarada.",
+      "Convertir un registro documentado en validación empírica.",
+      "Comparar registros de MOTOR_A con registros de MOTOR_B sin mapeo semántico.",
+      "Usar checksums simbólicos."
+    ]
+  },
+
+  "declared_examples": [
+    {
+      "example_1": {
+        "description": "Ejecución de benchmark logístico WH_CEB_2026_002 en ChatGPT.",
+        "execution_id": "WH-EXEC-20260922-0001",
+        "platform_id": "CHATGPT",
+        "motor_declared": "NONE",
+        "task_id": "WH-TASK-LOGISTICS-0001",
+        "condition_id": "BASELINE_NO_WH",
+        "status": "EXECUTED",
+        "notes_declarative": "Benchmark ejecutado sin estructura WH. Output sujeto a análisis posterior."
+      }
+    },
+    {
+      "example_2": {
+        "description": "Ejecución con δ′ declarada.",
+        "execution_id": "WH-EXEC-20260922-0002",
+        "platform_id": "GEMINI",
+        "motor_declared": "MOTOR_B_DISTRIBUTED",
+        "task_id": "WH-TASK-CONI-0001",
+        "condition_id": "WH_STRUCTURE",
+        "status": "EXECUTED",
+        "notes_declarative": "Cálculo de δ′ bajo Motor B. Fórmula δ′ = σ(1-P1)."
+      }
+    }
+  ],
+
+  "integration_with_existing_repository": {
+    "path": "evidence/execution-ledger-schema.json",
+    "companion_files": [
+      "evidence/execution-ledger-{YYYYMM}.jsonl — ledger activo por mes",
+      "evidence/execution-ledger-index.json — índice de periodos y totales",
+      "evidence/execution-ledger-verification.json — último resultado de verificación de integridad"
+    ],
+    "no_conflict_with_existing": "El ledger no modifica protocolos, extensiones ni evidencia existente. Se añade como capa independiente."
+  },
+
+  "repository_ready_status": {
+    "artifact": "WH_EXECUTION_LEDGER_SCHEMA",
+    "status": "READY_FOR_REPOSITORY",
+    "destination": "evidence/execution-ledger-schema.json",
+    "commit_message_suggested": "feat(evidence): add execution ledger schema and capture protocol",
+    "closes_obligations": [
+      "OBLIG-014 (parcial)",
+      "OBLIG-015 (parcial)"
+    ],
+    "unblocks": [
+      "EXECUTION_LEDGER_INSTANCE",
+      "INDEPENDENT_RECALCULATION_PROTOCOL",
+      "REPLICATION_PROTOCOL",
+      "CROSS_PLATFORM_MATCHED_EXECUTION"
+    ]
+  },
+
+  "terminal_invariants": [
+    "AN_UNRECORDED_EXECUTION_IS_NOT_AUDITABLE",
+    "DOCUMENTED_EXECUTION_IS_NOT_REPRODUCIBLE_EXECUTION",
+    "RAW_OUTPUT_PRESERVATION_PRECEDES_METRIC_CALCULATION",
+    "IMMUTABILITY_IS_NOT_VALIDATION",
+    "HASH_VERIFICATION_IS_NOT_EMPIRICAL_VALIDATION",
+    "LEDGER_RECORD_IS_NOT_SCIENTIFIC_PROOF",
+    "MOTOR_DECLARATION_IS_MANDATORY_WHEN_DELTA_IS_USED",
+    "APPEND_ONLY_IS_NOT_APPEND_ONLY_UNTIL_VERIFIED"
+  ],
+
+  "final_declaration": {
+    "statement": "El EXECUTION_LEDGER_SCHEMA define la infraestructura mínima de trazabilidad para el pipeline E1-E10. No valida. No interpreta. No calcula métricas. Registra. La existencia del ledger habilita el recálculo independiente y la replicación, pero no los sustituye.",
+    "scientific_closure": false,
+    "empirical_validation": "NOT_APPLICABLE_TO_SCHEMA",
+    "next_artifact": "EXECUTION_LEDGER_INSTANCE (primera aplicación real del schema a las ejecuciones históricas documentadas)"
+  }
+  }
