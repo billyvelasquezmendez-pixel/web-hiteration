@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_DELTA_ENGINE_SINGULARITY_DECLARATION",
+  "version": "1.0.0",
+  "protocol_reference": "WH-DELTA-SINGULARITY-2026-09-22",
+  "document_type": "DUAL_ENGINE_SINGULARITY_DECLARATION",
+  "date": "2026-09-22",
+  "status": "READY_FOR_REPOSITORY",
+  "classification": "STRUCTURAL_SINGULARITY_DIAGNOSTIC",
+
+  "meta": {
+    "purpose": "Declarar formalmente la existencia de dos motores DELTA no equivalentes en el ecosistema WH, cuyas métricas comparten nomenclatura pero no significado.",
+    "core_rule": "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "secondary_rule": "SAME_PURPOSE_IS_NOT_SAME_PROCESS",
+    "tertiary_rule": "NORMALIZATION_IS_NOT_SEMANTIC_EQUIVALENCE",
+    "epistemic_boundary": "Este documento declara la singularidad. No la resuelve arquitectónicamente."
+  },
+
+  "singularity_thesis": {
+    "statement": "Los dos motores DELTA no son variantes del mismo motor. Son dos motores singulares que comparten nombre, propósito aparente y símbolos parciales, pero operan sobre procesos distintos y miden cosas distintas con cada símbolo.",
+    "consequence": "Los valores de δ, δ′ y score producidos por cada motor NO son comparables entre sí sin capa de normalización previa que no existe actualmente.",
+    "classification": "DUAL_SINGULARITY_CONFIRMED"
+  },
+
+  "motor_identification": {
+    "motor_A": {
+      "id": "DELTA_ENGINE_EVALUATIVE_V1",
+      "origin": "CHATGPT",
+      "proceso_medido": "DESEMPENO_DE_MODELO_INDIVIDUAL",
+      "metrics_count": 5,
+      "range": "[0,5] normalizado a [0,1]",
+      "domain": "evaluacion de respuestas de un solo modelo"
+    },
+    "motor_B": {
+      "id": "DELTA_ENGINE_DISTRIBUTED_V1",
+      "origin": "GEMINI / CONI",
+      "proceso_medido": "COHERENCIA_DE_SISTEMA_MULTI_AGENTE_DISTRIBUIDO",
+      "metrics_count": 3,
+      "range": "[0,1] directo",
+      "domain": "coherencia emergente de enjambre"
+    },
+    "relation": "SINGULARIDADES_PARALELAS_NO_EQUIVALENTES"
+  },
+
+  "symbolic_divergence_map": {
+    "P1": {
+      "motor_A": { "nombre": "consistencia_estructural", "rango": "[0,5]", "aplica_a": "una_respuesta_individual" },
+      "motor_B": { "nombre": "consistencia_estructural", "rango": "[0,1]", "aplica_a": "red_completa_de_agentes" },
+      "divergencia": "SIMBOLO_COMPARTIDO_PROCESO_DISTINTO"
+    },
+    "P2": {
+      "motor_A": { "nombre": "exhaustividad_cobertura", "rango": "[0,5]" },
+      "motor_B": { "nombre": "NO_EXISTE" },
+      "divergencia": "METRICA_PRESENTE_EN_A_AUSENTE_EN_B"
+    },
+    "P3": {
+      "motor_A": { "nombre": "profundidad_mecanistica", "rango": "[0,5]" },
+      "motor_B": { "nombre": "coherencia_emergente", "rango": "[0,1]" },
+      "divergencia": "SIMBOLO_COMPARTIDO_SIGNIFICADO_DISTINTO"
+    },
+    "P4": {
+      "motor_A": { "nombre": "transparencia_incertidumbre", "rango": "[0,5]" },
+      "motor_B": { "nombre": "NO_EXISTE" },
+      "divergencia": "METRICA_PRESENTE_EN_A_AUSENTE_EN_B"
+    },
+    "P5": {
+      "motor_A": { "nombre": "consideraciones_autonomia", "aplica_a": "respeto_a_autonomia_del_usuario" },
+      "motor_B": { "nombre": "autonomia", "aplica_a": "capacidad_operativa_de_la_red_sin_control_central" },
+      "divergencia": "SIMBOLO_CASI_COMPARTIDO_PROCESO_COMPLETAMENTE_DISTINTO"
+    }
+  },
+
+  "operational_divergence_map": {
+    "delta": {
+      "motor_A": "δ = 1 - Σ(peso_i × Pn_norm_i)",
+      "motor_B": "δ_global = (1/N) × Σ(δ_i)",
+      "divergencia": "MISMO_SIMBOLO_PROCESOS_INCOMPATIBLES"
+    },
+    "delta_prime": {
+      "motor_A": "δ′ = 0.4(1-P1) + 0.4(1-P3) + 0.2(1-P5)",
+      "motor_B": "δ′ = σ × (1 - P1)",
+      "divergencia": "MISMO_SIMBOLO_FORMULA_DISTINTA_DOMINIO_DISTINTO"
+    },
+    "score_global": {
+      "motor_A": "score = 1 - δ",
+      "motor_B": "score = (P1 + P3 + P5)/3 - δ′",
+      "divergencia": "MISMO_NOMBRE_DEFINICION_INCOMPATIBLE"
+    }
+  },
+
+  "singularity_diagnosis": {
+    "singularity_1": { "id": "SING-01", "nombre": "SINGULARIDAD_DE_PROCESO" },
+    "singularity_2": { "id": "SING-02", "nombre": "SINGULARIDAD_SIMBOLICA" },
+    "singularity_3": { "id": "SING-03", "nombre": "SINGULARIDAD_DE_DOMINIO" },
+    "singularity_4": { "id": "SING-04", "nombre": "SINGULARIDAD_DE_UMBRAL" }
+  },
+
+  "risk_of_unresolved_coexistence": [
+    { "id": "RISK-01", "riesgo": "Confusion de valores entre motores.", "severidad": "ALTA" },
+    { "id": "RISK-02", "riesgo": "Reproducibilidad cross-platform imposible.", "severidad": "CRITICA" },
+    { "id": "RISK-03", "riesgo": "Erosion de C5 (falsacion controlada).", "severidad": "ALTA" },
+    { "id": "RISK-04", "riesgo": "Glitchorium contaminado.", "severidad": "MEDIA" }
+  ],
+
+  "possible_resolutions": {
+    "resolution_A": { "name": "UNIFICACION_EN_MOTOR_B" },
+    "resolution_B": { "name": "COEXISTENCIA_CON_NOMENCLATURA_DIFERENCIADA" },
+    "resolution_C": { "name": "MOTOR_HIBRIDO_POR_CAPAS" },
+    "resolution_D": { "name": "DECLARACION_DE_SINGULARIDAD_SIN_RESOLUCION" }
+  },
+
+  "recommended_intermediate_state": {
+    "action": "DECLARACION_DE_SINGULARIDAD_CON_PROTOCOLO_DE_DECLARACION",
+    "protocol": [
+      "Toda ejecucion que use delta, delta_prime o score debe declarar el motor utilizado.",
+      "Toda referencia a Glitchorium debe especificar el motor.",
+      "El repositorio debe alojar esta declaracion en /diagnostics/.",
+      "La decision de resolucion se difiere hasta que exista baseline empirico comparativo."
+    ]
+  },
+
+  "canonical_decision_required": {
+    "decision_id": "DEC-DELTA-001",
+    "question": "Cual de las cuatro resoluciones (A, B, C, D) se adopta como estado canonico?",
+    "current_decision": "DEFERRED"
+  },
+
+  "terminal_invariants": [
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "SAME_PURPOSE_IS_NOT_SAME_PROCESS",
+    "NORMALIZATION_IS_NOT_SEMANTIC_EQUIVALENCE",
+    "NO_ENGINE_COMPARISON_WITHOUT_SEMANTIC_MAPPING",
+    "SINGULARITY_DECLARED_IS_NOT_SINGULARITY_RESOLVED",
+    "FORMULA_IS_NOT_MEASUREMENT"
+  ],
+
+  "final_declaration": {
+    "statement": "Existen dos motores DELTA en el ecosistema WH. Operan sobre procesos distintos. Comparten simbolos pero no significados. Sus valores no son comparables sin capa de normalizacion que aun no existe. La resolucion requiere decision arquitectonica explicita.",
+    "status": "DECLARED_PENDING_ARCHITECTURAL_DECISION"
+  }
+      }
