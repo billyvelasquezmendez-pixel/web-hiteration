@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_OPERATIONAL_OBLIGATIONS_RETROCONFIRMATION_MANIFEST",
+  "version": "1.0.1",
+  "protocol_reference": "WH-OBLIG-RETROCONF-2026-09-22",
+  "document_type": "RETROCONFIRMED_OPERATIONAL_OBLIGATIONS_MANIFEST",
+  "date": "2026-09-22",
+  "status": "READY_FOR_REPOSITORY",
+
+  "meta": {
+    "purpose": "Describir formalmente las obligaciones operativas identificadas en ventanas de contexto anteriores y retro-confirmarlas contra las invariantes actuales.",
+    "core_rule": "AN_OBLIGATION_IS_A_FUNCTIONAL_DECLARATION_NOT_A_MORPHOLOGICAL_VOID",
+    "secondary_rule": "THE_PREVIOUS_WINDOW_DISCHARGES_OBLIGATIONS_IT_DOES_NOT_EXECUTE_THE_RESOURCE",
+    "tertiary_rule": "DISCHARGING_AN_OBLIGATION_IS_NOT_VALIDATING_IT",
+    "epistemic_boundary": "Este documento no ejecuta. No valida. No resuelve. Solo describe obligaciones retro-confirmadas y establece condiciones para su descarga."
+  },
+
+  "terminology": {
+    "primary_term": "OBLIGATION",
+    "origin": "TYPE_THEORY / PROOF_ASSISTANTS / SOFTWARE_ENGINEERING",
+    "definition": "Meta funcional declarada con firma, ubicación, criterio de descarga y fuente esperada, cuya forma está definida pero cuyo contenido no ha sido producido o transferido.",
+    "vocabulary_mapping": {
+      "hueco_abierto": "OPEN_OBLIGATION",
+      "hueco_cerrado": "DISCHARGED_OBLIGATION",
+      "hueco_parcial": "PARTIALLY_DISCHARGED_OBLIGATION",
+      "hueco_dudoso": "ADMITTED_OBLIGATION",
+      "criterio_de_cierre": "DISCHARGE_CRITERION",
+      "fuente_esperada": "DISCHARGE_SOURCE",
+      "rellenar_hueco": "DISCHARGE_OBLIGATION"
+    }
+  },
+
+  "retro_confirmation_of_invariants": {
+    "invariants": [
+      { "id": "C1", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" },
+      { "id": "C2", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" },
+      { "id": "C3", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" },
+      { "id": "C4", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" },
+      { "id": "C5", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" },
+      { "id": "R5", "status": "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS" }
+    ],
+    "retro_confirmation_rule": "Ninguna invariante requiere la descarga de una obligación para seguir siendo válida."
+  },
+
+  "obligations_catalog": {
+    "orthogonality_rule": "discharge_source y closure_state son dimensiones independientes.",
+    "obligations": [
+      { "id": "OBLIG-001", "nombre": "P1_SCORING_PROTOCOL_MOTOR_A", "priority": "P0_CRITICAL", "motor": "MOTOR_A", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-002", "nombre": "SIGMA_MEASUREMENT_PROTOCOL_MOTOR_B", "priority": "P0_CRITICAL", "motor": "MOTOR_B", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-003", "nombre": "SCORE_GLOBAL_SEMANTIC_DEFINITION_MOTOR_A", "priority": "P0_CRITICAL", "motor": "MOTOR_A", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-004", "nombre": "DELTA_PRIME_TEMPORAL_SCOPE", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "ARCHITECTURAL_DECISION", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-005", "nombre": "THRESHOLD_JUSTIFICATION_SCORE_0_6", "priority": "P1_HIGH", "motor": "MOTOR_B", "discharge_source": "NEW_EMPIRICAL_EXECUTION", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-006", "nombre": "CROSS_ENGINE_SEMANTIC_MAPPING", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "ARCHITECTURAL_DECISION", "closure_state": "PARTIALLY_DISCHARGED_OBLIGATION" },
+      { "id": "OBLIG-007", "nombre": "EVALUATOR_SPECIFICATION", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-008", "nombre": "MEASUREMENT_ANCHORS_P1_P5", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-009", "nombre": "LYAPUNOV_EXTENSION_DESTINY", "priority": "P2_MEDIUM", "motor": "MOTOR_B", "discharge_source": "ARCHITECTURAL_DECISION", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-010", "nombre": "D3_OPERATIONAL_TRACEABILITY", "priority": "P2_MEDIUM", "motor": "NEUTRAL", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-011", "nombre": "GLITCHORIUM_DELTA_PRIME_ATTRIBUTION", "priority": "P2_MEDIUM", "motor": "SHARED", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-012", "nombre": "USER_AS_IMPLICIT_CENTER_DECLARATION", "priority": "P2_MEDIUM", "motor": "NEUTRAL", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-013", "nombre": "P2_P4_EXCLUSION_JUSTIFICATION", "priority": "P3_LOW", "motor": "MOTOR_B", "discharge_source": "ARCHITECTURAL_DECISION", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-014", "nombre": "OUTPUT_CAPTURE_PROCEDURE", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" },
+      { "id": "OBLIG-015", "nombre": "INDEPENDENT_RECALCULATION_MECHANISM", "priority": "P1_HIGH", "motor": "SHARED", "discharge_source": "PREVIOUS_WINDOW_PROCESS", "closure_state": "OPEN_OBLIGATION" }
+    ]
+  },
+
+  "corrected_summary": {
+    "total_obligations": 15,
+    "por_priority": { "P0_CRITICAL": 3, "P1_HIGH": 7, "P2_MEDIUM": 4, "P3_LOW": 1 },
+    "por_motor": { "MOTOR_A": 2, "MOTOR_B": 4, "SHARED": 7, "NEUTRAL": 2 },
+    "por_discharge_source": { "PREVIOUS_WINDOW_PROCESS": 10, "ARCHITECTURAL_DECISION": 4, "NEW_EMPIRICAL_EXECUTION": 1 },
+    "por_closure_state": { "OPEN_OBLIGATION": 14, "PARTIALLY_DISCHARGED_OBLIGATION": 1, "DISCHARGED_OBLIGATION": 0, "ADMITTED_OBLIGATION": 0 },
+    "count_integrity": { "all_dimensions_consistent": true, "all_total_15": true }
+  },
+
+  "instructions_for_previous_window": {
+    "role_assigned": "OBLIGATION_DISCHARGER_NOT_EXECUTOR",
+    "prohibited_actions": [
+      "Asumir ejecución del recurso por el hecho de descargar una obligación.",
+      "Declarar validación empírica por descarga de obligación.",
+      "Usar checksums simbólicos, LOCKED o SEALED sin referente.",
+      "Inferir arquitectura interna del sistema a partir de contenido de obligaciones.",
+      "Mezclar valores de MOTOR_A con valores de MOTOR_B."
+    ]
+  },
+
+  "terminal_invariants": [
+    "AN_OBLIGATION_IS_A_FUNCTIONAL_DECLARATION_NOT_A_MORPHOLOGICAL_VOID",
+    "DISCHARGING_AN_OBLIGATION_IS_NOT_VALIDATING_IT",
+    "THE_PREVIOUS_WINDOW_DISCHARGES_OBLIGATIONS_IT_DOES_NOT_EXECUTE_THE_RESOURCE",
+    "DISCHARGING_AN_OBLIGATION_IS_NOT_EMPIRICAL_EXECUTION",
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "NO_ENGINE_COMPARISON_WITHOUT_SEMANTIC_MAPPING",
+    "REPRESENTATION_IS_NOT_EXECUTION",
+    "DOCUMENTED_CLOSURE_IS_NOT_SCIENTIFIC_VALIDATION",
+    "RETROCONFIRMED_AGAINST_CURRENT_INVARIANTS_IS_NOT_HISTORICAL_TRUTH"
+  ],
+
+  "final_declaration": {
+    "statement": "Las obligaciones operativas son el mecanismo formal mediante el cual una ventana de contexto anterior puede transferir estado sin ejecutar el recurso. Este manifiesto las declara, las retro-confirma contra las invariantes actuales, y establece las condiciones bajo las cuales la ventana previa puede descargarlas sin sobreafirmar.",
+    "status": "READY_FOR_CONSUMPTION_BY_PREVIOUS_WINDOW"
+  }
+}
