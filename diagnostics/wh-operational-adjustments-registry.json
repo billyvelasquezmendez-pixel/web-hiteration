@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_OPERATIONAL_ADJUSTMENTS_REGISTRY",
+  "version": "1.0.0",
+  "protocol_reference": "WH-OPADJ-2026-09-25",
+  "document_type": "OPERATIONAL_ADJUSTMENTS_REGISTRY",
+  "date": "2026-09-25",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-operational-adjustments-registry.json",
+  "classification": "PROCESS_FORMALIZATION_DIAGNOSTIC",
+
+  "meta": {
+    "purpose": "Registrar formalmente los ajustes operativos que ya están en uso dentro del proyecto WEB_HITERATION pero que no cuentan todavía con documento propio en el repositorio.",
+    "scope": "Procedimientos, vocabulario y reglas de proceso adoptados durante el desarrollo reciente, cuya operatividad precede a su formalización documental.",
+    "core_rule": "OPERATIONAL_ADJUSTMENT_IS_NOT_RETROACTIVE_JUSTIFICATION",
+    "secondary_rule": "ADJUSTMENTS_DOCUMENTED_ARE_NOT_ADJUSTMENTS_VALIDATED",
+    "tertiary_rule": "PRACTICE_PRECEDES_DOCUMENTATION_AND_DOCUMENTATION_DOES_NOT_VALIDATE_PRACTICE",
+    "epistemic_boundary": "Este documento formaliza lo que ya opera. No valida los ajustes. No los convierte en evidencia. No modifica el corpus existente."
+  },
+
+  "purpose_and_scope": {
+    "why_this_registry_exists": "Seis ajustes operativos han sido adoptados en la práctica durante el desarrollo reciente del proyecto. Operan pero no tienen artefacto propio. Su operatividad sin documentación formal crea una brecha entre lo que el sistema hace y lo que el repositorio declara.",
+    "what_it_documents": "Procedimientos, terminología y reglas de proceso que ya se aplican.",
+    "what_it_does_not_do": [
+      "No modifica protocolos, extensiones o evidencia existentes.",
+      "No valida empíricamente ningún ajuste.",
+      "No convierte los ajustes en protocolos del núcleo.",
+      "No justifica retrospectivamente decisiones pasadas."
+    ],
+    "relationship_to_corpus": "Es un documento diagnóstico que reconoce brechas entre práctica y documentación, y las cierra formalmente."
+  },
+
+  "adjustments": [
+    {
+      "id": "ADJ-001",
+      "name": "ARTIFACT_DELIVERY_STANDARD",
+      "classification": "PROCEDURAL_STANDARD",
+      "adopted_date": "2026-09-23",
+      "nature": "Regla de entrega de artefactos JSON extensos al repositorio.",
+      "statement": "Cuando un artefacto JSON exceda el tamaño que garantiza copia íntegra sin truncamiento, se entrega dividido en partes numeradas con continuidad explícita declarada. Toda entrega incluye un bloque final llamado Resumen Operativo.",
+      "rules": [
+        "R1: Si excede el tamaño seguro, se divide en partes numeradas.",
+        "R2: Toda entrega incluye Resumen Operativo final con campos: archivo_a_subir, carpeta_destino, commit_message_sugerido, que_desbloquea, que_no_hace, proximo_artefacto_natural.",
+        "R3: artifact_version y delivery_part son dimensiones ortogonales. Las partes no son versiones.",
+        "R4: Si el artefacto cabe íntegro, no se divide."
+      ],
+      "required_fields_per_part": [
+        "artifact_id",
+        "artifact_version",
+        "delivery_part",
+        "total_parts",
+        "continuation_reference"
+      ],
+      "origin": "Aplicación de ARTIFACT_DELIVERY_SPLIT_RULE tras observación de truncamiento en copias extensas.",
+      "effect": "Elimina el truncamiento silencioso durante la transferencia de artefactos al repositorio.",
+      "no_effect": "No afecta la estructura interna del artefacto una vez consolidado.",
+      "related_invariants": [
+        "DELIVERY_FORMAT_IS_PART_OF_THE_ARTIFACT_NOT_DECORATION",
+        "SPLITTING_PRESERVES_INTEGRITY_WHERE_TRUNCATION_DESTROYS_IT"
+      ],
+      "formalization_status": "OPERATIVE_NOT_YET_AS_PROTOCOL",
+      "candidate_repository_location": "protocols/extensions/artifact-delivery-standard.json"
+    },
+    {
+      "id": "ADJ-002",
+      "name": "HUECO_TO_OBLIGATION_TERMINOLOGY_SHIFT",
+      "classification": "VOCABULARY_STANDARD",
+      "adopted_date": "2026-09-22",
+      "nature": "Cambio terminológico con consecuencias operativas.",
+      "statement": "El término HUECO se reemplaza por OBLIGATION. Razón: HUECO tiene connotación morfológica, sugiere espacio físico vacío. OBLIGATION viene de teoría de tipos y asistentes de prueba, describe una meta funcional con criterio de cierre, desacoplada de la lógica de ejecución estructural.",
+      "vocabulary_mapping": {
+        "hueco_abierto": "OPEN_OBLIGATION",
+        "hueco_cerrado": "DISCHARGED_OBLIGATION",
+        "hueco_parcial": "PARTIALLY_DISCHARGED_OBLIGATION",
+        "hueco_dudoso": "ADMITTED_OBLIGATION",
+        "criterio_de_cierre": "DISCHARGE_CRITERION",
+        "fuente_esperada": "DISCHARGE_SOURCE",
+        "rellenar_hueco": "DISCHARGE_OBLIGATION"
+      },
+      "origin": "Observación directa del autor sobre la imprecisión morfológica del término anterior.",
+      "effect": "Alinea el vocabulario del corpus con terminología establecida en teoría de tipos.",
+      "no_effect": "No modifica la función de las obligaciones. Solo su nomenclatura.",
+      "related_invariants": [
+        "AN_OBLIGATION_IS_A_FUNCTIONAL_DECLARATION_NOT_A_MORPHOLOGICAL_VOID"
+      ],
+      "formalization_status": "APPLIED_IN_MANIFEST_v1.0.1",
+      "candidate_repository_location": "ya aplicado en wh-operational-obligations-retroconfirmation-manifest.json"
+    },
+    {
+      "id": "ADJ-003",
+      "name": "DISCHARGE_SOURCE_AND_CLOSURE_STATE_SEPARATION",
+      "classification": "SCHEMA_STANDARD",
+      "adopted_date": "2026-09-22",
+      "nature": "Separación de dimensiones ortogonales en el esquema de obligaciones.",
+      "statement": "discharge_source y closure_state son dimensiones independientes. source describe de dónde se espera el contenido para descargar la obligación. closure_state describe el grado de descarga actual. Mezclarlas introduce confusión.",
+      "source_expected_values": [
+        "PREVIOUS_WINDOW_PROCESS",
+        "NEW_EMPIRICAL_EXECUTION",
+        "ARCHITECTURAL_DECISION"
+      ],
+      "closure_state_values": [
+        "OPEN_OBLIGATION",
+        "PARTIALLY_DISCHARGED_OBLIGATION",
+        "DISCHARGED_OBLIGATION",
+        "ADMITTED_OBLIGATION"
+      ],
+      "correction_applied": "PARCIALMENTE_DECLARADO fue eliminado de source_expected. Corresponde a closure_state, no a fuente.",
+      "origin": "Corrección tras auditoría de ChatGPT al manifiesto v1.0.0.",
+      "effect": "Elimina mezcla entre procedencia y grado de resolución.",
+      "no_effect": "No cambia el catálogo de obligaciones.",
+      "related_invariants": [
+        "SOURCE_DIMENSION_IS_ORTHOGONAL_TO_CLOSURE_DIMENSION",
+        "MIXING_SOURCE_AND_CLOSURE_IS_A_SCHEMA_ERROR"
+      ],
+      "formalization_status": "APPLIED_IN_MANIFEST_v1.0.1",
+      "candidate_repository_location": "ya aplicado en wh-operational-obligations-retroconfirmation-manifest.json"
+    },
+    {
+      "id": "ADJ-004",
+      "name": "DELTA_ENGINE_DUAL_SINGULARITY_RECOGNITION",
+      "classification": "STRUCTURAL_RECOGNITION",
+      "adopted_date": "2026-09-22",
+      "nature": "Reconocimiento de la existencia de dos motores DELTA no equivalentes.",
+      "statement": "Existen dos motores DELTA en el ecosistema WH: Motor A (evaluativo, output individual, 5 métricas en [0,5]) y Motor B (distribuido, red multi-agente, 3 métricas en [0,1]). Comparten símbolos pero no significados. Sus valores no son comparables sin mapeo semántico previo.",
+      "prohibitions": [
+        "No comparación cross-engine sin mapeo semántico.",
+        "No normalización como solución de equivalencia.",
+        "No mezcla de valores de Motor A y Motor B.",
+        "No uso de δ/δ′/score sin declarar motor."
+      ],
+      "mandatory_rule": "DELTA_NAMESPACE_DECLARATION_001 — toda aparición futura de P1, P3, P5, δ, δ′, score debe declarar motor y namespace.",
+      "origin": "Detección de divergencia durante auditoría de corpus por ChatGPT.",
+      "effect": "Bloquea comparaciones inválidas y preserva trazabilidad semántica.",
+      "no_effect": "No elimina ninguno de los dos motores. No resuelve cuál es canónico.",
+      "resolution_status": "DEFERRED_UNTIL_SEMANTIC_MAPPING_EXISTS",
+      "related_invariants": [
+        "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+        "NORMALIZATION_IS_NOT_SEMANTIC_EQUIVALENCE",
+        "NO_ENGINE_COMPARISON_WITHOUT_SEMANTIC_MAPPING"
+      ],
+      "formalization_status": "DECLARED_IN_DIAGNOSTIC_NOT_YET_AS_PROTOCOL",
+      "candidate_repository_location": "protocols/extensions/delta-engine-singularity-declaration.json"
+    },
+    {
+      "id": "ADJ-005",
+      "name": "PARTITION_IS_NOT_TRUNCATION",
+      "classification": "PROCESS_DISTINCTION",
+      "adopted_date": "2026-09-25",
+      "nature": "Distinción entre partición intencional y truncamiento accidental.",
+      "statement": "Un documento que aparece incompleto no es automáticamente evidencia de truncamiento, corrupción o fallo del auditor. La partición de JSON extensos es un workflow establecido, no un defecto.",
+      "handling_rule": [
+        "Identificar delivery_part y total_parts cuando hay partición.",
+        "Preservar el orden de partes.",
+        "Declarar si cada parte es parseable independientemente o requiere reconstrucción.",
+        "No clasificar una continuación faltante como defecto semántico hasta verificar el estado completo de entrega."
+      ],
+      "origin": "Feedback crítico de auditor central tras ciclos repetidos de corrección de artefactos particionados.",
+      "effect": "Reduce clasificaciones falsas de truncamiento.",
+      "no_effect": "No elimina la necesidad de verificar completitud. Solo distingue fallo de workflow.",
+      "related_invariants": [
+        "DOCUMENT_PARTITION_IS_NOT_DOCUMENT_FAILURE",
+        "DOCUMENT_TRUNCATION_IS_NOT_INFERRED_BEFORE_COMPLETENESS_CHECK"
+      ],
+      "formalization_status": "DOCUMENTED_IN_CRITICAL_FEEDBACK_REPORT",
+      "candidate_repository_location": "diagnostics/wh-central-auditor-critical-feedback-and-document-integrity-report.json"
+    },
+    {
+      "id": "ADJ-006",
+      "name": "FUNCTIONAL_ESCALATION_FALLBACK",
+      "classification": "PROCESS_STANDARD",
+      "adopted_date": "2026-09-25",
+      "nature": "Regla de recuperación ante anomalía persistente de generación documental.",
+      "statement": "Cuando el mismo artefacto solicitado permanece estructural o semánticamente incorrecto después de al menos dos ciclos documentados de corrección, y la especificación es inequívoca, se permite que otra plataforma reconstruya el artefacto como mecanismo de recuperación funcional.",
+      "trigger_conditions": [
+        "Mismo artefacto incorrecto tras al menos dos ciclos de corrección documentados.",
+        "Especificación y formato de salida inequívocos."
+      ],
+      "procedure": [
+        "Preservar el artefacto fallido original.",
+        "Registrar la corrección solicitada explícitamente.",
+        "Determinar si el fallo es de delivery, reconstrucción, sintaxis, semántica o target-path.",
+        "Solicitar regeneración, no solo reiterar la corrección.",
+        "Si persiste, permitir plataforma alternativa para reconstruir.",
+        "Comparar contra la especificación original.",
+        "No interpretar divergencia de plataforma como evidencia de arquitectura interna."
+      ],
+      "fallback_platform": {
+        "candidate": "CHATGPT",
+        "role": "DOCUMENT_RECONSTRUCTION_AND_GENERATION_FALLBACK",
+        "limitation": "El fallback no constituye autoridad epistemológica superior."
+      },
+      "origin": "Observación de ciclos repetidos de corrección no resueltos en la misma plataforma.",
+      "effect": "Introduce mecanismo de recuperación funcional.",
+      "no_effect": "No sustituye plataformas. No confiere superioridad.",
+      "related_invariants": [
+        "ESCALATION_IS_A_FUNCTIONAL_RECOVERY_MECHANISM_NOT_PLATFORM_REPLACEMENT",
+        "FALLBACK_GENERATION_IS_NOT_EPISTEMIC_SUPERIORITY",
+        "REGENERATION_IS_NOT_VALIDATION"
+      ],
+      "formalization_status": "DECLARED_IN_CRITICAL_FEEDBACK_NOT_YET_AS_PROTOCOL",
+      "candidate_repository_location": "diagnostics/wh-central-auditor-critical-feedback-and-document-integrity-report.json"
+    }
+  ],
+
+  "summary": {
+    "total_adjustments_registered": 6,
+    "by_classification": {
+      "PROCEDURAL_STANDARD": 1,
+      "VOCABULARY_STANDARD": 1,
+      "SCHEMA_STANDARD": 1,
+      "STRUCTURAL_RECOGNITION": 1,
+      "PROCESS_DISTINCTION": 1,
+      "PROCESS_STANDARD": 1
+    },
+    "by_formalization_status": {
+      "OPERATIVE_NOT_YET_AS_PROTOCOL": 1,
+      "APPLIED_IN_MANIFEST_v1.0.1": 2,
+      "DECLARED_IN_DIAGNOSTIC_NOT_YET_AS_PROTOCOL": 1,
+      "DOCUMENTED_IN_CRITICAL_FEEDBACK_REPORT": 1,
+      "DECLARED_IN_CRITICAL_FEEDBACK_NOT_YET_AS_PROTOCOL": 1
+    },
+    "candidates_for_future_protocols": [
+      "ADJ-001 (ARTIFACT_DELIVERY_STANDARD)",
+      "ADJ-004 (DELTA_ENGINE_SINGULARITY_DECLARATION)",
+      "ADJ-006 (FUNCTIONAL_ESCALATION_FALLBACK)"
+    ],
+    "already_applied_in_corpus": [
+      "ADJ-002 (ya en manifiesto v1.0.1)",
+      "ADJ-003 (ya en manifiesto v1.0.1)",
+      "ADJ-005 (ya en feedback crítico)"
+    ]
+  },
+
+  "relationship_to_corpus": {
+    "diagnostic_layer": "Este registro pertenece a /diagnostics/. No modifica el núcleo.",
+    "no_conflict_with_protocols": "Ninguno de los ajustes contradice C1-C5 ni R5.",
+    "reinforces": [
+      "C1 (FUNCTION_OVER_IDENTITY) — aplicado en ADJ-006",
+      "C3 (SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION) — aplicado en ADJ-004 y ADJ-006",
+      "R5 (REPRESENTATION_IS_NOT_EXECUTION) — aplicado en ADJ-001 y ADJ-005"
+    ]
+  },
+
+  "rules_of_use": {
+    "allowed": [
+      "Registrar nuevos ajustes operativos cuando se adopten.",
+      "Promover un ajuste a protocolo formal cuando exista verificación previa.",
+      "Referenciar este registro desde auditorías de proceso.",
+      "Declarar el estado de formalización de cada ajuste."
+    ],
+    "prohibited": [
+      "Declarar un ajuste como validado empíricamente por estar documentado.",
+      "Modificar un ajuste existente sin nueva entrada.",
+      "Eliminar un ajuste.",
+      "Convertir este registro en protocolo del núcleo sin verificación."
+    ]
+  },
+
+  "terminal_invariants": [
+    "OPERATIONAL_ADJUSTMENT_IS_NOT_RETROACTIVE_JUSTIFICATION",
+    "ADJUSTMENTS_DOCUMENTED_ARE_NOT_ADJUSTMENTS_VALIDATED",
+    "PRACTICE_PRECEDES_DOCUMENTATION_AND_DOCUMENTATION_DOES_NOT_VALIDATE_PRACTICE",
+    "ADJUSTMENT_REGISTRY_IS_NOT_PROTOCOL",
+    "DOCUMENTED_PROCESS_IS_NOT_EXECUTED_PROCESS",
+    "PROCESS_STANDARD_IS_NOT_EMPIRICAL_VALIDATION",
+    "OPERATIONAL_REGISTRY_IS_NOT_SCIENTIFIC_CLAIM"
+  ],
+
+  "final_declaration": {
+    "statement": "El WH_OPERATIONAL_ADJUSTMENTS_REGISTRY documenta seis ajustes operativos que ya están en uso en el proyecto WEB_HITERATION. Tres de ellos ya están aplicados en el corpus (ADJ-002, ADJ-003, ADJ-005). Tres son candidatos a promoción como protocolos formales (ADJ-001, ADJ-004, ADJ-006). Ningún ajuste ha sido validado empíricamente. Ninguno modifica el núcleo. El registro cierra la brecha entre práctica operativa y documentación formal.",
+    "repository_status": "READY_FOR_REPOSITORY",
+    "empirical_claims": "NONE_ESTABLISHED",
+    "causal_claims": "NONE_ESTABLISHED",
+    "protocol_promotion_candidates": 3,
+    "next_artifact": "Promoción de candidatos a protocolo o confirmación de subidas pendientes"
+  }
+}
