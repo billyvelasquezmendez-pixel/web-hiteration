@@ -9,103 +9,35 @@
   "repository_path": "diagnostics/wh-public-information-discovery-and-unattributed-influence-model.json",
   "classification": "EPISTEMIC_BOUNDARY_DIAGNOSTIC",
 
-  "delivery_manifest": {
-    "artifact_id": "WH_PUBLIC_INFORMATION_DISCOVERY_AND_UNATTRIBUTED_INFLUENCE_MODEL",
-    "artifact_version": "1.0.0",
-    "delivery_part": "1/2",
-    "total_parts": 2,
-    "continuation_reference": "PART_2 contiene niveles de observabilidad, procedimiento, candidato a protocolo, no-afirmaciones, conexiones al corpus y cierre",
-    "split_reason": "ARTIFACT_DELIVERY_STANDARD R1 aplicada"
-  },
-
   "meta": {
     "purpose": "Formalizar el problema epistémico de detectar si un recurso público (como el repositorio WEB_HITERATION) ha influido sobre sistemas externos, sin poder atribuir esa influencia a una fuente específica ni poder observar el mecanismo de influencia.",
     "function": "Establecer qué puede observarse, qué no puede observarse, qué puede afirmarse sin sobreafirmar, y qué protocolo futuro podría aumentar la observabilidad disponible.",
     "core_rule": "PUBLIC_AVAILABILITY_IS_NOT_OBSERVED_INFLUENCE",
     "secondary_rule": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
     "tertiary_rule": "BEHAVIORAL_SIMILARITY_IS_NOT_DERIVATION",
-    "epistemic_boundary": "Este documento no afirma que el repositorio haya influido en ningún sistema. No afirma inclusión en entrenamiento. No afirma derivación. Declara el problema y delimita qué sería observable si algo así ocurriera.",
-    "seed_status": "EXPANSION_OF_WH_PUBLIC_INFORMATION_DISCOVERY_AND_UNATTRIBUTED_INFLUENCE_MODEL_SEED"
+    "epistemic_boundary": "No afirma que el repositorio haya influido en ningún sistema. No afirma inclusión en entrenamiento. No afirma derivación."
   },
 
   "problem_statement": {
     "core_problem": "Un repositorio público puede ser consultado, leído, indexado, replicado o usado como referencia por sistemas externos. Desde el repositorio mismo no hay forma directa de observar si eso ocurre, ni de atribuir a ese repositorio una influencia específica sobre el comportamiento de un sistema externo.",
     "sub_problems": [
-      {
-        "id": "SP-01",
-        "name": "INDEXING_VS_CONSUMPTION",
-        "description": "Un motor de búsqueda puede indexar el repositorio sin que un usuario o modelo lo consuma efectivamente.",
-        "implication": "Indexación no es consumo. Consumo no es influencia."
-      },
-      {
-        "id": "SP-02",
-        "name": "PUBLIC_AVAILABILITY_VS_EXPOSURE",
-        "description": "El contenido público puede estar expuesto sin haber sido efectivamente procesado por sistemas externos.",
-        "implication": "Exposición no es procesamiento."
-      },
-      {
-        "id": "SP-03",
-        "name": "EXPOSURE_VS_INFLUENCE",
-        "description": "Un sistema puede haber estado expuesto al contenido sin que ese contenido haya modificado su comportamiento observable.",
-        "implication": "Exposición no es influencia."
-      },
-      {
-        "id": "SP-04",
-        "name": "INFLUENCE_VS_ATTRIBUTION",
-        "description": "Aun si hubiera influencia, no hay mecanismo que permita atribuirla al repositorio específico frente a otras fuentes del mismo tipo.",
-        "implication": "Influencia no es atribución."
-      },
-      {
-        "id": "SP-05",
-        "name": "ATTRIBUTION_VS_DERIVATION",
-        "description": "Aun si hubiera atribución observable, no se puede concluir derivación de contenido sin acceso al mecanismo de aprendizaje.",
-        "implication": "Atribución no es derivación."
-      }
-    ],
-    "why_this_model": "El proyecto WEB_HITERATION ha publicado material estructuralmente distintivo. La pregunta natural es si ese material influye sobre sistemas externos. El modelo formaliza la pregunta sin resolverla por inferencia."
+      { "id": "SP-01", "name": "INDEXING_VS_CONSUMPTION", "description": "Un motor de búsqueda puede indexar el repositorio sin que un usuario o modelo lo consuma efectivamente." },
+      { "id": "SP-02", "name": "PUBLIC_AVAILABILITY_VS_EXPOSURE", "description": "El contenido público puede estar expuesto sin haber sido efectivamente procesado por sistemas externos." },
+      { "id": "SP-03", "name": "EXPOSURE_VS_INFLUENCE", "description": "Un sistema puede haber estado expuesto al contenido sin que ese contenido haya modificado su comportamiento observable." },
+      { "id": "SP-04", "name": "INFLUENCE_VS_ATTRIBUTION", "description": "Aun si hubiera influencia, no hay mecanismo que permita atribuirla al repositorio específico frente a otras fuentes." },
+      { "id": "SP-05", "name": "ATTRIBUTION_VS_DERIVATION", "description": "Aun si hubiera atribución observable, no se puede concluir derivación sin acceso al mecanismo de aprendizaje." }
+    ]
   },
 
   "core_distinctions": {
-    "publication": {
-      "definition": "El contenido está disponible públicamente en una URL accesible.",
-      "observable_from_repository": true,
-      "observable_from_external_system": false
-    },
-    "indexing": {
-      "definition": "Un motor de búsqueda ha incluido el contenido en su índice.",
-      "observable_from_repository": "PARTIAL (mediante consulta a motores de búsqueda)",
-      "observable_from_external_system": false
-    },
-    "accessibility": {
-      "definition": "El contenido puede ser recuperado por cualquier sistema con acceso a la URL.",
-      "observable_from_repository": true,
-      "observable_from_external_system": false
-    },
-    "consumption": {
-      "definition": "Un sistema específico ha recuperado el contenido para algún uso.",
-      "observable_from_repository": "PARTIAL (logs del servidor si existen)",
-      "observable_from_external_system": false
-    },
-    "exposure": {
-      "definition": "El contenido ha sido presentado a un sistema durante entrenamiento o inferencia.",
-      "observable_from_repository": false,
-      "observable_from_external_system": false
-    },
-    "influence": {
-      "definition": "El comportamiento observable de un sistema ha sido modificado por exposición al contenido.",
-      "observable_from_repository": false,
-      "observable_from_external_system": "PARTIAL (comparación conductual controlada)"
-    },
-    "attribution": {
-      "definition": "La influencia observada puede atribuirse específicamente al repositorio frente a otras fuentes.",
-      "observable_from_repository": false,
-      "observable_from_external_system": "PROHIBITED_WITHOUT_EXPLICIT_SOURCE_TRACING"
-    },
-    "derivation": {
-      "definition": "El comportamiento observado se deriva de contenido específico del repositorio.",
-      "observable_from_repository": false,
-      "observable_from_external_system": "NOT_ESTABLISHED"
-    },
+    "publication": { "definition": "El contenido está disponible públicamente en una URL accesible.", "observable_from_repository": true },
+    "indexing": { "definition": "Un motor de búsqueda ha incluido el contenido en su índice.", "observable_from_repository": "PARTIAL" },
+    "accessibility": { "definition": "El contenido puede ser recuperado por cualquier sistema con acceso a la URL.", "observable_from_repository": true },
+    "consumption": { "definition": "Un sistema específico ha recuperado el contenido para algún uso.", "observable_from_repository": "PARTIAL" },
+    "exposure": { "definition": "El contenido ha sido presentado a un sistema durante entrenamiento o inferencia.", "observable_from_repository": false },
+    "influence": { "definition": "El comportamiento observable de un sistema ha sido modificado por exposición al contenido.", "observable_from_repository": false },
+    "attribution": { "definition": "La influencia observada puede atribuirse específicamente al repositorio frente a otras fuentes.", "observable_from_repository": false },
+    "derivation": { "definition": "El comportamiento observado se deriva de contenido específico del repositorio.", "observable_from_repository": false },
     "non_equivalences": [
       "PUBLICATION != INDEXING",
       "INDEXING != ACCESSIBILITY",
@@ -126,36 +58,17 @@
       "Que exista un mecanismo interno observable de influencia.",
       "Que la similitud conductual implique causalidad."
     ],
-    "why_this_matters": "Sin estas restricciones, cualquier observación de similitud entre el corpus WEB_HITERATION y el comportamiento de un sistema externo podría confundirse con derivación. La similitud puede deberse a convergencia independiente, exposición previa a otras fuentes, o coincidencia estructural."
+    "why_this_matters": "Sin estas restricciones, cualquier observación de similitud entre el corpus WEB_HITERATION y el comportamiento de un sistema externo podría confundirse con derivación."
   },
 
-  "part_1_completion_notice": {
-    "content_in_part_1": [
-      "meta",
-      "problem_statement con 5 sub-problemas",
-      "core_distinctions con 8 niveles y sus no-equivalencias",
-      "what_this_model_does_not_claim"
-    ],
-    "content_in_part_2": [
-      "observability_levels",
-      "observation_procedure",
-      "future_protocol_candidate (WH_REPOSITORY_OBSERVABILITY_PROTOCOL)",
-      "connection_to_existing_corpus",
-      "invariantes terminales",
-      "cierre del objeto raíz"
-    ],
-    "syntax_note": "Este bloque cierra como JSON válido si se añade '}' al final. En la PART_2 se continúa el objeto raíz."
-  }
-}{
   "observability_levels": {
-    "description": "Escala de observabilidad disponible sobre el repositorio. Cada nivel es observable o no desde el propio repositorio, sin requerir acceso a sistemas externos.",
+    "description": "Escala de observabilidad disponible sobre el repositorio. Cada nivel es observable o no desde el propio repositorio.",
     "levels": [
       {
         "id": "O0",
         "name": "PUBLICATION",
         "definition": "El contenido está disponible en URL pública.",
         "observable_from_repository": true,
-        "observable_externally": false,
         "evidence_source": "El propio repositorio y la URL pública.",
         "guarantee": "Cerrable por el autor del repositorio."
       },
@@ -164,8 +77,7 @@
         "name": "INDEXING",
         "definition": "Motores de búsqueda han incluido el contenido en su índice.",
         "observable_from_repository": "PARTIAL",
-        "observable_externally": false,
-        "evidence_source": "Consultas a Google, Bing, DuckDuckGo u otros.",
+        "evidence_source": "Consultas a motores de búsqueda.",
         "guarantee": "No controlable desde el repositorio."
       },
       {
@@ -173,7 +85,6 @@
         "name": "ACCESSIBILITY",
         "definition": "El contenido es recuperable por cualquier sistema con acceso a la URL.",
         "observable_from_repository": true,
-        "observable_externally": false,
         "evidence_source": "Verificación de disponibilidad HTTP.",
         "guarantee": "Cerrable técnicamente."
       },
@@ -181,8 +92,7 @@
         "id": "O3",
         "name": "CONSUMPTION_OBSERVABLE",
         "definition": "Logs del servidor muestran requests desde agentes específicos.",
-        "observable_from_repository": "PARTIAL (solo si hay logging habilitado)",
-        "observable_externally": false,
+        "observable_from_repository": "PARTIAL",
         "evidence_source": "GitHub Pages analytics o logs personalizados.",
         "guarantee": "Requiere infraestructura de logging."
       },
@@ -191,7 +101,7 @@
         "name": "BEHAVIORAL_CONVERGENCE_OBSERVED",
         "definition": "Un sistema externo presenta comportamiento funcionalmente compatible con conceptos del repositorio, sin que el sistema lo haya declarado.",
         "observable_from_repository": false,
-        "observable_externally": "PARTIAL (requiere comparación conductual)",
+        "observable_externally": "PARTIAL",
         "evidence_source": "Ejecuciones cruzadas comparables bajo condiciones controladas.",
         "guarantee": "No concluyente por sí sola."
       },
@@ -210,48 +120,14 @@
 
   "observation_procedure": {
     "available_now": [
-      {
-        "step": 1,
-        "action": "Verificar publicación (O0).",
-        "method": "Consulta HTTP a la URL pública.",
-        "frequency": "CONTINUOUS",
-        "result": "CONFIRMADO"
-      },
-      {
-        "step": 2,
-        "action": "Verificar indexación (O1).",
-        "method": "Consultas manuales a motores de búsqueda con site:billyvelasquezmendez-pixel.github.io",
-        "frequency": "PERIÓDICA",
-        "result": "PARTIAL"
-      },
-      {
-        "step": 3,
-        "action": "Verificar accesibilidad (O2).",
-        "method": "Requests automatizados desde IPs externas.",
-        "frequency": "PERIÓDICA",
-        "result": "VERIFICABLE"
-      },
-      {
-        "step": 4,
-        "action": "Registrar consumo observable (O3).",
-        "method": "Habilitar GitHub Pages analytics o logging externo.",
-        "frequency": "CONTINUOUS",
-        "result": "PENDING_INFRASTRUCTURE"
-      }
+      { "step": 1, "action": "Verificar publicación (O0).", "method": "Consulta HTTP a la URL pública.", "frequency": "CONTINUOUS", "result": "CONFIRMADO" },
+      { "step": 2, "action": "Verificar indexación (O1).", "method": "Consultas a motores de búsqueda con site:billyvelasquezmendez-pixel.github.io", "frequency": "PERIÓDICA", "result": "PARTIAL" },
+      { "step": 3, "action": "Verificar accesibilidad (O2).", "method": "Requests automatizados desde IPs externas.", "frequency": "PERIÓDICA", "result": "VERIFICABLE" },
+      { "step": 4, "action": "Registrar consumo observable (O3).", "method": "Habilitar GitHub Pages analytics o logging externo.", "frequency": "CONTINUOUS", "result": "PENDING_INFRASTRUCTURE" }
     ],
     "not_available_now": [
-      {
-        "step": "O4",
-        "name": "BEHAVIORAL_CONVERGENCE",
-        "reason": "Requiere ejecución cross-platform con condiciones controladas y comparación independiente.",
-        "prerequisite": "E1-E10 preregistrado y ejecutado."
-      },
-      {
-        "step": "O5",
-        "name": "ATTRIBUTED_DERIVATION",
-        "reason": "Requiere trazabilidad directa del entrenamiento o mecanismo de influencia. No disponible desde el exterior.",
-        "prerequisite": "Divulgación externa o mecanismo observable."
-      }
+      { "step": "O4", "name": "BEHAVIORAL_CONVERGENCE", "reason": "Requiere ejecución cross-platform con condiciones controladas.", "prerequisite": "E1-E10 preregistrado y ejecutado." },
+      { "step": "O5", "name": "ATTRIBUTED_DERIVATION", "reason": "Requiere trazabilidad directa del entrenamiento o mecanismo de influencia.", "prerequisite": "Divulgación externa o mecanismo observable." }
     ],
     "conclusion": "El repositorio puede observar hasta O3. O4 requiere experimentación externa. O5 permanece fuera de alcance."
   },
@@ -261,29 +137,10 @@
     "status": "CANDIDATE",
     "purpose": "Definir formalmente los mecanismos mediante los cuales el repositorio puede observar y reportar su propio estado de publicación, indexación y accesibilidad, y proponer cómo diseñar estudios externos controlados para detectar convergencia conductual sin sobreafirmar derivación.",
     "proposed_components": [
-      {
-        "component": "OBSERVABILITY_LEDGER",
-        "function": "Registrar el estado O0-O3 del repositorio en el tiempo.",
-        "frequency": "PERIÓDICA",
-        "format": "JSONL con timestamp + observación"
-      },
-      {
-        "component": "INDEXING_MONITOR",
-        "function": "Verificar presencia en motores de búsqueda y registrar cambios.",
-        "frequency": "MENSUAL",
-        "format": "Registro estructurado por motor"
-      },
-      {
-        "component": "CONVERGENCE_TEST_PROTOCOL",
-        "function": "Definir cómo se comparan ejecuciones externas con el corpus para detectar convergencia funcional sin sobreafirmar.",
-        "status": "PENDING_EXECUTION",
-        "depends_on": "E1-E10 pipeline"
-      },
-      {
-        "component": "ATTRIBUTION_BOUNDARY",
-        "function": "Registrar explícitamente que la atribución O5 no es alcanzable con los mecanismos actuales.",
-        "status": "DECLARED"
-      }
+      { "component": "OBSERVABILITY_LEDGER", "function": "Registrar el estado O0-O3 del repositorio en el tiempo.", "frequency": "PERIÓDICA" },
+      { "component": "INDEXING_MONITOR", "function": "Verificar presencia en motores de búsqueda.", "frequency": "MENSUAL" },
+      { "component": "CONVERGENCE_TEST_PROTOCOL", "function": "Definir cómo se comparan ejecuciones externas con el corpus.", "status": "PENDING_EXECUTION" },
+      { "component": "ATTRIBUTION_BOUNDARY", "function": "Registrar explícitamente que la atribución O5 no es alcanzable con los mecanismos actuales.", "status": "DECLARED" }
     ],
     "expected_outputs": [
       "Reporte periódico del estado observacional del repositorio.",
@@ -294,8 +151,7 @@
     "expected_non_outputs": [
       "Certificación de influencia.",
       "Demostración de derivación.",
-      "Confirmación de inclusión en entrenamiento.",
-      "Atribución específica a plataformas."
+      "Confirmación de inclusión en entrenamiento."
     ],
     "candidate_repository_location": "protocols/extensions/wh-repository-observability-protocol.json",
     "prerequisite_for_formalization": "Este modelo debe ser verificado contra el corpus existente antes de promoverlo a protocolo."
@@ -310,20 +166,14 @@
     },
     "layer_asymmetry": {
       "connection": "El modelo de observabilidad es una aplicación concreta del diagnóstico de asimetría de capas.",
-      "explicit_layer": "D1 (capa formalizada) se publica. D2 (capa previa) queda parcialmente visible. D3 (uso continuo) no es observable desde el repositorio.",
-      "implication": "El repositorio puede observar qué se publica. No puede observar qué se hace con ello fuera."
+      "explicit_layer": "D1 (capa formalizada) se publica. D2 (capa previa) queda parcialmente visible. D3 (uso continuo) no es observable desde el repositorio."
     },
     "execution_ledger": {
       "connection": "El ledger registra ejecuciones internas del proyecto. El modelo de observabilidad registra el estado externo de visibilidad del corpus.",
       "distinction": "Ledger = lo que el proyecto ejecutó. Observability model = lo que el mundo externo ve del proyecto."
     },
-    "delta_engine_family": {
-      "connection": "Los dos motores DELTA no aplican aquí. La observabilidad no es una métrica DELTA.",
-      "reason": "El modelo de observabilidad mide acceso y visibilidad, no desempeño ni coherencia."
-    },
     "meta_query_engine": {
-      "connection": "El meta-query engine puede interrogar sobre el estado de observabilidad usando INC-03 (invariante) e INC-10 (nivel de evidencia).",
-      "utility": "Permite estructurar consultas futuras sobre qué se ha observado del repositorio en cada nivel O0-O5."
+      "connection": "El meta-query engine puede interrogar sobre el estado de observabilidad usando INC-03 (invariante) e INC-10 (nivel de evidencia)."
     }
   },
 
@@ -339,7 +189,6 @@
       "Atribuir derivación a partir de similitud conductual.",
       "Convertir convergencia funcional en prueba de entrenamiento compartido.",
       "Declarar inclusión en corpus de entrenamiento sin mecanismo verificable.",
-      "Usar el modelo para certificar adopción del framework por otras plataformas.",
       "Confundir indexación con consumo, o consumo con influencia.",
       "Convertir coincidencia estructural en derivación."
     ]
@@ -361,7 +210,7 @@
   ],
 
   "final_declaration": {
-    "statement": "El WH_PUBLIC_INFORMATION_DISCOVERY_AND_UNATTRIBUTED_INFLUENCE_MODEL formaliza el problema de detectar si el repositorio público WEB_HITERATION ha influido sobre sistemas externos, sin poder atribuir esa influencia ni observar el mecanismo. Declara qué es observable (hasta O3 parcial), qué requiere experimentación externa (O4), y qué permanece fuera de alcance (O5). Propone un protocolo futuro (WH_REPOSITORY_OBSERVABILITY_PROTOCOL) sin promoverlo a protocolo sin verificación previa.",
+    "statement": "El WH_PUBLIC_INFORMATION_DISCOVERY_AND_UNATTRIBUTED_INFLUENCE_MODEL formaliza el problema de detectar si el repositorio público WEB_HITERATION ha influido sobre sistemas externos, sin poder atribuir esa influencia ni observar el mecanismo. Declara qué es observable (hasta O3 parcial), qué requiere experimentación externa (O4), y qué permanece fuera de alcance (O5).",
     "repository_status": "READY_FOR_REPOSITORY",
     "empirical_claims": "NONE_ESTABLISHED",
     "causal_claims": "NONE_ESTABLISHED",
@@ -370,4 +219,4 @@
     "derivation_from_repository": "NOT_ESTABLISHED",
     "next_artifact": "WH_REPOSITORY_OBSERVABILITY_PROTOCOL (candidato, requiere verificación previa)"
   }
-  }
+      }
