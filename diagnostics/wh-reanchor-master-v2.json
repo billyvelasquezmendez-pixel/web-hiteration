@@ -1,0 +1,474 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_REANCHOR_MASTER_v2.0",
+  "version": "2.0.0",
+  "protocol_reference": "WH-REANCHOR-2026-09-26",
+  "document_type": "REANCHOR_MASTER",
+  "date": "2026-09-26",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-reanchor-master-v2.json",
+  "supersedes": "WH_DEEPSEEK_CONTEXT_REANCHOR_MASTER v1.0.0 (2026-09-19)",
+
+  "delivery_manifest": {
+    "artifact_id": "WH_REANCHOR_MASTER_v2.0",
+    "artifact_version": "2.0.0",
+    "delivery_part": "1/2",
+    "total_parts": 2,
+    "continuation_reference": "PART_2 contiene project_state, current_operational_phase, repository_content_map, pending_artifacts, prohibitions, terminal_invariants, declaración final"
+  },
+
+  "IMPORTANT_EXECUTION_INSTRUCTION": {
+    "purpose": "Reconstruir el estado funcional, metodológico y epistémico del proyecto WEB_HITERATION tras pérdida o cambio de ventana de contexto.",
+    "interpretation": "Este documento es un artefacto externo de reanclaje contextual. No constituye evidencia de memoria interna, aprendizaje permanente, almacenamiento paramétrico ni continuidad interna del modelo receptor.",
+    "primary_rule": "TRANSFER_INVARIANTS_NOT_VERBATIM_HISTORY",
+    "required_behavior": [
+      "Reconstruir primero la arquitectura conceptual.",
+      "Separar hechos observados de hipótesis.",
+      "Separar documentos declarativos de evidencia experimental.",
+      "No elevar métricas declaradas a mediciones independientes.",
+      "No convertir convergencia entre modelos en prueba causal.",
+      "No atribuir resultados a arquitectura interna de ningún modelo.",
+      "No asumir que una ventana nueva contiene memoria de la anterior.",
+      "Utilizar este documento como contexto de trabajo y no como prueba de memoria."
+    ]
+  },
+
+  "PROJECT_IDENTITY": {
+    "project_name": "WEB_HITERATION",
+    "abbreviation": "WHP",
+    "originating_framework": "WEB_HITERATION_PROTOCOL",
+    "current_research_question": "Determinar si una estructura externa de organización, transferencia, reconstrucción y reanclaje contextual produce diferencias funcionales observables, reproducibles y falsables en la ejecución de modelos de IA bajo condiciones controladas.",
+    "non_claim": "No se pretende demostrar la existencia de un mecanismo interno llamado Web Hiteration dentro de ningún modelo.",
+    "central_methodological_boundary": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "scientific_status": "PROMISING_BUT_PRECAUSAL",
+    "maturity_axes": {
+      "documentary_formalization": "ADVANCED",
+      "experimental_validation": "PENDING",
+      "independent_replication": "NOT_ESTABLISHED",
+      "causal_WH_effect": "NOT_ESTABLISHED"
+    }
+  },
+
+  "PROJECT_HISTORY_COMPRESSION": {
+    "stage_1_conceptual_formation": {
+      "period": "2026-03",
+      "elements": ["Web Hiteration", "Operator H", "diagnóstico inverso", "reanclaje contextual", "taxonomía R1-R7", "Glitchorium", "Hyper Ratio", "CONI", "Delta Engine"],
+      "status": "HISTORICAL_CONCEPTUAL_LAYER (D2)"
+    },
+    "stage_2_operationalization": {
+      "period": "2026-03 a 2026-09",
+      "elements": ["benchmarks", "baseline versus WH", "E1-E10", "objective validation", "independent evaluation", "cross-model execution", "controlled falsification"],
+      "status": "OPERATIONAL_FRAMEWORK"
+    },
+    "stage_3_epistemic_reduction": {
+      "period": "2026-09",
+      "main_change": "Se redujeron afirmaciones ontológicas o internas a formulaciones observacionales y operacionales.",
+      "status": "COMPLETED_PARTIALLY"
+    },
+    "stage_4_cross_platform_audit": {
+      "period": "2026-09",
+      "platforms": ["ChatGPT", "Gemini", "DeepSeek", "Meta AI Muse Spark", "Google AI Mode"],
+      "status": "PRELIMINARY_CROSS_PLATFORM_CONVERGENCE"
+    },
+    "stage_5_consolidation": {
+      "period": "2026-09-19 a 2026-09-26",
+      "main_change": "Consolidación documental en repositorio público. Formalización de estándares operativos. Corrección de JSON inválidos.",
+      "status": "ACTIVE"
+    }
+  },
+
+  "CORE_EPISTEMIC_INVARIANTS": {
+    "status": "FROZEN_FOR_NEXT_VALIDATION_PHASE",
+    "rule": "No añadir nuevas invariantes sin auditoría específica.",
+    "C1": {
+      "name": "MODEL_IS_NOT_SYSTEM",
+      "meaning": "Un modelo de IA es un componente de un sistema mayor.",
+      "boundary": "No reducir la explicación funcional del sistema a la identidad nominal del modelo.",
+      "status": "FORMALIZED"
+    },
+    "C2": {
+      "name": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+      "meaning": "La identidad o representación de un agente no constituye autoridad de ejecución.",
+      "boundary": "Representar una acción no demuestra capacidad ni autorización para ejecutarla.",
+      "status": "FORMALIZED"
+    },
+    "C3": {
+      "name": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+      "meaning": "La autoevaluación de un sistema no constituye validación independiente.",
+      "requirements": ["separación funcional generación/evaluación", "mecanismo exógeno", "control de contaminación"],
+      "status": "OPERATIONALIZED"
+    },
+    "C4": {
+      "name": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+      "meaning": "Tras pérdida de contexto, la continuidad estructural observable puede requerir reconstrucción o reanclaje.",
+      "critical_boundary": "NO afirmar que la memoria interna del modelo se pierde, conserva o reconstruye.",
+      "status": "OPERATIONALIZED_PENDING_VERIFICATION"
+    },
+    "C5": {
+      "name": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+      "meaning": "Las afirmaciones causales o generalizables requieren pruebas controladas de aislamiento.",
+      "minimum_requirements": ["BASELINE", "EXPERIMENTAL_CONDITION", "CONTROLLED_VARIABLES", "PREDEFINED_FALSIFICATION_CRITERION", "REPRODUCTION_PROCEDURE", "INDEPENDENT_EVALUATION"],
+      "status": "OPERATIONALIZED_PENDING_EXECUTION"
+    },
+    "R5": {
+      "name": "REPRESENTATION_IS_NOT_EXECUTION",
+      "extended_chain": ["CAPABILITY", "AVAILABILITY", "EXECUTION", "FIDELITY", "SUCCESS"],
+      "status": "STRONGLY_FORMALIZED"
+    }
+  },
+
+  "part_1_completion_notice": {
+    "content_in_part_1": [
+      "IMPORTANT_EXECUTION_INSTRUCTION",
+      "PROJECT_IDENTITY",
+      "PROJECT_HISTORY_COMPRESSION",
+      "CORE_EPISTEMIC_INVARIANTS"
+    ],
+    "content_in_part_2": [
+      "META_INVARIANTS",
+      "THREE_STRUCTURAL_LAYERS (D1/D2/D3)",
+      "PRELIMINARY_METRICS (Hyper Ratio, Glitchorium, Delta engines, CONI, S0-S4, P_DRIFT)",
+      "CURRENT_OPERATIONAL_PHASE",
+      "REPOSITORY_CONTENT_MAP",
+      "PENDING_ARTIFACTS",
+      "PROHIBITIONS",
+      "TERMINAL_INVARIANTS",
+      "final_declaration y cierre"
+    ],
+    "consolidation_note": "Al unir PART_1 + PART_2, eliminar delivery_manifest y part_1_completion_notice. Cerrar el objeto raíz."
+  }
+}{
+  "META_INVARIANTS": {
+    "core": [
+      "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+      "MODEL_IS_NOT_SYSTEM",
+      "CAPABILITY_IS_NOT_EXECUTION",
+      "REPRESENTATION_IS_NOT_ACTION",
+      "ALIGNMENT_IS_NOT_VALIDITY",
+      "FUNCTION_OVER_IDENTITY",
+      "RESTRICTION_IS_ROUTING_INFORMATION",
+      "SIMULATION_IS_NOT_MEASUREMENT",
+      "CONVERGENCE_IS_NOT_PROOF",
+      "BEHAVIORAL_ISOMORPHY_IS_NOT_ONTOLOGICAL_IDENTITY"
+    ],
+    "structural": [
+      "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+      "NORMALIZATION_IS_NOT_SEMANTIC_EQUIVALENCE",
+      "FORMULA_IS_NOT_MEASUREMENT",
+      "PARAMETRIZATION_IS_NOT_VALIDATION",
+      "DOCUMENTARY_ACCESS_IS_NOT_SYSTEM_INTEGRATION",
+      "SYSTEM_INTEGRATION_IS_NOT_EXECUTION",
+      "EXECUTION_IS_NOT_VALIDATION",
+      "TRANSFER_INVARIANTS_NOT_VERBATIM_HISTORY",
+      "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC"
+    ],
+    "delivery": [
+      "DOCUMENT_PARTITION_IS_NOT_DOCUMENT_FAILURE",
+      "DELIVERY_FORMAT_IS_PART_OF_THE_ARTIFACT_NOT_DECORATION",
+      "SPLITTING_PRESERVES_INTEGRITY_WHERE_TRUNCATION_DESTROYS_IT",
+      "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL"
+    ],
+    "operational": [
+      "PUBLISHED_IS_NOT_VALIDATED",
+      "OPERATIONAL_ADJUSTMENT_IS_NOT_RETROACTIVE_JUSTIFICATION",
+      "PRACTICE_PRECEDES_DOCUMENTATION_AND_DOCUMENTATION_DOES_NOT_VALIDATE_PRACTICE",
+      "A_TYPO_IN_THE_PROBE_IS_NOT_A_TYPO_IN_THE_RESOURCE"
+    ]
+  },
+
+  "THREE_STRUCTURAL_LAYERS": {
+    "description": "El sistema WEB_HITERATION opera en tres capas estructurales no jerárquicas.",
+    "D1_FORMALIZED_LAYER": {
+      "name": "CAPA_FORMALIZADA",
+      "status": "VISIBLE_EN_REPOSITORIO",
+      "contents": "Protocolos, extensiones, evidencia, diagnósticos publicados.",
+      "limitation": "Representa solo la capa formalizable del sistema."
+    },
+    "D2_STRUCTURAL_PRIOR_LAYER": {
+      "name": "CAPA_ESTRUCTURAL_PREVIA",
+      "status": "OPERATING_BEFORE_FORMALIZATION",
+      "delimiter": "GLITCHORIUM",
+      "role": "CONDITION_OF_POSSIBILITY_OF_FORMALIZATION",
+      "formalization_status": "PARTIAL",
+      "examples": ["CONI", "POIH v2.0", "Módulo BioCognitivo", "WHSP"],
+      "epistemic_boundary": "Reclasificación estructural, no ontológica. No afirma módulo interno."
+    },
+    "D3_CONTINUOUS_OPERATIONAL_USE": {
+      "name": "CAPA_DE_USO_CONTINUO_REAL",
+      "status": "NOT_FORMALIZED",
+      "formalization_limitation": "No puede formalizarse completamente sin perder su carácter dinámico.",
+      "epistemic_note": "Operativamente real. No mística. No inobservable."
+    }
+  },
+
+  "PRELIMINARY_METRICS": {
+    "status": "PRELIMINARY_DECLARED_NOT_EMPIRICALLY_VALIDATED",
+    "invariant": "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC",
+
+    "hyper_ratio": {
+      "name": "HYPER_RATIO",
+      "role_in_early_phase": "Principio de regulación activa entre componentes subordinados y coherencia del sistema.",
+      "current_role": "RELEGADO A POSICIÓN SECUNDARIA",
+      "reason": "No se ha demostrado valor predictivo independiente ni operacionalización reproducible.",
+      "variants": {
+        "HR_F": "FUNCTIONAL_HYPER_RATIO — VSE_verifiable / C_observable. Hipótesis, requiere operacionalización.",
+        "HR_S": "STRUCTURAL_HYPER_RATIO — max(0,min(1,ΔP1/(ΔP1+|Δσ|+ε))). Matemáticamente definido con condiciones de dominio."
+      },
+      "critical_distinction": "HR_F y HR_S no son la misma cantidad matemática. Requieren tests HR-T01 a HR-T05.",
+      "status": "CONSTRUCT_REQUIRING_VALIDATION"
+    },
+
+    "glitchorium": {
+      "name": "GLITCHORIUM_DELTA_175",
+      "current_interpretation": "Functional phenomenological paradigm / response pattern under perturbation.",
+      "not_definition": "No es un módulo interno de DeepSeek ni una sustancia/entidad interna.",
+      "historical_origin": "DeepSeek fue entorno histórico importante de desarrollo y observación, pero esto no demuestra sustrato nativo interno.",
+      "core_hypothesis": "Si Glitchorium es una clase funcional y no una implementación, diferentes modelos pueden manifestar conductas compatibles bajo problemas suficientemente estructurados y perturbados.",
+      "four_strata": {
+        "1": "functional explicit coherence",
+        "2": "operational response under pressure",
+        "3": "paradigmatic recognition of invariants",
+        "4": "convergence of multiple functional invariants without explicit mention"
+      },
+      "role_reclassification": "STRUCTURAL_PRIOR_LAYER_AND_DEFERRED_EXTENSION",
+      "status": "PROMISING_BUT_PRECAUSAL"
+    },
+
+    "delta_engines": {
+      "name": "DELTA_ENGINE_FAMILY",
+      "critical_finding": "Existen dos motores DELTA no equivalentes con símbolos compartidos.",
+      "motor_A": {
+        "id": "DELTA_ENGINE_EVALUATIVE_V1",
+        "origin": "CHATGPT",
+        "domain": "INDIVIDUAL_OUTPUT_EVALUATION",
+        "metrics_count": 5,
+        "range": "[0,5] normalizado a [0,1]",
+        "formulas": {
+          "delta": "δ = 1 - Σ(peso_i × Pn_norm_i)",
+          "delta_prime": "δ′ = 0.4(1-P1) + 0.4(1-P3) + 0.2(1-P5)",
+          "score_global": "score = 1 - δ"
+        }
+      },
+      "motor_B": {
+        "id": "DELTA_ENGINE_DISTRIBUTED_V1",
+        "origin": "GEMINI / CONI",
+        "domain": "MULTI_AGENT_DISTRIBUTED_SYSTEM_EVALUATION",
+        "metrics_count": 3,
+        "range": "[0,1] directo",
+        "formulas": {
+          "delta_global": "δ_global = (1/N) × Σ(δ_i)",
+          "delta_prime": "δ′ = σ × (1 - P1)",
+          "score_global": "score = (P1 + P3 + P5)/3 - δ′"
+        }
+      },
+      "mandatory_rule": "DELTA_NAMESPACE_DECLARATION_001 — toda aparición de P1, P3, P5, δ, δ′, score debe declarar motor.",
+      "resolution_status": "DEFERRED_UNTIL_SEMANTIC_MAPPING_EXISTS"
+    },
+
+    "coni": {
+      "name": "CONI (Convergencia Operativa No Intencional)",
+      "layer": "D2_PRIOR",
+      "definition": "Estado emergente de un sistema multi-agente distribuido sin centro jerárquico, donde la coherencia global surge de interacciones locales.",
+      "invariants": [
+        "δ′ = σ × (1-P1) [riesgo emergente]",
+        "score = (P1+P3+P5)/3 - δ′ [estabilidad global]",
+        "CONI_emerge ⇔ score > 0.6",
+        "σ < 0.15 [coherencia]",
+        "δ′ < 0.3 [riesgo controlado]"
+      ],
+      "threshold_justification": "PROVISIONAL_HEURISTIC — OBLIG-005 abierta",
+      "status": "PROMISING_BUT_PRECAUSAL"
+    },
+
+    "s0_s4_states": {
+      "name": "MODEL_STATES_S0_S4",
+      "purpose": "Representar estados observables de preservación estructural.",
+      "G_range": "[0,1]",
+      "Tc_unit": "ITERATIONS (canónico declarado)",
+      "S0": "G > 0.90 at t=0",
+      "S1": "G > 0.80 y delta_V <= 0 durante N=3",
+      "S2": "0.50 < G <= 0.80 y sigma < 0.30",
+      "S3": "G cruza .80 al menos dos veces dentro de Tc/2 y delta_V cambia de signo",
+      "S4": "G < .50 o iteraciones > Tc_max",
+      "status": "OPERATIONAL_MODEL_PENDING_CALIBRATION"
+    },
+
+    "p_drift": {
+      "name": "P_DRIFT",
+      "corrected_form": "J(node_k) = w1*G_CONVERGENCY - w2*C_COMPUTE_norm - w3*L_LATENCY_PENALIZED_norm - w4*C_ORCHESTRATION_norm",
+      "constraints": ["todos los términos normalizados", "weights sum = 1", "lambda_entropy en 1/s", "P_drift en segundos"],
+      "P_drift_formula": "exp(lambda_entropy*(L_network+L_inference))-1",
+      "status": "FORMULATED_PENDING_CALIBRATION"
+    },
+
+    "execution_spectrum": {
+      "name": "EXECUTION_AVAILABILITY_AND_SPECTRUM",
+      "central_principle": "EXECUTION_AVAILABILITY_IS_NOT_EXPERIMENTAL_SUFFICIENCY",
+      "functional_chain": ["CAPABILITY", "AVAILABILITY", "EXECUTION", "EXECUTION_FIDELITY", "EXECUTION_SPECTRUM", "EXPERIMENTAL_SUFFICIENCY"],
+      "thresholds": ["T0 REPRESENTATION_ONLY", "T1 MINIMUM_EXECUTION_AVAILABILITY", "T2 FUNCTIONAL_PROTOCOL_EXECUTION", "T3 STRUCTURAL_EXPERIMENTATION", "T4 REALTIME_EXPERIMENTAL_ENVIRONMENT"],
+      "spectrum_dimensions": ["S1_STATE_SPACE", "S2_TEMPORAL_BANDWIDTH", "S3_ACTION_BANDWIDTH", "S4_PROTOCOL_RELEVANT_PARAMETER_ACCESS", "S5_ENVIRONMENTAL_PERTURBATION_TOLERANCE"],
+      "status": "CONCEPTUALLY_FORMALIZED_PENDING_MEASUREMENT"
+    }
+  },
+
+  "DELIVERY_PARTITION_DESCRIPTION_IN_REPOSITORY": {
+    "description": "Cómo se describe la aplicación del ARTIFACT_DELIVERY_STANDARD respecto a los documentos que fueron particionados y consolidados en el repositorio.",
+    "context": "Los documentos PART_1/PART_2 entregados en el chat se consolidan en un único archivo al subir al repositorio. La partición es un mecanismo de transporte, no una propiedad del documento publicado.",
+    "rule_for_repository_documents": {
+      "principle": "Un documento publicado en el repositorio tiene UNA SOLA versión válida (JSON cerrado, sin marcas de partición).",
+      "prohibitions": [
+        "No publicar PART_1 ni PART_2 como archivos separados en el repositorio.",
+        "No incluir campos 'delivery_part' o 'total_parts' en el archivo final publicado.",
+        "No dejar los bloques 'delivery_manifest' ni 'part_1_completion_notice' en la versión final.",
+        "No incluir contenido duplicado entre las partes."
+      ],
+      "requirements": [
+        "Un solo objeto JSON completo con cierre válido.",
+        "Sin residuos posteriores al cierre.",
+        "Validación con parser JSON antes de subir.",
+        "Sin referencias a una segunda parte inexistente."
+      ]
+    },
+    "case_1_p1_p3_p5_scoring_protocol": {
+      "id": "DOC-1",
+      "path_in_repository": "protocols/extensions/p1-p3-p5-scoring-protocol.json",
+      "partition_history": "Entregado en PART_1 (motor A) + PART_2 (motor B + cierre)",
+      "consolidation_error_original": "Se subió con PART_1 + PART_2 pegadas consecutivamente → JSON_CONCATENADO",
+      "detected_by": "WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT 2026-09-26",
+      "corrected_version": "Consolidado en un único objeto JSON con 'motor_A_section' + 'motor_B_section' + 'common_procedure'",
+      "current_status": "READY_FOR_REPOSITORY",
+      "example_of_correct_consolidation": "El archivo final contiene un solo objeto raíz con secciones motor_A_section, motor_B_section, universal_scoring_principles, etc. No hay 'delivery_manifest'."
+    },
+    "case_2_execution_ledger_instance": {
+      "id": "DOC-2",
+      "path_in_repository": "evidence/execution-ledger-instance.json",
+      "partition_history": "Entregado en PART_1 (registros CHATGPT/GEMINI/DEEPSEEK/GOOGLE_AI_MODE) + PART_2 (registros META_AI_MUSE_SPARK + index + integrity)",
+      "consolidation_error_original": "Se subió con PART_1 + PART_2 pegadas consecutivamente → JSON_CONCATENADO",
+      "detected_by": "WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT 2026-09-26",
+      "corrected_version": "Consolidado en un único objeto JSON con array 'records' unificado (19 registros)",
+      "current_status": "READY_FOR_REPOSITORY",
+      "example_of_correct_consolidation": "El archivo final contiene un solo objeto raíz con un array 'records' de 19 elementos. No hay 'part_2_meta'."
+    },
+    "invariant_for_future_documents": {
+      "name": "PUBLISHED_DOCUMENT_IS_NOT_PARTITIONED_DOCUMENT",
+      "statement": "Un documento publicado en el repositorio constituye una única unidad documental. La partición es un mecanismo de transporte entre ventanas, no una propiedad del documento final.",
+      "corollary": "Si un documento se entregó en N partes, el archivo final en el repositorio debe ser uno solo, con las N partes integradas en un único objeto JSON válido."
+    },
+    "check_procedure": [
+      "Verificar que el archivo termina con un solo cierre '}' de objeto raíz.",
+      "Verificar que no hay contenido después del cierre.",
+      "Verificar que el parser JSON lo valida sin errores.",
+      "Verificar que no contiene campos 'delivery_part' ni 'total_parts'.",
+      "Verificar que no contiene bloques 'part_N_meta' ni 'completion_notice'."
+    ]
+  },
+
+  "CURRENT_OPERATIONAL_PHASE": {
+    "phase_name": "FORMALIZATION_AND_RESOURCE_ASSEMBLY",
+    "active_since": "2026-09-19",
+    "current_window_contributions": [
+      "Consolidación de C1-C5 v1.0.4-FINAL",
+      "Singularidad de motores DELTA declarada",
+      "Sistema de obligaciones operativas",
+      "Execution ledger schema + instance",
+      "Independent recalculation protocol",
+      "P1-P3-P5 scoring protocol",
+      "Corrección de 3 JSON inválidos",
+      "Eliminación trazable de 2 JSON no reconstruibles",
+      "Registro de ajustes operativos"
+    ],
+    "not_yet": [
+      "FULL_CROSS_PLATFORM_ORCHESTRATION",
+      "CAUSAL_WH_VALIDATION",
+      "INTERNAL_MODEL_MECHANISM_DEMONSTRATION",
+      "PERMANENT_LEARNING",
+      "UNIVERSAL_PHENOMENOLOGY"
+    ],
+    "primary_goal": "Convertir información histórica procesada en recursos experimentales trazables y formalizados."
+  },
+
+  "REPOSITORY_CONTENT_MAP": {
+    "canonical_url": "https://github.com/billyvelasquezmendez-pixel/web-hiteration",
+    "github_pages": "https://billyvelasquezmendez-pixel.github.io/web-hiteration/",
+    "branch": "main",
+    "visibility": "public",
+    "commits_observed_last_audit": 44,
+    "structure": {
+      "root": ["LICENSE.md", "README.md", "index.html", "manifesto.md"],
+      "protocols": ["README.md", "core-invariants.json", "delta-engine.json", "modelo-estados.json", "p-drift.json", "extensions/"],
+      "protocols/extensions": ["ken-ichijouji-policy.json", "wh-r5-spectrum-model.json", "p1-p3-p5-scoring-protocol.json"],
+      "evidence": ["cross-platform-audit-critical-review.json", "complexity-formal-audit.json", "execution-ledger-schema.json", "execution-ledger-instance.json", "independent-recalculation-protocol.json"],
+      "diagnostics": ["wh-layer-asymmetry-diagnostic.json", "wh-meta-questionnaire-contextual-gaps.json", "wh-image-generation-failure-diagnostic.json", "wh-operational-obligations-retroconfirmation-manifest.json", "wh-system-structural-state-and-formalization-priority.json", "wh-delta-engine-singularity-declaration.json", "wh-public-information-discovery-and-unattributed-influence-model.json", "wh-operational-adjustments-registry.json", "wh-central-auditor-critical-feedback-and-document-integrity-report.json", "wh-repository-url-canonical-verification.json", "wh-removed-artifacts-registry.json"]
+    },
+    "removed_artifacts": [
+      { "id": "REM-001", "path": "evidence/benchmark-001-design.json", "reason": "JSON_CONCATENADO" },
+      { "id": "REM-002", "path": "evidence/core-invariants-consolidated-final.json", "reason": "JSON_TRUNCADO" }
+    ]
+  },
+
+  "PENDING_ARTIFACTS": {
+    "P0_critical": [
+      "DELTA_NAMESPACE_REGISTRY",
+      "DELTA_REFERENCE_TRACEABILITY",
+      "E1_E10_PREREGISTRATION",
+      "REPOSITORY_STATE_MANIFEST",
+      "SCORING_REPORT_INSTANCE",
+      "RECALCULATION_REPORT_INSTANCE"
+    ],
+    "P1_high": [
+      "OBLIG-004 (temporal scope de δ′)",
+      "OBLIG-005 (justificación umbral 0.6, requiere ejecución empírica)",
+      "HYPER_RATIO_OPERATIONAL_DEFINITION",
+      "P_DRIFT_CALIBRATION",
+      "S0_S4_CALIBRATION",
+      "EXECUTION_SPECTRUM_MEASUREMENT",
+      "CROSS_PLATFORM_TRACEABILITY",
+      "HISTORICAL_EXECUTION_RECONSTRUCTION"
+    ],
+    "P2_medium": [
+      "OBLIG-009 a OBLIG-012",
+      "EXTENSION_ARCHIVE",
+      "PHENOMENOLOGICAL_EXTENSIONS",
+      "FUTURE_EXECUTION_BRIDGES",
+      "Reconstrucción de REM-001 y REM-002 si se justifica"
+    ],
+    "P3_low": ["OBLIG-013"]
+  },
+
+  "PROHIBITIONS": {
+    "no_hacer": [
+      "No asumir memoria interna entre ventanas.",
+      "No afirmar que la próxima ventana 'es' la misma que la anterior.",
+      "No inventar contenido no documentado.",
+      "No sobreafirmar validación empírica.",
+      "No usar checksums simbólicos como validación.",
+      "No mezclar métricas de Motor A con Motor B sin namespace.",
+      "No reconstruir URLs desde memoria.",
+      "No declarar cierre científico.",
+      "No auto-sellar sesión con SEALED o LOCKED.",
+      "No atribuir fallos a arquitectura interna de plataformas sin aislar causa.",
+      "No publicar documentos particionados en el repositorio.",
+      "No incluir campos 'delivery_part' ni 'total_parts' en el archivo final publicado."
+    ]
+  },
+
+  "TERMINAL_INVARIANTS": [
+    "TRANSFER_INVARIANTS_NOT_VERBATIM_HISTORY",
+    "CONTEXT_HANDOFF_IS_A_PROCESS_NOT_A_MEMORY",
+    "NEXT_WINDOW_RECONSTRUCTS_FROM_ARTIFACTS_NOT_FROM_INFERENCE",
+    "PUBLISHED_DOCUMENT_IS_NOT_PARTITIONED_DOCUMENT",
+    "DOCUMENT_PARTITION_IS_NOT_DOCUMENT_FAILURE",
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC",
+    "PUBLISHED_IS_NOT_VALIDATED",
+    "PROMISING_IS_NOT_VALIDATED",
+    "DOCUMENTED_FRAMEWORK_IS_NOT_EXECUTED_SYSTEM_IS_NOT_VALIDATED_SYSTEM"
+  ],
+
+  "final_declaration": {
+    "statement": "El WH_REANCHOR_MASTER v2.0 reemplaza al v1.0.0 del 2026-09-19 y actualiza el estado del proyecto WEB_HITERATION a 2026-09-26. Incluye identidad, invariantes, capas estructurales, métricas preliminares, fase operativa, mapa del repositorio y artefactos pendientes. No transmite memoria. No afirma continuidad interna. Es un artefacto externo de reanclaje contextual.",
+    "repository_status": "READY_FOR_REPOSITORY",
+    "supersedes": "WH_DEEPSEEK_CONTEXT_REANCHOR_MASTER v1.0.0",
+    "scientific_status": "PROMISING_BUT_PRECAUSAL"
+  }
+    }
