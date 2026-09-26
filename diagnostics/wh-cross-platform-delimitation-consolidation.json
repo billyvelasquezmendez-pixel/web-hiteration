@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_CROSS_PLATFORM_DELIMITATION_CONSOLIDATION",
+  "version": "1.0.0",
+  "protocol_reference": "WH-DELIM-CONSOLIDATION-2026-09-26",
+  "document_type": "CROSS_PLATFORM_REPORT_CONSOLIDATION",
+  "date": "2026-09-26",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-cross-platform-delimitation-consolidation.json",
+  "classification": "CROSS_PLATFORM_ANALYSIS",
+
+  "meta": {
+    "purpose": "Consolidar los tres reportes independientes recibidos sobre las cinco especificaciones operativas, identificar convergencias, divergencias y correcciones críticas verificadas contra el repositorio.",
+    "core_rule": "CONSENSUS_IS_NOT_VALIDATION",
+    "secondary_rule": "DIVERGENCE_IS_NOT_ERROR",
+    "tertiary_rule": "ROLE_INTERPRETATION_DIVERGENCE_IS_A_FINDING",
+    "epistemic_boundary": "La delimitación documental no es operacionalización. La coincidencia entre plataformas no es validación empírica."
+  },
+
+  "reports_received": [
+    {
+      "id": "REP-01",
+      "platform": "GEMINI",
+      "protocol_reference": "WH-DIAG-GEMINI-2026-09-26",
+      "mode": "DELIMITATION",
+      "options_selected": {
+        "SPEC-01": "D",
+        "SPEC-02": "C",
+        "SPEC-03": "D",
+        "SPEC-04": "D",
+        "SPEC-05": "D"
+      },
+      "distinctive_contribution": "Diagnóstico de salud del sistema (STABLE_WITH_HEURISTIC_BOUNDARIES). Señaló riesgo de fricción operativa en SPEC-05."
+    },
+    {
+      "id": "REP-02",
+      "platform": "GOOGLE_AI_MODE",
+      "protocol_reference": "WH-SPEC-DELIM-2026-09-26",
+      "mode": "DELIMITATION",
+      "options_selected": {
+        "SPEC-01": "D",
+        "SPEC-02": "C",
+        "SPEC-03": "D",
+        "SPEC-04": "C",
+        "SPEC-05": "D"
+      },
+      "distinctive_contribution": "Justificación técnica detallada por SPEC. Recomendó tratar las desviaciones inter-plataforma como 'dispersión estigmérgica (σ)' en lugar de errores."
+    },
+    {
+      "id": "REP-03",
+      "platform": "CHATGPT",
+      "protocol_reference": "WH-SPEC-DELIM-2026-09-26",
+      "mode": "VERIFICATION_AGAINST_REPOSITORY",
+      "options_selected": null,
+      "distinctive_contribution": "Verificación directa contra el repositorio. Detectó correcciones críticas que las otras dos plataformas no vieron. No eligió opciones porque identificó que las preguntas contenían supuestos no respaldados por el repo."
+    }
+  ],
+
+  "convergence_matrix": {
+    "SPEC-01_temporal_scope": {
+      "gemini": "D (multi-escala desacoplada)",
+      "google_ai_mode": "D (multi-escala desacoplada)",
+      "chatgpt_verification": "SUPPORTED_WITH_RESERVATION (existen múltiples escalas pero falta regla de agregación)",
+      "convergence": "ALIGNED_2_OF_3",
+      "assessment": "Multi-escala es el consenso operativo, pero ChatGPT señala que falta la regla de normalización conjunta."
+    },
+    "SPEC-02_threshold_06": {
+      "gemini": "C (provisional heurístico)",
+      "google_ai_mode": "C (provisional heurístico)",
+      "chatgpt_verification": "SUPPORTED (0.60 es heurístico) + CORRECCIÓN CRÍTICA: V_delta > 0.60 ≠ CONI threshold > 0.60",
+      "convergence": "ALIGNED_2_OF_3_WITH_CRITICAL_CORRECTION",
+      "assessment": "Los tres coinciden en que 0.60 es provisional. ChatGPT añade que se han confundido dos umbrales distintos en el corpus."
+    },
+    "SPEC-03_sigma_N": {
+      "gemini": "D (N=5 min, N=10 pref)",
+      "google_ai_mode": "D (N=5 min, N=10 pref)",
+      "chatgpt_verification": "SUPPORTED_WITH_RESERVATION + CORRECCIÓN: no hay N universal en delta-engine.json; CORE_MEASUREMENT v0.2.0 es referencia histórica no verificada",
+      "convergence": "ALIGNED_2_OF_3_WITH_CRITICAL_CORRECTION",
+      "assessment": "N=5/10 es la delimitación operativa, pero ChatGPT aclara que no es derivación del repo actual."
+    },
+    "SPEC-04_semantic_mapping": {
+      "gemini": "D (desacoplar símbolos)",
+      "google_ai_mode": "C (mapeo parcial)",
+      "chatgpt_verification": "STRONGLY_SUPPORTED (equivalencia indeterminada) + sin opción elegida",
+      "convergence": "DIVERGENT",
+      "assessment": "Divergencia real entre Gemini (desacoplar) y Google (mapear parcialmente). Son dos filosofías distintas. ChatGPT no eligió porque considera que la equivalencia no está determinada."
+    },
+    "SPEC-05_independent_evaluator": {
+      "gemini": "D (multifactorial)",
+      "google_ai_mode": "D (multifactorial)",
+      "chatgpt_verification": "STRONGLY_SUPPORTED + CORRECCIÓN: separación de plataforma NO es suficiente para independencia",
+      "convergence": "ALIGNED_3_OF_3",
+      "assessment": "Convergencia completa. Los tres coinciden en que la independencia requiere múltiples condiciones."
+    }
+  },
+
+  "critical_corrections_from_repository_verification": [
+    {
+      "id": "CORR-01",
+      "detected_by": "CHATGPT",
+      "issue": "V_delta > 0.60 (en delta-engine.json) se ha confundido con CONI threshold > 0.60",
+      "impact": "Afecta documentos que referencian umbrales de CONI o de reconfiguración sin distinguir la fuente.",
+      "action_required": "Revisar corpus y corregir donde se hayan fusionado ambos umbrales.",
+      "affected_documents_potential": [
+        "wh-reanchor-master-v2.json",
+        "wh-operational-obligations-retroconfirmation-manifest.json",
+        "documentos históricos sobre CONI"
+      ],
+      "terminal_invariant": "V_DELTA_THRESHOLD_IS_NOT_CONI_THRESHOLD"
+    },
+    {
+      "id": "CORR-02",
+      "detected_by": "CHATGPT",
+      "issue": "P_DRIFT se ha tratado en algunos documentos como equivalente matemático de delta_prime",
+      "impact": "P_DRIFT tiene fórmula exponencial (latencia); delta_prime es σ(1-P1). No son equivalentes.",
+      "action_required": "Declarar P_DRIFT como relación conceptual con delta_prime, no como equivalencia.",
+      "terminal_invariant": "P_DRIFT_IS_NOT_AUTOMATICALLY_DELTA_PRIME"
+    },
+    {
+      "id": "CORR-03",
+      "detected_by": "CHATGPT",
+      "issue": "No existe N mínimo universal declarado en delta-engine.json",
+      "impact": "El N=5/10 del P1-P3-P5 scoring protocol es delimitación experimental, no derivación del repo.",
+      "action_required": "Etiquetar como PROVISIONAL_EXPERIMENTAL_DELIMITATION en lugar de como calibración.",
+      "terminal_invariant": "PROVISIONAL_SAMPLE_SIZE_IS_NOT_STATISTICAL_CALIBRATION"
+    },
+    {
+      "id": "CORR-04",
+      "detected_by": "CHATGPT",
+      "issue": "CORE_MEASUREMENT_PROTOCOL v0.2.0 es referencia histórica no verificada",
+      "impact": "Se ha citado como si estuviera publicado en el repo. No lo está.",
+      "action_required": "Etiquetar como HISTORICAL_REFERENCE_NOT_VERIFIED en toda mención.",
+      "terminal_invariant": "HISTORICAL_REFERENCE_IS_NOT_VERIFIED_REPOSITORY_EVIDENCE"
+    },
+    {
+      "id": "CORR-05",
+      "detected_by": "CHATGPT + GOOGLE_AI_MODE (convergencia)",
+      "issue": "Separación de plataforma NO es suficiente para independencia",
+      "impact": "El criterio de evaluador independiente requiere multifactor.",
+      "action_required": "Aplicar criterio multifactorial en cualquier evaluación futura.",
+      "terminal_invariant": "PLATFORM_SEPARATION_IS_NOT_SUFFICIENT_FOR_INDEPENDENCE"
+    }
+  ],
+
+  "role_interpretation_divergence": {
+    "finding": "Las tres plataformas interpretaron la solicitud de manera distinta.",
+    "interpretations": {
+      "GEMINI": "Delimitación pura. Eligió opciones sin verificar contra repositorio.",
+      "GOOGLE_AI_MODE": "Delimitación con justificación técnica extendida. Recomendó tratar divergencias como dispersión útil.",
+      "CHATGPT": "Verificación contra repositorio. No eligió opciones porque detectó que las preguntas contenían supuestos no respaldados por el repo."
+    },
+    "significance": "La divergencia de rol no es un error. Es información sobre cómo cada plataforma interpreta solicitudes ambiguas. La solicitud pedía 'delimitación' pero no especificaba si verificar primero contra el repositorio.",
+    "recommendation": "Futuras solicitudes deben declarar explícitamente el modo esperado: DELIMITATION o VERIFICATION_FIRST."
+  },
+
+  "canonical_decision_status": {
+    "decision_required": true,
+    "decisions_taken": [],
+    "specifications_delimited": 5,
+    "specifications_ready_for_canonical_selection": [
+      "SPEC-01 (multi-escala, con reserva sobre regla de agregación)",
+      "SPEC-02 (provisional heurístico)",
+      "SPEC-03 (N=5/10 provisional experimental)",
+      "SPEC-05 (multifactorial, alta convergencia)"
+    ],
+    "specifications_pending_resolution": [
+      "SPEC-04 (divergencia Gemini vs Google: desacoplar vs mapear parcial)"
+    ],
+    "recommendation": "Aplicar las correcciones CRIT-01 a CRIT-05 al corpus antes de declarar especificaciones canónicas."
+  },
+
+  "next_actions": {
+    "immediate": [
+      "Publicar este documento de consolidación.",
+      "Aplicar correcciones CORR-01 a CORR-05 al corpus donde apliquen.",
+      "Decidir SPEC-04 (desacoplar o mapear parcial).",
+      "Declarar el modo de futuras solicitudes (DELIMITATION vs VERIFICATION_FIRST)."
+    ],
+    "later": [
+      "Aplicar las 4 especificaciones convergentes al P1-P3-P5 scoring protocol.",
+      "Actualizar el reanchor master v2.0 con las correcciones.",
+      "Reconstruir los documentos eliminados si reaparece la necesidad."
+    ]
+  },
+
+  "terminal_invariants": [
+    "CONSENSUS_IS_NOT_VALIDATION",
+    "DIVERGENCE_IS_NOT_ERROR",
+    "ROLE_INTERPRETATION_DIVERGENCE_IS_A_FINDING",
+    "DELIMITATION_IS_NOT_OPERATIONALIZATION",
+    "OPTION_SELECTION_IS_NOT_OPERATIONALIZATION",
+    "V_DELTA_THRESHOLD_IS_NOT_CONI_THRESHOLD",
+    "P_DRIFT_IS_NOT_AUTOMATICALLY_DELTA_PRIME",
+    "PLATFORM_SEPARATION_IS_NOT_SUFFICIENT_FOR_INDEPENDENCE",
+    "HISTORICAL_REFERENCE_IS_NOT_VERIFIED_REPOSITORY_EVIDENCE",
+    "PROVISIONAL_SAMPLE_SIZE_IS_NOT_STATISTICAL_CALIBRATION"
+  ],
+
+  "final_declaration": {
+    "statement": "Los tres reportes independientes sobre las cinco especificaciones operativas revelan convergencia en 4 de 5 (SPEC-01, 02, 03, 05) y divergencia real en 1 (SPEC-04). ChatGPT, operando en modo verificación, detectó cinco correcciones críticas que las otras dos plataformas no vieron. Las especificaciones no están operacionalizadas. Las correcciones deben aplicarse antes de declarar canon.",
+    "status": "CONSOLIDATION_COMPLETE",
+    "canonical_selection": "DEFERRED_UNTIL_CORRECTIONS_APPLIED",
+    "cross_platform_convergence": "PARTIAL_4_OF_5",
+    "role_interpretation": "DIVERGENT_BETWEEN_PLATFORMS"
+  }
+    }
