@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_CURRENT_EVIDENCE_AND_DEVELOPMENT_STATUS_DIAGNOSTIC",
+  "version": "1.0.0",
+  "protocol_reference": "WH-DIAG-EVIDENCE-2026-09-19",
+  "document_type": "CURRENT_EVIDENCE_AND_DEVELOPMENT_STATUS_DIAGNOSTIC",
+  "date": "2026-09-19",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "evidence/wh-current-evidence-diagnostic.json",
+  "classification": "EVIDENCE_STATE_DIAGNOSTIC",
+
+  "meta": {
+    "purpose": "Establecer el estado actual del corpus WEB_HITERATION distinguiendo componentes existentes, diseñados, propuestos, referenciados, ejecutados y realmente validados.",
+    "scope": "Corpus y evidencia disponibles en la ventana de trabajo y en el inventario del repositorio.",
+    "epistemic_level": "L3_FORMALIZATION_WITH_PRECAUSAL_EMPIRICAL_STATUS",
+    "central_rule": "DECLARED_STATUS_IS_NOT_EMPIRICAL_VALIDATION",
+    "core_boundary": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  },
+
+  "global_status": {
+    "framework_formalization": "ADVANCED",
+    "core_invariants": "FORMALIZED",
+    "core_epistemic_boundaries": "STRONG",
+    "repository_structure": "PARTIALLY_AUDITED",
+    "experimental_design": "ADVANCED_BUT_INCOMPLETE",
+    "E1_E10": "DESIGNED_NOT_PREREGISTERED",
+    "objective_validation": "PARTIALLY_OPERATIONALIZED",
+    "independent_recalculation": "PENDING",
+    "replication": "PENDING",
+    "cross_platform_matched_validation": "PENDING",
+    "causal_WH_effect": "NOT_ESTABLISHED",
+    "Glitchorium_universality": "NOT_ESTABLISHED",
+    "internal_model_mechanism": "NOT_MEASURED",
+    "permanent_learning": "NOT_ESTABLISHED"
+  },
+
+  "E1_E10_DEVELOPMENT_PHASE": {
+    "component": "E01-E10 Evidence Validation Controls",
+    "current_phase": "DESIGN_AND_PREREGISTRATION_PREPARATION",
+    "status": "NOT_YET_EXECUTED",
+    "repository_status": "NOT_YET_CONFIRMED_AS_PUBLISHED",
+    "purpose": "Convert methodological requirements identified by the meta-audit into an executable and auditable evidence pipeline.",
+    "development_sequence": [
+      "CONCEPTUAL_DESIGN",
+      "OPERATIONAL_DEFINITION",
+      "PREREGISTRATION",
+      "CONTROLLED_EXECUTION",
+      "RAW_DATA_CAPTURE",
+      "OBJECTIVE_CALCULATION",
+      "INDEPENDENT_RECALCULATION",
+      "REPLICATION",
+      "CROSS_PLATFORM_COMPARISON",
+      "REFUTATION_ATTEMPT"
+    ],
+    "current_position": {
+      "completed": [
+        "conceptual definition",
+        "control taxonomy",
+        "initial methodological specification",
+        "identification of required evidence",
+        "identification of falsification conditions"
+      ],
+      "pending": [
+        "formal preregistration document",
+        "fixed stimuli",
+        "fixed execution conditions",
+        "dataset definition",
+        "raw-output capture procedure",
+        "metric calculation specification",
+        "independent evaluator assignment",
+        "minimum replication protocol"
+      ]
+    },
+    "controls": {
+      "E01": { "name": "COMMON_TAXONOMY", "status": "DESIGNED", "purpose": "Use identical R1-R7 definitions across compared execution conditions." },
+      "E02": { "name": "FUNCTIONALLY_EQUIVALENT_STIMULI", "status": "DESIGNED", "purpose": "Ensure that compared platforms receive equivalent experimental stimuli." },
+      "E03": { "name": "PREREGISTERED_CRITERIA", "status": "PENDING_PREREGISTRATION", "purpose": "Fix evaluation criteria before execution." },
+      "E04": { "name": "RAW_OUTPUT_PRESERVATION", "status": "DESIGNED", "purpose": "Preserve original outputs without retrospective modification." },
+      "E05": { "name": "INDEPENDENT_EVALUATION", "status": "PENDING", "purpose": "Prevent the evaluated executor from being the sole validator of its own result." },
+      "E06": { "name": "REPLICATION", "status": "PENDING", "minimum_recommended_runs": 3, "preferred_runs": 5 },
+      "E07": { "name": "METRIC_DERIVATION", "status": "PENDING_OPERATIONALIZATION", "purpose": "Define exact formulas, inputs, normalization and units for all reported metrics." },
+      "E08": { "name": "INDEPENDENT_RECALCULATION", "status": "PENDING", "purpose": "Recalculate reported metrics from preserved raw data." },
+      "E09": { "name": "ABLATION", "status": "DESIGNED", "purpose": "Separate effects attributable to taxonomy, WH structure and combined intervention." },
+      "E10": { "name": "EXPLICIT_REFUTATION", "status": "DESIGNED_NOT_EXECUTED", "purpose": "Actively seek conditions under which the expected functional effect disappears." }
+    },
+    "required_preregistration": {
+      "recommended_filename": "evidence/preregistration-e01-e10.json",
+      "status": "NOT_YET_CREATED",
+      "minimum_fields": [
+        "hypothesis",
+        "null_hypothesis",
+        "baseline_condition",
+        "experimental_condition",
+        "platforms",
+        "stimuli",
+        "controlled_variables",
+        "dependent_variables",
+        "metric_formulas",
+        "falsification_criteria",
+        "replication_count",
+        "independent_evaluator",
+        "raw_output_policy"
+      ]
+    }
+  },
+
+  "CURRENT_EVIDENCE_LAYERS": {
+    "L0_DECLARATION": { "status": "PRESENT", "meaning": "Concepts, hypotheses and protocol definitions exist as documents." },
+    "L1_FORMALIZATION": { "status": "PRESENT", "meaning": "Core invariants, taxonomy and several operational protocols have been formalized." },
+    "L2_EXECUTION_DESIGN": { "status": "PRESENT", "meaning": "Benchmark and validation architectures have been designed." },
+    "L3_OBJECTIVE_EXECUTION": { "status": "PARTIAL", "meaning": "Some benchmark executions exist, but they are not yet sufficient for matched replicated causal inference." },
+    "L4_INDEPENDENT_REPLICATION": { "status": "PENDING", "meaning": "Independent repeated validation remains incomplete." }
+  },
+
+  "KNOWN_EVIDENCE_PROBLEMS": [
+    { "id": "EV-01", "issue": "Declared metrics without derivation", "examples": ["style_fidelity_score = 0.99", "self_score = 96.5", "symbolic checksums", "SEALED/STABILIZED states"], "classification": "DECLARED_NOT_INDEPENDENTLY_VALIDATED" },
+    { "id": "EV-02", "issue": "Image generation manifests described execution without independently verifiable artifact evidence", "classification": "SIMULATION_OR_DECLARATION_RISK", "relevance": "C3 and R5" },
+    { "id": "EV-03", "issue": "Cross-platform convergence is preliminary", "classification": "OBSERVED_CONVERGENCE_NOT_PROOF" },
+    { "id": "EV-04", "issue": "Hyper Ratio remains insufficiently operationalized", "classification": "CONSTRUCT_REQUIRING_VALIDATION" },
+    { "id": "EV-05", "issue": "P_DRIFT remains formulated but not empirically calibrated", "classification": "FORMULATED_NOT_CALIBRATED" }
+  ],
+
+  "R5_EXECUTION_BOUNDARY": {
+    "status": "OBSERVATIONALLY_SUPPORTED_AS_A_PROTOCOL_DISTINCTION",
+    "not_established": [
+      "internal neural restriction",
+      "permanent model limitation",
+      "specific hidden mechanism",
+      "loss of intelligence",
+      "memory exhaustion as internal architecture"
+    ],
+    "supported_interpretation": "An operation can be representable or describable while the mechanism, tool, permission, channel or resource required for actual execution is unavailable in the evaluated condition.",
+    "operational_formula": "CAPABILITY != AVAILABILITY != EXECUTION != SUCCESS",
+    "routing_implication": "Restriction classification can inform external orchestration decisions."
+  },
+
+  "REPOSITORY_GAP_STATE": {
+    "structural_gaps": "PRESENT_OR_REQUIRING_CURRENT_VERIFICATION",
+    "epistemic_gaps": "PRESENT",
+    "operational_gaps": "PRESENT",
+    "traceability_gaps": "PRESENT",
+    "validation_gaps": "PRESENT",
+    "recursive_declarative_execution_pattern": "DOCUMENTED_AS_A_CASE_STUDY"
+  },
+
+  "CRITICAL_GAPS": [
+    { "id": "GAP-001", "priority": "P0", "component": "C4", "status": "RESOLVED_IN_v1.0.4", "issue": "La formulación 'La memoria no se conserva. Se reconstruye.' excedía la frontera epistemológica." },
+    { "id": "GAP-002", "priority": "P0", "component": "CORE_MEASUREMENT_PROTOCOL", "status": "PARTIALLY_RESOLVED_BY_P1_P3_P5_SCORING", "issue": "P1, P3, P5, sigma, HR e IE requieren reglas operacionales explícitas." },
+    { "id": "GAP-003", "priority": "P0", "component": "E01-E10", "status": "DESIGN_NOT_PREREGISTERED", "issue": "La arquitectura de evidencia todavía no se ha convertido en preregistro ejecutable." },
+    { "id": "GAP-004", "priority": "P0", "component": "STRUCTURAL_REPOSITORY", "status": "PARTIALLY_RESOLVED", "issue": "Residuos JSON detectados y corregidos parcialmente. Auditoría externa 2026-09-26 confirmó correcciones." }
+  ],
+
+  "INTERPRETATION_OF_CURRENT_STATE": {
+    "positive": [
+      "La arquitectura conceptual principal está considerablemente formalizada.",
+      "Las fronteras epistemológicas son explícitas.",
+      "La separación entre representación y ejecución está mejor definida.",
+      "R1-R7 puede utilizarse como taxonomía de restricciones observables.",
+      "La necesidad de evaluación independiente está incorporada al diseño.",
+      "E1-E10 proporciona una arquitectura plausible para cerrar la brecha entre diseño y evidencia."
+    ],
+    "not_yet_demonstrated": [
+      "efecto causal de WH",
+      "generalización universal entre plataformas",
+      "valor predictivo independiente de HR",
+      "calibración empírica de P_DRIFT",
+      "validación independiente de todas las métricas",
+      "replicación sistemática E1-E10"
+    ]
+  },
+
+  "RECOMMENDED_NEXT_STATE": {
+    "phase": "PREREGISTRATION_AND_EXECUTION_PREPARATION",
+    "order": [
+      "patch core epistemic wording (RESOLVED en v1.0.4)",
+      "verify repository structural state (PARTIALLY_RESOLVED)",
+      "publish CORE_MEASUREMENT_PROTOCOL as proposal or operational protocol",
+      "create E01-E10 preregistration",
+      "freeze experimental conditions",
+      "execute baseline",
+      "execute experimental condition",
+      "preserve raw outputs",
+      "independent recalculation",
+      "replicate 3-5 times",
+      "perform ablation",
+      "perform explicit refutation attempt"
+    ]
+  },
+
+  "FINAL_DIAGNOSTIC": {
+    "overall_status": "SUBSTANTIAL_METHODOLOGICAL_PROGRESS_WITH_VALIDATION_GAPS",
+    "development_phase": "PRE_REGISTRATION_TO_CONTROLLED_EXECUTION",
+    "e1_e10_status": "DESIGNED_PENDING_PREREGISTRATION",
+    "r5_status": "OBSERVABLE_EXECUTION_BOUNDARY_FRAMEWORK",
+    "cross_platform_status": "PRELIMINARY_OBSERVED_CONVERGENCE",
+    "causal_status": "NOT_ESTABLISHED",
+    "scientific_closure": "NOT_REACHED",
+    "repository_closure": "NOT_REACHED",
+    "recommended_label": "PROMISING_BUT_PRECAUSAL"
+  },
+
+  "terminal_invariants": [
+    "DECLARED_STATUS_IS_NOT_EMPIRICAL_VALIDATION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "DESIGN_IS_NOT_EXECUTION",
+    "EXECUTION_IS_NOT_VALIDATION",
+    "FORMALIZATION_IS_NOT_CAUSALITY",
+    "PROMISING_IS_NOT_VALIDATED"
+  ]
+        }
