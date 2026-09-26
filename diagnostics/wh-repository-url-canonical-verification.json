@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_REPOSITORY_URL_CANONICAL_VERIFICATION",
+  "version": "1.0.0",
+  "protocol_reference": "WH-URL-CANONICAL-2026-09-25",
+  "document_type": "CANONICAL_URL_VERIFICATION_AND_CORRECTION",
+  "date": "2026-09-25",
+  "status": "VERIFIED",
+  "classification": "ACCESS_SURFACE_CORRECTION",
+
+  "canonical_urls": {
+    "repository": "https://github.com/billyvelasquezmendez-pixel/web-hiteration",
+    "github_pages": "https://billyvelasquezmendez-pixel.github.io/web-hiteration/",
+    "owner_handle": "billyvelasquezmendez-pixel",
+    "repository_name": "web-hiteration"
+  },
+
+  "problem_identified": {
+    "incorrect_variant_used_in_probes": "billyvelasquez-mendez-pixel",
+    "correct_variant": "billyvelasquezmendez-pixel",
+    "difference": "Presencia de guión entre 'velasquez' y 'mendez' en la variante incorrecta",
+    "consequence": "Las plataformas externas recibieron una URL que no existe y reportaron NOT_RECOVERED",
+    "cause": "Error tipográfico propagado por copia en los probes de verificación de acceso",
+    "attribution_to_platforms": false,
+    "attribution_to_repository": false,
+    "attribution_to_app": false
+  },
+
+  "verified_repository_structure": {
+    "branch": "main",
+    "root_files": [
+      "LICENSE.md",
+      "README.md",
+      "index.html",
+      "manifesto.md",
+      "p1-p3-p5-scoring-protocol.json"
+    ],
+    "directories": [
+      "diagnostics/",
+      "evidence/",
+      "protocols/"
+    ],
+    "last_commit_dates": {
+      "diagnostics": "2026-09-25",
+      "evidence": "2026-09-23",
+      "protocols": "2026-09-21",
+      "root_files": "2026-09-17_a_2026-09-23"
+    }
+  },
+
+  "structural_observation": {
+    "p1_p3_p5_scoring_protocol_location": "ROOT_NOT_PROTOCOLS_EXTENSIONS",
+    "intended_location": "protocols/extensions/",
+    "current_location": "root",
+    "action_required": "MOVE_OR_ACCEPT_AS_ROOT",
+    "recommendation": "Mover a protocols/extensions/ para mantener coherencia con los demás protocolos de extensión"
+  },
+
+  "previous_probe_results_explained": {
+    "chatgpt_probe": {
+      "reported_result": "L0_MAXIMUM_CONTEXTUAL_RECOGNITION",
+      "actual_cause": "URL_INCORRECTA_EN_EL_PROBE",
+      "not_caused_by": ["plataforma", "app", "navegación", "índice"]
+    },
+    "google_ai_mode_probe": {
+      "reported_result": "ACCESO_NULO",
+      "actual_cause": "URL_INCORRECTA_EN_EL_PROBE",
+      "not_caused_by": ["plataforma", "navegación", "índice"]
+    }
+  },
+
+  "invariants_confirmed": [
+    "ACCESS_FAILURE_IS_NOT_RESOURCE_ABSENCE",
+    "URL_TYPO_IS_NOT_REPOSITORY_FAILURE",
+    "VERIFICATION_WITHOUT_CANONICAL_URL_IS_INVALID",
+    "EXTERNAL_ACCESS_FAILURE_IS_NOT_PLATFORM_LIMITATION"
+  ],
+
+  "correction_actions": [
+    "Actualizar todas las apariciones de 'billyvelasquez-mendez-pixel' a 'billyvelasquezmendez-pixel' en el corpus",
+    "Verificar que las URLs en index.html, manifesto.md y LICENSE.md usen la variante correcta",
+    "Actualizar los probes de acceso con la URL canónica",
+    "Re-ejecutar verificación externa si se desea confirmación independiente"
+  ],
+
+  "canonical_url_rule": {
+    "rule": "Toda URL del repositorio debe ser copiada literalmente desde el navegador, no reconstruida desde memoria o desde documentos previos.",
+    "invariant": "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL"
+  },
+
+  "current_state": {
+    "repository": "VERIFIED_ACCESSIBLE",
+    "github_pages": "VERIFIED_ACCESSIBLE",
+    "external_platform_verification": "PENDING_WITH_CORRECT_URL",
+    "root_cause": "URL_TYPO_IN_PROBE",
+    "scientific_validation": "NOT_CLAIMED"
+  },
+
+  "terminal_invariant": "A_TYPO_IN_THE_PROBE_IS_NOT_A_TYPO_IN_THE_RESOURCE"
+}
