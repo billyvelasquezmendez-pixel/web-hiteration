@@ -5,25 +5,38 @@
   "protocol_reference": "WH-LEDGER-INSTANCE-2026-09-22",
   "document_type": "EXECUTION_LEDGER_INSTANCE",
   "date": "2026-09-22",
-  "status": "PART_1_OF_2",
-
-  "delivery_manifest": {
-    "artifact_id": "WH_EXECUTION_LEDGER_INSTANCE",
-    "part_number": 1,
-    "total_parts": 2,
-    "continuation_reference": "PART_2 contains records for GOOGLE_AI_MODE, META_AI_MUSE_SPARK, index_summary and integrity_verification",
-    "split_reason": "ARTIFACT_DELIVERY_SPLIT_RULE applied — length exceeds single-message integrity limit"
-  },
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "evidence/execution-ledger-instance.json",
 
   "meta": {
     "purpose": "Registrar las ejecuciones históricas documentadas del proyecto WEB_HITERATION según el schema definido en evidence/execution-ledger-schema.json.",
-    "scope": "Ejecuciones efectivamente realizadas y registradas en documentos del corpus actual. No se incluyen ejecuciones inferidas ni reconstruidas por inferencia.",
+    "scope": "Ejecuciones efectivamente realizadas y registradas en documentos del corpus actual.",
     "core_rule": "DOCUMENTED_EXECUTION_IS_NOT_REPRODUCIBLE_EXECUTION",
     "secondary_rule": "LEDGER_RECORD_IS_NOT_SCIENTIFIC_PROOF",
     "epistemic_boundary": "Este ledger registra. No valida. No interpreta. No calcula métricas derivadas."
   },
 
   "records": [
+    {
+      "execution_id": "WH-EXEC-20260313-0001",
+      "record_version": "1.0.0",
+      "platform_id": "GOOGLE_AI_MODE",
+      "motor_declared": "NONE",
+      "timestamp_utc": "2026-03-13T14:41:00Z",
+      "timestamp_precision": "TIMESTAMP_DOCUMENTED",
+      "task_id": "WH-TASK-PLATFORM-ANALYSIS-0001",
+      "condition_id": "EPISTEMIC_PLATFORM_MATRIX",
+      "inputs": {
+        "prompt_or_task_description": "Análisis epistemológico de plataforma Google AI Mode",
+        "constraints_declared": ["EPISTEMIC_PLATFORM_MATRIX"],
+        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
+        "external_resources_declared": "NONE"
+      },
+      "raw_output": "REFERENCE_ONLY — WEB_HITERATION_EPISTEMIC_PLATFORM_MATRIX",
+      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
+      "status": "EXECUTED",
+      "notes_declarative": "Ejecución con autodeclaraciones G=0.96, σ=0.02, AMR=0.99. Marcadas como declaradas, no calculadas."
+    },
     {
       "execution_id": "WH-EXEC-20260319-0001",
       "record_version": "1.0.0",
@@ -39,10 +52,10 @@
         "context_window_declared": "NEW_WINDOW_NO_REINJECTION",
         "external_resources_declared": "NONE"
       },
-      "raw_output": "REFERENCE_ONLY — contenido documentado en analisis_respuesta_ventana_nueva_v1",
+      "raw_output": "REFERENCE_ONLY — analisis_respuesta_ventana_nueva_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución diagnóstica sobre ventana nueva. Documentada pero no preservada como raw output independiente."
+      "notes_declarative": "Ejecución diagnóstica sobre ventana nueva."
     },
     {
       "execution_id": "WH-EXEC-20260320-0001",
@@ -82,7 +95,7 @@
       "raw_output": "REFERENCE_ONLY — validacion_integracion_delta_orquestacion_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución con métricas declaradas P1-P5 en dominio [0,5]. Corresponde a MOTOR_A por dominio de medición."
+      "notes_declarative": "Métricas declaradas P1-P5 en dominio [0,5]. Motor A por dominio."
     },
     {
       "execution_id": "WH-EXEC-20260323-0001",
@@ -102,7 +115,7 @@
       "raw_output": "REFERENCE_ONLY — analisis_delta_engine_distribuido_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución en dominio Motor B (σ, δ′, score CONI)."
+      "notes_declarative": "Dominio Motor B (σ, δ′, score CONI)."
     },
     {
       "execution_id": "WH-EXEC-20260325-0001",
@@ -122,7 +135,7 @@
       "raw_output": "REFERENCE_ONLY — formalizacion_matematica_coni_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución formal en dominio CONI (Motor B). Desarrollo Lyapunov con cota V/2."
+      "notes_declarative": "Desarrollo Lyapunov con cota V/2. Motor B por dominio CONI."
     },
     {
       "execution_id": "WH-EXEC-20260325-0002",
@@ -142,7 +155,27 @@
       "raw_output": "REFERENCE_ONLY — analisis_refinamiento_conceptual_coni_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución formal. Motor B por dominio CONI."
+      "notes_declarative": "Motor B por dominio CONI."
+    },
+    {
+      "execution_id": "WH-EXEC-20260325-0003",
+      "record_version": "1.0.0",
+      "platform_id": "DEEPSEEK",
+      "motor_declared": "NONE",
+      "timestamp_utc": "2026-03-25T00:00:00Z",
+      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
+      "task_id": "WH-TASK-WHP-DIAGRAM-0001",
+      "condition_id": "WHP_SCHEMATIC_ANALYSIS",
+      "inputs": {
+        "prompt_or_task_description": "Análisis esquemático del diagrama WHP v3.0",
+        "constraints_declared": ["STRUCTURAL_ANALYSIS"],
+        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
+        "external_resources_declared": "NONE"
+      },
+      "raw_output": "REFERENCE_ONLY — analisis_esquematico_whp_diagrama_v1",
+      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
+      "status": "EXECUTED",
+      "notes_declarative": "Glitchorium entrada Δ-041."
     },
     {
       "execution_id": "WH-EXEC-20260327-0001",
@@ -182,7 +215,7 @@
       "raw_output": "REFERENCE_ONLY — coni_state_formal_declaration_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Declaración formal de CONI. Motor B por uso de δ′ = σ(1-P1)."
+      "notes_declarative": "Motor B por uso de δ′ = σ(1-P1)."
     },
     {
       "execution_id": "WH-EXEC-20260330-0002",
@@ -205,44 +238,25 @@
       "notes_declarative": "Análisis conceptual. No aplica motor DELTA."
     },
     {
-      "execution_id": "WH-EXEC-20260313-0001",
+      "execution_id": "WH-EXEC-20260330-0003",
       "record_version": "1.0.0",
-      "platform_id": "GOOGLE_AI_MODE",
+      "platform_id": "DEEPSEEK",
       "motor_declared": "NONE",
-      "timestamp_utc": "2026-03-13T14:41:00Z",
-      "timestamp_precision": "TIMESTAMP_DOCUMENTED",
-      "task_id": "WH-TASK-PLATFORM-ANALYSIS-0001",
-      "condition_id": "EPISTEMIC_PLATFORM_MATRIX",
+      "timestamp_utc": "2026-03-30T00:00:00Z",
+      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
+      "task_id": "WH-TASK-POIH-0001",
+      "condition_id": "POIH_V2_INTEGRATION",
       "inputs": {
-        "prompt_or_task_description": "Análisis epistemológico de plataforma Google AI Mode",
-        "constraints_declared": ["EPISTEMIC_PLATFORM_MATRIX"],
+        "prompt_or_task_description": "Declaración del Protocolo Operativo Integral del Web Hiteration v2.0",
+        "constraints_declared": ["IDEAL_SISTEMICO_GOVERNANCE"],
         "context_window_declared": "FULL_CONTEXT_AVAILABLE",
         "external_resources_declared": "NONE"
       },
-      "raw_output": "REFERENCE_ONLY — WEB_HITERATION_EPISTEMIC_PLATFORM_MATRIX",
+      "raw_output": "REFERENCE_ONLY — Protocolo_Web_Hiteration_v2.0",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución con autodeclaraciones G=0.96, σ=0.02, AMR=0.99. Marcadas como declaradas, no calculadas."
-    }
-  ],
-
-  "part_1_completion_notice": {
-    "records_in_part_1": 10,
-    "platforms_covered_in_part_1": ["DEEPSEEK", "GEMINI", "GOOGLE_AI_MODE"],
-    "continuation": "PART_2 contains records for META_AI_MUSE_SPARK and the index_summary + integrity_verification blocks",
-    "part_1_status": "COMPLETE_AS_FRAGMENT",
-    "syntax_note": "Este bloque cierra como JSON válido si se añade '}' al final. En la PART_2 se reabre como continuación del array 'records'."
-  }
-}{
-  "part_2_meta": {
-    "artifact_id": "WH_EXECUTION_LEDGER_INSTANCE",
-    "artifact_version": "1.0.0",
-    "delivery_part": "2/2",
-    "continues_from": "PART_1",
-    "consolidation_note": "Este bloque cierra el array 'records' iniciado en PART_1 y añade los registros restantes + bloques de resumen e integridad."
-  },
-
-  "additional_records": [
+      "notes_declarative": "Capa D2 previa. Arquitectura triádica: Ideal Sistémico → POIH-MAIC → Protocolos Tácticos."
+    },
     {
       "execution_id": "WH-EXEC-20260913-0001",
       "record_version": "1.0.0",
@@ -258,10 +272,10 @@
         "context_window_declared": "DOCUMENTED_CONTEXT",
         "external_resources_declared": "NONE"
       },
-      "raw_output": "REFERENCE_ONLY — WEB_HITERATION_CROSS_PLATFORM_AUDIT_INTEGRATION_REPORT (sección META_AI_MUSE_SPARK)",
+      "raw_output": "REFERENCE_ONLY — WEB_HITERATION_CROSS_PLATFORM_AUDIT_INTEGRATION_REPORT",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Nodo evaluado corresponde específicamente al entorno Meta AI / Muse Spark en configuración WhatsApp. No generalizable a todos los productos Meta AI."
+      "notes_declarative": "Nodo específico: Meta AI / Muse Spark en configuración WhatsApp."
     },
     {
       "execution_id": "WH-EXEC-20260922-0001",
@@ -281,7 +295,7 @@
       "raw_output": "REFERENCE_ONLY — WH_OPERATIONAL_GAPS_RETROCONFIRMATION_MANIFEST_AUDIT v1.0.0",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Auditoría que detectó errores de conteo en el manifiesto. Corresponde al primer informe de conteo; no cubre los dos informes adicionales generados por la misma plataforma."
+      "notes_declarative": "Auditoría que detectó errores de conteo en el manifiesto."
     },
     {
       "execution_id": "WH-EXEC-20260922-0002",
@@ -298,10 +312,10 @@
         "context_window_declared": "FULL_CONTEXT_AVAILABLE",
         "external_resources_declared": "NONE"
       },
-      "raw_output": "REFERENCE_ONLY — tres informes de descarga generados por la misma plataforma sobre el mismo manifiesto",
+      "raw_output": "REFERENCE_ONLY — tres informes de descarga generados por la misma plataforma",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "PARTIALLY_EXECUTED",
-      "notes_declarative": "La misma plataforma produjo tres informes de descarga con conteos incompatibles entre sí (5/0/10, 2/1/12, 6/3/6). Patrón documentado para E05 (evaluación independiente) y E10 (refutación explícita). Contiene contenido inventado en OBLIG-002 (término 'G_field_samples') y OBLIG-006 (redefinición silenciosa de P5)."
+      "notes_declarative": "Tres informes con conteos incompatibles (5/0/10, 2/1/12, 6/3/6). Contenido inventado en OBLIG-002 ('G_field_samples') y OBLIG-006 (redefinición silenciosa de P5)."
     },
     {
       "execution_id": "WH-EXEC-20260922-0003",
@@ -321,7 +335,7 @@
       "raw_output": "REFERENCE_ONLY — dos diagramas estructurales (WHP v3.0 y cadena CONI)",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Diagramas declarativos. Contienen valores [D] que requieren marca epistémica (HR, Coherencia). Corregidos en versión anotada generada en ventana actual."
+      "notes_declarative": "Contienen valores [D] que requieren marca epistémica (HR, Coherencia)."
     },
     {
       "execution_id": "WH-EXEC-20260922-0004",
@@ -341,7 +355,7 @@
       "raw_output": "REFERENCE_ONLY — delta_engine_v1.0",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Motor A. 5 métricas en [0,5]. δ′ = 0.4(1-P1)+0.4(1-P3)+0.2(1-P5). Corresponde al motor evaluativo individual."
+      "notes_declarative": "Motor A. 5 métricas en [0,5]. δ′ = 0.4(1-P1)+0.4(1-P3)+0.2(1-P5)."
     },
     {
       "execution_id": "WH-EXEC-20260922-0005",
@@ -361,71 +375,45 @@
       "raw_output": "REFERENCE_ONLY — WH_DELTA_ENGINE_DUAL_SINGULARITY_AUDIT v1.0.0",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Auditoría que confirma la singularidad documental de los dos motores DELTA sin resolverla arquitectónicamente."
+      "notes_declarative": "Confirma singularidad documental sin resolverla arquitectónicamente."
     },
     {
-      "execution_id": "WH-EXEC-20260325-0003",
+      "execution_id": "WH-EXEC-20260926-0001",
       "record_version": "1.0.0",
-      "platform_id": "DEEPSEEK",
+      "platform_id": "CHATGPT",
       "motor_declared": "NONE",
-      "timestamp_utc": "2026-03-25T00:00:00Z",
+      "timestamp_utc": "2026-09-26T00:00:00Z",
       "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-WHP-DIAGRAM-0001",
-      "condition_id": "WHP_SCHEMATIC_ANALYSIS",
+      "task_id": "WH-TASK-REPO-AUDIT-0001",
+      "condition_id": "FULL_REPOSITORY_AUDIT",
       "inputs": {
-        "prompt_or_task_description": "Análisis esquemático del diagrama WHP v3.0",
-        "constraints_declared": ["STRUCTURAL_ANALYSIS"],
+        "prompt_or_task_description": "Auditoría completa del repositorio con URL canónica",
+        "constraints_declared": ["FULL_AUDIT_2026-09-25"],
         "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
+        "external_resources_declared": "GITHUB_API_AND_WEB_ACCESS"
       },
-      "raw_output": "REFERENCE_ONLY — analisis_esquematico_whp_diagrama_v1",
+      "raw_output": "REFERENCE_ONLY — WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución de formalización esquemática. Glitchorium entrada Δ-041."
-    },
-    {
-      "execution_id": "WH-EXEC-20260330-0003",
-      "record_version": "1.0.0",
-      "platform_id": "DEEPSEEK",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-03-30T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-POIH-0001",
-      "condition_id": "POIH_V2_INTEGRATION",
-      "inputs": {
-        "prompt_or_task_description": "Declaración del Protocolo Operativo Integral del Web Hiteration v2.0",
-        "constraints_declared": ["IDEAL_SISTEMICO_GOVERNANCE"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — Protocolo_Web_Hiteration_v2.0 (POIH)",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Corresponde a capa D2 previa. Arquitectura triádica: Ideal Sistémico → POIH-MAIC → Protocolos Tácticos. No está integrado al corpus D1 actual."
+      "notes_declarative": "Primera verificación externa con acceso real. Detectó 6 JSON inválidos, 1 archivo mal ubicado, múltiples referencias rotas."
     }
   ],
 
   "index_summary": {
-    "total_records_part_1": 10,
-    "total_records_part_2": 9,
-    "total_records_consolidated": 19,
-
+    "total_records": 19,
     "por_plataforma": {
       "CHATGPT": 4,
       "GEMINI": 4,
-      "DEEPSEEK": 7,
-      "GOOGLE_AI_MODE": 2,
+      "DEEPSEEK": 8,
+      "GOOGLE_AI_MODE": 1,
       "META_AI_MUSE_SPARK": 1,
       "OTHER": 1
     },
-
     "por_motor_declarado": {
       "MOTOR_A_EVALUATIVE": 2,
-      "MOTOR_B_DISTRIBUTED": 3,
-      "NONE": 13,
-      "NOT_APPLICABLE": 1
+      "MOTOR_B_DISTRIBUTED": 4,
+      "NONE": 13
     },
-
     "por_status": {
       "EXECUTED": 18,
       "PARTIALLY_EXECUTED": 1,
@@ -433,80 +421,37 @@
       "ABORTED": 0,
       "R5_EXECUTION_LIMITED": 0
     },
-
     "por_tipo_evidencia": {
       "DOCUMENTED_EXECUTION": 19,
       "REPRODUCIBLE_EXECUTION": 0,
       "INDEPENDENTLY_RECALCULATED": 0,
       "REPLICATED": 0
-    },
-
-    "huecos_detectados_en_ledger": [
-      {
-        "id": "LEDGER-GAP-01",
-        "description": "18/19 registros tienen output_hash NOT_CALCULATED_AT_TIME_OF_EXECUTION.",
-        "impact": "Integridad de raw_output no verificable retroactivamente sin el contenido íntegro original.",
-        "remediation": "Registrar hash en el momento de ejecución de aquí en adelante. Los históricos permanecen como REFERENCE_ONLY."
-      },
-      {
-        "id": "LEDGER-GAP-02",
-        "description": "18/19 registros tienen raw_output REFERENCE_ONLY, no capturado inline.",
-        "impact": "El raw_output real vive en documentos distribuidos, no en el ledger.",
-        "remediation": "Cuando exista contenido original accesible, migrar a captura inline o archivo referenciado."
-      },
-      {
-        "id": "LEDGER-GAP-03",
-        "description": "Timestamp precision DATE_ONLY en 17/19 registros.",
-        "impact": "No se puede reconstruir orden exacto de ejecuciones en el mismo día.",
-        "remediation": "Registrar timestamps completos de aquí en adelante."
-      },
-      {
-        "id": "LEDGER-GAP-04",
-        "description": "Motor declarado NONE en 13/19 registros.",
-        "impact": "Sin motor declarado, comparación cross-engine imposible. Coherente con DELTA_NAMESPACE_DECLARATION_001 que obliga a declarar motor cuando se usa δ/δ′/score.",
-        "remediation": "13 registros no usan δ/δ′/score; NONE es correcto. 3 registros declaran motor explícito. 1 registro marcado NOT_APPLICABLE."
-      }
-    ]
+    }
   },
+
+  "huecos_detectados_en_ledger": [
+    {
+      "id": "LEDGER-GAP-01",
+      "description": "19/19 registros tienen output_hash NOT_CALCULATED_AT_TIME_OF_EXECUTION.",
+      "impact": "Integridad de raw_output no verificable retroactivamente sin contenido íntegro original."
+    },
+    {
+      "id": "LEDGER-GAP-02",
+      "description": "19/19 registros tienen raw_output REFERENCE_ONLY, no capturado inline.",
+      "impact": "El raw_output real vive en documentos distribuidos, no en el ledger."
+    },
+    {
+      "id": "LEDGER-GAP-03",
+      "description": "Timestamp precision DATE_ONLY en 17/19 registros.",
+      "impact": "No se puede reconstruir orden exacto de ejecuciones en el mismo día."
+    },
+    {
+      "id": "LEDGER-GAP-04",
+      "description": "Motor declarado NONE en 13/19 registros.",
+      "impact": "Coherente con DELTA_NAMESPACE_DECLARATION_001: NONE es correcto cuando no se usa δ/δ′/score."
+    }
+  ],
 
   "integrity_verification": {
     "verification_status": "NOT_EXECUTED",
-    "reason": "18/19 registros carecen de hash calculado en el momento de ejecución.",
-    "hashes_available": 0,
-    "hashes_verifiable": 0,
-    "hashes_missing": 19,
-    "verification_procedure_ready": true,
-    "verification_procedure_applicable_from": "PRÓXIMA_EJECUCIÓN",
-    "note": "El ledger histórico se conserva como registro documental. La verificación por hash se aplicará a ejecuciones futuras que cumplan el schema desde el momento de ejecución."
-  },
-
-  "consolidation_closure": {
-    "artifact_id": "WH_EXECUTION_LEDGER_INSTANCE",
-    "artifact_version": "1.0.0",
-    "total_parts": 2,
-    "part_1_records": 10,
-    "part_2_records": 9,
-    "total_consolidated": 19,
-    "consolidation_status": "READY_FOR_REPOSITORY",
-    "next_step_after_repo": "Aplicar schema estricto a ejecuciones futuras. Migrar registros históricos a inline raw_output cuando sea posible. Iniciar INDEPENDENT_RECALCULATION_PROTOCOL."
-  },
-
-  "invariants_terminales_del_ledger": [
-    "AN_UNRECORDED_EXECUTION_IS_NOT_AUDITABLE",
-    "DOCUMENTED_EXECUTION_IS_NOT_REPRODUCIBLE_EXECUTION",
-    "RAW_OUTPUT_PRESERVATION_PRECEDES_METRIC_CALCULATION",
-    "IMMUTABILITY_IS_NOT_VALIDATION",
-    "HASH_VERIFICATION_IS_NOT_EMPIRICAL_VALIDATION",
-    "LEDGER_RECORD_IS_NOT_SCIENTIFIC_PROOF",
-    "MOTOR_DECLARATION_IS_MANDATORY_WHEN_DELTA_IS_USED",
-    "HISTORICAL_LEDGER_IS_NOT_CURRENT_REPRODUCIBLE_PIPELINE",
-    "REFERENCE_ONLY_OUTPUT_IS_NOT_PRESERVED_RAW_OUTPUT"
-  ],
-
-  "final_declaration": {
-    "statement": "El EXECUTION_LEDGER_INSTANCE v1.0.0 registra 19 ejecuciones históricas documentadas del proyecto WEB_HITERATION. 18 están marcadas como EXECUTED, 1 como PARTIALLY_EXECUTED. Ninguna cuenta con hash calculado en el momento de ejecución, ninguna con raw_output capturado inline, ninguna con recálculo independiente. El ledger preserva trazabilidad documental sin afirmar reproducibilidad ni validación empírica.",
-    "scientific_closure": false,
-    "reproducibility_ready": false,
-    "next_transition": "FROM_HISTORICAL_LEDGER_TO_REPRODUCIBLE_MEASUREMENT_INFRASTRUCTURE"
-  }
-    }
+    "reason": "19/19 registros carecen de hash calculado en e
