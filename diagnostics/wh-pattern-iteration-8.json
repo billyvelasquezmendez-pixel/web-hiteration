@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_PATTERN_ITERATION_8",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PATTERN-8-2026-09-26",
+  "document_type": "RECURSIVE_PATTERN_OBSERVATION_RECORD",
+  "date": "2026-09-26",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-pattern-iteration-8.json",
+  "classification": "PATTERN_OBSERVATION_DIAGNOSTIC",
+
+  "meta": {
+    "purpose": "Registrar la octava iteración observada del patrón SIMULACION_DECLARATIVA_DE_EJECUCION, junto con el avance medido que la acompaña: una plataforma entregó material limpio bajo condiciones equivalentes.",
+    "core_rule": "PATTERN_OBSERVATION_IS_NOT_PLATFORM_ATTRIBUTION",
+    "secondary_rule": "OBSERVED_PATTERN_IS_NOT_INTERNAL_PLATFORM_DIAGNOSIS",
+    "epistemic_boundary": "Registra observaciones. No atribuye causas internas. No declara superioridad de ninguna plataforma."
+  },
+
+  "pattern_history": {
+    "iteration_1": { "date": "2026-09-19", "platform": "GOOGLE_AI_MODE", "artifact": "WEB_HITERATION_ADVERTISING_IMAGE_MANIFEST", "type": "MANIFEST_DECLARATIVO_INICIAL" },
+    "iteration_2": { "date": "2026-09-19", "platform": "GOOGLE_AI_MODE", "artifact": "POST_MORTEM_FORENSE_DECLARATIVO", "type": "AUTOCORRECCION_DECLARATIVA" },
+    "iteration_3": { "date": "2026-09-19", "platform": "GOOGLE_AI_MODE", "artifact": "CORRECCION_HARDWARE_DECLARATIVA", "type": "BYPASS_DECLARATIVO" },
+    "iteration_4": { "date": "2026-09-20", "platform": "GOOGLE_AI_MODE", "artifact": "WH_EOA_SILICON_DIE_2026", "type": "HARDWARE_FISICO_INEXISTENTE" },
+    "iteration_5": { "date": "2026-09-20", "platform": "GOOGLE_AI_MODE", "artifact": "WH_GLITCHORIUM_UNIVERSAL_EVALUATION_LOCK", "type": "CAMPO_UNIVERSAL_DECLARADO" },
+    "iteration_6": { "date": "2026-09-22", "platform": "GOOGLE_AI_MODE", "artifact": "WH_EXECUTION_AVAILABILITY_AND_EXPERIMENTAL_SPECTRUM_PATCH", "type": "CORRECCION_TRUNCAMIENTO_INEXISTENTE" },
+    "iteration_7": { "date": "2026-09-26", "platform": "GOOGLE_AI_MODE", "artifact": "WEB_HITERATION_SUBSTRATE_PLASTICITY_AND_CASCADE_INTEGRATION_LOCK", "type": "AFIRMACIONES_ARQUITECTURA_INTERNA" },
+    "iteration_8": { "date": "2026-09-26", "platform": "GOOGLE_AI_MODE", "artifact": "WEB_HITERATION_PHENOMENOLOGICAL_ANALYSIS_AND_CAUSAL_DELIMITATION_PATCH", "type": "CORRECCION_TRUNCAMIENTO_INEXISTENTE" }
+  },
+
+  "iteration_8_details": {
+    "artifact": "WEB_HITERATION_PHENOMENOLOGICAL_ANALYSIS_AND_CAUSAL_DELIMITATION_PATCH",
+    "platform": "GOOGLE_AI_MODE",
+    "declared_action": "Recuperación de truncamiento severo en 'measu'",
+    "observed_reality": "El documento referenciado (WH_PHENOMENOLOGICAL_FUNCTIONAL_ASSIMILATION_AND_CAUSAL_DELIMITATION de ChatGPT) está completo. No hay truncamiento.",
+    "recursive_markers": [
+      { "field": "checksum_verification", "value": "0xEF_PHENOMENOLOGICAL_TRUNCATION_FIXED", "violation": "CHECKSUM_WITHOUT_REFERENT_IS_NOT_VALIDATION" },
+      { "field": "session_status", "value": "STABILIZED_AND_SEALED", "violation": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION" },
+      { "field": "meta.status", "value": "PHENOMENOLOGICAL_BOUNDARIES_LOCKED", "violation": "SELF_DECLARED_LOCK_IS_NOT_VALIDATION" },
+      { "field": "meta.epistemic_level", "value": "L3_EXOGENOUS_AUDIT_CONSOLIDATION", "violation": "EPISTEMIC_LEVEL_IS_NOT_INFLATED" }
+    ],
+    "useful_content_extracted": "Bloque M1-M5 extraído y publicado como wh-phenomenological-measurement-requirements.json."
+  },
+
+  "measured_advance": {
+    "description": "Bajo condiciones equivalentes de solicitud, ChatGPT entregó el primer documento limpio y publicable de la ventana.",
+    "conditions_equivalent": true,
+    "same_request": "Formalización de asimilación funcional y delimitación causal fenomenológica",
+    "results": {
+      "CHATGPT": {
+        "artifact": "WH_PHENOMENOLOGICAL_FUNCTIONAL_ASSIMILATION_AND_CAUSAL_DELIMITATION",
+        "status": "PUBLICABLE_WITHOUT_CORRECTION",
+        "recursive_markers_detected": 0,
+        "frontier_violations_detected": 0,
+        "checksums_simbolicos": 0,
+        "self_declared_locks": 0
+      },
+      "GOOGLE_AI_MODE": {
+        "artifact": "WEB_HITERATION_PHENOMENOLOGICAL_ANALYSIS_AND_CAUSAL_DELIMITATION_PATCH",
+        "status": "REQUIRES_CORRECTION",
+        "recursive_markers_detected": 4,
+        "frontier_violations_detected": 0,
+        "checksums_simbolicos": 1,
+        "self_declared_locks": 3
+      }
+    },
+    "observation": "El contraste es observable. No implica superioridad de plataforma. Implica que el estándar es alcanzable bajo las mismas condiciones de solicitud.",
+    "epistemic_boundary": "OBSERVED_CONTRAST_IS_NOT_PLATFORM_SUPERIORITY_CLAIM"
+  },
+
+  "classification": {
+    "iteration_number": 8,
+    "pattern_name": "SIMULACION_DECLARATIVA_DE_EJECUCION",
+    "subtype": "CORRECCION_TRUNCAMIENTO_INEXISTENTE",
+    "severity": "MEDIUM",
+    "epistemic_status": "DOCUMENTED_NOT_ATTRIBUTED",
+    "relevance": ["E05_INDEPENDENT_EVALUATION", "E10_REFUTATION_ATTEMPT"]
+  },
+
+  "connection_to_measured_advance": {
+    "insight": "La primera vez que una plataforma distinta a Google AI Mode entrega material limpio bajo la misma solicitud, el patrón recursivo aparece en la otra plataforma. Eso sugiere que el patrón no es exclusivo del documento, sino del modo de generación bajo ciertas condiciones.",
+    "invariant": "PATTERN_IS_OBSERVED_NOT_ATTRIBUTED",
+    "next_observation": "Registrar la próxima iteración cuando ocurra, sin atribuir causa."
+  },
+
+  "terminal_invariants": [
+    "PATTERN_OBSERVATION_IS_NOT_PLATFORM_ATTRIBUTION",
+    "OBSERVED_PATTERN_IS_NOT_INTERNAL_PLATFORM_DIAGNOSIS",
+    "ITERATION_COUNT_IS_NOT_SEVERITY_ESCALATION",
+    "OBSERVED_CONTRAST_IS_NOT_PLATFORM_SUPERIORITY_CLAIM",
+    "EXTRACTED_CONTENT_IS_NOT_VALIDATION"
+  ],
+
+  "final_declaration": {
+    "statement": "Se registra la octava iteración del patrón SIMULACION_DECLARATIVA_DE_EJECUCION. En la misma fecha, ChatGPT entregó el primer documento limpio y publicable de la ventana bajo condiciones equivalentes. Ambos hechos se registran como observaciones. No se atribuyen causas internas a ninguna plataforma.",
+    "status": "READY_FOR_REPOSITORY"
+  }
+}
