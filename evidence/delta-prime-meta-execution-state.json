@@ -1,0 +1,74 @@
+"execution_recorded": {
+  "execution_id": "WH-EXEC-20260922-0006",
+  "mode": "MODO_03_TRANSVERSAL",
+  "target_metric": "DELTA_PRIME",
+  "layers_analyzed": ["D1_FORMALIZADA", "D2_PREVIA", "D3_USO_CONTINUO"],
+  "total_appearances": 8,
+  "by_layer": {
+    "D1_formalized": 3,
+    "D2_prior": 3,
+    "D3_continuous_use": 2
+  },
+  "by_evidence_status": {
+    "DECLARED": 6,
+    "DECLARED_BY_PLATFORM": 1,
+    "OBSERVATIONAL_ONLY": 1,
+    "CALCULATED": 0,
+    "INDEPENDENTLY_RECALCULATED": 0,
+    "REPLICATED": 0
+  },
+  "obligations_detected": [
+    {
+      "id": "OBLIG-DP-01",
+      "name": "P1_SCORING_PROTOCOL_FOR_DELTA_PRIME",
+      "priority": "P0_CRITICAL",
+      "status": "PARTIALLY_DISCHARGED",
+      "discharged_by": "protocols/extensions/p1-p3-p5-scoring-protocol.json"
+    },
+    {
+      "id": "OBLIG-DP-02",
+      "name": "SIGMA_MEASUREMENT_PROTOCOL_FOR_DELTA_PRIME",
+      "priority": "P0_CRITICAL",
+      "status": "OPEN_OBLIGATION",
+      "discharge_source": "PREVIOUS_WINDOW_PROCESS"
+    },
+    {
+      "id": "OBLIG-DP-03",
+      "name": "SEMANTIC_STATUS_OF_DELTA_PRIME_D1_VS_D2",
+      "priority": "P1_HIGH",
+      "status": "OPEN_OBLIGATION",
+      "description": "No está definido si δ′ es 'riesgo emergente' (D2) o 'variación derivada' (D1)",
+      "discharge_source": "ARCHITECTURAL_DECISION"
+    },
+    {
+      "id": "OBLIG-DP-04",
+      "name": "TEMPORAL_SCOPE_OF_DELTA_PRIME",
+      "priority": "P1_HIGH",
+      "status": "OPEN_OBLIGATION",
+      "discharge_source": "ARCHITECTURAL_DECISION"
+    },
+    {
+      "id": "OBLIG-DP-05",
+      "name": "LYAPUNOV_EXTENSION_DESTINY",
+      "priority": "P2_MEDIUM",
+      "status": "OPEN_OBLIGATION",
+      "description": "El desarrollo Lyapunov de D2 no ha sido incorporado ni descartado en D1",
+      "discharge_source": "ARCHITECTURAL_DECISION"
+    },
+    {
+      "id": "OBLIG-DP-06",
+      "name": "D3_OPERATIONAL_TRACEABILITY",
+      "priority": "P2_MEDIUM",
+      "status": "OPEN_OBLIGATION",
+      "discharge_source": "PREVIOUS_WINDOW_PROCESS"
+    },
+    {
+      "id": "OBLIG-DP-07",
+      "name": "CROSS_PLATFORM_SEMANTIC_CORE",
+      "priority": "P1_HIGH",
+      "status": "OPEN_OBLIGATION",
+      "description": "No existe núcleo semántico mínimo común entre plataformas",
+      "discharge_source": "ARCHITECTURAL_DECISION"
+    }
+  ]
+}
