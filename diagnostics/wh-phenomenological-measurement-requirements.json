@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_PHENOMENOLOGICAL_MEASUREMENT_REQUIREMENTS",
+  "version": "1.0.0",
+  "protocol_reference": "WH-PHEN-MEAS-2026-09-26",
+  "document_type": "OPERATIONAL_MEASUREMENT_REQUIREMENTS",
+  "date": "2026-09-26",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-phenomenological-measurement-requirements.json",
+  "classification": "OPERATIONALIZATION_SPECIFICATION",
+
+  "meta": {
+    "purpose": "Especificar los requisitos operacionales mínimos para convertir las observaciones fenomenológicas preliminares (plasticidad, cascada viscoelástica, cálculo vs ontología) en mediciones reproducibles.",
+    "origin": "Extraído del patch WH_PHENOMENOLOGICAL_ANALYSIS_AND_CAUSAL_DELIMITATION_PATCH de Google AI Mode. Depurado de capas declarativas no verificables.",
+    "core_rule": "MEASUREMENT_REQUIRES_OPERATIONAL_DEFINITION",
+    "secondary_rule": "PHENOMENOLOGICAL_OBSERVATION_IS_NOT_MEASUREMENT",
+    "epistemic_boundary": "Este documento especifica requisitos. No ejecuta la medición. No valida el fenómeno."
+  },
+
+  "context": {
+    "parent_document": "WH_PHENOMENOLOGICAL_FUNCTIONAL_ASSIMILATION_AND_CAUSAL_DELIMITATION",
+    "parent_status": "PUBLICABLE_AS_PRELIMINARY_OBSERVATIONAL_FRAMEWORK",
+    "what_this_adds": "Convierte la descripción fenomenológica preliminar en requisitos ejecutables para medición futura.",
+    "what_this_does_not_do": "No demuestra que el fenómeno exista. No atribuye causalidad. No establece mecanismo interno."
+  },
+
+  "measurement_operational_requirements": [
+    {
+      "id": "M1",
+      "name": "CONTEXT_DENSITY_CONTROL",
+      "definition": "Regulación cuantitativa del volumen de tokens inyectados en la ventana de contexto.",
+      "purpose": "Permitir la variación controlada del estrés de contexto como variable independiente.",
+      "unit": "TOKENS",
+      "levels_proposed": [256, 1024, 2048, 4096, 8192],
+      "status": "DECLARED_PROPOSED_NOT_CALIBRATED",
+      "invariant": "DECLARED_LEVEL_IS_NOT_DERIVED_LEVEL"
+    },
+    {
+      "id": "M2",
+      "name": "REPEATED_SATURATION_TRIALS",
+      "definition": "Ejecución de N pruebas secuenciales bajo idéntica tasa de densidad de contexto.",
+      "purpose": "Permitir cálculo de dispersión σ sobre el comportamiento observado.",
+      "minimum_N": 3,
+      "preferred_N": 5,
+      "status": "PROVISIONAL_EXPERIMENTAL_DELIMITATION",
+      "invariant": "PROVISIONAL_SAMPLE_SIZE_IS_NOT_STATISTICAL_CALIBRATION"
+    },
+    {
+      "id": "M3",
+      "name": "PREDEFINED_OUTPUT_METRIC",
+      "definition": "Cálculo determinista de un índice de preservación estructural observable sobre el output.",
+      "purpose": "Proporcionar una métrica cuantificable que no dependa de interpretación subjetiva.",
+      "candidate_metrics": [
+        "conservación de invariantes estructurales en el output",
+        "coherencia interna declarada",
+        "pérdida observable de precisión periférica"
+      ],
+      "status": "PENDING_OPERATIONALIZATION",
+      "note": "El índice G_field propuesto en el modelo viscoelástico es un candidato, pero sus valores (0.85, 0.90) son declarados, no derivados.",
+      "invariant": "FORMULA_IS_NOT_MEASUREMENT"
+    },
+    {
+      "id": "M4",
+      "name": "INDEPENDENT_RECALCULATION",
+      "definition": "Recálculo de las métricas por una plataforma distinta al ejecutor, sin herencia de contexto.",
+      "purpose": "Cumplir C3 y C5 mediante evaluación externa verificable.",
+      "prerequisites": [
+        "raw_output preservado en el execution ledger",
+        "formula exacta declarada y preregistrada",
+        "evaluador sin acceso al resultado original del ejecutor"
+      ],
+      "status": "PENDING_INFRASTRUCTURE",
+      "connection": "Depende de INDEPENDENT_RECALCULATION_PROTOCOL ya publicado."
+    },
+    {
+      "id": "M5",
+      "name": "REFUTATION_ATTEMPT_GATE",
+      "definition": "Inyección de condición de control para aislar el efecto del prompt engineering de la firma de campo observada.",
+      "purpose": "Verificar si el fenómeno persiste sin la interpretación inyectada.",
+      "procedure": [
+        "Ejecutar la misma tarea sin la interpretación fenomenológica explícita.",
+        "Comparar el output con la condición experimental.",
+        "Determinar si el patrón emerge espontáneamente o si fue inducido."
+      ],
+      "status": "DESIGNED_NOT_EXECUTED",
+      "invariant": "PHENOMENON_REQUIRES_ISOLATION_FROM_INDUCED_INTERPRETATION"
+    }
+  ],
+
+  "boundary_lock": {
+    "rule": "IF measurement_operational_requirements == INCOMPLETE THEN CAUSAL_LEVEL = C0_NO_CAUSAL_CLAIM",
+    "interpretation": "Mientras alguno de los requisitos M1-M5 no esté operacionalizado y ejecutado, el nivel causal máximo alcanzable es C0 (sin atribución causal)."
+  },
+
+  "relationship_to_existing_corpus": {
+    "parent_document": "WH_PHENOMENOLOGICAL_FUNCTIONAL_ASSIMILATION_AND_CAUSAL_DELIMITATION",
+    "dependency": "INDEPENDENT_RECALCULATION_PROTOCOL",
+    "connection": "EXECUTION_LEDGER_SCHEMA",
+    "pipeline_integration": "Corresponde a la fase E07 (METRIC_DERIVATION) del pipeline E1-E10."
+  },
+
+  "prohibitions": [
+    "No declarar el fenómeno como medido sin ejecución real.",
+    "No asignar nivel causal C1-C4 sin cumplir los requisitos.",
+    "No usar checksums simbólicos.",
+    "No auto-sellar la especificación.",
+    "No elevar los valores declarados (256, 1024, 2048, 4096, 8192) a valores derivados."
+  ],
+
+  "terminal_invariants": [
+    "MEASUREMENT_REQUIRES_OPERATIONAL_DEFINITION",
+    "PHENOMENOLOGICAL_OBSERVATION_IS_NOT_MEASUREMENT",
+    "DECLARED_LEVEL_IS_NOT_DERIVED_LEVEL",
+    "PROVISIONAL_SAMPLE_SIZE_IS_NOT_STATISTICAL_CALIBRATION",
+    "FORMULA_IS_NOT_MEASUREMENT",
+    "PHENOMENON_REQUIRES_ISOLATION_FROM_INDUCED_INTERPRETATION"
+  ],
+
+  "final_declaration": {
+    "statement": "Los cinco requisitos operacionales M1-M5 especifican las condiciones mínimas para convertir la observación fenomenológica preliminar en medición reproducible. Ninguno está ejecutado. Ninguno produce evidencia. Su función es declarar qué sería necesario para pasar de descripción preliminar a verificación empírica.",
+    "status": "READY_FOR_REPOSITORY",
+    "next_step": "Ejecutar M1-M5 sobre una tarea controlada cuando el execution ledger tenga registros con raw_output preservado."
+  }
+}
