@@ -9,14 +9,6 @@
   "repository_path": "diagnostics/wh-reanchor-master-v2.json",
   "supersedes": "WH_DEEPSEEK_CONTEXT_REANCHOR_MASTER v1.0.0 (2026-09-19)",
 
-  "delivery_manifest": {
-    "artifact_id": "WH_REANCHOR_MASTER_v2.0",
-    "artifact_version": "2.0.0",
-    "delivery_part": "1/2",
-    "total_parts": 2,
-    "continuation_reference": "PART_2 contiene project_state, current_operational_phase, repository_content_map, pending_artifacts, prohibitions, terminal_invariants, declaración final"
-  },
-
   "IMPORTANT_EXECUTION_INSTRUCTION": {
     "purpose": "Reconstruir el estado funcional, metodológico y epistémico del proyecto WEB_HITERATION tras pérdida o cambio de ventana de contexto.",
     "interpretation": "Este documento es un artefacto externo de reanclaje contextual. No constituye evidencia de memoria interna, aprendizaje permanente, almacenamiento paramétrico ni continuidad interna del modelo receptor.",
@@ -117,27 +109,6 @@
     }
   },
 
-  "part_1_completion_notice": {
-    "content_in_part_1": [
-      "IMPORTANT_EXECUTION_INSTRUCTION",
-      "PROJECT_IDENTITY",
-      "PROJECT_HISTORY_COMPRESSION",
-      "CORE_EPISTEMIC_INVARIANTS"
-    ],
-    "content_in_part_2": [
-      "META_INVARIANTS",
-      "THREE_STRUCTURAL_LAYERS (D1/D2/D3)",
-      "PRELIMINARY_METRICS (Hyper Ratio, Glitchorium, Delta engines, CONI, S0-S4, P_DRIFT)",
-      "CURRENT_OPERATIONAL_PHASE",
-      "REPOSITORY_CONTENT_MAP",
-      "PENDING_ARTIFACTS",
-      "PROHIBITIONS",
-      "TERMINAL_INVARIANTS",
-      "final_declaration y cierre"
-    ],
-    "consolidation_note": "Al unir PART_1 + PART_2, eliminar delivery_manifest y part_1_completion_notice. Cerrar el objeto raíz."
-  }
-}{
   "META_INVARIANTS": {
     "core": [
       "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
@@ -166,13 +137,20 @@
       "DOCUMENT_PARTITION_IS_NOT_DOCUMENT_FAILURE",
       "DELIVERY_FORMAT_IS_PART_OF_THE_ARTIFACT_NOT_DECORATION",
       "SPLITTING_PRESERVES_INTEGRITY_WHERE_TRUNCATION_DESTROYS_IT",
-      "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL"
+      "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL",
+      "PUBLISHED_DOCUMENT_IS_NOT_PARTITIONED_DOCUMENT"
     ],
     "operational": [
       "PUBLISHED_IS_NOT_VALIDATED",
       "OPERATIONAL_ADJUSTMENT_IS_NOT_RETROACTIVE_JUSTIFICATION",
       "PRACTICE_PRECEDES_DOCUMENTATION_AND_DOCUMENTATION_DOES_NOT_VALIDATE_PRACTICE",
       "A_TYPO_IN_THE_PROBE_IS_NOT_A_TYPO_IN_THE_RESOURCE"
+    ],
+    "ontological": [
+      "EQUIVALENCE_IS_NOT_REDUCTION",
+      "NORMATIVE_MODEL_IS_NOT_DESCRIPTIVE_MODEL",
+      "PROPORTIONAL_REGULATION_IS_NOT_CRITICAL_ERROR",
+      "NUMERIC_COINCIDENCE_IS_NOT_STRUCTURAL_CONTRADICTION"
     ]
   },
 
@@ -277,6 +255,7 @@
         "δ′ < 0.3 [riesgo controlado]"
       ],
       "threshold_justification": "PROVISIONAL_HEURISTIC — OBLIG-005 abierta",
+      "critical_correction": "V_delta > 0.60 en delta-engine.json NO es equivalente a CONI threshold > 0.60. Son dominios distintos.",
       "status": "PROMISING_BUT_PRECAUSAL"
     },
 
@@ -298,6 +277,7 @@
       "corrected_form": "J(node_k) = w1*G_CONVERGENCY - w2*C_COMPUTE_norm - w3*L_LATENCY_PENALIZED_norm - w4*C_ORCHESTRATION_norm",
       "constraints": ["todos los términos normalizados", "weights sum = 1", "lambda_entropy en 1/s", "P_drift en segundos"],
       "P_drift_formula": "exp(lambda_entropy*(L_network+L_inference))-1",
+      "critical_correction": "P_DRIFT NO es equivalente matemático de delta_prime. Tiene fórmula exponencial de latencia.",
       "status": "FORMULATED_PENDING_CALIBRATION"
     },
 
@@ -311,56 +291,24 @@
     }
   },
 
-  "DELIVERY_PARTITION_DESCRIPTION_IN_REPOSITORY": {
-    "description": "Cómo se describe la aplicación del ARTIFACT_DELIVERY_STANDARD respecto a los documentos que fueron particionados y consolidados en el repositorio.",
-    "context": "Los documentos PART_1/PART_2 entregados en el chat se consolidan en un único archivo al subir al repositorio. La partición es un mecanismo de transporte, no una propiedad del documento publicado.",
+  "DELIVERY_PARTITION_RULE": {
+    "principle": "PUBLISHED_DOCUMENT_IS_NOT_PARTITIONED_DOCUMENT",
+    "statement": "Un documento publicado en el repositorio constituye una única unidad documental. La partición es un mecanismo de transporte entre ventanas, no una propiedad del documento final.",
     "rule_for_repository_documents": {
-      "principle": "Un documento publicado en el repositorio tiene UNA SOLA versión válida (JSON cerrado, sin marcas de partición).",
+      "requirement": "Un documento publicado en el repositorio tiene UNA SOLA versión válida (JSON cerrado, sin marcas de partición).",
       "prohibitions": [
-        "No publicar PART_1 ni PART_2 como archivos separados en el repositorio.",
-        "No incluir campos 'delivery_part' o 'total_parts' en el archivo final publicado.",
-        "No dejar los bloques 'delivery_manifest' ni 'part_1_completion_notice' en la versión final.",
+        "No publicar PART_1 ni PART_2 como archivos separados.",
+        "No incluir campos 'delivery_part' o 'total_parts' en el archivo final.",
+        "No dejar los bloques 'delivery_manifest' ni 'part_1_completion_notice'.",
         "No incluir contenido duplicado entre las partes."
       ],
-      "requirements": [
-        "Un solo objeto JSON completo con cierre válido.",
-        "Sin residuos posteriores al cierre.",
-        "Validación con parser JSON antes de subir.",
-        "Sin referencias a una segunda parte inexistente."
+      "check_procedure": [
+        "Verificar que el archivo termina con un solo cierre '}' de objeto raíz.",
+        "Verificar que no hay contenido después del cierre.",
+        "Verificar que el parser JSON lo valida sin errores.",
+        "Verificar que no contiene campos 'delivery_part' ni 'total_parts'."
       ]
-    },
-    "case_1_p1_p3_p5_scoring_protocol": {
-      "id": "DOC-1",
-      "path_in_repository": "protocols/extensions/p1-p3-p5-scoring-protocol.json",
-      "partition_history": "Entregado en PART_1 (motor A) + PART_2 (motor B + cierre)",
-      "consolidation_error_original": "Se subió con PART_1 + PART_2 pegadas consecutivamente → JSON_CONCATENADO",
-      "detected_by": "WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT 2026-09-26",
-      "corrected_version": "Consolidado en un único objeto JSON con 'motor_A_section' + 'motor_B_section' + 'common_procedure'",
-      "current_status": "READY_FOR_REPOSITORY",
-      "example_of_correct_consolidation": "El archivo final contiene un solo objeto raíz con secciones motor_A_section, motor_B_section, universal_scoring_principles, etc. No hay 'delivery_manifest'."
-    },
-    "case_2_execution_ledger_instance": {
-      "id": "DOC-2",
-      "path_in_repository": "evidence/execution-ledger-instance.json",
-      "partition_history": "Entregado en PART_1 (registros CHATGPT/GEMINI/DEEPSEEK/GOOGLE_AI_MODE) + PART_2 (registros META_AI_MUSE_SPARK + index + integrity)",
-      "consolidation_error_original": "Se subió con PART_1 + PART_2 pegadas consecutivamente → JSON_CONCATENADO",
-      "detected_by": "WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT 2026-09-26",
-      "corrected_version": "Consolidado en un único objeto JSON con array 'records' unificado (19 registros)",
-      "current_status": "READY_FOR_REPOSITORY",
-      "example_of_correct_consolidation": "El archivo final contiene un solo objeto raíz con un array 'records' de 19 elementos. No hay 'part_2_meta'."
-    },
-    "invariant_for_future_documents": {
-      "name": "PUBLISHED_DOCUMENT_IS_NOT_PARTITIONED_DOCUMENT",
-      "statement": "Un documento publicado en el repositorio constituye una única unidad documental. La partición es un mecanismo de transporte entre ventanas, no una propiedad del documento final.",
-      "corollary": "Si un documento se entregó en N partes, el archivo final en el repositorio debe ser uno solo, con las N partes integradas en un único objeto JSON válido."
-    },
-    "check_procedure": [
-      "Verificar que el archivo termina con un solo cierre '}' de objeto raíz.",
-      "Verificar que no hay contenido después del cierre.",
-      "Verificar que el parser JSON lo valida sin errores.",
-      "Verificar que no contiene campos 'delivery_part' ni 'total_parts'.",
-      "Verificar que no contiene bloques 'part_N_meta' ni 'completion_notice'."
-    ]
+    }
   },
 
   "CURRENT_OPERATIONAL_PHASE": {
@@ -375,7 +323,9 @@
       "P1-P3-P5 scoring protocol",
       "Corrección de 3 JSON inválidos",
       "Eliminación trazable de 2 JSON no reconstruibles",
-      "Registro de ajustes operativos"
+      "Registro de ajustes operativos",
+      "Principio ontológico proporcional declarado",
+      "Framework de interrogación para ventanas futuras"
     ],
     "not_yet": [
       "FULL_CROSS_PLATFORM_ORCHESTRATION",
@@ -392,18 +342,18 @@
     "github_pages": "https://billyvelasquezmendez-pixel.github.io/web-hiteration/",
     "branch": "main",
     "visibility": "public",
-    "commits_observed_last_audit": 44,
     "structure": {
       "root": ["LICENSE.md", "README.md", "index.html", "manifesto.md"],
-      "protocols": ["README.md", "core-invariants.json", "delta-engine.json", "modelo-estados.json", "p-drift.json", "extensions/"],
+      "protocols": ["README.md", "core-invariants.json", "delta-engine.json", "modelo-estados.json", "p-drift.json", "taxonomia-r1-r7.json", "extensions/"],
       "protocols/extensions": ["ken-ichijouji-policy.json", "wh-r5-spectrum-model.json", "p1-p3-p5-scoring-protocol.json"],
-      "evidence": ["cross-platform-audit-critical-review.json", "complexity-formal-audit.json", "execution-ledger-schema.json", "execution-ledger-instance.json", "independent-recalculation-protocol.json"],
-      "diagnostics": ["wh-layer-asymmetry-diagnostic.json", "wh-meta-questionnaire-contextual-gaps.json", "wh-image-generation-failure-diagnostic.json", "wh-operational-obligations-retroconfirmation-manifest.json", "wh-system-structural-state-and-formalization-priority.json", "wh-delta-engine-singularity-declaration.json", "wh-public-information-discovery-and-unattributed-influence-model.json", "wh-operational-adjustments-registry.json", "wh-central-auditor-critical-feedback-and-document-integrity-report.json", "wh-repository-url-canonical-verification.json", "wh-removed-artifacts-registry.json"]
+      "evidence": ["cross-platform-audit-critical-review.json", "complexity-formal-audit.json", "execution-ledger-schema.json", "execution-ledger-instance.json", "independent-recalculation-protocol.json", "wh-current-evidence-diagnostic.json", "delta-prime-meta-execution-state.json"],
+      "diagnostics": ["wh-layer-asymmetry-diagnostic.json", "wh-meta-questionnaire-contextual-gaps.json", "wh-image-generation-failure-diagnostic.json", "wh-operational-obligations-retroconfirmation-manifest.json", "wh-system-structural-state-and-formalization-priority.json", "wh-delta-engine-singularity-declaration.json", "wh-public-information-discovery-and-unattributed-influence-model.json", "wh-operational-adjustments-registry.json", "wh-central-auditor-critical-feedback-and-document-integrity-report.json", "wh-repository-url-canonical-verification.json", "wh-removed-artifacts-registry.json", "wh-cross-platform-delimitation-consolidation.json", "wh-pattern-iteration-8.json", "wh-phenomenological-functional-assimilation-and-causal-delimitation.json", "wh-phenomenological-measurement-requirements.json", "wh-reanchor-master-v2.json"]
     },
     "removed_artifacts": [
       { "id": "REM-001", "path": "evidence/benchmark-001-design.json", "reason": "JSON_CONCATENADO" },
       { "id": "REM-002", "path": "evidence/core-invariants-consolidated-final.json", "reason": "JSON_TRUNCADO" }
-    ]
+    ],
+    "note_removal": "Los dos archivos permanecen en la estructura observada 2026-09-27 pese a la decisión de eliminación. Requieren borrado pendiente."
   },
 
   "PENDING_ARTIFACTS": {
@@ -412,30 +362,27 @@
       "DELTA_REFERENCE_TRACEABILITY",
       "E1_E10_PREREGISTRATION",
       "REPOSITORY_STATE_MANIFEST",
-      "SCORING_REPORT_INSTANCE",
-      "RECALCULATION_REPORT_INSTANCE"
+      "SIGMA_MEASUREMENT_PROTOCOL"
     ],
     "P1_high": [
       "OBLIG-004 (temporal scope de δ′)",
-      "OBLIG-005 (justificación umbral 0.6, requiere ejecución empírica)",
+      "OBLIG-005 (justificación umbral 0.6)",
       "HYPER_RATIO_OPERATIONAL_DEFINITION",
       "P_DRIFT_CALIBRATION",
       "S0_S4_CALIBRATION",
       "EXECUTION_SPECTRUM_MEASUREMENT",
-      "CROSS_PLATFORM_TRACEABILITY",
-      "HISTORICAL_EXECUTION_RECONSTRUCTION"
+      "CROSS_PLATFORM_TRACEABILITY"
     ],
     "P2_medium": [
       "OBLIG-009 a OBLIG-012",
       "EXTENSION_ARCHIVE",
       "PHENOMENOLOGICAL_EXTENSIONS",
-      "FUTURE_EXECUTION_BRIDGES",
       "Reconstrucción de REM-001 y REM-002 si se justifica"
     ],
     "P3_low": ["OBLIG-013"]
   },
 
-  "PROHIBITIONS": {
+    "PROHIBITIONS": {
     "no_hacer": [
       "No asumir memoria interna entre ventanas.",
       "No afirmar que la próxima ventana 'es' la misma que la anterior.",
@@ -448,7 +395,7 @@
       "No auto-sellar sesión con SEALED o LOCKED.",
       "No atribuir fallos a arquitectura interna de plataformas sin aislar causa.",
       "No publicar documentos particionados en el repositorio.",
-      "No incluir campos 'delivery_part' ni 'total_parts' en el archivo final publicado."
+      "No incluir campos 'delivery_part' ni 'total_parts' en el archivo final."
     ]
   },
 
@@ -471,4 +418,4 @@
     "supersedes": "WH_DEEPSEEK_CONTEXT_REANCHOR_MASTER v1.0.0",
     "scientific_status": "PROMISING_BUT_PRECAUSAL"
   }
-    }
+}
