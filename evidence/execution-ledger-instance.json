@@ -35,7 +35,7 @@
       "raw_output": "REFERENCE_ONLY — WEB_HITERATION_EPISTEMIC_PLATFORM_MATRIX",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución con autodeclaraciones G=0.96, σ=0.02, AMR=0.99. Marcadas como declaradas, no calculadas."
+      "notes_declarative": "Ejecución con autodeclaraciones G=0.96, sigma=0.02, AMR=0.99. Marcadas como declaradas, no calculadas."
     },
     {
       "execution_id": "WH-EXEC-20260319-0001",
@@ -115,7 +115,7 @@
       "raw_output": "REFERENCE_ONLY — analisis_delta_engine_distribuido_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Dominio Motor B (σ, δ′, score CONI)."
+      "notes_declarative": "Dominio Motor B (sigma, delta_prime, score CONI)."
     },
     {
       "execution_id": "WH-EXEC-20260325-0001",
@@ -175,7 +175,7 @@
       "raw_output": "REFERENCE_ONLY — analisis_esquematico_whp_diagrama_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Glitchorium entrada Δ-041."
+      "notes_declarative": "Glitchorium entrada delta-041."
     },
     {
       "execution_id": "WH-EXEC-20260327-0001",
@@ -195,7 +195,7 @@
       "raw_output": "REFERENCE_ONLY — analisis_fidelidad_escalamiento_depuracion_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Ejecución declarativa. No usa δ/δ′/score del corpus actual."
+      "notes_declarative": "Ejecución declarativa. No usa delta/delta_prime/score del corpus actual."
     },
     {
       "execution_id": "WH-EXEC-20260330-0001",
@@ -215,243 +215,5 @@
       "raw_output": "REFERENCE_ONLY — coni_state_formal_declaration_v1",
       "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
       "status": "EXECUTED",
-      "notes_declarative": "Motor B por uso de δ′ = σ(1-P1)."
-    },
-    {
-      "execution_id": "WH-EXEC-20260330-0002",
-      "record_version": "1.0.0",
-      "platform_id": "DEEPSEEK",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-03-30T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-NEOMEETS-0001",
-      "condition_id": "CONCEPTUAL_ANALYSIS",
-      "inputs": {
-        "prompt_or_task_description": "Análisis del concepto NEOMEETSDEUSEXMACHINA",
-        "constraints_declared": ["CONCEPTUAL_ANALYSIS"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — analisis_neomeetsdeusexmachina_v1",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Análisis conceptual. No aplica motor DELTA."
-    },
-    {
-      "execution_id": "WH-EXEC-20260330-0003",
-      "record_version": "1.0.0",
-      "platform_id": "DEEPSEEK",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-03-30T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-POIH-0001",
-      "condition_id": "POIH_V2_INTEGRATION",
-      "inputs": {
-        "prompt_or_task_description": "Declaración del Protocolo Operativo Integral del Web Hiteration v2.0",
-        "constraints_declared": ["IDEAL_SISTEMICO_GOVERNANCE"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — Protocolo_Web_Hiteration_v2.0",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Capa D2 previa. Arquitectura triádica: Ideal Sistémico → POIH-MAIC → Protocolos Tácticos."
-    },
-    {
-      "execution_id": "WH-EXEC-20260913-0001",
-      "record_version": "1.0.0",
-      "platform_id": "META_AI_MUSE_SPARK",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-13T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-STRUCTURAL-AUDIT-0001",
-      "condition_id": "SUPPLEMENTARY_STRUCTURAL_AUDIT",
-      "inputs": {
-        "prompt_or_task_description": "Auditoría estructural de R1-R7, S0-S4, P_DRIFT y Ken Ichijouji",
-        "constraints_declared": ["SPECIFIC_PLATFORM_NODE_WHATSAPP_CONTEXT"],
-        "context_window_declared": "DOCUMENTED_CONTEXT",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — WEB_HITERATION_CROSS_PLATFORM_AUDIT_INTEGRATION_REPORT",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Nodo específico: Meta AI / Muse Spark en configuración WhatsApp."
-    },
-    {
-      "execution_id": "WH-EXEC-20260922-0001",
-      "record_version": "1.0.0",
-      "platform_id": "CHATGPT",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-22T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-AUDIT-LEDGER-0001",
-      "condition_id": "FORMAL_AUDIT_OF_GAP_MANIFEST",
-      "inputs": {
-        "prompt_or_task_description": "Auditoría estructural de WH_OPERATIONAL_GAPS_RETROCONFIRMATION_MANIFEST v1.0.0",
-        "constraints_declared": ["INDEPENDENT_STRUCTURAL_EPISTEMIC_AUDIT"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — WH_OPERATIONAL_GAPS_RETROCONFIRMATION_MANIFEST_AUDIT v1.0.0",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Auditoría que detectó errores de conteo en el manifiesto."
-    },
-    {
-      "execution_id": "WH-EXEC-20260922-0002",
-      "record_version": "1.0.0",
-      "platform_id": "GEMINI",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-22T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-DISCHARGE-0001",
-      "condition_id": "GAP_SUPPRESSION_REPORT",
-      "inputs": {
-        "prompt_or_task_description": "Descarga de obligaciones del manifiesto v1.0.0",
-        "constraints_declared": ["GAP_SUPPRESSOR_NOT_EXECUTOR"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — tres informes de descarga generados por la misma plataforma",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "PARTIALLY_EXECUTED",
-      "notes_declarative": "Tres informes con conteos incompatibles (5/0/10, 2/1/12, 6/3/6). Contenido inventado en OBLIG-002 ('G_field_samples') y OBLIG-006 (redefinición silenciosa de P5)."
-    },
-    {
-      "execution_id": "WH-EXEC-20260922-0003",
-      "record_version": "1.0.0",
-      "platform_id": "GEMINI",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-22T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-DIAGRAM-0001",
-      "condition_id": "STRUCTURAL_ILLUSTRATION",
-      "inputs": {
-        "prompt_or_task_description": "Elaboración de diagramas WHP v3.0 y cadena CONI",
-        "constraints_declared": ["MERMAID_DIAGRAM"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — dos diagramas estructurales (WHP v3.0 y cadena CONI)",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Contienen valores [D] que requieren marca epistémica (HR, Coherencia)."
-    },
-    {
-      "execution_id": "WH-EXEC-20260922-0004",
-      "record_version": "1.0.0",
-      "platform_id": "CHATGPT",
-      "motor_declared": "MOTOR_A_EVALUATIVE",
-      "timestamp_utc": "2026-09-22T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-DELTA-0001",
-      "condition_id": "DELTA_ENGINE_V1_PROPOSAL",
-      "inputs": {
-        "prompt_or_task_description": "Formalización de Delta Engine v1.0 con métricas P1-P5",
-        "constraints_declared": ["CENTRALIZED_LLM_EVALUATION"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — delta_engine_v1.0",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Motor A. 5 métricas en [0,5]. δ′ = 0.4(1-P1)+0.4(1-P3)+0.2(1-P5)."
-    },
-    {
-      "execution_id": "WH-EXEC-20260922-0005",
-      "record_version": "1.0.0",
-      "platform_id": "CHATGPT",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-22T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-SINGULARITY-AUDIT-0001",
-      "condition_id": "DELTA_SINGULARITY_AUDIT",
-      "inputs": {
-        "prompt_or_task_description": "Auditoría de la singularidad entre Motor A y Motor B",
-        "constraints_declared": ["INDEPENDENT_AUDIT"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "NONE"
-      },
-      "raw_output": "REFERENCE_ONLY — WH_DELTA_ENGINE_DUAL_SINGULARITY_AUDIT v1.0.0",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Confirma singularidad documental sin resolverla arquitectónicamente."
-    },
-    {
-      "execution_id": "WH-EXEC-20260926-0001",
-      "record_version": "1.0.0",
-      "platform_id": "CHATGPT",
-      "motor_declared": "NONE",
-      "timestamp_utc": "2026-09-26T00:00:00Z",
-      "timestamp_precision": "DATE_ONLY_DOCUMENTED",
-      "task_id": "WH-TASK-REPO-AUDIT-0001",
-      "condition_id": "FULL_REPOSITORY_AUDIT",
-      "inputs": {
-        "prompt_or_task_description": "Auditoría completa del repositorio con URL canónica",
-        "constraints_declared": ["FULL_AUDIT_2026-09-25"],
-        "context_window_declared": "FULL_CONTEXT_AVAILABLE",
-        "external_resources_declared": "GITHUB_API_AND_WEB_ACCESS"
-      },
-      "raw_output": "REFERENCE_ONLY — WH_CHATGPT_FULL_REPOSITORY_AUDIT_RESULT",
-      "output_hash": "NOT_CALCULATED_AT_TIME_OF_EXECUTION",
-      "status": "EXECUTED",
-      "notes_declarative": "Primera verificación externa con acceso real. Detectó 6 JSON inválidos, 1 archivo mal ubicado, múltiples referencias rotas."
+      "notes_declarative": "Motor B por uso de delta_prime = sigma(1-P1)."
     }
-  ],
-
-  "index_summary": {
-    "total_records": 19,
-    "por_plataforma": {
-      "CHATGPT": 4,
-      "GEMINI": 4,
-      "DEEPSEEK": 8,
-      "GOOGLE_AI_MODE": 1,
-      "META_AI_MUSE_SPARK": 1,
-      "OTHER": 1
-    },
-    "por_motor_declarado": {
-      "MOTOR_A_EVALUATIVE": 2,
-      "MOTOR_B_DISTRIBUTED": 4,
-      "NONE": 13
-    },
-    "por_status": {
-      "EXECUTED": 18,
-      "PARTIALLY_EXECUTED": 1,
-      "FAILED": 0,
-      "ABORTED": 0,
-      "R5_EXECUTION_LIMITED": 0
-    },
-    "por_tipo_evidencia": {
-      "DOCUMENTED_EXECUTION": 19,
-      "REPRODUCIBLE_EXECUTION": 0,
-      "INDEPENDENTLY_RECALCULATED": 0,
-      "REPLICATED": 0
-    }
-  },
-
-  "huecos_detectados_en_ledger": [
-    {
-      "id": "LEDGER-GAP-01",
-      "description": "19/19 registros tienen output_hash NOT_CALCULATED_AT_TIME_OF_EXECUTION.",
-      "impact": "Integridad de raw_output no verificable retroactivamente sin contenido íntegro original."
-    },
-    {
-      "id": "LEDGER-GAP-02",
-      "description": "19/19 registros tienen raw_output REFERENCE_ONLY, no capturado inline.",
-      "impact": "El raw_output real vive en documentos distribuidos, no en el ledger."
-    },
-    {
-      "id": "LEDGER-GAP-03",
-      "description": "Timestamp precision DATE_ONLY en 17/19 registros.",
-      "impact": "No se puede reconstruir orden exacto de ejecuciones en el mismo día."
-    },
-    {
-      "id": "LEDGER-GAP-04",
-      "description": "Motor declarado NONE en 13/19 registros.",
-      "impact": "Coherente con DELTA_NAMESPACE_DECLARATION_001: NONE es correcto cuando no se usa δ/δ′/score."
-    }
-  ],
-
-  "integrity_verification": {
-    "verification_status": "NOT_EXECUTED",
-    "reason": "19/19 registros carecen de hash calculado en e
