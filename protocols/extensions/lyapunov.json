@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_LYAPUNOV_EXTENSION_REVISED",
+  "version": "0.2.0-REVISED",
+  "protocol_reference": "WH-EXT-LYAPUNOV-2026-09-27",
+  "classification": "EXTENSION_PROVISIONAL_WITH_FORMALIZED_IDENTITY",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-27",
+  "license": "CC BY-SA 4.0",
+  "status": "READY_FOR_REPOSITORY_AS_OPEN_EXTENSION",
+  "repository_path": "protocols/extensions/lyapunov.json",
+  "version_semantics": "0.x indica extensión provisional no integrada al núcleo",
+  "patch_history": {
+    "v0_1_0": "Versión inicial con 6 preguntas abiertas Q1-Q6",
+    "v0_2_0": "Revisión con identidad AM-GM declarada, tricotomía Lyapunov/CLF/Costo, separación de niveles, y formalización de Q2, Q3, Q5, Q6"
+  },
+
+  "meta": {
+    "definition": "Extensión provisional que formaliza el desarrollo V(σ, P1) = σ² + (1-P1)², identifica su estatus matemático real (identidad algebraica AM-GM), y plantea la tricotomía Lyapunov / Control Lyapunov Function / Costo para su clasificación correcta.",
+    "core_rule": "PROVISIONAL_EXTENSION_IS_NOT_CORE_PROTOCOL",
+    "secondary_rule": "CANDIDATE_FUNCTION_IS_NOT_PROVEN_LYAPUNOV",
+    "tertiary_rule": "ALGEBRAIC_IDENTITY_IS_NOT_DYNAMIC_STABILITY",
+    "epistemic_boundary": "Este documento no afirma estabilidad demostrada. No afirma acoplamiento dinámico. Declara una identidad algebraica y las preguntas abiertas que la rodean."
+  },
+
+  "candidate_function": {
+    "formula": "V(σ, P1) = σ² + (1-P1)²",
+    "domain": {
+      "sigma": "[0,1]",
+      "P1": "[0,1]"
+    },
+    "declared_properties": {
+      "V(0,1)": 0,
+      "positive_definite": "V > 0 para todo (σ, P1) != (0,1)",
+      "continuity": "diferenciable en todo el dominio declarado",
+      "convexity": "estrictamente convexa, Hessiana = [[2,0],[0,2]] definida positiva",
+      "unique_minimum": "(0, 1) con V = 0"
+    }
+  },
+
+  "algebraic_identity_AM_GM": {
+    "statement": "δ′ ≤ V/2 es la desigualdad de medias aritmética-geométrica (AM-GM).",
+    "derivation": {
+      "let_a": "a = σ",
+      "let_b": "b = (1 - P1)",
+      "V": "V = a² + b²",
+      "delta_prime": "δ′ = σ × (1-P1) = a × b",
+      "AM_GM": "ab ≤ (a² + b²)/2 para todo a, b en R",
+      "substitution": "δ′ ≤ V/2"
+    },
+    "properties": {
+      "universal": "válida para todo (a, b) en R², no solo en [0,1]²",
+      "saturation_condition": "igualdad si y solo si a = b, es decir, σ = 1 - P1",
+      "saturation_set": "la recta σ + P1 = 1 dentro del dominio cuadrado [0,1]²",
+      "not_dynamic": "es una identidad algebraica, no una propiedad dinámica del sistema",
+      "not_falsifiable_algebraically": "no es refutable en el plano algebraico"
+    },
+    "epistemic_correction": "La cota δ′ ≤ V/2 NO depende del dominio [0,1]². Es universal. El documento v0.1.0 la presentaba como propiedad condicional del dominio, lo cual era incorrecto."
+  },
+
+  "tricotomy_lyapunov_clf_cost": {
+    "description": "Tres objetos matemáticos distintos que suelen confundirse bajo el nombre de 'Lyapunov'.",
+    "lyapunov_function": {
+      "definition": "V es función de Lyapunov del sistema autónomo x' = f(x) si V > 0 (excepto en el equilibrio) y dV/dt <= 0 a lo largo de trayectorias.",
+      "what_it_is": "Propiedad del sistema autónomo.",
+      "what_it_requires": "Sistema de EDOs explícito x' = f(x).",
+      "status_for_our_V": "NOT_ESTABLISHED. Sin sistema de EDOs, V no puede ser declarada función de Lyapunov."
+    },
+    "control_lyapunov_function_clf": {
+      "definition": "V es Control Lyapunov Function si para todo x != 0 existe un control u tal que dV/dt(x, u) < 0.",
+      "what_it_is": "Propiedad de la controlabilidad del sistema.",
+      "what_it_requires": "Conjunto de controles admisibles U.",
+      "status_for_our_V": "NOT_ESTABLISHED. Requiere definir U."
+    },
+    "cost_functional": {
+      "definition": "V es costo si es el funcional a minimizar por un controlador óptimo.",
+      "what_it_is": "Propiedad del problema de optimización.",
+      "what_it_requires": "Criterio de optimalidad.",
+      "status_for_our_V": "NOT_ESTABLISHED. Requiere definir el problema de optimización."
+    },
+    "classification_for_our_V": {
+      "currently": "V es una FUNCIÓN CANDIDATA. No es Lyapunov, ni CLF, ni costo, sin dinámica declarada.",
+      "recommendation": "Renombrar conceptualmente como 'candidate_function' hasta resolver Q1."
+    }
+  },
+
+  "level_separation": {
+    "algebraic_level": {
+      "status": "RESOLVED",
+      "content": "La cota δ′ ≤ V/2 es una identidad algebraica universal (AM-GM). Verificable por derivación directa.",
+      "falsifiable": false,
+      "domain": "Matemática pura."
+    },
+    "dynamic_level": {
+      "status": "OPEN",
+      "content": "¿V decrece a lo largo de las trayectorias del sistema? Requiere sistema de EDOs explícito.",
+      "falsifiable": true,
+      "domain": "Teoría de sistemas dinámicos.",
+      "prerequisite": "Definir dσ/dt = f(σ,P1) y dP1/dt = g(σ,P1)."
+    },
+    "empirical_level": {
+      "status": "PENDING",
+      "content": "¿Se observa decrecimiento de V en ejecuciones reales?",
+      "falsifiable": true,
+      "domain": "Observación experimental.",
+      "prerequisite": "Operacionalizar σ y P1 según p1-p3-p5-scoring-protocol.json."
+    },
+    "warning": "Mezclar los tres niveles produce confusión. El documento v0.1.0 los mezclaba parcialmente."
+  },
+
+  "open_questions_status": {
+    "Q1_strict_lyapunov_conditions": {
+      "status": "PENDING_WITH_DYNAMICS",
+      "reason": "Requiere sistema de EDOs. No resoluble con la fórmula V sola.",
+      "conditional_resolution": {
+        "if_gradient_dynamics": "Si dσ/dt = -2σ y dP1/dt = 2(1-P1), entonces V̇ = -4V ≤ 0 y V es Lyapunov estricto.",
+        "if_controlled_dissipation": "Si dσ/dt = -ασ y dP1/dt = β(1-P1) con α,β > 0, entonces V es Lyapunov para cualquier α,β > 0."
+      },
+      "what_remains_open": "¿Cuál es el sistema de EDOs del sistema real?"
+    },
+    "Q2_precision_variants": {
+      "status": "RESOLVED",
+      "resolution": "Interpretación algebraica: cota universal (AM-GM). Interpretación dinámica: requiere EDOs. Son ortogonales, no contradictorias."
+    },
+    "Q3_domain_restrictions": {
+      "status": "RESOLVED",
+      "resolution": "La cota es universal en R². En [0,1]², la igualdad se alcanza sobre la recta σ + P1 = 1. No hay restricciones adicionales."
+    },
+    "Q4_operational_measurement": {
+      "status": "PENDING_WITH_DYNAMICS",
+      "reason": "Requiere operacionalización de σ y P1.",
+      "prerequisite": "Aplicar p1-p3-p5-scoring-protocol.json para P1. Definir protocolo para σ (OBLIG-002)."
+    },
+    "Q5_relation_to_existing_metrics": {
+      "status": "RESOLVED",
+      "resolution": "V no es redundante con σ y P1 por separado (combinación no lineal). V no es función de δ′. V tiene geometría simple (convexa, mínimo único). Su redundancia dinámica depende del acoplamiento."
+    },
+    "Q6_falsation_conditions": {
+      "status": "RESOLVED",
+      "resolution": {
+        "algebraic": "No falsable (AM-GM).",
+        "dynamic": "Falsable si se define EDOs y se encuentra V̇ > 0.",
+        "empirical": "Falsable si se observa V decreciente con sistema inestable o V creciente con sistema estable."
+      }
+    }
+  },
+
+  "complementary_document_reference": {
+    "document": "DEEPSEEK_RESOLUTION_PROPOSAL_V1",
+    "location": "material de trabajo, no publicado en repositorio",
+    "contribution": "Identificó la identidad AM-GM, propuso la tricotomía Lyapunov/CLF/Costo, y separó los tres niveles de análisis.",
+    "integration_status": "INCORPORADO_PARCIALMENTE en esta v0.2.0-REVISED"
+  },
+
+  "integration_criteria_for_v1_0_0": {
+    "requirements": [
+      "Definir el sistema de EDOs del sistema real (resolver Q1).",
+      "Operacionalizar σ (resolver OBLIG-002).",
+      "Aplicar p1-p3-p5-scoring-protocol.json para P1.",
+      "Ejecutar medición empírica sobre al menos N=10 estados.",
+      "Verificación externa por plataforma distinta al generador.",
+      "Consistencia con C1-C5 y R5."
+    ],
+    "prohibited_shortcuts": [
+      "Declarar integración al núcleo sin resolver Q1.",
+      "Elevar a v1.0.0 sin operacionalización completa.",
+      "Usar checksums simbólicos como validación."
+    ]
+  },
+
+  "connection_to_corpus": {
+    "delta_engine": "protocols/delta-engine.json contiene δ′ = σ(1-P1) que participa en la cota",
+    "delta_prime_meta": "evidence/delta-prime-meta-execution-state.json documenta OBLIG-DP-05 sobre Lyapunov",
+    "p1_p3_p5_scoring": "protocols/extensions/p1-p3-p5-scoring-protocol.json provee operacionalización de P1",
+    "hypothetical_pilot": "El piloto Hyper Ratio midió 'V_delta' = score CONI, no V(σ,P1). Son objetos distintos."
+  },
+
+  "invariants": [
+    "PROVISIONAL_EXTENSION_IS_NOT_CORE_PROTOCOL",
+    "CANDIDATE_FUNCTION_IS_NOT_PROVEN_LYAPUNOV",
+    "ALGEBRAIC_IDENTITY_IS_NOT_DYNAMIC_STABILITY",
+    "CONVEXITY_IS_NOT_STABILITY",
+    "LYAPUNOV_IS_NOT_CONTROL_LYAPUNOV",
+    "LYAPUNOV_IS_NOT_COST_FUNCTIONAL",
+    "SATURATION_OF_BOUND_IS_NOT_INSTABILITY",
+    "INEQUALITY_DECLARED_IS_NOT_STABILITY_PROVEN",
+    "COMPLEMENTARY_FORMALIZATION_IS_NOT_INTEGRATION",
+    "FORMALIZATION_IS_NOT_EMPIRICAL_VALIDATION",
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING"
+  ],
+
+  "final_declaration": {
+    "statement": "El desarrollo V(σ, P1) = σ² + (1-P1)² se documenta con su estatus matemático real: la cota δ′ ≤ V/2 es la identidad AM-GM (universal, no condicional al dominio). La función es candidata, no Lyapunov demostrado, no CLF, no costo. Los niveles algebraico, dinámico y empírico están separados: Q2, Q3, Q5, Q6 resueltas en el plano algebraico; Q1 y Q4 permanecen abiertas porque requieren sistema de EDOs y operacionalización de σ. La integración al núcleo requiere resolución de Q1 y verificación externa.",
+    "status": "READY_FOR_REPOSITORY_AS_OPEN_EXTENSION",
+    "version_note": "0.2.0-REVISED incorpora la corrección AM-GM y la separación de niveles. La numeración 1.x se reserva para extensión con Q1 resuelta.",
+    "next_step": "Enviar a ChatGPT, Gemini y Google AI Mode para respuestas complementarias sobre Q1 (sistema de EDOs) y Q4 (operacionalización de σ). Recibir reportes. Decidir integración."
+  }
+}
