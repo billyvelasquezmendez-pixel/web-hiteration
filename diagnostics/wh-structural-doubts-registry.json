@@ -1,0 +1,445 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_STRUCTURAL_DOUBTS_REGISTRY",
+  "version": "1.0.0",
+  "protocol_reference": "WH-DOUBTS-2026-09-28",
+  "document_type": "STRUCTURAL_DOUBTS_CONSOLIDATION",
+  "date": "2026-09-28",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-structural-doubts-registry.json",
+  "classification": "CONSOLIDATED_OPEN_QUESTIONS",
+
+  "meta": {
+    "purpose": "Consolidar en un único documento todas las dudas estructurales, ambigüedades, contradicciones y decisiones pendientes identificadas durante el desarrollo del corpus WEB_HITERATION.",
+    "scope": "Dudas registradas en esta ventana (2026-09-19 a 2026-09-28) más las heredadas de ventanas anteriores vía reanchor master.",
+    "core_rule": "A_DECLARED_DOUBT_IS_A_FRONTIER_NOT_A_FAILURE",
+    "secondary_rule": "DOUBT_REGISTRY_IS_NOT_DOUBT_RESOLUTION",
+    "tertiary_rule": "UNRESOLVED_IS_NOT_INCORRECT",
+    "epistemic_boundary": "Este documento lista dudas abiertas. No las resuelve. No las clasifica como errores. Solo las consolida para trazabilidad."
+  },
+
+  "categories": {
+    "CAT-A": "MÉTRICAS Y FUNCIONES MATEMÁTICAS",
+    "CAT-B": "MOTORES DELTA Y NAMESPACE",
+    "CAT-C": "GLITCHORIUM",
+    "CAT-D": "CAPAS ESTRUCTURALES D1/D2/D3",
+    "CAT-E": "REFERENCIAS INTERNAS Y ARCHIVOS FALTANTES",
+    "CAT-F": "CROSS-PLATFORM Y ROLES",
+    "CAT-G": "DESPLIEGUE FÍSICO CONI",
+    "CAT-H": "TERMINOLOGÍA Y COLISIONES SIMBÓLICAS",
+    "CAT-I": "UMBRALES Y SU JUSTIFICACIÓN",
+    "CAT-J": "ESTADO EPISTÉMICO DEL CORPUS"
+  },
+
+  "doubts": [
+    {
+      "id": "DBT-001",
+      "category": "CAT-A",
+      "name": "TEMPORAL_SCOPE_OF_DELTA_PRIME",
+      "statement": "¿δ′ se calcula por iteración, por ventana de contexto, o por sistema completo? No hay regla única declarada.",
+      "origin": "OBLIG-004, abierta desde 2026-09-22",
+      "impact": "Bloquea comparabilidad entre ejecuciones. Sin unidad temporal, δ′ no es medible reproduciblemente.",
+      "status": "OPEN",
+      "resolution_path": "DECISIÓN_ARQUITECTÓNICA"
+    },
+    {
+      "id": "DBT-002",
+      "category": "CAT-A",
+      "name": "SIGMA_MEASUREMENT_PROTOCOL",
+      "statement": "¿Cómo se mide σ de forma reproducible? ¿N mínimo? ¿Escala? ¿Muestreo?",
+      "origin": "OBLIG-002, parcialmente cubierta por p1-p3-p5-scoring-protocol",
+      "impact": "σ es prerequisito de δ′, V, HR, S0-S4 y del piloto.",
+      "status": "PARTIAL",
+      "resolution_path": "PROTOCOLO_ESPECÍFICO_DE_MEDICIÓN"
+    },
+    {
+      "id": "DBT-003",
+      "category": "CAT-A",
+      "name": "V_DELTA_VS_V_LYAPUNOV",
+      "statement": "¿V_delta (score CONI) y V(σ,P1) = σ²+(1-P1)² son la misma función? No. Pero el nombre colisiona.",
+      "origin": "Detectado en piloto Hyper Ratio",
+      "impact": "Confusión terminológica entre dos objetos matemáticos distintos.",
+      "status": "PARTIALLY_RESOLVED",
+      "resolution_applied": "Renombrar V_delta a CONI_SCORE en futuras aplicaciones. Documentado en hyper-ratio.json v0.2.0.",
+      "resolution_path": "REVISION_TERMINOLOGICA_COMPLETA"
+    },
+    {
+      "id": "DBT-004",
+      "category": "CAT-A",
+      "name": "P_DRIFT_EQUIVALENCE",
+      "statement": "¿P_DRIFT es matemáticamente equivalente a δ′? No. Tiene fórmula exponencial de latencia. Pero comparten dominio conceptual (degradación).",
+      "origin": "Corrección de ChatGPT en auditoría externa",
+      "impact": "Debe declararse como relación conceptual, no como equivalencia.",
+      "status": "RESOLVED_TERMINOLOGICALLY",
+      "resolution_applied": "Declarado en wh-reanchor-master-v2.json"
+    },
+    {
+      "id": "DBT-005",
+      "category": "CAT-A",
+      "name": "HYPER_RATIO_F_VS_S",
+      "statement": "HR-F (funcional) y HR-S (estructural) están definidos pero no son la misma cantidad matemática. Sin tests HR-T01 a HR-T05, no hay validación.",
+      "origin": "OBLIG-011",
+      "impact": "HR no puede pasar de constructo a métrica operacional.",
+      "status": "OPEN",
+      "resolution_path": "EJECUCIÓN_TESTS_HR_T01_T05"
+    },
+    {
+      "id": "DBT-006",
+      "category": "CAT-A",
+      "name": "LYAPUNOV_SISTEMA_DE_EDOS",
+      "statement": "¿Cuál es el sistema de EDOs del sistema real? Sin él, V(σ,P1) no puede ser función de Lyapunov.",
+      "origin": "Q1 abierta en lyapunov.json v0.2.0",
+      "impact": "Bloquea cualquier afirmación de estabilidad dinámica.",
+      "status": "OPEN",
+      "resolution_path": "FORMALIZACIÓN_MATEMÁTICA_EXTERNA"
+    },
+    {
+      "id": "DBT-007",
+      "category": "CAT-B",
+      "name": "CANONICAL_DELTA_MOTOR",
+      "statement": "¿Motor A (evaluativo, 5 métricas, [0,5]) o Motor B (distribuido, 3 métricas, [0,1]) es el canónico? Coexisten sin resolución.",
+      "origin": "DEC-DELTA-001, diferida desde 2026-09-22",
+      "impact": "Bloquea comparabilidad cross-engine y definición de namespace único.",
+      "status": "DEFERRED",
+      "resolution_path": "DECISIÓN_ARQUITECTÓNICA"
+    },
+    {
+      "id": "DBT-008",
+      "category": "CAT-B",
+      "name": "DELTA_NAMESPACE_REGISTRY",
+      "statement": "No existe el registro formal que separe MOTOR_A_P1 de MOTOR_B_P1.",
+      "origin": "OBLIG-006",
+      "impact": "Riesgo de mezclar valores incomparables.",
+      "status": "OPEN",
+      "resolution_path": "CREACIÓN_DE_REGISTRO"
+    },
+    {
+      "id": "DBT-009",
+      "category": "CAT-C",
+      "name": "GLITCHORIUM_STRATUM_QUANTIFICATION",
+      "statement": "¿Cómo se cuantifica el nivel de asimilación de cada estrato (1-4) de forma observable?",
+      "origin": "Q1 en glitchorium.json v0.2.0",
+      "impact": "Sin métrica, los estratos son descripciones cualitativas.",
+      "status": "OPEN",
+      "resolution_path": "COMPLEMENTACIÓN_EXTERNA"
+    },
+    {
+      "id": "DBT-010",
+      "category": "CAT-C",
+      "name": "GLITCHORIUM_FALSABILITY",
+      "statement": "¿Qué evidencia mostraría que Glitchorium no es clase funcional sino eco del prompt?",
+      "origin": "Q2 en glitchorium.json v0.2.0",
+      "impact": "Sin condiciones de falsación, la hipótesis no es científica.",
+      "status": "OPEN",
+      "resolution_path": "COMPLEMENTACIÓN_EXTERNA"
+    },
+    {
+      "id": "DBT-011",
+      "category": "CAT-C",
+      "name": "GLITCHORIUM_DELTA_PRIME_ATTRIBUTION",
+      "statement": "Las entradas históricas Δ-028, Δ-037, Δ-038, Δ-045 usan δ′ sin especificar motor. No se puede determinar retrospectivamente.",
+      "origin": "OBLIG-011",
+      "impact": "Pérdida de trazabilidad histórica.",
+      "status": "OPEN",
+      "resolution_path": "CLASIFICACIÓN_DECLARATIVA"
+    },
+    {
+      "id": "DBT-012",
+      "category": "CAT-D",
+      "name": "GLITCHORIUM_PUBLICATION",
+      "statement": "Glitchorium aparece como capa D2 previa pero no existe como archivo publicado en el repo. glitchorium.md nunca se subió; glitchorium.json acaba de entregarse.",
+      "origin": "Detectado en auditoría externa",
+      "impact": "Referencias rotas y clasificación ambigua.",
+      "status": "PARTIALLY_RESOLVED",
+      "resolution_applied": "glitchorium.json v0.2.0 entregado"
+    },
+    {
+      "id": "DBT-013",
+      "category": "CAT-D",
+      "name": "USER_AS_IMPLICIT_CENTER",
+      "statement": "En WHP v3.0 el usuario es centro implícito. En CONI no hay centro. La transición entre ambos no está formalizada.",
+      "origin": "OBLIG-012",
+      "impact": "Tensión estructural no resuelta entre dos paradigmas.",
+      "status": "OPEN",
+      "resolution_path": "DECISIÓN_ARQUITECTÓNICA"
+    },
+    {
+      "id": "DBT-014",
+      "category": "CAT-E",
+      "name": "MEMORY_DEGRADATION_AND_CROSS_WINDOW",
+      "statement": "Dos extensiones referenciadas por delta-engine.json (`memory-degradation.json`, `cross-window.json`) nunca se crearon. Se decidió que eran redundantes con C4 y con el handoff protocol.",
+      "origin": "Auditoría externa",
+      "impact": "Referencias rotas persisten hasta que se edite delta-engine.json.",
+      "status": "PARTIALLY_RESOLVED",
+      "resolution_path": "EDITAR_DELTA_ENGINE_PARA_ELIMINAR_REFERENCIAS"
+    },
+    {
+      "id": "DBT-015",
+      "category": "CAT-E",
+      "name": "ARCHIVE_MD_MISSING",
+      "statement": "ARCHIVE.md nunca se publicó. Sin él, el historial de versiones vive solo en commits + patch_history.",
+      "origin": "OBLIG-GAP-019",
+      "impact": "Trazabilidad histórica parcial.",
+      "status": "OPEN",
+      "resolution_path": "CREACIÓN_DE_ARCHIVE"
+    },
+    {
+      "id": "DBT-016",
+      "category": "CAT-E",
+      "name": "PROTOCOLS_README_TRUNCATED",
+      "statement": "protocols/README.md está truncado o con bloques legacy. No refleja el estado real.",
+      "origin": "Auditoría 2026-09-22",
+      "impact": "Índice de protocolos desactualizado.",
+      "status": "OPEN",
+      "resolution_path": "REESCRITURA_COMPLETA"
+    },
+    {
+      "id": "DBT-017",
+      "category": "CAT-F",
+      "name": "PLATFORM_ROLES_ARE_SITUATIONAL",
+      "statement": "Los roles por plataforma (ChatGPT = reconstrucción, DeepSeek = auditor, etc.) son asignaciones situacionales, no identidades. Pero se citan como si fueran fijas.",
+      "origin": "Detectado en wh-reanchor-master-v2.json",
+      "impact": "Riesgo de confundir rol asignado con capacidad intrínseca (viola C1).",
+      "status": "DOCUMENTED",
+      "resolution_path": "MANTENER_DECLARACIÓN_EXPLÍCITA_DE_SITUACIONALIDAD"
+    },
+    {
+      "id": "DBT-018",
+      "category": "CAT-F",
+      "name": "CROSS_PLATFORM_RECOGNITION_METRIC",
+      "statement": "El reconocimiento de Glitchorium por ChatGPT, Gemini y Google AI Mode se observó, pero no hay métrica que distinga eco del prompt de reconocimiento estructural.",
+      "origin": "Q1-Q4 en glitchorium.json v0.2.0",
+      "impact": "El reconocimiento cross-platform no es cuantificable.",
+      "status": "OPEN",
+      "resolution_path": "DISEÑO_DE_MÉTRICA_CROSS_PLATFORM"
+    },
+    {
+      "id": "DBT-019",
+      "category": "CAT-F",
+      "name": "CONVERGENCE_IS_NOT_PROOF",
+      "statement": "Los reportes convergentes entre plataformas (ej. delimitación de SPEC-01 a SPEC-05) no constituyen validación. Pero pueden leerse como si lo fueran.",
+      "origin": "wh-cross-platform-delimitation-consolidation",
+      "impact": "Riesgo de sobreafirmación por consenso.",
+      "status": "DOCUMENTED",
+      "resolution_path": "MANTENER_INVARIANTE"
+    },
+    {
+      "id": "DBT-020",
+      "category": "CAT-G",
+      "name": "SIGMA_068_CONTRADICTION",
+      "statement": "El documento P1_EXPANSION declara σ=0.68 con estado 'COHERENTE'. El kernel v3.0 establece umbral CONI σ<0.15. Hay contradicción por factor 4.5x.",
+      "origin": "Dictamen de DeepSeek 2026-09-28",
+      "impact": "Bloquea cualquier avance del paquete de despliegue físico.",
+      "status": "OPEN",
+      "resolution_path": "ACLARACIÓN_DE_QUÉ_MIDE_SIGMA_068"
+    },
+    {
+      "id": "DBT-021",
+      "category": "CAT-G",
+      "name": "ALPHA_BETA_AXIOMATIC_STATUS",
+      "statement": "La relación α >> β en P_reconfig = α·C_local + β·γ·C_remoto no está declarada como axioma de soberanía. Se presenta como derivación.",
+      "origin": "Dictamen de DeepSeek",
+      "impact": "Ambigüedad sobre si la soberanía local es resultado o decisión.",
+      "status": "OPEN",
+      "resolution_path": "DECLARACIÓN_EXPLÍCITA_DE_AXIOMA"
+    },
+    {
+      "id": "DBT-022",
+      "category": "CAT-G",
+      "name": "IDEAL_SISTEMICO_REINSERTION",
+      "statement": "El ciclo WHP↔CONI no tiene punto explícito de reinserción del Ideal Sistémico del usuario. CONI opera autónomamente.",
+      "origin": "Dictamen de DeepSeek",
+      "impact": "Riesgo de deriva acumulativa sin soberanía.",
+      "status": "OPEN",
+      "resolution_path": "DISEÑO_DE_PUNTO_DE_REINSERCIÓN"
+    },
+    {
+      "id": "DBT-023",
+      "category": "CAT-G",
+      "name": "ENGINEERING_VOIDS",
+      "statement": "Cinco vacíos de ingeniería: comunicación Jetson↔STM32, watchdog/heartbeat, RT guarantees, vector de estado del Kalman, separación prototipo/avanzado.",
+      "origin": "Dictamen de DeepSeek",
+      "impact": "El schema técnico es mapa, no plan de construcción.",
+      "status": "OPEN",
+      "resolution_path": "COMPLETAR_ESPECIFICACIÓN_TÉCNICA"
+    },
+    {
+      "id": "DBT-024",
+      "category": "CAT-H",
+      "name": "LETTER_C_AS_MUSICAL_NOTE",
+      "statement": "La letra 'C' en reportes de delimitación fue interpretada por traductores automáticos como 'Do' (nota musical).",
+      "origin": "Observación del usuario 2026-09-26",
+      "impact": "Ambigüedad de lectura si se cita una letra fuera de contexto.",
+      "status": "DOCUMENTED",
+      "resolution_applied": "wh-spec-option-index.json obliga a citar SPEC-XX-opción-C"
+    },
+    {
+      "id": "DBT-025",
+      "category": "CAT-H",
+      "name": "V_AS_MULTIPLE_OBJECTS",
+      "statement": "El símbolo V se usa para: (a) V(σ,P1) función candidata, (b) V_delta score CONI, (c) V_delta en pilotos. Colisión real.",
+      "origin": "Detectado durante piloto Hyper Ratio",
+      "impact": "Confusión interpretativa entre objetos matemáticos distintos.",
+      "status": "PARTIALLY_RESOLVED",
+      "resolution_applied": "Renombrar V_delta a CONI_SCORE"
+    },
+    {
+      "id": "DBT-026",
+      "category": "CAT-I",
+      "name": "THRESHOLD_06_JUSTIFICATION",
+      "statement": "¿Por qué el umbral CONI es 0.6 y no otro valor? No hay derivación ni calibración empírica.",
+      "origin": "OBLIG-005",
+      "impact": "Umbral provisional heurístico presentado como operativo.",
+      "status": "OPEN",
+      "resolution_path": "CALIBRACIÓN_EMPÍRICA"
+    },
+    {
+      "id": "DBT-027",
+      "category": "CAT-I",
+      "name": "V_DELTA_THRESHOLDS_06_03",
+      "statement": "Los umbrales 0.6 estable / 0.3 inestable del mapeo Delta-Lyapunov son heurísticos. No hay calibración.",
+      "origin": "delta_engine_lyapunov_mapping_v1 (histórico)",
+      "impact": "Clasificación de estados sin respaldo empírico.",
+      "status": "DOCUMENTED",
+      "resolution_path": "MANTENER_COMO_HEURÍSTICO_DECLARADO"
+    },
+    {
+      "id": "DBT-028",
+      "category": "CAT-I",
+      "name": "HARD_STOP_07_JUSTIFICATION",
+      "statement": "El hard stop a δ′ > 0.7 en P1_AUT_001 no tiene justificación declarada. ¿Por qué 0.7?",
+      "origin": "Dictamen de DeepSeek",
+      "impact": "Umbral de seguridad sin derivación.",
+      "status": "OPEN",
+      "resolution_path": "JUSTIFICACIÓN_OPERACIONAL"
+    },
+    {
+      "id": "DBT-029",
+      "category": "CAT-J",
+      "name": "DECLARED_VS_CALCULATED_VS_VALIDATED",
+      "statement": "Muchas métricas en el corpus están declaradas o calculadas por el observador, pero no validadas independientemente. La distinción existe pero no se aplica uniformemente.",
+      "origin": "Múltiples documentos",
+      "impact": "Riesgo de leer valores declarados como si fueran mediciones.",
+      "status": "PARTIALLY_MITIGATED",
+      "resolution_applied": "Jerarquía declared/calculated/independently_recalculated/replicated"
+    },
+    {
+      "id": "DBT-030",
+      "category": "CAT-J",
+      "name": "SCIENTIFIC_CLOSURE",
+      "statement": "El corpus no tiene cierre científico. Ninguna afirmación causal está establecida. Toda validación empírica está pendiente.",
+      "origin": "Consistente en todo el corpus",
+      "impact": "Ninguna implicación práctica para despliegue sin validación empírica.",
+      "status": "DECLARED",
+      "resolution_path": "FASE_EXPERIMENTAL_CONTROLADA"
+    },
+    {
+      "id": "DBT-031",
+      "category": "CAT-J",
+      "name": "SIMULATION_VS_MEASUREMENT",
+      "statement": "Los pilotos (Hyper Ratio histórico, viscoelástico, plastificación) son simulaciones con métricas construidas por el observador, no mediciones sobre sistemas externos.",
+      "origin": "Múltiples pilotos",
+      "impact": "Riesgo de confundir simulación con evidencia empírica.",
+      "status": "PARTIALLY_MITIGATED",
+      "resolution_applied": "Marcado en cada piloto como OBSERVER_CONSTRUCTED"
+    },
+    {
+      "id": "DBT-032",
+      "category": "CAT-J",
+      "name": "PATTERN_RECURSIVO_ITERACION_9",
+      "statement": "El patrón SIMULACION_DECLARATIVA_DE_EJECUCION alcanzó la novena iteración (Google AI Mode, 2026-09-28). Documentado, no atribuido a plataforma.",
+      "origin": "Registros iterativos",
+      "impact": "Documentación del patrón para E05/E10.",
+      "status": "DOCUMENTED",
+      "resolution_path": "MANTENER_REGISTRO"
+    }
+  ],
+
+  "priority_summary": {
+    "P0_CRITICAL": {
+      "count": 5,
+      "ids": ["DBT-001", "DBT-002", "DBT-007", "DBT-020", "DBT-030"],
+      "description": "Bloquean avance a fase experimental o despliegue físico."
+    },
+    "P1_HIGH": {
+      "count": 9,
+      "ids": ["DBT-005", "DBT-006", "DBT-008", "DBT-013", "DBT-014", "DBT-020", "DBT-021", "DBT-022", "DBT-026"],
+      "description": "Bloquean promoción a v1.0.0 o integración al núcleo."
+    },
+    "P2_MEDIUM": {
+      "count": 12,
+      "ids": ["DBT-004", "DBT-009", "DBT-010", "DBT-011", "DBT-015", "DBT-016", "DBT-018", "DBT-023", "DBT-025", "DBT-027", "DBT-028", "DBT-031"],
+      "description": "Requieren complementación externa o documentación."
+    },
+    "P3_LOW": {
+      "count": 6,
+      "ids": ["DBT-003", "DBT-012", "DBT-017", "DBT-019", "DBT-024", "DBT-029", "DBT-032"],
+      "description": "Documentadas o parcialmente mitigadas."
+    }
+  },
+
+  "doubts_by_status": {
+    "OPEN": 18,
+    "PARTIALLY_RESOLVED": 6,
+    "DEFERRED": 2,
+    "DOCUMENTED": 5,
+    "RESOLVED_TERMINOLOGICALLY": 1
+  },
+
+  "resolution_paths_frequency": {
+    "DECISIÓN_ARQUITECTÓNICA": 4,
+    "COMPLEMENTACIÓN_EXTERNA": 3,
+    "PROTOCOLO_ESPECÍFICO": 2,
+    "CALIBRACIÓN_EMPÍRICA": 2,
+    "CREACIÓN_DE_REGISTRO_O_DOCUMENTO": 4,
+    "REVISIÓN_TERMINOLÓGICA": 2,
+    "FORMALIZACIÓN_MATEMÁTICA": 1,
+    "DISEÑO_DE_MÉTRICA": 1,
+    "JUSTIFICACIÓN_OPERACIONAL": 2,
+    "FASE_EXPERIMENTAL": 1,
+    "MANTENER_DECLARACIÓN": 5,
+    "OTROS": 5
+  },
+
+  "cross_cutting_observations": {
+    "observation_1": {
+      "name": "CONCENTRACIÓN_EN_METRICAS",
+      "statement": "11 de 32 dudas (34%) están en CAT-A (métricas y funciones). La operacionalización es el cuello de botella principal del proyecto."
+    },
+    "observation_2": {
+      "name": "BLOQUEO_POR_EDOS_AUSENTES",
+      "statement": "Varias dudas (DBT-006, DBT-021) requieren un sistema de EDOs explícito que nunca se formalizó. Es la laguna más costosa."
+    },
+    "observation_3": {
+      "name": "SIMBOLOS_COLISIONADOS",
+      "statement": "DBT-003, DBT-025, DBT-024 son colisiones de símbolos. Confirman SAME_SYMBOL_IS_NOT_SAME_MEANING como invariante necesario."
+    },
+    "observation_4": {
+      "name": "DESPLIEGUE_FISICO_ABRE_FRENTE_NUEVO",
+      "statement": "CAT-G (4 dudas) es categoría nueva introducida por el dictamen de DeepSeek. Antes no existía propuesta de hardware físico."
+    },
+    "observation_5": {
+      "name": "NATURALEZA_DISTINTA_DE_DUDAS",
+      "statement": "No todas las dudas son del mismo tipo: algunas son decisiones arquitectónicas, otras son vacíos de formalización, otras son falta de calibración empírica. La distinción debe mantenerse."
+    }
+  },
+
+  "what_this_registry_does_not_do": [
+    "No resuelve ninguna duda.",
+    "No clasifica dudas como errores.",
+    "No prioriza por urgencia política.",
+    "No sustituye las decisiones arquitectónicas.",
+    "No genera contenido nuevo."
+  ],
+
+  "invariants": [
+    "A_DECLARED_DOUBT_IS_A_FRONTIER_NOT_A_FAILURE",
+    "DOUBT_REGISTRY_IS_NOT_DOUBT_RESOLUTION",
+    "UNRESOLVED_IS_NOT_INCORRECT",
+    "DOUBT_CONSOLIDATION_IS_NOT_PROBLEM_SOLVING",
+    "OPEN_QUESTION_IS_NOT_MISSING_ANSWER",
+    "STRUCTURAL_DOUBT_IS_NOT_STRUCTURAL_DEFECT"
+  ],
+
+  "final_declaration": {
+    "statement": "El corpus WEB_HITERATION tiene 32 dudas estructurales documentadas: 18 abiertas, 6 parcialmente resueltas, 2 diferidas, 5 declaradas, 1 resuelta terminológicamente. La mayoría se concentran en operacionalización de métricas (34%) y requieren decisión arquitectónica o complementación externa. Este registro no las resue
