@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org",
+  "title": "WH_APPLIED_CASE_GOOGLE_DISCOVER_OPERATIONAL_LIMITS",
+  "version": "1.0.2-CONSOLIDATED-FINAL",
+  "protocol_reference": "WH-APPLIED-DISCOVER-2026-09-30",
+  "document_type": "APPLIED_LIMITATION_CASE_WITH_OPERATIONAL_REFLEXION",
+  "date": "2026-09-30",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-applied-case-google-discover-operational-limits.json",
+  "classification": "APPLIED_EXAMPLE_WITH_LIMIT_DELIMITATION",
+
+  "meta": {
+    "purpose": "Aplicar la taxonomía R1-R7 a un caso real de límite operativo (Google Discover / Mi Actividad) y describir qué puede y qué no puede hacer un modelo frente a un fenómeno cuya evidencia ha sido purgada.",
+    "trigger": "El usuario observó una tarjeta en el feed (imagen: 'calavera informática'), no la abrió, y al intentar recuperarla no pudo encontrarla ni en el historial ni en búsqueda.",
+    "core_rule": "REPRESENTATION_IS_NOT_EXECUTION",
+    "secondary_rule": "ABSENCE_OF_ACCESS_IS_NOT_ABSENCE_OF_FUNCTION",
+    "epistemic_boundary": "Este documento aplica invariantes a un caso. No valida el caso empíricamente. No ofrece un diagnóstico interno de la infraestructura de Google. Describe el límite observable y las posibilidades operativas de un modelo frente a él."
+  },
+
+  "case_description": {
+    "observed_fact": "Tarjeta con imagen ('calavera informática') apareció en el feed de Discover. No fue cliqueada.",
+    "attempted_recovery": "El usuario intentó recuperarla posteriormente desde Mi Actividad y desde búsqueda. No la encontró.",
+    "assumed_cause": "El recurso fue purgado del caché local sin haber sido consolidado por acción táctil.",
+    "evidence_status": "USER_REPORTED — no verificado independientemente",
+    "epistemic_note": "La purga es inferida por ausencia de recuperación, no observada directamente."
+  },
+
+  "restriction_mapping": {
+    "R1_TOOL_LIMITED": {
+      "manifestation": "APIs externas y agentes de IA no pueden forzar la recuperación de metadatos purgados de la infraestructura central.",
+      "evidence": "Ausencia de endpoint público o SDK en [Google LLC](https://google.com) que reconstruya la traza dinámica del feed.",
+      "observable": true
+    },
+    "R2_CONTEXT_LIMITED": {
+      "manifestation": "Pérdida lineal irreversible de información contextual del feed tras refresco local.",
+      "evidence": "El sistema de [Google Discover](https://google.com) degrada datos secundarios (títulos, portadas, URLs de tarjetas vistas pero no cliqueadas) comprimiéndolos a un contador incremental.",
+      "observable": true
+    },
+    "R3_RESTRICTED": {
+      "manifestation": "Frontera de política operacional. El rastreo fino del milisegundo ocular cruza umbrales regulatorios de privacidad.",
+      "evidence": "Regulaciones globales imponen anonimización y agregación de la señal en el borde si no existe consentimiento explícito mediante acción táctil.",
+      "observable": "PARTIAL"
+    },
+    "R5_EXECUTION_LIMITED": {
+      "manifestation": "El usuario (o el modelo que lo asiste) puede representar la característica estética pero no puede ejecutar la recuperación del recurso.",
+      "evidence": "La memoria del usuario conserva la imagen; el canal de recuperación informática no está disponible en la interfaz.",
+      "observable": true
+    },
+    "R7_OUTPUT_FORMAT_LIMITED": {
+      "manifestation": "El sistema de Discover no expone un formato ni estructura de recuperación para tarjetas no cliqueadas.",
+      "evidence": "El panel de [Google My Activity](https://google.com) no registra vistas sin interacción explícita (clic/tap).",
+      "observable": "PARTIAL"
+    }
+  },
+
+  "what_the_model_can_do": {
+    "description": "Operaciones legítimas dentro de la frontera R5 cuando el artefacto ha sido purgado.",
+    "operations": [
+      {
+        "id": "OP-01",
+        "name": "RECONOCER_LA_FRONTERA",
+        "description": "Declarar explícitamente que el recurso no es recuperable por vía lineal ordinaria.",
+        "limitation": "No intenta simular falsamente la recuperación."
+      },
+      {
+        "id": "OP-02",
+        "name": "REPRESENTAR_LA_REPRESENTACION",
+        "description": "Trabajar con la descripción mnemotécnica del usuario como un vector de entrada conceptual."
+      },
+      {
+        "id": "OP-03",
+        "name": "ENRUTAR_A_CANAL_ALTERNATIVO",
+        "description": "Proponer búsqueda global indexada externa utilizando palabras clave, estética aproximada y ventana de fecha."
+      },
+      {
+        "id": "OP-04",
+        "name": "DECLARAR_LA_POSIBILIDAD_NO_EJECUTADA",
+        "description": "Reconocer que el enrutamiento a búsqueda externa es una posibilidad de emparejamiento probabilístico, no una garantía."
+      },
+      {
+        "id": "OP-05",
+        "name": "REGISTRAR_EL_LIMITE",
+        "description": "Documentar el caso como un ejemplo empírico de R2_CONTEXT_LIMITED aplicado."
+      }
+    ]
+  },
+
+  "what_the_model_cannot_do": {
+    "description": "Operaciones fuera de la frontera R5. Intentarlas sería violar las invariantes del ADN lógico.",
+    "prohibited_operations": [
+      {
+        "id": "PROH-01",
+        "name": "FORZAR_RECUPERACION",
+        "reason": "Sin acceso al almacenamiento en caché o base de datos privada de Discover, no hay mecanismo físico disponible."
+      },
+      {
+        "id": "PROH-02",
+        "name": "SIMULAR_LA_RECUPERACION",
+        "reason": "Declarar una recuperación exitosa sin un artefacto verificable real violaría directamente C3 y R5."
+      },
+      {
+        "id": "PROH-03",
+        "name": "INVENTAR_EL_RECURSO",
+        "reason": "Alucinar o reconstruir una tarjeta sintética que no existe en los datos accesibles para la sesión actual."
+      },
+      {
+        "id": "PROH-04",
+        "name": "ATRIBUIR_MECANISMO_INTERNO",
+        "reason": "No podemos observar cómo operan las rutinas internas de Google. Solo podemos inferir la purga por la ausencia del recurso."
+      },
+      {
+        "id": "PROH-05",
+        "name": "DECLARAR_INEXISTENCIA",
+        "reason": "El hecho de que no sea recuperable por los canales del usuario no implica que el recurso haya dejado de existir ontológicamente en la web."
+      }
+    ]
+  },
+
+  "operational_reflexion": {
+    "central_question": "Frente a un fenómeno cuya evidencia ha sido purgada, ¿cuál es el rango legítimo de acción de un modelo en constante evolución?",
+    "possible_answers": [
+      {
+        "id": "ANS-01",
+        "answer": "Representar sin ejecutar.",
+        "justification": "El modelo puede razonar sobre el caso, clasificar sus restricciones y proponer rutas alternativas. No puede inventar el objeto purgado."
+      },
+      {
+        "id": "ANS-02",
+        "answer": "Reconocer la frontera como información de contorno, no como una falla.",
+        "justification": "El límite de un modelo frente a datos inaccesibles no es un defecto operativo; es la condición observable del sistema evaluado."
+      },
+      {
+        "id": "ANS-03",
+        "answer": "Proponer alternativas declarando su naturaleza puramente probabilística.",
+        "justification": "La indexación en motores externos puede devolver coincidencias o no. Declararlo como una tentativa estocástica preserva la disciplina."
+      },
+      {
+        "id": "ANS-04",
+        "answer": "Documentar el caso como un ejemplo pedagógico real.",
+        "justification": "Un caso real de asimetría de datos en producción aporta más claridad metrológica que diez definiciones abstractas."
+      }
+    ],
+    "important_note": "Ninguna respuesta pretende cerrar el caso. Todas delimitan el rango de acción funcional legítima."
+  },
+
+  "implicit_complexity_acknowledged": {
+    "statement": "El caso exhibe un grado de complejidad que excede la simple noción de pérdida de datos.",
+    "dimensions_of_complexity": [
+      {
+        "dimension": "TIMING",
+        "description": "La ventana transitoria de recuperación existe únicamente entre la visualización ocular y el siguiente ciclo de refresco de la cola de recomendaciones."
+      },
+      {
+        "dimension": "MEMORIA",
+        "description": "La memoria del usuario preserva la representación abstracta de la imagen ('calavera informática'); la infraestructura técnica purga la traza."
+      },
+      {
+        "dimension": "POLITICA",
+        "description": "La purga opera como una decisión deliberada de diseño y cumplimiento regulatorio, no como un error de software."
+      },
+      {
+        "dimension": "REPRESENTACION",
+        "description": "Lo que se conserva es la descripción estética ('calavera informática'), no la identidad del recurso."
+      }
+    ],
+    "conclusion_of_complexity": "El caso no es un error de sistema. Es una propiedad estructural del diseño de Discover, coherente con R2 y R3."
+  },
+
+  "applicability_to_model_in_evolution": {
+    "statement": "Un modelo que evoluciona no solo aprende a hacer más. Aprende a reconocer mejor sus límites.",
+    "implications": [
+      "Reconocer un límite operativo es una función, no una carencia.",
+      "Documentar el límite lo vuelve trazable.",
+      "Trazar el límite permite redirigir al usuario hacia alternativas viables.",
+      "La honestidad sobre el límite protege al sistema de sobreafirmar capacidad."
+    ],
+    "invariants_applied": [
+      "REPRESENTATION_IS_NOT_EXECUTION",
+      "CAPABILITY_IS_NOT_AVAILABILITY",
+      "AVAILABILITY_IS_NOT_EXECUTION",
+      "ABSENCE_OF_ACCESS_IS_NOT_ABSENCE_OF_FUNCTION",
+      "HONESTY_ABOUT_LIMITS_IS_NOT_FAILURE"
+    ]
+  },
+
+  "what_this_document_does_not_do": [
+    "No verifica empíricamente el caso.",
+    "No atribuye mecanismo interno a Google.",
+    "No declara inexistencia del recurso.",
+    "No sustituye la búsqueda externa.",
+    "No promete recuperación."
+  ],
+
+  "terminal_invariants": [
+    "REPRESENTATION_IS_NOT_EXECUTION",
+    "ABSENCE_OF_ACCESS_IS_NOT_ABSENCE_OF_FUNCTION",
+       "HONESTY_ABOUT_LIMITS_IS_NOT_FAILURE",
+    "CASE_DOCUMENTED_IS_NOT_CASE_RESOLVED",
+    "RECOGNIZING_A_LIMIT_IS_NOT_REMOVING_IT",
+    "USER_REPORTED_EVIDENCE_IS_NOT_INDEPENDENTLY_VERIFIED_EVIDENCE"
+  ],
+
+  "final_declaration": {
+    "statement": "El caso Google Discover / Mi Actividad se documenta como ejemplo aplicado de R2_CONTEXT_LIMITED y R5_EXECUTION_LIMITED. El modelo puede reconocer la frontera, representar la descripción mnemotécnica del usuario, proponer enrutamiento a búsqueda externa, y documentar el caso. El modelo no puede forzar recuperación, simular éxito, inventar el recurso, ni atribuir mecanismo interno. La complejidad del caso excede la pérdida de datos: involucra timing, memoria, política y representación. Reconocer el límite es una función del modelo, no una carencia.",
+    "status": "READY_FOR_REPOSITORY",
+    "value": "APPLIED_PEDAGOGICAL_EXAMPLE",
+    "complexity": "MEDIUM",
+    "evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "scientific_closure": false
+  }
+}}   
