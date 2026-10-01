@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_INTERMEDIATE_LAYER_SOFTWARE_SILICON_BOUNDARY",
+  "version": "0.1.0-PROPOSED",
+  "protocol_reference": "WH-R5-INTERMEDIATE-LAYER-2026-10-01",
+  "document_type": "BOUNDARY_LAYER_SPECIFICATION",
+  "date": "2026-10-01",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_CROSS_PLATFORM_VERIFIED",
+  "repository_path": "diagnostics/wh-intermediate-layer-software-silicon-boundary.json",
+
+  "meta": {
+    "purpose": "Formalizar la existencia operativa de una capa intermedia entre el software de control y el semiconductor físico, delimitada por reconocimiento de error o desacople bajo R5.",
+    "trigger": "Reconocimiento de que existe una frontera no cubierta por los documentos previos entre el software que reconoce actuadores y el silicio que los ejecuta.",
+    "core_rule": "INTERMEDIATE_LAYER_IS_NOT_NETWORK_IS_NOT_FIRMWARE_IS_NOT_DRIVER",
+    "epistemic_boundary": "Este documento propone una capa conceptual. No afirma su existencia física, no la implementa, no la valida empíricamente."
+  },
+
+  "boundary_definition": {
+    "name": "CAPA_INTERMEDIA_SOFTWARE_SILICIO",
+    "functional_alias": "OPERADOR_DE_DESACOPLAMIENTO_Y_ASIGNACION_SIMBOLICA",
+    "position_in_chain": "ENTRE_SOFTWARE_DE_CONTROL_Y_SEMICONDUCTOR_FISICO",
+    "domain": "CYBERPHYSICAL_EXECUTION_LAYER",
+    "delimited_by": [
+      "RECONOCIMIENTO_DE_ERROR",
+      "RECONOCIMIENTO_DE_DESACOPLE"
+    ],
+    "not_defined_by": [
+      "UN_PROTOCOLO_DE_RED",
+      "UN_FIRMWARE_ESPECIFICO",
+      "UN_DRIVER_DE_DISPOSITIVO"
+    ],
+    "description": "La capa no se define por su tecnología, sino por su función: reconocer y mediar entre el software que representa una operación y el silicio que la ejecuta o falla en ejecutarla."
+  },
+
+  "why_this_layer_exists": {
+    "reason_1": "El software puede reconocer un proceso de actuadores bajo coordenadas específicas que el silicio genérico no distingue.",
+    "reason_2": "El procesador parte de estructuras estandarizadas reconocidas por modelos estandarizados.",
+    "reason_3": "El reconocimiento de un componente genérico (promovido por industrias de semiconductores) contra una gama aleatoria de modelos requiere una capa de mediación.",
+    "reason_4": "La adopción particular de cada empresa fabricante introduce divergencias que no son visibles desde el software de control ni desde el silicio aislado.",
+    "principle": "INTERMEDIATE_LAYER_EMERGES_FROM_RECOGNITION_OF_DIVERGENCE"
+  },
+
+  "standardization_vs_heterogeneity": {
+    "standardized_side": {
+      "actor": "INDUSTRIA_DE_SEMICONDUCTORES",
+      "product": "COMPONENTES_GENERICOS_ESTANDARIZADOS",
+      "property": "El componente genérico funciona bajo parámetros nominales declarados."
+    },
+    "heterogeneous_side": {
+      "actor": "FABRICANTES_DE_ROBOTS_Y_SISTEMAS",
+      "product": "INTEGRACIONES_MODELO_ESPECIFICAS",
+      "property": "Cada integración particular adopta el componente genérico bajo condiciones que divergen del nominal."
+    },
+    "tension": "El componente puede fallar de formas que solo son visibles al considerar la integración específica, no el componente aislado ni el software aislado."
+  },
+
+  "failure_attribution_model": {
+    "principle": "FAILURE_IS_DISTINGUISHED_BY_ADOPTION_NOT_BY_COMPONENT_ALONE",
+    "components_in_chain": [
+      "SENSORES (hasta 14 coordinados en el caso observado)",
+      "CONTROLADOR",
+      "COMUNICACION",
+      "ACTUADORES (hasta par de valvulas en ejecución)",
+      "SISTEMA_MECANICO"
+    ],
+    "attribution_rule": "La falla de un componente secundario se reconoce como fallo de producción de ensamblaje del modelo específico, no como defecto del componente genérico."
+  },
+
+  "observed_example": {
+    "case": "ERROR_DE_VOLTAJE_POR_COLISION_ENTRE_MODELOS",
+    "scenario": {
+      "input": "Dos colisiones, una de cada modelo de cada marca.",
+      "process": "Proceso divergente desde 14 sensores coordinados hasta un par de válvulas en ejecución.",
+      "classification": "Defecto de componentes secundarios.",
+      "recognition": "Fallo por defecto de producción de ensamblaje de modelos específicos."
+    },
+    "interpretation": "El error no se detecta en el componente genérico (que puede operar dentro de nominal) ni en el software (que puede operar dentro de sus coordenadas), sino en la capa intermedia donde la integración específica produce divergencia."
+  },
+
+  "position_relative_to_r5": {
+    "r5_original_boundary": "REPRESENTATION_IS_NOT_EXECUTION",
+    "r5_cyberphysical_extension": "ACTION_COMMIT_IS_NOT_PHYSICAL_ACTION",
+    "intermediate_layer_addition": "PHYSICAL_ACTION_IS_NOT_UNIFORM_ACROSS_DEVICES",
+    "why_it_matters": "R5 no puede evaluar la ejecución física como una categoría homogénea. Cada dispositivo concreto tiene su propia capa intermedia entre software y silicio donde las divergencias se manifiestan."
+  },
+
+  "operational_properties": {
+    "property_1": "PER_DEVICE_SPECIFIC: cada integración tiene su propia capa intermedia.",
+    "property_2": "PER_MANUFACTURER: la capa refleja decisiones de diseño de cada fabricante.",
+    "property_3": "NOT_GLOBAL: no existe una capa universal; existen tantas como integraciones específicas.",
+    "property_4": "FAULT_VISIBLE: la capa solo se manifiesta en presencia de error o desacople.",
+    "property_5": "NOT_IMPLEMENTED_IN_CURRENT_CORPUS: no existe código, modelo ni implementación de esta capa en el corpus actual."
+  },
+
+  "relationship_to_existing_documents": {
+    "wh_r5_cyberphysical_device_delimitation": "Este documento extiende la frontera cyberphysical al identificar una capa adicional entre software y silicio.",
+    "wh_asic_epu_chain": "La cadena EPU (foundation → RTL → physical) describe una arquitectura propuesta. Esta capa describe el punto operativo donde la divergencia aparece en implementaciones reales.",
+    "taxonomia_r1_r7": "El reconocimiento de error o desacople en esta capa puede mapear a R3 (frontera de política), R5 (frontera de ejecución) o R7 (frontera de salida), según el caso.",
+    "invariante_observada": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  },
+
+  "what_this_document_does_not_claim": [
+    "No afirma que la capa exista físicamente como componente discreto.",
+    "No afirma que tenga protocolo propio.",
+    "No afirma que sea implementable sin más especificación.",
+    "No afirma que reemplace a R5.",
+    "No afirma que resuelva el problema de atribución de fallo.",
+    "No afirma validación empírica del modelo de fallo.",
+    "No promueve la capa a canon."
+  ],
+
+  "epistemic_boundaries": [
+    "CONCEPTUAL_LAYER_IS_NOT_IMPLEMENTED_LAYER",
+    "FAILURE_MODEL_IS_NOT_FAILURE_MEASUREMENT",
+    "OBSERVED_DIVERGENCE_IS_NOT_PROVEN_CAUSALITY",
+    "STANDARDIZED_COMPONENT_IS_NOT_UNIFORM_BEHAVIOR",
+    "MANUFACTURER_SPECIFIC_ADOPTION_IS_NOT_GENERIC_SPECIFICATION",
+    "INTERMEDIATE_LAYER_IS_NOT_FIRMWARE_IS_NOT_DRIVER",
+    "PROPOSAL_IS_NOT_CANON"
+  ],
+
+  "open_questions": [
+    {
+      "id": "Q1",
+      "question": "¿La capa intermedia es observable de forma independiente o solo se manifiesta a través de fallos?"
+    },
+    {
+      "id": "Q2",
+      "question": "¿El modelo de fallo por colisión entre dos modelos de marcas distintas es generalizable o específico del caso observado?"
+    },
+    {
+      "id": "Q3",
+      "question": "¿Cómo se distingue un fallo de la capa intermedia de un fallo del componente genérico o del software?"
+    },
+    {
+      "id": "Q4",
+      "question": "¿Esta capa requiere especificación formal o puede operar solo como marco de diagnóstico?"
+    }
+  ],
+
+  "terminal_invariants": [
+    "INTERMEDIATE_LAYER_IS_NOT_NETWORK_IS_NOT_FIRMWARE_IS_NOT_DRIVER",
+    "FAILURE_IS_DISTINGUISHED_BY_ADOPTION_NOT_BY_COMPONENT_ALONE",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "CONCEPTUAL_LAYER_IS_NOT_IMPLEMENTED_LAYER",
+    "PROPOSAL_IS_NOT_CANON"
+  ],
+
+  "final_declaration": {
+    "statement": "Se formaliza la existencia operativa de una capa intermedia entre el software de control y el semiconductor físico, delimitada por reconocimiento de error o desacople bajo R5. La capa no se define por tecnología sino por función: mediar entre el software que representa y el silicio que ejecuta o falla. El modelo de fallo propuesto atribuye divergencias a la adopción específica de cada fabricante, no al componente genérico ni al software aislado.",
+    "status": "READY_FOR_REPOSITORY",
+    "corpus_role": "BOUNDARY_LAYER_SPECIFICATION",
+    "scientific_closure": false,
+    "physical_validation": false,
+    "canonical_promotion": false
+  }
+}
