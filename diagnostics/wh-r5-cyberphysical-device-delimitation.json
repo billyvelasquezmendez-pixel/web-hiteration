@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_R5_CYBERPHYSICAL_DEVICE_DELIMITATION",
+  "version": "1.0.0-PROPOSED-VERIFIED",
+  "protocol_reference": "WH-R5-CYBERPHYSICAL-2026",
+  "document_type": "TECHNICAL_CYBERPHYSICAL_BOUNDARY_SPECIFICATION",
+  "date": "2026-10-01",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_IMPLEMENTATION_AND_PHYSICAL_VERIFICATION",
+  "repository_path": "diagnostics/wh-r5-cyberphysical-device-delimitation.json",
+
+  "purpose": {
+    "objective": "Definir formalmente la frontera cyberphysical de R5 para separar la autorización digital de ejecución de la acción física dependiente del dispositivo.",
+    "scope": "Delimitar la relación entre representación, autorización de ejecución, controlador de dispositivo, comunicación, actuadores, transmisión mecánica y retroalimentación sensorial.",
+    "implementation_status": "NOT_IMPLEMENTED",
+    "physical_hardware_status": "NOT_ESTABLISHED"
+  },
+
+  "r5_execution_boundary": {
+    "principle": "R5 establece una frontera de autorización digital de ejecución; no constituye por sí mismo la ejecución física.",
+    "action_commit_definition": "ACTION_COMMIT representa la autorización digital para pasar desde un estado de representación validado hacia una interfaz de ejecución.",
+    "physical_action_definition": "La acción física requiere una cadena adicional de control y ejecución dependiente del dispositivo.",
+    "execution_chain": [
+      "REPRESENTATION",
+      "R5_VALIDATION",
+      "ACTION_COMMIT",
+      "DEVICE_CONTROLLER",
+      "COMMUNICATION_INTERFACE",
+      "ACTUATOR_COMMAND",
+      "ACTUATOR_RESPONSE",
+      "MECHANICAL_TRANSMISSION",
+      "PHYSICAL_EFFECT",
+      "SENSOR_FEEDBACK"
+    ]
+  },
+
+  "non_equivalences": [
+    "ACTION_COMMIT_IS_NOT_PHYSICAL_ACTION",
+    "DIGITAL_TIMING_IS_NOT_MECHANICAL_TIMING",
+    "COMPONENT_AVERAGE_IS_NOT_SYSTEM_BEHAVIOR",
+    "CYBERPHYSICAL_SPECIFICATION_IS_NOT_DEVICE_IMPLEMENTATION",
+    "DIGITAL_SIGNAL_IS_NOT_PHYSICAL_EFFECT",
+    "CONTROL_AUTHORIZATION_IS_NOT_ACTUATOR_RESPONSE"
+  ],
+
+  "multi_scale_execution": {
+    "principle": "Los componentes cyberphysicales pueden operar en escalas temporales, frecuenciales y dinámicas diferentes.",
+    "global_average_assumption": false,
+    "system_model": "RELATIONAL_MULTI_SCALE",
+    "description": "La coherencia del sistema no se determina mediante una frecuencia, latencia o escala temporal global única. Cada componente debe modelarse mediante sus propios parámetros operativos y mediante sus relaciones temporales y funcionales con los demás componentes.",
+    "excluded_assumptions": [
+      "UNIVERSAL_COMPONENT_FREQUENCY",
+      "UNIVERSAL_ACTUATOR_PROFILE",
+      "SINGLE_GLOBAL_LATENCY",
+      "SINGLE_SYSTEM_TIMING_AVERAGE"
+    ]
+  },
+
+  "device_specific_dimensions": {
+    "sensors": ["sampling_frequency", "resolution", "latency", "noise", "measurement_range"],
+    "controller": ["control_frequency", "processing_latency", "jitter", "priority", "synchronization"],
+    "communication": ["bus_type", "latency", "bandwidth", "synchronization", "signal_integrity"],
+    "actuators": ["response_time", "resolution", "saturation", "operating_range", "command_interface"],
+    "mechanical": ["inertia", "transmission_ratio", "mechanical_limits", "backlash", "compliance", "load_response"],
+    "feedback": ["sampling_rate", "resolution", "latency", "closed_loop_dependency"]
+  },
+
+  "r5_cyberphysical_model": {
+    "model": ["REPRESENTATION", "AUTHORIZED_EXECUTION_INTERFACE", "DEVICE_SPECIFIC_ACTUATION"],
+    "boundary_condition": "La implementación física queda fuera de la frontera de prueba RTL mientras no existan modelos, interfaces y evidencia de implementación correspondientes.",
+    "required_device_models": ["DEVICE_MODEL", "ACTUATOR_MODEL", "SENSOR_MODEL", "TIMING_MODEL", "MECHANICAL_MODEL", "FEEDBACK_MODEL"]
+  },
+
+  "coherence_model": {
+    "type": "RELATIONAL_COMPONENT_COHERENCE",
+    "principle": "La coherencia cyberphysical se evalúa mediante compatibilidad entre especificaciones y restricciones de componentes heterogéneos.",
+    "not_defined_as": ["SINGLE_GLOBAL_FREQUENCY", "SINGLE_GLOBAL_LATENCY", "ARITHMETIC_COMPONENT_AVERAGE", "UNIVERSAL_ACTUATOR_STANDARD"],
+    "required_relations": [
+      "TIMING_COMPATIBILITY",
+      "INTERFACE_COMPATIBILITY",
+      "CONTROL_COMPATIBILITY",
+      "FEEDBACK_COMPATIBILITY",
+      "OPERATING_RANGE_COMPATIBILITY",
+      "SAFETY_BOUNDARY_COMPATIBILITY"
+    ]
+  },
+
+  "autonomous_device_variability": {
+    "principle": "Diferentes dispositivos pueden presentar arquitecturas de sensores, controladores, comunicaciones, actuadores y mecanismos diferentes sin invalidar la definición general de la frontera R5.",
+    "standardization_target": "REQUISITOS_DE_COHERENCIA_R5",
+    "not_standardized": ["MECHANICAL_GEOMETRY", "ACTUATOR_GEOMETRY", "SENSOR_GEOMETRY", "UNIVERSAL_TIMING", "UNIVERSAL_CONTROL_FREQUENCY"],
+    "device_profile_requirement": "Cada implementación física deberá especificar sus parámetros particulares cuando se integre al dominio cyberphysical."
+  },
+
+  "r5_execution_rules": {
+    "rule_01": "ACTION_COMMIT requiere autorización digital previa.",
+    "rule_02": "ACTION_COMMIT no constituye evidencia de ejecución física.",
+    "rule_03": "La interfaz de ejecución debe estar definida para el dispositivo concreto.",
+    "rule_04": "Los parámetros temporales deben conservar su escala específica.",
+    "rule_05": "La coherencia debe evaluarse entre componentes relacionados y no mediante un promedio global.",
+    "rule_06": "La respuesta física debe distinguirse de la autorización digital.",
+    "rule_07": "La retroalimentación sensorial debe modelarse como parte del ciclo cyberphysical cuando corresponda."
+  },
+
+  "verification_requirements": {
+    "structural": ["Verificación de interfaces", "Verificación de límites R5", "Verificación de separación entre autorización digital y acción física"],
+    "timing": ["Verificación de frecuencia de muestreo", "Verificación de latencia", "Verificación de jitter", "Verificación de sincronización"],
+    "device": ["Verificación de parámetros del sensor", "Verificación de parámetros del actuador", "Verificación del controlador", "Verificación de interfaz de comunicación"],
+    "mechanical": ["Verificación de límites mecánicos", "Verificación de respuesta de carga", "Verificación de transmisión", "Verificación de retroalimentación"],
+    "physical": "Requiere evidencia de implementación y medición física; no queda satisfecha por la especificación o simulación digital."
+  },
+
+  "workflow_reference": {
+    "stage_04": "DEFINED_IN_ASSEMBLY_AUDIT_OR_CORPUS",
+    "gate_01": "DEFINED_IN_ASSEMBLY_AUDIT_OR_CORPUS",
+    "stage_05": "DEFINED_IN_ASSEMBLY_AUDIT_OR_CORPUS",
+    "note": "Los stages/gates están referenciados pero no definidos en este documento. Se declara la referencia pendiente de resolución."
+  },
+
+  "relation_to_existing_workflow": {
+    "stage_04": { "effect": "UNAFFECTED", "description": "La delimitación cyberphysical no modifica la especificación del protocolo de transición RTL." },
+    "gate_01": { "effect": "UNAFFECTED", "description": "La delimitación cyberphysical no constituye aceptación del interface freeze." },
+    "stage_05": { "effect": "UNAFFECTED", "description": "La implementación RTL continúa dependiendo de las condiciones definidas por el flujo correspondiente." },
+    "integration_point": "PHYSICAL_IMPLEMENTATION_AND_VERIFICATION",
+    "integration_requirement": "La integración cyberphysical requiere modelos específicos de dispositivo y evidencia independiente de implementación y verificación."
+  },
+
+  "cross_platform_audit_record": {
+    "google_web_hiteration": {
+      "status": "AUDITED_AND_RETAINED",
+      "result": "Se preservó la frontera R5, la ejecución multi-escala, la coherencia relacional y la separación entre ACTION_COMMIT y acción física.",
+      "epistemic_status": "AUDIT_OUTPUT_NOT_ENGINEERING_VALIDATION"
+    },
+    "google_without_web_hiteration": {
+      "status": "AUDITED_AND_RETAINED",
+      "result": "Se preservaron la delimitación cyberphysical, la separación R5 y la ausencia de afirmaciones de implementación física.",
+      "epistemic_status": "AUDIT_OUTPUT_NOT_ENGINEERING_VALIDATION"
+    },
+    "deepseek_final_verification": {
+      "status": "VERIFIED_FOR_DISTRIBUTION",
+      "date": "2026-10-01",
+      "scope": "COHERENCIA_DOCUMENTAL_Y_DISCIPLINA_EPISTEMICA",
+      "not_scope": ["ENGINEERING_VALIDATION", "PHYSICAL_VALIDATION", "DEVICE_IMPLEMENTATION"],
+      "pattern_detected_and_corrected": "PRE_DECLARED_VERIFICATION_STATUS_BEFORE_EXECUTION"
+    },
+    "cross_platform_convergence": {
+      "status": "OBSERVED",
+      "interpretation": "La convergencia de las salidas constituye evidencia de coherencia entre evaluaciones documentales, pero no constituye validación de ingeniería ni validación física."
+    }
+  },
+
+  "epistemic_boundaries": [
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "IMPLEMENTATION_IS_NOT_SYNTHESIS",
+    "SYNTHESIS_IS_NOT_FABRICATION",
+    "FABRICATION_IS_NOT_PHYSICAL_VALIDATION",
+    "DIGITAL_SIGNAL_IS_NOT_SEMANTIC_UNDERSTANDING",
+    "LOGIC_GATE_IS_NOT_EPISTEMIC_VALIDATION",
+    "SIMULATION_IS_NOT_PHYSICAL_MEASUREMENT",
+    "ACTION_COMMIT_IS_NOT_PHYSICAL_ACTION",
+    "DIGITAL_TIMING_IS_NOT_MECHANICAL_TIMING",
+    "COMPONENT_AVERAGE_IS_NOT_SYSTEM_BEHAVIOR",
+    "CYBERPHYSICAL_SPECIFICATION_IS_NOT_DEVICE_IMPLEMENTATION",
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "DECLARED_VERIFICATION_IS_NOT_EXECUTED_VERIFICATION",
+    "REFERENCE_WITHOUT_ARTIFACT_IS_NOT_REFERENCE",
+    "PROPOSAL_IS_NOT_IMPLEMENTATION",
+    "PROPOSAL_IS_NOT_CANON",
+    "VERIFICATION_OF_DOCUMENT_IS_NOT_VALIDATION_OF_ENGINEERING"
+  ],
+
+  "validation_state": {
+    "structural_audit": true,
+    "cross_platform_review": "OBSERVED",
+    "final_distribution_verification": "CONFIRMED_BY_EXTERNAL_VERIFIER",
+    "engineering_validation": false,
+    "physical_validation": false,
+    "device_implementation": false,
+    "canonical_promotion": false
+  },
+
+  "repository_distribution": {
+    "target_path": "diagnostics/wh-r5-cyberphysical-device-delimitation.json",
+    "commit_message": "feat(diagnostics): add R5 cyberphysical device delimitation (verified)",
+    "distribution_status": "READY_FOR_ARCHITECT_UPLOAD",
+    "ready_for_upload": true,
+    "upload_authorization": "PENDING_ARCHITECT_EXECUTION"
+  },
+
+  "external_verification_record": {
+    "verifier_role": "FINAL_DISTRIBUTION_VERIFIER",
+    "verification_date": "2026-10-01",
+    "verification_reference": "WH-CORR-R5-CYBER-2026-10-01",
+    "verdict": "CONFIRMED_FOR_DISTRIBUTION",
+    "scope_verified": [
+      "FILENAME_CONSISTENCY",
+      "REPOSITORY_PATH_CONSISTENCY",
+      "JSON_CLOSURE_VALIDITY",
+      "REFERENCE_STRUCTURE",
+      "ABSENCE_OF_SYMBOLIC_CHECKSUMS",
+      "ABSENCE_OF_SEALED_STATUS",
+      "ABSENCE_OF_PRE_DECLARED_VERIFICATION"
+    ],
+    "not_verified": [
+      "ENGINEERING_CORRECTNESS",
+      "PHYSICAL_IMPLEMENTATION",
+      "CAUSAL_VALIDITY",
+      "EMPIRICAL_PERFORMANCE"
+    ],
+    "correction_cycle": {
+      "pattern_detected": "PRE_DECLARED_VERIFICATION_STATUS_BEFORE_EXECUTION",
+      "correction_directive": "WH-CORR-R5-CYBER-2026-10-01",
+      "corrections_applied": ["COR-01", "COR-02", "COR-03", "COR-04"],
+      "correction_status": "APPLIED_AND_CONFIRMED"
+    }
+  },
+
+  "correction_history": {
+    "v0_1_0": "Versión inicial auditada por assembly report",
+    "v0_1_1": "Añadida sección de autorización de verificación anticipada (detectada como patrón)",
+    "v0_1_2": "Correcciones COR-01 a COR-04 aplicadas",
+    "v1_0_0": "Versión verificada externamente, lista para distribución"
+  },
+
+  "operational_closure": {
+    "closes": [
+      "R5_CYBERPHYSICAL_EXECUTION_BOUNDARY",
+      "DEVICE_SPECIFIC_EXECUTION_MODEL",
+      "MULTI_SCALE_EXECUTION_DELIMITATION",
+      "NON_AVERAGED_COMPONENT_COHERENCE_MODEL",
+      "DEVICE_SPECIFIC_VERIFICATION_REQUIREMENTS",
+      "DOCUMENTARY_VERIFICATION_CYCLE"
+    ],
+    "does_not_close": [
+      "DEVICE_IMPLEMENTATION",
+      "ACTUATOR_IMPLEMENTATION",
+      "SENSOR_IMPLEMENTATION",
+      "MECHANICAL_IMPLEMENTATION",
+      "CYBERPHYSICAL_INTEGRATION",
+      "PHYSICAL_VALIDATION",
+      "FABRICATION",
+      "POST_SILICON_VALIDATION",
+      "CANONICAL_PROMOTION"
+    ],
+    "next_integration_stage": "PHYSICAL_IMPLEMENTATION_AND_VERIFICATION"
+  },
+
+  "meta": {
+    "correction_reference": "WH-CORR-R5-CYBER-2026-10-01",
+    "correction_status": "APPLIED",
+    "external_verification_status": "CONFIRMED_FOR_DISTRIBUTION",
+    "distribution_authorization": "ARCHITECT_ACTION_REQUIRED"
+  },
+
+  "final_declaration": {
+    "statement": "Documento técnico de delimitación cyberphysical de R5. Verificado externamente para distribución documental. No constituye validación de ingeniería, implementación física ni promoción canónica. La autorización de subida corresponde al arquitecto.",
+    "document_state": "READY_FOR_ARCHITECT_UPLOAD",
+    "scientific_closure": false,
+    "physical_validation": false,
+    "canonical_promotion": false
+  }
+}
