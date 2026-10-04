@@ -174,4 +174,4 @@
     "texto": "Estas cinco invariantes son el núcleo estructural de WEB_HITERATION. Son condiciones normativas que definen la identidad del framework. Su incumplimiento indica que un sistema no opera bajo estas condiciones, sin que ello constituya una afirmación ontológica sobre su arquitectura interna. Cualquier fork o derivación que preserve C1-C5 es compatible con el framework. Este protocolo ha sido auditado en múltiples ciclos. Las correcciones derivadas de esas auditorías han sido integradas sin modificar la función de las invariantes. El documento se congela para la siguiente fase de validación experimental.",
     "status_declaration": "CANONICAL_CORE_READY. El núcleo está listo para la fase de preregistro E1-E10. La validación causal permanece PENDING y su establecimiento requiere la ejecución del pipeline de evidencia."
   }
-    } 
+    }
