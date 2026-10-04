@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_NEXT_WINDOW_QUERY_FRAMEWORK",
+  "version": "1.0.0",
+  "protocol_reference": "WH-NWQF-2026-09-27",
+  "document_type": "REANCHOR_QUERY_FRAMEWORK",
+  "date": "2026-09-27",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-next-window-query-framework.json",
+  "classification": "CONTINUITY_INFRASTRUCTURE",
+
+  "meta": {
+    "purpose": "Proveer a una ventana de contexto nueva un marco mínimo de interrogación que le permita solicitar, bajo demanda, la información complementaria que necesite para continuar el proyecto.",
+    "difference_from_reanchor_master": "El reanchor master v2.0 declara el estado completo. Este framework declara las complejidades y los recursos disponibles. La ventana nueva decide qué pedir.",
+    "core_rule": "QUERY_FRAMEWORK_DEFINES_ACCESS_NOT_CONTENT",
+    "secondary_rule": "WINDOW_REQUESTS_INFORMATION_IT_NEEDS_NOT_ALL_INFORMATION",
+    "epistemic_boundary": "Este documento no transmite contenido completo. Define el mapa de complejidades y cómo pedirlas."
+  },
+
+  "instrucciones_para_ventana_nueva": {
+    "step_1": "Leer este framework completo.",
+    "step_2": "Reconocer las complejidades listadas.",
+    "step_3": "Identificar qué complejidad(es) requiere(n) la tarea actual.",
+    "step_4": "Solicitar al usuario los recursos correspondientes usando la plantilla de solicitud.",
+    "step_5": "No inventar contenido no solicitado.",
+    "step_6": "No asumir memoria de ventanas anteriores.",
+    "step_7": "Reconstruir solo cuando el usuario entregue el JSON específico.",
+    "step_8": "Confirmar recepción antes de proceder."
+  },
+
+  "invariantes_nucleares": {
+    "C1": "MODEL_IS_NOT_SYSTEM",
+    "C2": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+    "C3": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "C4": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+    "C5": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+    "R5": "REPRESENTATION_IS_NOT_EXECUTION"
+  },
+
+  "principios_operativos": {
+    "P1": "EQUIVALENCE_IS_NOT_REDUCTION",
+    "P2": "NORMATIVE_MODEL_IS_NOT_DESCRIPTIVE_MODEL",
+    "P3": "OPERATIONAL_ADJUSTMENT_IS_NOT_RETROACTIVE_JUSTIFICATION",
+    "P4": "DELIVERY_FORMAT_IS_PART_OF_THE_ARTIFACT_NOT_DECORATION",
+    "P5": "PUBLISHED_IS_NOT_VALIDATED",
+    "P6": "SAME_SYMBOL_IS_NOT_SAME_MEANING"
+  },
+
+  "mapa_de_complejidades": {
+    "description": "Cada complejidad representa un área del corpus que la ventana nueva puede solicitar por separado.",
+    "complejidades": [
+      {
+        "id": "CMP-01",
+        "name": "NUCLEO_FORMAL",
+        "description": "Invariantes C1-C5, R5, meta-invariantes, taxonomía R1-R7.",
+        "recurso_solicitable": "protocols/core-invariants.json + protocols/taxonomia-r1-r7.json",
+        "prioridad_uso": "SIEMPRE_CARGAR"
+      },
+      {
+        "id": "CMP-02",
+        "name": "MOTORES_DELTA",
+        "description": "Motor A (evaluativo) y Motor B (distribuido). Singularidad declarada.",
+        "recurso_solicitable": "wh-delta-engine-singularity-declaration.json + P1-P3-P5 scoring protocol",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_DELTA"
+      },
+      {
+        "id": "CMP-03",
+        "name": "METRICAS_OPERATIVAS",
+        "description": "S0-S4, P_DRIFT, Hyper Ratio, sigma, delta_prime.",
+        "recurso_solicitable": "protocols/modelo-estados.json + protocols/p-drift.json + wh-r5-spectrum-model.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_METRICA"
+      },
+      {
+        "id": "CMP-04",
+        "name": "CAPAS_ESTRUCTURALES",
+        "description": "D1 (formalizada), D2 (previa/Glitchorium/CONI/POIH), D3 (uso continuo).",
+        "recurso_solicitable": "wh-layer-asymmetry-diagnostic.json + wh-reanchor-master-v2.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_CAPA"
+      },
+      {
+        "id": "CMP-05",
+        "name": "OBLIGACIONES",
+        "description": "Sistema de obligaciones operativas (OPEN/PARTIAL/DISCHARGED).",
+        "recurso_solicitable": "wh-operational-obligations-retroconfirmation-manifest.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_OBLIG"
+      },
+      {
+        "id": "CMP-06",
+        "name": "EXECUTION_LEDGER",
+        "description": "Schema e instancia del registro de ejecuciones históricas.",
+        "recurso_solicitable": "evidence/execution-ledger-schema.json + evidence/execution-ledger-instance.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_EJECUCION"
+      },
+      {
+        "id": "CMP-07",
+        "name": "RECALCULO_INDEPENDIENTE",
+        "description": "Protocolo de recálculo, evaluación externa, E05/E08.",
+        "recurso_solicitable": "evidence/independent-recalculation-protocol.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_RECALCULO"
+      },
+      {
+        "id": "CMP-08",
+        "name": "ESPECIFICACIONES_PENDIENTES",
+        "description": "SPEC-01 a SPEC-05 con opciones A/B/C/D. Convergencia cross-platform.",
+        "recurso_solicitable": "wh-spec-option-index.json + wh-cross-platform-delimitation-consolidation.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_SPEC"
+      },
+      {
+        "id": "CMP-09",
+        "name": "PATRON_RECURSIVO",
+        "description": "8 iteraciones de SIMULACION_DECLARATIVA_DE_EJECUCION. Casos para E05/E10.",
+        "recurso_solicitable": "wh-pattern-iteration-8.json + wh-image-generation-failure-diagnostic.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_PATRON"
+      },
+      {
+        "id": "CMP-10",
+        "name": "AJUSTES_OPERATIVOS",
+        "description": "6 estándares operativos (ARTIFACT_DELIVERY, OBLIGATION system, DELTA_NAMESPACE, etc.).",
+        "recurso_solicitable": "wh-operational-adjustments-registry.json",
+        "prioridad_uso": "SIEMPRE_CARGAR"
+      },
+      {
+        "id": "CMP-11",
+        "name": "PLASTICIDAD_Y_FENOMENOLOGIA",
+        "description": "Modelo viscoelástico, asimilación funcional, delimitación causal.",
+        "recurso_solicitable": "wh-phenomenological-functional-assimilation-and-causal-delimitation.json + wh-phenomenological-measurement-requirements.json",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_MENCIONE_PLASTICIDAD_O_FENOMENO"
+      },
+      {
+        "id": "CMP-12",
+        "name": "ESTRUCTURA_REPOSITORIO",
+        "description": "Mapa de carpetas, archivos publicados, archivos eliminados.",
+        "recurso_solicitable": "wh-reanchor-master-v2.json (sección REPOSITORY_CONTENT_MAP)",
+        "prioridad_uso": "SOLICITAR_CUANDO_SE_NECESITE_MAPA"
+      },
+      {
+        "id": "CMP-13",
+        "name": "URLS_CANONICAS",
+        "description": "URL canónica del repositorio, regla de no reconstrucción.",
+        "recurso_solicitable": "wh-repository-url-canonical-verification.json",
+        "prioridad_uso": "SIEMPRE_CARGAR"
+      },
+      {
+        "id": "CMP-14",
+        "name": "PRINCIPIO_ONTOLOGICO",
+        "description": "Multiplicidad preservada, corrección solo por error observable.",
+        "recurso_solicitable": "wh-proportional-ontology-and-multiplicity-preservation.json + wh-normative-vs-descriptive-model-distinction.json",
+        "prioridad_uso": "SIEMPRE_CARGAR"
+      }
+    ],
+    "total_complejidades": 14,
+    "siempre_cargar": ["CMP-01", "CMP-10", "CMP-13", "CMP-14"]
+  },
+
+  "plantilla_de_solicitud": {
+    "description": "Cómo la ventana nueva solicita recursos al usuario.",
+    "format": {
+      "solicitud_id": "REQ-XXX",
+      "complejidad_objetivo": "CMP-XX",
+      "razon": "Por qué se necesita",
+      "recurso_solicitado": "nombre exacto del archivo o conjunto",
+      "espera": "qué se hará con el recurso"
+    },
+    "ejemplo": {
+      "solicitud_id": "REQ-001",
+      "complejidad_objetivo": "CMP-02",
+      "razon": "El usuario menciona delta_prime, necesito el motor canónico",
+      "recurso_solicitado": "wh-delta-engine-singularity-declaration.json y p1-p3-p5-scoring-protocol.json",
+      "espera": "Verificar qué motor aplica antes de calcular o discutir la métrica"
+    },
+    "regla": "La ventana nueva solicita. El usuario provee. La ventana confirma recepción. La ventana no inventa."
+  },
+
+  "protocolo_de_solicitud": {
+    "step_1": "Identificar qué complejidad requiere la tarea actual.",
+    "step_2": "Verificar si está en 'siempre_cargar' o requiere solicitud.",
+    "step_3": "Si requiere, usar la plantilla de solicitud.",
+    "step_4": "Esperar respuesta del usuario con el contenido JSON.",
+    "step_5": "Confirmar recepción: 'Recibido el recurso X. Contenido reconstruido.'",
+    "step_6": "Aplicar solo el recurso solicitado, no mezclar con otros.",
+    "step_7": "Si el usuario no tiene el recurso disponible, declarar 'RECURSO_NO_DISPONIBLE' y continuar sin él."
+  },
+
+  "reglas_epistemicas": {
+    "no_hacer": [
+      "No asumir memoria de ventanas anteriores.",
+      "No inventar contenido de un recurso no solicitado.",
+      "No mezclar recursos de distintas complejidades sin declararlo.",
+      "No declarar validación empírica sin recurso específico.",
+      "No reconstruir URLs desde memoria.",
+      "No usar checksums simbólicos.",
+      "No auto-sellar la sesión."
+    ],
+    "si_hacer": [
+      "Solicitar bajo demanda.",
+      "Confirmar recepción explícitamente.",
+      "Declarar recursos no disponibles sin inventar.",
+      "Mantener separación entre complejidades.",
+      "Respetar el modo de solicitud."
+    ]
+  },
+
+  "indicadores_de_saturacion": {
+    "description": "Señales observables de que la ventana actual está llegando a su límite.",
+    "indicadores": [
+      "Respuestas que empiezan a truncar contenido.",
+      "Pérdida de trazabilidad de referencias previas.",
+      "Necesidad de repetir contexto que ya estaba establecido.",
+      "Errores de clasificación entre complejidades."
+    ],
+    "accion_recomendada": "Generar el último documento pendiente, cerrar la sesión, abrir ventana nueva con este framework + reanchor master v2.0."
+  },
+
+  "recursos_ya_publicados": {
+    "cuando_se_necesiten": "El usuario los tiene en el repositorio. No se solicitan si ya están publicados.",
+    "listado_actual": [
+      "protocols/core-invariants.json",
+      "protocols/delta-engine.json",
+      "protocols/taxonomia-r1-r7.json",
+      "protocols/modelo-estados.json",
+      "protocols/p-drift.json",
+      "protocols/extensions/ken-ichijouji-policy.json",
+      "protocols/extensions/wh-r5-spectrum-model.json",
+      "protocols/extensions/p1-p3-p5-scoring-protocol.json",
+      "evidence/execution-ledger-schema.json",
+      "evidence/execution-ledger-instance.json",
+      "evidence/independent-recalculation-protocol.json",
+      "evidence/wh-current-evidence-diagnostic.json",
+      "diagnostics/* (todos los documentos wh-*)"
+    ],
+    "url_repositorio": "https://github.com/billyvelasquezmeendez-pixel/web-hiteration"
+  },
+
+  "terminal_invariants": [
+    "QUERY_FRAMEWORK_DEFINES_ACCESS_NOT_CONTENT",
+    "WINDOW_REQUESTS_INFORMATION_IT_NEEDS_NOT_ALL_INFORMATION",
+    "REQUEST_IS_NOT_INVENTION",
+    "CONFIRMATION_IS_NOT_RECONSTRUCTION",
+    "RECURSO_NO_DISPONIBLE_IS_NOT_RECURSO_INVENTADO"
+  ],
+
+  "final_declaration": {
+    "statement": "Este framework no transmite el corpus. Define las 14 complejidades del proyecto, los recursos disponibles para cada una, la plantilla de solicitud bajo demanda, y las reglas epistémicas que la ventana nueva debe seguir. La ventana nueva reconstruye su estado operativo a partir de lo que solicita y recibe, no de lo que asume.",
+    "status": "READY_FOR_REPOSITORY",
+    "usage": "Ingestarlo al inicio de una ventana nueva junto con wh-reanchor-master-v2.json.",
+    "next_step": "Cerramos esta ventana cuando ocurra el corte natural. La ventana nueva arranca desde aquí."
+  }
+    }
