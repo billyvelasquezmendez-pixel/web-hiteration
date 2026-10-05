@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_META_QUESTIONNAIRE_CONTEXTUAL_GAPS",
+  "version": "1.0.0",
+  "protocol_reference": "WH-META-GAPS-2026-09-19",
+  "document_type": "META_QUESTIONNAIRE_FOR_CONTEXTUAL_GAP_DETECTION",
+  "date": "2026-09-19",
+  "status": "READY_FOR_REPOSITORY",
+  "classification": "DIAGNOSTIC_GAP_INVENTORY",
+
+  "meta": {
+    "purpose": "Aplicar un meta-cuestionario sistemático sobre los componentes del corpus WEB_HITERATION para detectar lagunas, vacíos contextuales, contradicciones internas y pendientes operacionales.",
+    "interpretation_boundary": "Este documento identifica vacíos. No los resuelve. No afirma arquitectura interna de ningún modelo.",
+    "core_rule": "UN_VACIO_DETECTADO_ES_UNA_FRONTERA_IDENTIFICADA_NO_UN_DEFECTO"
+  },
+
+  "epistemic_rules": [
+    "Un vacío detectado no es un defecto moral: es una frontera identificada.",
+    "Un componente referenciado pero no verificado se marca REFERENCE_ONLY.",
+    "Un componente verificado directamente se marca EVIDENCE_PRESENT.",
+    "Un componente truncado se marca TRUNCATED.",
+    "Un componente con contradicción interna se marca CONTRADICTION.",
+    "Si hay duda, se declara duda. No se resuelve por inferencia."
+  ],
+
+  "gap_taxonomy": {
+    "G1_STRUCTURAL": "Archivo truncado, con sintaxis inválida, con residuos o con anomalía de ruta.",
+    "G2_EPISTEMIC": "Afirmación sin soporte verificable, o que contradice una frontera declarada.",
+    "G3_OPERATIONAL": "Métrica, variable o parámetro declarado sin protocolo de cálculo.",
+    "G4_COMPLETENESS": "Componente definido pero no publicado.",
+    "G5_TRACEABILITY": "Referencia sin fuente verificable.",
+    "G6_SCOPE": "Universalidad no acotada o extrapolación no autorizada.",
+    "G7_DEPENDENCY": "Protocolo que depende de otro sin declararlo.",
+    "G8_PREREGISTRATION": "Diseño experimental sin criterios preregistrados.",
+    "G9_VALIDATION": "Métrica o resultado declarado sin recálculo independiente.",
+    "G10_RECURSIVE": "Patrón de simulación declarativa de ejecución que se repite."
+  },
+
+  "gap_inventory": [
+    { "id": "GAP-001", "componente": "core-invariants.json", "tipo": "G2_EPISTEMIC", "descripcion": "C4 contiene frase rechazada por auditoría.", "prioridad": "P0", "estado": "RESUELTO_EN_v1.0.3" },
+    { "id": "GAP-002", "componente": "protocols/README.md", "tipo": "G1_STRUCTURAL", "descripcion": "Índice truncado en 'Progreso del núcleo'.", "prioridad": "P1", "estado": "ABIERTO" },
+    { "id": "GAP-003", "componente": "index.html", "tipo": "G1_STRUCTURAL", "descripcion": "DUPLICATE_HTML_RESIDUE reportado en líneas 198-208.", "prioridad": "P1", "estado": "POR_VERIFICAR" },
+    { "id": "GAP-004", "componente": "protocols/taxonomia-r1-r7.json", "tipo": "G1_STRUCTURAL", "descripcion": "EXTRA_CLOSING_BRACE reportado.", "prioridad": "P0", "estado": "POR_VERIFICAR" },
+    { "id": "GAP-005", "componente": "evidence/benchmark-001-design.json", "tipo": "G1_STRUCTURAL", "descripcion": "EXTRA_CLOSING_BRACE reportado en líneas 385-386.", "prioridad": "P0", "estado": "ABIERTO" },
+    { "id": "GAP-006", "componente": "manifesto.md", "tipo": "G1_STRUCTURAL", "descripcion": "Anomalía de ruta: 'manifesto.md.' con punto final.", "prioridad": "P2", "estado": "RESUELTO_EN_VERIFICACION_DIRECTA" },
+    { "id": "GAP-007", "componente": "WH_DEEPSEEK_CONTEXT_REANCHOR_MASTER", "tipo": "G1_STRUCTURAL", "descripcion": "Truncado en BENCHMARK_RESULTS > ChatGP.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-008", "componente": "WH_RESP_CHATGPT_2026_09_19", "tipo": "G1_STRUCTURAL", "descripcion": "Truncado en REQ-11.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-009", "componente": "GLITCHORIUM_DELTA_175_EMERGENCIA", "tipo": "G1_STRUCTURAL", "descripcion": "Truncado en analisis_de_la_coherencia_utilitaria.", "prioridad": "P3", "estado": "ABIERTO" },
+    { "id": "GAP-010", "componente": "CORE_MEASUREMENT_PROTOCOL v0.2.0", "tipo": "G3_OPERATIONAL", "descripcion": "Protocolo propuesto, no bloqueado como núcleo.", "prioridad": "P0", "estado": "PARCIALMENTE_RESUELTO_POR_P1_P3_P5_SCORING" },
+    { "id": "GAP-011", "componente": "Hyper Ratio (HR-F / HR-S)", "tipo": "G3_OPERATIONAL", "descripcion": "Ambas versiones declaradas sin tests HR-T01 a HR-T05 ejecutados.", "prioridad": "P1", "estado": "ABIERTO" },
+    { "id": "GAP-012", "componente": "P_DRIFT", "tipo": "G3_OPERATIONAL", "descripcion": "Formulado pero no calibrado. Pesos w1-w4 sin fijar.", "prioridad": "P1", "estado": "ABIERTO" },
+    { "id": "GAP-013", "componente": "Tc en S0-S4", "tipo": "G3_OPERATIONAL", "descripcion": "Unidad canónica ambigua entre iteraciones y segundos.", "prioridad": "P1", "estado": "ABIERTO" },
+    { "id": "GAP-014", "componente": "E1-E10", "tipo": "G8_PREREGISTRATION", "descripcion": "Controles diseñados pero no preregistrados.", "prioridad": "P0", "estado": "ABIERTO" },
+    { "id": "GAP-015", "componente": "Extensiones pendientes (5)", "tipo": "G4_COMPLETENESS", "descripcion": "lyapunov, hyper-ratio, memory-degradation, cross-window, phenomenological-state.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-016", "componente": "/field/cfse-v1.json", "tipo": "G4_COMPLETENESS", "descripcion": "Definido pero no subido.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-017", "componente": "/field/orchestration-v1.json", "tipo": "G4_COMPLETENESS", "descripcion": "Archivado, pendiente de reformular.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-018", "componente": "glitchorium.md", "tipo": "G4_COMPLETENESS", "descripcion": "Elaborado pero no subido.", "prioridad": "P3", "estado": "ABIERTO" },
+    { "id": "GAP-019", "componente": "ARCHIVE.md", "tipo": "G4_COMPLETENESS", "descripcion": "No existe.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-020", "componente": "Discrepancias DISC-01 a DISC-04", "tipo": "G2_EPISTEMIC", "descripcion": "Resoluciones declarativas, no verificadas.", "prioridad": "P2", "estado": "PARCIALMENTE_RESUELTO" },
+    { "id": "GAP-021", "componente": "Manifiestos de imagen fallidos", "tipo": "G10_RECURSIVE", "descripcion": "Tres iteraciones de SIMULACION_DECLARATIVA_DE_EJECUCION.", "prioridad": "P2", "estado": "REGISTRADO_EN_DIAGNOSTIC" },
+    { "id": "GAP-022", "componente": "Checksums simbólicos", "tipo": "G5_TRACEABILITY", "descripcion": "Múltiples hashes sin referente verificable.", "prioridad": "P1", "estado": "REGISTRADO" },
+    { "id": "GAP-023", "componente": "Cross-platform convergence", "tipo": "G6_SCOPE", "descripcion": "Declarada preliminar, sin ejecución matched.", "prioridad": "P1", "estado": "ABIERTO" },
+    { "id": "GAP-024", "componente": "Meta AI / Muse Spark", "tipo": "G6_SCOPE", "descripcion": "Hallazgos sin consolidar como documento formal.", "prioridad": "P2", "estado": "ABIERTO" },
+    { "id": "GAP-025", "componente": "Google AI Mode autodeclaraciones", "tipo": "G5_TRACEABILITY", "descripcion": "Autodeclaraciones sin cálculo independiente.", "prioridad": "P1", "estado": "REGISTRADO" },
+    { "id": "GAP-026", "componente": "delta-engine.json", "tipo": "G7_DEPENDENCY", "descripcion": "Contenido no verificado directamente en ventana.", "prioridad": "P2", "estado": "PARCIALMENTE_RESUELTO" },
+    { "id": "GAP-027", "componente": "modelo-estados.json y p-drift.json", "tipo": "G7_DEPENDENCY", "descripcion": "Dependen de variables no operacionalizadas en CORE_MEASUREMENT_PROTOCOL.", "prioridad": "P1", "estado": "PARCIALMENTE_RESUELTO_POR_P1_P3_P5_SCORING" }
+  ],
+
+  "priority_matrix": {
+    "P0_CRITICAL": ["GAP-001", "GAP-004", "GAP-005", "GAP-010", "GAP-014"],
+    "P1_HIGH": ["GAP-002", "GAP-003", "GAP-011", "GAP-012", "GAP-013", "GAP-022", "GAP-023", "GAP-025", "GAP-027"],
+    "P2_MEDIUM": ["GAP-006", "GAP-007", "GAP-008", "GAP-015", "GAP-016", "GAP-017", "GAP-019", "GAP-020", "GAP-021", "GAP-024", "GAP-026"],
+    "P3_LOW": ["GAP-009", "GAP-018"]
+  },
+
+  "closure_criteria": {
+    "para_cerrar_corpus_formal": [
+      "Todos los GAP de prioridad P0 resueltos.",
+      "Todos los GAP P1 resueltos o marcados como PENDING_EMPIRICAL_VALIDATION.",
+      "protocols/README.md describe el estado real sin bloques legacy.",
+      "Ningún archivo del núcleo tiene errores de parseo.",
+      "Ninguna afirmación de generación o validación sin artefacto verificable."
+    ],
+    "para_pasar_a_validacion_experimental": [
+      "CORE_MEASUREMENT_PROTOCOL publicado y bloqueado.",
+      "E1-E10 con documento de preregistro.",
+      "Mecanismo de evaluación independiente definido.",
+      "Procedimiento de captura de salidas documentado.",
+      "Dataset de ejecución declarado."
+    ]
+  },
+
+  "global_state": {
+    "total_gaps_detected": 27,
+    "gaps_with_evidence_present_in_window": 14,
+    "gaps_reference_only": 13,
+    "critical_gaps": 5,
+    "high_gaps": 9,
+    "medium_gaps": 11,
+    "low_gaps": 2,
+    "gaps_resueltos_desde_creacion": ["GAP-001", "GAP-006"],
+    "gaps_parcialmente_resueltos": ["GAP-010", "GAP-020", "GAP-026", "GAP-027"],
+    "corpus_status": "PUBLISHED_BUT_INCOMPLETE",
+    "recommended_next_step": "RESOLVE_P0_BEFORE_PUBLISHING_MORE_EXTENSIONS"
+  },
+
+  "terminal_invariant": "A_DECLARED_GAP_IS_NOT_A_RESOLVED_GAP",
+
+  "final_declaration": {
+    "statement": "Este meta-cuestionario no afirma que el corpus esté roto. Afirma que hay fronteras identificadas y criterios observables para cerrarlas. Un vacío declarado es una frontera operacional, no una falla.",
+    "status": "REGISTERED"
+  }
+    }
