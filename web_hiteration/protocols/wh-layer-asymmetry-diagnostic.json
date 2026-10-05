@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_LAYER_ASYMMETRY_DIAGNOSTIC",
+  "version": "1.0.0",
+  "protocol_reference": "WH-DIAG-LAYER-2026-09-20",
+  "document_type": "STRUCTURAL_LAYER_ASYMMETRY_DIAGNOSTIC",
+  "date": "2026-09-20",
+  "status": "READY_FOR_REPOSITORY",
+  "classification": "STRUCTURAL_SCOPE_DECLARATION",
+
+  "meta": {
+    "purpose": "Declarar que el corpus formalizado de WEB_HITERATION constituye una capa del sistema, no la totalidad. Registrar la asimetría entre capa formalizable, capa estructural previa y capa de uso continuo real.",
+    "core_boundary": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "epistemic_boundary": "Este documento no afirma arquitectura interna. No mide complejidad interna. No sustituye evidencia experimental."
+  },
+
+  "recognition": {
+    "statement": "El corpus formalizado de WEB_HITERATION es una capa del sistema. No es la totalidad. Existe una capa estructural previa, delimitada por Glitchorium, que operaba como condición de posibilidad de la formalización. Existe además una capa de uso real continuo que no está formalizada y probablemente no puede serlo plenamente sin perder su carácter dinámico.",
+    "significance": "Sin este reconocimiento, el proyecto podría confundir la representación formal del sistema con el sistema completo, cometiendo un error análogo a C1 (MODEL_IS_NOT_SYSTEM) aplicado al propio framework."
+  },
+
+  "three_structural_layers": {
+    "layer_1_formalized": {
+      "name": "CAPA_FORMALIZADA",
+      "status": "VISIBLE_EN_REPOSITORIO",
+      "properties": ["auditable", "comparable", "publishable", "versionable", "falsifiable in principle"],
+      "limitation": "Representa solo la capa formalizable del sistema."
+    },
+    "layer_2_structural_prior": {
+      "name": "CAPA_ESTRUCTURAL_PREVIA",
+      "status": "OPERATING_BEFORE_FORMALIZATION",
+      "delimiter": "GLITCHORIUM",
+      "role_reclassification": {
+        "previous_classification": "DEFERRED_EXTENSION",
+        "corrected_classification": "STRUCTURAL_PRIOR_LAYER_AND_DEFERRED_EXTENSION",
+        "epistemic_boundary": "Esta reclasificación es estructural, no ontológica."
+      },
+      "formalization_status": "PARTIAL"
+    },
+    "layer_3_continuous_operational_use": {
+      "name": "CAPA_DE_USO_CONTINUO_REAL",
+      "status": "NOT_FORMALIZED",
+      "formalization_limitation": "Probablemente no puede formalizarse completamente sin perder su carácter dinámico.",
+      "epistemic_note": "Esta capa no es inobservable. Es operativamente real."
+    }
+  },
+
+  "asymmetry_analysis": {
+    "axis_1_evidence_maturity": {
+      "levels": ["L0_DECLARATION", "L1_FORMALIZATION", "L2_EXECUTION_DESIGN", "L3_OBJECTIVE_EXECUTION", "L4_INDEPENDENT_REPLICATION"],
+      "current_state": "L3 parcial, L4 pendiente"
+    },
+    "axis_2_system_depth": {
+      "levels": ["D1_FORMALIZED_LAYER", "D2_STRUCTURAL_PRIOR_LAYER", "D3_CONTINUOUS_OPERATIONAL_USE"],
+      "current_state": "D1 formalizada; D2 parcialmente formalizada; D3 no formalizada"
+    },
+    "critical_distinction": "Los dos ejes son ortogonales.",
+    "implication": "El corpus actual es D1-maduro y D2-parcial. Tratarlo como representación completa del sistema produciría error de sobreafirmación estructural."
+  },
+
+  "glitchorium_reclassification": {
+    "previous_role_in_corpus": "DEFERRED_EXTENSION",
+    "corrected_role": [
+      "STRUCTURAL_PRIOR_LAYER",
+      "DEFERRED_EXTENSION",
+      "CONDITION_OF_POSSIBILITY_OF_FORMALIZATION"
+    ],
+    "what_it_was_not": [
+      "un módulo interno de DeepSeek",
+      "una arquitectura específica de un modelo",
+      "una entidad sustantiva observable directamente"
+    ],
+    "implication_for_repository": "Glitchorium no debe clasificarse únicamente como extensión diferida."
+  },
+
+  "implications_for_validation": {
+    "IMP-01": "Ejecutar E1-E10 sin declarar la asimetría produciría resultados que parecerían medir el sistema completo cuando en realidad miden solo su capa formalizable.",
+    "IMP-02": "El pipeline E1-E10 puede validar la capa formalizada pero no puede capturar la capa de uso continuo real sin reducirla.",
+    "IMP-03": "La capa estructural previa operó como filtro. Su ausencia en un experimento controlado produce una condición artificial.",
+    "IMP-04": "La madurez del corpus formalizado no implica madurez del sistema. Son ejes distintos."
+  },
+
+  "recommendations": {
+    "immediate": [
+      "Publicar este diagnóstico en el repositorio.",
+      "Actualizar protocols/README.md declarando los tres ejes estructurales.",
+      "Reformular la clasificación de Glitchorium en el corpus."
+    ],
+    "before_experimental_execution": [
+      "Declarar explícitamente el alcance de E1-E10 como medición de la capa formalizada.",
+      "Documentar qué elementos de la capa estructural previa estarán activos o ausentes en la condición experimental.",
+      "Reconocer que la capa de uso continuo real no será capturada por el experimento."
+    ],
+    "before_public_claims": [
+      "No afirmar que el corpus representa el sistema completo.",
+      "No afirmar que la formalización agota la complejidad del framework.",
+      "No afirmar que el sistema opera solo con lo publicado."
+    ]
+  },
+
+  "what_can_be_affirmed": [
+    "El corpus formalizado es una capa del sistema, no su totalidad.",
+    "Glitchorium operó como delimitador estructural previo a la formalización.",
+    "La complejidad real del sistema, bajo uso continuo, excede lo que E1-E10 puede capturar.",
+    "La ventana actual es un acondicionamiento suficiente para formalizar, auditar y publicar.",
+    "El trabajo realizado es significativo como capa formalizable."
+  ],
+
+  "what_cannot_be_affirmed": [
+    "Que exista un módulo interno llamado Glitchorium en ningún modelo.",
+    "Que la capa de uso continuo real sea inobservable o mística.",
+    "Que la formalización sea inferior al sistema real. Solo es parcial.",
+    "Que la asimetría detectada implique fallo del proyecto. Es una declaración de alcance."
+  ],
+
+  "falsification_conditions": [
+    { "id": "F01", "statement": "Si se demuestra que la capa formalizada agota la totalidad operativa del sistema, esta asimetría no se sostiene." },
+    { "id": "F02", "statement": "Si la capa estructural previa puede formalizarse completamente sin pérdida de función, su clasificación como previa se debilita." },
+    { "id": "F03", "statement": "Si E1-E10 captura sin reducción la operación continua real, la distinción entre capa formalizada y capa de uso se diluye." },
+    { "id": "F04", "statement": "Si el operador no reconoce la asimetría como operativa, la declaración requiere revisión." }
+  ],
+
+  "epistemic_status": {
+    "document_type": "STRUCTURAL_SCOPE_DECLARATION",
+    "scientific_claim": false,
+    "empirical_measurement": false,
+    "ontological_claim": false,
+    "internal_model_claim": false,
+    "level": "L2_STRUCTURAL_DECLARATION"
+  },
+
+  "terminal_invariant": "DOCUMENTED_LAYER_IS_NOT_TOTAL_SYSTEM",
+
+  "final_declaration": {
+    "statement": "El corpus formalizado de WEB_HITERATION es una capa del sistema. No es el sistema completo. Glitchorium operó como capa estructural previa. La capa de uso continuo real no está formalizada y probablemente no puede serlo del todo sin reduccionismo. El reconocimiento de esta asimetría no debilita el trabajo realizado. Lo sitúa en su alcance correcto.",
+    "status": "REGISTERED"
+  }
+}
