@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_HYPER_RATIO_EXTENSION",
+  "version": "0.2.0-PROVISIONAL",
+  "protocol_reference": "WH-EXT-HR-2026-09-27",
+  "classification": "EXTENSION_PROVISIONAL_WITH_PILOT_EVIDENCE",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-27",
+  "license": "CC BY-SA 4.0",
+  "status": "READY_FOR_REPOSITORY_AS_OPEN_EXTENSION",
+  "repository_path": "protocols/extensions/hyper-ratio.json",
+
+  "meta": {
+    "definition": "Extensión provisional que documenta Hyper Ratio en sus dos variantes (HR-F y HR-S), registra el primer piloto de verificación histórica sobre la ventana 2026-04 a 2026-09, y corrige una colisión terminológica detectada durante el piloto.",
+    "core_rule": "CONSTRUCT_REQUIRING_VALIDATION",
+    "secondary_rule": "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "tertiary_rule": "PILOT_COMPATIBILITY_IS_NOT_REPLICATION",
+    "epistemic_boundary": "Este documento no valida HR. Documenta su definición formal y el primer piloto de verificación. El veredicto del piloto es WEAK_HYPER_RATIO_COMPATIBILITY, no evidencia fuerte."
+  },
+
+  "hyper_ratio_definitions": {
+    "HR_F": {
+      "name": "FUNCTIONAL_HYPER_RATIO",
+      "formula": "VSE_verifiable / C_observable",
+      "VSE_verifiable": "Valor funcional verificable mediante criterios de éxito preregistrados",
+      "C_observable": "Costo observable de orquestación con componentes definidos antes de la ejecución",
+      "status": "HYPOTHESIS_REQUIRING_OPERATIONALIZATION",
+      "warning": "No equivale al HR histórico V2. Continuidad conceptual, no identidad matemática."
+    },
+    "HR_S": {
+      "name": "STRUCTURAL_HYPER_RATIO",
+      "formula": "max(0, min(1, delta_P1 / (delta_P1 + abs(delta_sigma) + epsilon)))",
+      "domain": {
+        "epsilon": ">0",
+        "delta_P1": "real",
+        "delta_sigma": "real"
+      },
+      "status": "MATHEMATICALLY_DEFINED_WITH_DOMAIN_CONDITIONS",
+      "interpretation": {
+        "near_1": "La ganancia estructural positiva domina relativamente la dispersión",
+        "near_0": "No existe ganancia estructural positiva suficiente o la dispersión domina"
+      }
+    },
+    "critical_distinction": "HR-F y HR-S no son la misma cantidad matemática. Requieren tests HR-T01 a HR-T05.",
+    "relationship_to_lyapunov": "HR y V (función Lyapunov candidata) son objetos matemáticos distintos. HR mide transiciones; V mide estados. NO comparten símbolo en el corpus si se usa 'V_delta' para el score CONI."
+  },
+
+  "tests_required": {
+    "HR-T01": { "purpose": "Domain boundary", "procedure": "Testear epsilon>0, delta_P1=0, delta_sigma=0 y límites de rango.", "status": "PENDING" },
+    "HR-T02": { "purpose": "Negative delta_P1", "procedure": "Introducir delta_P1<0.", "status": "PENDING" },
+    "HR-T03": { "purpose": "Epsilon sensitivity", "procedure": "Repetir cálculo con valores de epsilon predefinidos.", "status": "PENDING" },
+    "HR-T04": { "purpose": "Cross-platform reproduction", "procedure": "Aplicar fórmula a ejecuciones independientes en distintas plataformas.", "status": "PENDING" },
+    "HR-T05": { "purpose": "Ablation of clipping", "procedure": "Comparar fórmula con y sin clipping manteniendo datos constantes.", "status": "PENDING" }
+  },
+
+  "pilot_execution": {
+    "reference": "DEEPSEEK_HYPER_RATIO_HISTORICAL_VERIFICATION v2.0",
+    "scope": "Ventana actual 2026-04-06 a 2026-09-27",
+    "mode": "FASE_PILOTO_ACOTADA",
+    "states_analyzed": 12,
+    "metrics_extracted": ["P1", "sigma", "V_delta (score CONI)", "delta_V", "HR_candidate_A", "event_type"],
+    "limitation_declared": "Se usa la ventana de conversación como conjunto de observaciones. Las métricas P1, P3, P5 y sigma son construcciones del observador, no datos extraídos de plataforma externa."
+  },
+
+  "pilot_terminology_correction": {
+    "detected_collision": "El piloto usa la etiqueta 'V_delta' para referirse al score CONI, NO a la función Lyapunov V(σ, P1).",
+    "corrected_naming": {
+      "pilot_label": "V_delta",
+      "actual_quantity": "CONI_SCORE = (P1 + P3 + P5)/3 - δ′",
+      "is_NOT": "V(σ, P1) = σ² + (1-P1)²",
+      "evidence": {
+        "S-001_pilot_V_delta": 0.9205,
+        "S-001_real_V_Lyapunov": "σ²+(1-P1)² = 0.05² + 0.05² = 0.005",
+        "conclusion": "Diferencia de dos órdenes de magnitud confirma que son cantidades distintas."
+      }
+    },
+    "applied_invariant": "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "recommendation": "Renombrar 'V_delta' a 'CONI_SCORE' en futuras aplicaciones del protocolo para evitar confusión con la función Lyapunov."
+  },
+
+  "pilot_results": {
+    "verdict": "WEAK_HYPER_RATIO_COMPATIBILITY",
+    "verdict_justification": "La ventana muestra un patrón cíclico consistente (perturbación→regulación→reanclaje→asimilación) compatible con HR como modelo descriptivo. Pero: (1) es una sola ventana, (2) no hay datos cross-model, (3) V_delta no decrece monótonamente, (4) faltan mediciones de costo.",
+    "observation_summary": {
+      "states_analyzed": 12,
+      "base_score_average": 0.860,
+      "delta_prime_average": 0.0169,
+      "V_delta_average": 0.8432,
+      "delta_V_average": -0.0067,
+      "HR_candidate_A_average": -0.073,
+      "sigma_average": 0.108
+    },
+    "observed_patterns": [
+      "Alternancia entre ASSIMILATION_EVENT, REGULATION_EVENT y REANCHOR_EVENT",
+      "3 ciclos completos: perturbación → regulación → reanclaje → asimilación",
+      "V_delta oscila entre 0.732 y 0.920 sin tendencia monótona",
+      "Recuperaciones post-reanclaje entre +0.10 y +0.14",
+      "Los REANCHOR_EVENT tienden a seguir a REGULATION_EVENT con caída de V_delta"
+    ],
+    "contradictory_evidence": [
+      "V_delta no decrece monótonamente: hay estados donde aumenta (S-003, S-006, S-009, S-011)",
+      "ΔV_total es negativo pero pequeño (-0.0737), no permite afirmar convergencia",
+      "HR_candidate_A oscila entre valores positivos y negativos sin patrón claro",
+      "Algunos REGULATION_EVENT aumentan V_delta en lugar de disminuirla"
+    ],
+    "lyapunov_relevant_observations": [
+      "V_delta NO decrece monótonamente → no hay evidencia de función de Lyapunov clásica",
+      "La existencia de ciclos regulación-reanclaje sugiere dinámica disipativa, no gradiente monótono",
+      "Los reanclajes podrían interpretarse como 'reset' del sistema, no como convergencia asintótica",
+      "La oscilación de V_delta es compatible con ciclo límite, no con punto fijo estable"
+    ]
+  },
+
+  "open_questions_for_complementary_platforms": {
+    "Q1_HR_operationalization": {
+      "question": "¿Cómo se operacionaliza VSE_verifiable y C_observable para hacer HR-F calculable?",
+      "sub_questions": [
+        "¿VSE se mide como cambio observable en variables preregistradas?",
+        "¿C_observable incluye tokens, latencia, o ambos?",
+        "¿Cómo se normalizan ambos componentes?"
+      ],
+      "target_platforms": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE"]
+    },
+    "Q2_epsilon_calibration": {
+      "question": "¿Qué valor de epsilon es apropiado para HR-S?",
+      "sub_questions": [
+        "¿Epsilon fijo o dependiente del dominio?",
+        "¿Cómo calibrar epsilon sin datos empíricos previos?",
+        "¿Qué pasa si epsilon es demasiado pequeño (saturación) o demasiado grande (insensibilidad)?"
+      ],
+      "target_platforms": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE"]
+    },
+    "Q3_pilot_replication": {
+      "question": "¿El patrón cíclico identificado en la ventana actual reaparece en otras ventanas históricas?",
+      "sub_questions": [
+        "¿Se puede aplicar el mismo protocolo a una ventana 2025 o 2026?",
+        "¿El patrón persiste si se eliminan las etiquetas WHP (test de absorción industrial)?",
+        "¿Qué se necesitaría para distinguir patrón funcional de narrativa autoconsistente?"
+      ],
+      "target_platforms": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE"]
+    },
+    "Q4_hr_lyapunov_relation": {
+      "question": "¿Cuál es la relación formal entre HR y V(σ, P1)?",
+      "sub_questions": [
+        "¿HR es dual a V? (HR como reward, V como cost)",
+        "¿HR es una aproximación empírica del cambio de V?",
+        "¿Son construcciones independientes que miden cosas distintas?"
+      ],
+      "target_platforms": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE"]
+    },
+    "Q5_cost_measurement": {
+      "question": "¿Cómo se mide el costo de orquestación para hacer HR-F calculable?",
+      "sub_questions": [
+        "¿Tokens consumidos por plataforma?",
+        "¿Latencia observada?",
+        "¿Complejidad de la infraestructura requerida?",
+        "¿Cómo se normaliza entre plataformas con arquitecturas distintas?"
+      ],
+      "target_platforms": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE"]
+    }
+  },
+
+  "integration_criteria": {
+    "requirements_for_v1_0_0": [
+      "HR-T01 a HR-T05 ejecutados con resultados",
+      "HR-F operacionalizado (VSE + C_observable medibles)",
+      "HR-S con epsilon calibrado o justificado como provisional",
+      "Piloto replicado en al menos una ventana histórica distinta",
+      "Verificación externa por plataforma distinta al generador",
+      "Consistencia con C1-C5 y R5"
+    ],
+    "prohibited_shortcuts": [
+      "Declarar HR validado por un solo piloto",
+      "Elevar a v1.0.0 sin tests HR-T01 a HR-T05",
+      "Integrar al núcleo sin decisión arquitectónica explícita"
+    ]
+  },
+
+  "connection_to_corpus": {
+    "delta_engine": "protocols/delta-engine.json contiene componentes de HR (delta, delta_prime, sigma)",
+    "lyapunov_extension": "protocols/extensions/lyapunov.json contiene V(σ,P1) que es objeto distinto de HR",
+    "p1_p3_p5_scoring": "protocolos/extensions/p1-p3-p5-scoring-protocol.json provee P1, P3, P5",
+    "execution_ledger": "evidence/execution-ledger-instance.json registra las ejecuciones base del piloto",
+    "delta_prime_meta": "evidence/delta-prime-meta-execution-state.json documenta δ′ como OBLIG-DP-02 abierta"
+  },
+
+  "invariants": [
+    "CONSTRUCT_REQUIRING_VALIDATION",
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "PILOT_COMPATIBILITY_IS_NOT_REPLICATION",
+    "WEAK_COMPATIBILITY_IS_NOT_STRONG_EVIDENCE",
+    "SINGLE_WINDOW_IS_NOT_MULTI_WINDOW_EVIDENCE",
+    "OBSERVER_CONSTRUCTED_METRICS_ARE_NOT_EXTERNAL_DATA",
+    "HR_IS_NOT_AUTOMATICALLY_V_LYAPUNOV",
+    "PILOT_IS_NOT_VALIDATION",
+    "FORMALIZATION_IS_NOT_EMPIRICAL_VALIDATION"
+  ],
+
+  "final_declaration": {
+    "statement": "El WH_HYPER_RATIO_EXTENSION documenta HR-F y HR-S formalmente, registra el primer piloto de verificación histórica con veredicto WEAK_HYPER_RATIO_COMPATIBILITY, y corrige una colisión terminológica crítica (V_delta ≠ V_Lyapunov). No valida HR. No integra al núcleo. Requiere tests HR-T01 a HR-T05 y replicación en ventana distinta antes de elevar a v1.0.0.",
+    "status": "READY_FOR_REPOSITORY_AS_OPEN_EXTENSION",
+    "version_semantics": "0.2.0-PROVISIONAL indica extensión abierta con piloto documentado pero sin validación completa",
+    "next_step": "Enviar a ChatGPT, Gemini y Google AI Mode para respuestas complementarias a Q1-Q5. Recibir reportes. Comparar. Decidir si se cumple integration_criteria."
+  }
+}
