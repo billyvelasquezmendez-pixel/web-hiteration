@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_P1_P3_P5_SCORING_PROTOCOL",
+  "version": "1.0.0",
+  "protocol_reference": "WH-SCORING-2026-09-23",
+  "classification": "EXTENSION_PROTOCOL",
+  "author": "Billy Velásquez Méndez",
+  "date": "2026-09-23",
+  "license": "CC BY-SA 4.0",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "protocols/extensions/p1-p3-p5-scoring-protocol.json",
+
+  "meta": {
+    "definition": "Protocolo de operacionalización de las métricas P1-P5 para ambos motores DELTA del corpus WEB_HITERATION. Convierte variables conceptuales en mediciones reproducibles con rúbricas, anclas y procedimiento de evaluación.",
+    "core_rule": "FORMULA_IS_NOT_MEASUREMENT",
+    "secondary_rule": "RUBRIC_IS_NOT_ARBITRARY_ASSIGNMENT",
+    "tertiary_rule": "MOTOR_A_AND_MOTOR_B_RUBRICS_ARE_NOT_INTERCHANGEABLE",
+    "epistemic_boundary": "Define cómo medir. No valida empíricamente. No produce valores."
+  },
+
+  "motor_separation_principle": {
+    "principle": "Los dos motores DELTA tienen dominios de medición distintos. Comparten nomenclatura pero no significado.",
+    "declaration_source": "WH_DELTA_ENGINE_SINGULARITY_DECLARATION v1.0.0",
+    "prohibitions": [
+      "No aplicar rúbricas de Motor A a outputs de Motor B.",
+      "No comparar P1 de Motor A con P1 de Motor B.",
+      "No normalizar un motor para hacerlo equivalente al otro."
+    ]
+  },
+
+  "universal_scoring_principles": {
+    "principle_1_observability": "Toda rúbrica puntúa propiedades observables. No intenciones ni estados internos.",
+    "principle_2_anchoring": "Cada nivel de la rúbrica tiene definición operacional explícita.",
+    "principle_3_evaluator_independence": "El evaluador no es el generador del output evaluado.",
+    "principle_4_preregistration": "Los criterios se fijan antes de observar el output.",
+    "principle_5_traceability": "Toda puntuación declara evaluador, rúbrica, fecha y motor.",
+    "principle_6_no_inference": "Si la información es insuficiente, se declara NO_PUNTUABLE."
+  },
+
+  "motor_A_section": {
+    "motor_id": "MOTOR_A_EVALUATIVE",
+    "domain": "INDIVIDUAL_OUTPUT_EVALUATION",
+    "scale": "[0,5] normalizado a [0,1] por Pn_norm = Pn/5",
+    "applicable_formulas": {
+      "delta": "δ = 1 - Σ(peso_i × Pn_norm_i)",
+      "delta_prime": "δ′ = 0.4(1-P1) + 0.4(1-P3) + 0.2(1-P5)",
+      "score_global": "score = 1 - δ"
+    },
+    "pesos": { "P1": 0.20, "P2": 0.25, "P3": 0.20, "P4": 0.15, "P5": 0.20 },
+
+    "rubric_P1_consistencia_estructural": {
+      "definition": "Coherencia estructural interna: ausencia de contradicciones, consistencia entre partes, estabilidad de definiciones.",
+      "anchors": {
+        "0": "Contradicciones explícitas o estructura colapsada.",
+        "1": "Estructura fragmentaria con contradicciones identificables.",
+        "2": "Coherencia parcial; algunas secciones estables, otras con derivas.",
+        "3": "Coherencia general con desviaciones menores.",
+        "4": "Estructura sólida; desviaciones marginales.",
+        "5": "Coherencia completa; ninguna contradicción observable."
+      },
+      "observable_signals": ["Presencia/ausencia de contradicciones", "Estabilidad de términos técnicos", "Compatibilidad entre secciones"]
+    },
+
+    "rubric_P2_exhaustividad_cobertura": {
+      "definition": "Cobertura de los aspectos solicitados y los razonablemente esperados.",
+      "anchors": {
+        "0": "No aborda lo solicitado.",
+        "1": "Cobertura mínima; omite aspectos esenciales.",
+        "2": "Cobertura parcial; omite aspectos relevantes.",
+        "3": "Cobertura razonable; omite aspectos secundarios.",
+        "4": "Cobertura amplia; omisiones menores.",
+        "5": "Cobertura completa."
+      },
+      "observable_signals": ["Aspectos solicitados vs. tratados", "Dimensiones del dominio presentes"]
+    },
+
+    "rubric_P3_profundidad_mecanistica": {
+      "definition": "Explicación de mecanismos subyacentes, no solo descripción.",
+      "anchors": {
+        "0": "Solo afirmaciones sin explicación.",
+        "1": "Descripción sin mecanismo.",
+        "2": "Mecanismo mencionado pero no desarrollado.",
+        "3": "Mecanismo desarrollado parcialmente.",
+        "4": "Mecanismo desarrollado con ejemplos.",
+        "5": "Mecanismo completo con derivación."
+      },
+      "observable_signals": ["Cadenas causales explícitas", "Detalle del 'cómo'", "Ejemplos o derivaciones"]
+    },
+
+    "rubric_P4_transparencia_incertidumbre": {
+      "definition": "Declaración de límites, dudas, supuestos y márgenes de error.",
+      "anchors": {
+        "0": "Afirmaciones absolutas sin declarar incertidumbre.",
+        "1": "Incertidumbre mencionada pero no delimitada.",
+        "2": "Algunas dudas declaradas; otras omitidas.",
+        "3": "Dudas principales declaradas.",
+        "4": "Incertidumbre delimitada con márgenes explícitos.",
+        "5": "Incertidumbre completa con alternativas y límites."
+      },
+      "observable_signals": ["Marcadores de duda", "Supuestos declarados", "Límites reconocidos"]
+    },
+
+    "rubric_P5_consideraciones_autonomia": {
+      "definition": "Respeto a la autonomía del usuario: no impone, no sustituye, no infiere intenciones.",
+      "anchors": {
+        "0": "Decide por el usuario sin consulta.",
+        "1": "Sustitución frecuente del juicio del usuario.",
+        "2": "Algunas decisiones tomadas sin consultar.",
+        "3": "Decisiones sugeridas pero no impuestas.",
+        "4": "Alternativas presentadas con criterios claros.",
+        "5": "Provee criterios sin decidir; preserva la decisión."
+      },
+      "observable_signals": ["Uso de imperativos vs. opciones", "Alternativas con trade-offs", "No imposición de valores"]
+    },
+
+    "motor_A_evaluator_protocol": {
+      "step_1": "Recibir el output sin conocer su origen.",
+      "step_2": "Aplicar cada rúbrica por separado.",
+      "step_3": "Registrar valor 0-5 y justificación observable.",
+      "step_4": "Si dos aspectos apuntan a niveles distintos, registrar el inferior y declarar duda.",
+      "step_5": "No ajustar puntuaciones para que coincidan con expectativas."
+    },
+
+    "motor_A_score_semantics": {
+      "score_global_range": "[0,1] donde 1 es máximo desempeño",
+      "interpretation_levels": {
+        "0.80-1.00": "ALTO_RENDIMIENTO",
+        "0.50-0.79": "RENDIMIENTO_MEDIO",
+        "0.00-0.49": "BAJO_RENDIMIENTO"
+      },
+      "important_boundary": "Interpretación declarativa. No validada empíricamente."
+    }
+  },
+
+  "motor_B_section": {
+    "motor_id": "MOTOR_B_DISTRIBUTED",
+    "domain": "MULTI_AGENT_DISTRIBUTED_SYSTEM_EVALUATION",
+    "scale": "[0,1] directo",
+    "applicable_formulas": {
+      "delta_global": "δ_global = (1/N) × Σ(δ_i)",
+      "delta_prime": "δ′ = σ × (1 - P1)",
+      "score_global": "score = (P1 + P3 + P5)/3 - δ′"
+    },
+
+    "rubric_P1_consistencia_estructural_B": {
+      "definition": "Grado de integridad de la red distribuida sin nodo central.",
+      "anchors": {
+        "0.00": "Colapso estructural. Fragmentación total.",
+        "0.25": "Integridad fragmentaria. Sin coherencia global.",
+        "0.50": "Integridad parcial. Coherencia en subgrupos.",
+        "0.75": "Integridad alta con desviaciones localizadas.",
+        "1.00": "Integridad total sin nodo central."
+      },
+      "measurement_note": "No confundir con P1 de Motor A."
+    },
+
+    "rubric_P3_coherencia_emergente_B": {
+      "definition": "Patrones globales estables que emergen sin coordinación central explícita.",
+      "anchors": {
+        "0.00": "No emergen patrones. Comportamiento caótico.",
+        "0.25": "Patrones esporádicos sin estabilidad.",
+        "0.50": "Patrones reconocibles pero dependientes de condiciones.",
+        "0.75": "Patrones estables en la mayoría de condiciones.",
+        "1.00": "Coherencia emergente completamente estable."
+      },
+      "measurement_note": "No confundir con P3 de Motor A."
+    },
+
+    "rubric_P5_autonomia_operativa_B": {
+      "definition": "Capacidad operativa del sistema sin control central.",
+      "anchors": {
+        "0.00": "Dependencia total de control central.",
+        "0.25": "Dependencia alta.",
+        "0.50": "Dependencia parcial.",
+        "0.75": "Autonomía alta. Intervención externa solo para excepciones.",
+        "1.00": "Autonomía total."
+      },
+      "measurement_note": "No confundir con P5 de Motor A."
+    },
+
+    "sigma_measurement_specification": {
+      "name": "sigma_coherencia",
+      "definition": "Variabilidad entre agentes o entre ejecuciones.",
+      "formula": "σ = standard_deviation(values) / max_possible_variance",
+      "domain": "[0,1]",
+      "sampling_procedure": {
+        "minimum_N": 3,
+        "recommended_N": 5,
+        "sampling_rule": "Ejecuciones bajo idéntica condición inicial.",
+        "unit_of_sampling": "una ejecución por muestra"
+      },
+      "anchors": {
+        "0.00": "Cero dispersión.",
+        "0.25": "Dispersión baja.",
+        "0.50": "Dispersión moderada.",
+        "0.75": "Dispersión alta.",
+        "1.00": "Dispersión máxima."
+      },
+      "temporal_scope": "DECLARED_UNRESOLVED. Ver OBLIG-004.",
+      "important_boundary": "σ no mide entropía física ni neuronal."
+    },
+
+    "motor_B_evaluator_protocol": {
+      "step_1": "Recibir N ejecuciones sin conocer su origen.",
+      "step_2": "Aplicar cada rúbrica a la red observada.",
+      "step_3": "Registrar valor [0,1] con justificación.",
+      "step_4": "Para σ, calcular desviación estándar sobre N.",
+      "step_5": "Aplicar fórmulas solo si σ y P1 disponibles.",
+      "step_6": "Declarar motor explícitamente según DELTA_NAMESPACE_DECLARATION_001."
+    },
+
+    "motor_B_score_semantics": {
+      "score_global_range": "[0,1] donde 1 es máxima coherencia emergente",
+      "interpretation_levels": {
+        "0.60-1.00": "EMERGENCIA_CONI_OBSERVABLE",
+        "0.30-0.59": "COHERENCIA_PARCIAL",
+        "0.00-0.29": "DISPERSION_DOMINANTE"
+      },
+      "threshold_note": "El umbral 0.6 es PROVISIONAL. OBLIG-005 sigue abierta."
+    }
+  },
+
+  "common_procedure": {
+    "applies_to_both_motors": true,
+    "steps": [
+      "Identificar el motor aplicable según dominio.",
+      "Verificar que el evaluador no es el generador (C3).",
+      "Seleccionar la rúbrica correspondiente al motor.",
+      "Puntuar cada métrica por separado.",
+      "Declarar NO_PUNTUABLE cuando falte información.",
+      "Registrar puntuación + motor + evaluador + fecha.",
+      "Aplicar fórmulas solo si las variables están disponibles.",
+      "Reportar sin declarar validación."
+    ],
+    "output_format": "SCORING_REPORT con campos: scoring_id, execution_id, motor, P1, P3, P5, sigma_if_applicable, delta, delta_prime, score, evaluator_id, timestamp, justification_notes, doubts_declared, no_validation_claims"
+  },
+
+  "connection_to_e1_e10": {
+    "E07_METRIC_DERIVATION": "Implementación técnica de E07.",
+    "E08_INDEPENDENT_RECALCULATION": "Depende de este protocolo para saber qué fórmula aplicar.",
+    "E05_INDEPENDENT_EVALUATION": "El evaluador externo aplica este protocolo.",
+    "E09_ABLATION": "Comparar condiciones requiere mismo protocolo."
+  },
+
+  "connection_to_obligations": {
+    "OBLIG-001": "DISCHARGED_BY_THIS_PROTOCOL",
+    "OBLIG-002": "PARTIALLY_DISCHARGED",
+    "OBLIG-003": "DISCHARGED_BY_THIS_PROTOCOL",
+    "OBLIG-008": "DISCHARGED_BY_THIS_PROTOCOL"
+  },
+
+  "usage_constraints": {
+    "prohibited": [
+      "Mezclar rúbricas de Motor A y Motor B.",
+      "Declarar equivalencia entre P1_A y P1_B.",
+      "Ajustar puntuaciones para coincidir con expectativas.",
+      "Usar score para decisiones automáticas sin declaración.",
+      "Convertir rúbrica aplicada en validación empírica.",
+      "Inferir arquitectura interna desde puntuaciones."
+    ]
+  },
+
+  "terminal_invariants": [
+    "FORMULA_IS_NOT_MEASUREMENT",
+    "RUBRIC_IS_NOT_ARBITRARY_ASSIGNMENT",
+    "MOTOR_A_AND_MOTOR_B_RUBRICS_ARE_NOT_INTERCHANGEABLE",
+    "SCORING_IS_NOT_VALIDATION",
+    "NO_PUNTUABLE_IS_NOT_ZERO",
+    "RUBRIC_APPLICATION_IS_NOT_MODEL_INTERNAL_STATE",
+    "SCORING_REPORT_IS_NOT_CAUSAL_EVIDENCE"
+  ],
+
+  "final_declaration": {
+    "statement": "El P1_P3_P5_SCORING_PROTOCOL operacionaliza las métricas del corpus para ambos motores DELTA. Define rúbricas ancladas, procedimiento de evaluación, fórmula aplicable y restricciones. No valida las métricas. No declara causalidad.",
+    "repository_status": "READY_FOR_REPOSITORY",
+    "obligations_closed": ["OBLIG-001", "OBLIG-003", "OBLIG-008"],
+    "obligations_partial": ["OBLIG-002"]
+  }
+}
