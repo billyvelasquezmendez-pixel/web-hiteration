@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_REANCHORING_DEFINITION",
+  "version": "1.0.1-PROPOSED",
+  "protocol_reference": "WH-REANCHORING-2026",
+  "document_type": "CONCEPTUAL_DEFINITION",
+  "status": "PROPOSED",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-05",
+  "repository_path": "web_hiteration/reanchoring/wh-reanchoring-definition.json",
+  "collection": "reanchoring",
+  "parent_document": "core/core-invariants.json",
+  "related_documents": [
+    "web_hiteration/reanchoring/wh-reanchor-master-v2.json",
+    "core/terminology-glossary.json"
+  ],
+
+  "history": [
+    {
+      "version": "1.0.0-PROPOSED",
+      "date": "2026-10-05",
+      "changes": "Definicion inicial del termino REANCHORING como operacion conceptual del framework."
+    },
+    {
+      "version": "1.0.1-PROPOSED",
+      "date": "2026-10-05",
+      "changes": "Se agrega referencia explicita a C4, relacion con wh-reanchor-master-v2.json, politica de idioma, dominio y codominio de la abstraccion formal, y seccion de no-traduccion del termino."
+    }
+  ],
+
+  "definition": {
+    "term": "REANCHORING",
+    "spanish_term": "REANCLAJE",
+    "category": "CONTEXTUAL_AND_STRUCTURAL_CONTINUITY_OPERATION",
+    "definition": "Proceso mediante el cual un sistema vuelve a vincular su estado operativo, interpretacion o produccion actual con un conjunto previamente establecido de referencias, restricciones, invariantes y relaciones relevantes, con el proposito de recuperar continuidad estructural sin asumir que el contexto anterior permanece integramente disponible.",
+    "primary_function": "RESTORE_STRUCTURAL_CONTINUITY",
+    "operational_purpose": "REDUCIR_CONTEXTUAL_DRIFT_AND_PRESERVE_RELEVANT_CONSTRAINTS"
+  },
+
+  "terminology_policy": {
+    "rule": "TECHNICAL_TERMS_ARE_NOT_AUTO_TRANSLATED",
+    "explanation": "Los terminos tecnicos del corpus se preservan en su forma canonica. La traduccion automatica por capas de presentacion no constituye equivalencia semantica.",
+    "canonical_form": "REANCHORING",
+    "rejected_variants": [
+      "Reanclaje automatico",
+      "Re-anclaje con guion",
+      "Reanchorizacion",
+      "Reanchor"
+    ],
+    "note": "El termino deriva de anchor (ancla) mas el prefijo re-. Su traduccion al espanol como 'reanclaje' es aceptable como glosa, pero el termino canonico en el corpus es REANCHORING."
+  },
+
+  "what_reanchoring_does": {
+    "01": "IDENTIFICA_EL_PUNTO_DE_REFERENCIA",
+    "02": "RECUPERA_LAS_REGLAS_O_INVARIANTES_RELEVANTES",
+    "03": "REESTABLECE_LAS_RELACIONES_ENTRE_LOS_ELEMENTOS_RELEVANTES",
+    "04": "COMPARA_EL_ESTADO_ACTUAL_CON_EL_ESTADO_DE_REFERENCIA",
+    "05": "DETECTA_DESVIACIONES_RELEVANTES",
+    "06": "REORIENTA_LA_CONTINUACION_DEL_PROCESO_HACIA_LAS_REFERENCIAS_VALIDAS",
+    "07": "MANTIENE_EXPLICITA_LA_SEPARACION_ENTRE_CONTINUIDAD_RECONSTRUIDA_Y_CONTINUIDAD_HISTORICA_REAL"
+  },
+
+  "what_reanchoring_is_not": [
+    "NO_ES_RECUPERACION_LITERAL_DE_UN_ESTADO_ANTERIOR",
+    "NO_ES_MEMORIA_PERFECTA",
+    "NO_ES_RECONSTRUCCION_COMPLETA_DEL_PROCESO_INTERNO",
+    "NO_ES_PRUEBA_DE_IDENTIDAD_ENTRE_DOS_ESTADOS",
+    "NO_ES_VALIDACION_DE_VERDAD",
+    "NO_ES_VALIDACION_EMPIRICA",
+    "NO_ES_VALIDACION_DE_HARDWARE",
+    "NO_ES_EJECUCION_FISICA",
+    "NO_ES_CONTINUIDAD_CAUSAL_DEMOSTRADA"
+  ],
+
+  "reference_components": {
+    "context": "INFORMACION_RELEVANTE_PARA_INTERPRETAR_EL_ESTADO_ACTUAL",
+    "invariants": "RESTRICCIONES_QUE_DEBEN_PRESERVARSE",
+    "anchors": "REFERENCIAS_EXPLICITAS_QUE_PERMITEN_REORIENTAR_EL_PROCESO",
+    "relations": "DEPENDENCIAS_Y_RELACIONES_ENTRE_CONCEPTOS_DOCUMENTOS_ESTADOS_O_COMPONENTES",
+    "epistemic_boundaries": "LIMITES_QUE_DETERMINAN_QUE_PUEDE_Y_NO_PUEDE_CONCLUIRSE",
+    "current_state": "ESTADO_DESDE_EL_CUAL_SE_REALIZA_EL_REANCLAJE"
+  },
+
+  "operational_model": {
+    "input": [
+      "CURRENT_STATE",
+      "REFERENCE_ANCHORS",
+      "RELEVANT_INVARIANTS",
+      "STRUCTURAL_RELATIONS",
+      "EPISTEMIC_BOUNDARIES"
+    ],
+    "process": [
+      "REFERENCE_IDENTIFICATION",
+      "CONTEXT_RECONSTRUCTION",
+      "INVARIANT_RECHECK",
+      "RELATIONAL_REALIGNMENT",
+      "DEVIATION_ASSESSMENT",
+      "PROGRESSIVE_REANCHORING"
+    ],
+    "output": [
+      "REANCHORED_CONTEXT",
+      "PRESERVED_CONSTRAINTS",
+      "IDENTIFIED_DEVIATIONS",
+      "CONTINUITY_STATUS"
+    ]
+  },
+
+  "continuity_model": {
+    "principle": "CONTINUITY_IS_STRUCTURALLY_RECONSTRUCTED_NOT_ASSUMED",
+    "continuity_types": {
+      "contextual": "PRESERVACION_O_RECONSTRUCCION_DE_REFERENCIAS_RELEVANTES",
+      "structural": "PRESERVACION_DE_RELACIONES_E_INVARIANTES",
+      "semantic": "PRESERVACION_DEL_SIGNIFICADO_OPERATIVO_DE_LOS_ELEMENTOS",
+      "historical": "NO_GARANTIZADA_POR_REANCHORING"
+    }
+  },
+
+  "progressive_reanchoring": {
+    "definition": "Modalidad en la que el reanclaje se realiza gradualmente, comenzando por las referencias estructurales de mayor prioridad y reincorporando progresivamente contexto adicional segun su relevancia.",
+    "sequence": [
+      "CORE_ANCHORS",
+      "PRIMARY_INVARIANTS",
+      "SYSTEM_IDENTITY",
+      "DEPENDENCIES",
+      "CURRENT_STATE",
+      "SECONDARY_CONTEXT",
+      "OPEN_OR_UNRESOLVED_ELEMENTS"
+    ],
+    "purpose": "EVITAR_QUE_LA_REINCORPORACION_MASIVA_DE_CONTEXTO_PRODUZCA_DESVIACION_O_COMPRESION_ESTRUCTURAL"
+  },
+
+  "inverse_first": {
+    "status": "METHOD_COMPONENT",
+    "definition": "Antes de incorporar nuevo contexto, identificar que elementos del estado actual pueden contradecir, degradar o desplazar las referencias estructurales existentes.",
+    "purpose": "DETECT_POTENTIAL_DRIFT_BEFORE_PROGRESSIVE_REANCHORING"
+  },
+
+  "web_hiteration_relation": {
+    "web_hiteration": "FRAMEWORK_FOR_CONTEXTUAL_CONTINUITY_REANCHORING_AND_CONSTRAINT_PRESERVATION",
+    "reanchoring": "OPERATIONAL_MECHANISM_WITHIN_THAT_FRAMEWORK",
+    "distinction": "WEB_HITERATION_IS_NOT_IDENTICAL_TO_REANCHORING",
+    "relation": "REANCHORING_IS_A_CORE_OPERATION_OF_WEB_HITERATION",
+    "applied_instance": "web_hiteration/reanchoring/wh-reanchor-master-v2.json",
+    "note": "El documento aplicado wh-reanchor-master-v2.json implementa este marco conceptual en un caso operativo concreto."
+  },
+
+  "epistemic_boundaries": {
+    "MODEL_IS_NOT_SYSTEM": true,
+    "CAPABILITY_IS_NOT_EXECUTION": true,
+    "REPRESENTATION_IS_NOT_ACTION": true,
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE": true,
+    "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION": true,
+    "OPERATIVE_SEQUENCE_IS_NOT_COMPLETE_HISTORICAL_RECORD": true,
+    "TEMPORAL_PRECEDENCE_IS_NOT_CAUSAL_PROOF": true,
+    "C4_CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY": true,
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION": true
+  },
+
+  "core_invariants_referenced": {
+    "C1": "MODEL_IS_NOT_SYSTEM",
+    "C2": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+    "C3": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "C4": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+    "C5": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+    "R5": "REPRESENTATION_IS_NOT_ACTION",
+    "note": "C4 es el invariante que sostiene directamente este documento. La operacion de reanchaje no implica memoria persistente, ni continuidad parametrica, ni recuperacion literal del estado anterior."
+  },
+
+  "formal_abstraction": {
+    "notation": "R(C_t, A, I, Rel) -> C'_t",
+    "variables": {
+      "C_t": "CURRENT_CONTEXT",
+      "A": "REFERENCE_ANCHORS",
+      "I": "RELEVANT_INVARIANTS",
+      "Rel": "STRUCTURAL_RELATIONS",
+      "C'_t": "REANCHORED_CONTEXT"
+    },
+    "domain": "DESCRIPTIVE_CONCEPTUAL_SPACE",
+    "codomain": "DESCRIPTIVE_CONCEPTUAL_SPACE",
+    "interpretation": "El operador representa una transformacion descriptiva mediante la cual el estado contextual actual es reorientado respecto de referencias e invariantes explicitos.",
+    "epistemic_status": "DESCRIPTIVE_FORMALIZATION_NOT_INTERNAL_ALGORITHM",
+    "boundary": "No constituye algoritmo ejecutable ni modelo interno de ningun sistema."
+  },
+
+  "success_criteria": [
+    "REFERENCE_ANCHORS_IDENTIFIED",
+    "RELEVANT_INVARIANTS_PRESERVED",
+    "STRUCTURAL_RELATIONS_RECONSTRUCTED",
+    "DEVIATIONS_EXPLICITLY_IDENTIFIED",
+    "EPISTEMIC_BOUNDARIES_PRESERVED",
+    "NO_UNSUPPORTED_HISTORICAL_CONTINUITY_CLAIM"
+  ],
+
+  "failure_modes": [
+    "ANCHOR_LOSS",
+    "CONTEXT_DRIFT",
+    "INVARIANT_DEGRADATION",
+    "RELATIONAL_DISCONTINUITY",
+    "STRUCTURAL_COMPRESSION",
+    "FALSE_CONTINUITY",
+    "UNSUPPORTED_CAUSAL_INFERENCE",
+    "CONTEXTUAL_CONTAMINATION"
+  ],
+
+  "core_invariant": "REANCHORING_IS_NOT_RECOVERY_OF_THE_PAST_BUT_STRUCTURAL_REESTABLISHMENT_OF_RELEVANT_REFERENCES",
+
+  "final_classification": {
+    "type": "CONCEPTUAL_OPERATION",
+    "engineering_validation": "NOT_ESTABLISHED",
+    "empirical_validation": "NOT_ESTABLISHED",
+    "internal_architecture_claim": "REJECTED",
+    "canonicalization": "PENDING_REVIEW"
+  }
+}
