@@ -196,4 +196,4 @@
   "nota_final": {
     "texto": "El DELTA_ENGINE es un motor descriptivo y prescriptivo. Mide el estado del sistema y determina las acciones permitidas. No ejecuta. Solo informa la ejecución. Su núcleo es verificable. Sus extensiones son experimentales. La pregunta científica no es si vive dentro de la IA, sino si sus funciones producen resultados reproducibles cuando se aplican a diferentes sistemas."
   }
-}
+} 
