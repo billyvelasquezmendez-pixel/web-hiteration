@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_SYSTEM_STRUCTURAL_STATE_AND_FORMALIZATION_PRIORITY",
+  "version": "1.0.0",
+  "protocol_reference": "WH-SYSTEM-STATE-2026-09-22",
+  "document_type": "SYSTEM_LEVEL_STRUCTURAL_FORMALIZATION",
+  "status": "READY_FOR_REPOSITORY",
+  "epistemic_level": "L3_DOCUMENTED_FORMALIZATION_WITH_L4_VALIDATION_PENDING",
+
+  "purpose": {
+    "primary": "Consolidar en un único mapa estructural aquello que el proceso WH ha delimitado suficientemente como componente, aquello que permanece como variante funcional y aquello que todavía requiere formalización.",
+    "non_claim": [
+      "No afirma arquitectura interna de ningún modelo.",
+      "No afirma memoria permanente entre ventanas.",
+      "No afirma aprendizaje interno producido por WH.",
+      "No convierte convergencia documental entre plataformas en validación causal."
+    ]
+  },
+
+  "platform_functional_roles": {
+    "CHATGPT": { "role": "ACCESO_CONTEXTUAL_Y_RECONSTRUCCION", "boundary": "No equivale a auditoría independiente." },
+    "DEEPSEEK": { "role": "AUDITORIA_FORMAL_DEL_REPOSITORIO", "boundary": "Rol protocolar asignado; no autoridad epistemológica intrínseca." },
+    "GOOGLE_AI_MODE": { "role": "DELIMITACION_ESTRUCTURAL_A_ESCALA", "boundary": "No implica acceso a estados internos de otras plataformas." },
+    "GEMINI": { "role": "VALIDACION_Y_VARIACION_FUNCIONAL_HISTORICA", "boundary": "Registros de ejecución contextual, no estado compartido permanente." }
+  },
+
+  "core_framework": {
+    "invariants": {
+      "C1": "MODEL_IS_NOT_SYSTEM",
+      "C2": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+      "C3": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+      "C4": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+      "C5": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+      "R5": "REPRESENTATION_IS_NOT_EXECUTION"
+    },
+    "additional_structural_invariants": [
+      "TRANSFER_INVARIANTS_NOT_VERBATIM_HISTORY",
+      "FRAMEWORK_PRESERVATION_IS_NOT_OPERATIONAL_IDENTITY",
+      "CONTEXTUAL_RECONSTRUCTION_CAN_GENERATE_FUNCTIONAL_VARIANTS",
+      "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+      "FORMULA_IS_NOT_MEASUREMENT",
+      "PARAMETRIZATION_IS_NOT_VALIDATION",
+      "DOCUMENTARY_ACCESS_IS_NOT_SYSTEM_INTEGRATION",
+      "SYSTEM_INTEGRATION_IS_NOT_EXECUTION",
+      "EXECUTION_IS_NOT_VALIDATION"
+    ]
+  },
+
+  "formalized_components": {
+    "CORE_INVARIANTS": { "status": "READY_FOR_REPOSITORY", "validation": "EMPIRICALLY_PENDING" },
+    "R1_R7_TAXONOMY": { "status": "READY_WITH_EPISTEMIC_QUALIFICATION", "validation": "REPLICATION_PENDING" },
+    "DELTA_ENGINE_FAMILY": { "status": "FORMALIZED_AS_MULTIPLE_VARIANTS", "required_namespace": true },
+    "DELTA_EVALUATIVE": { "status": "HISTORICALLY_FORMALIZED", "domain": "INDIVIDUAL_OUTPUT_EVALUATION" },
+    "DELTA_DISTRIBUTED": { "status": "HISTORICALLY_FORMALIZED", "domain": "MULTI_AGENT_DISTRIBUTED_SYSTEM" },
+    "DELTA_PRIME": { "status": "MULTIPLE_NON_EQUIVALENT_FORMULATIONS_IDENTIFIED", "canonicality": "PENDING_NAMESPACE_DECISION" },
+    "MODEL_STATES_S0_S4": { "status": "FORMALIZED", "calibration": "PENDING" },
+    "P_DRIFT": { "status": "FORMULATED", "calibration": "PENDING" },
+    "EXECUTION_AVAILABILITY_SPECTRUM": { "status": "CONCEPTUALLY_FORMALIZED", "experimental_validation": "PENDING" },
+    "R5_EXECUTION_BOUNDARY": { "status": "STRONGLY_FORMALIZED_AS_FRAMEWORK_BOUNDARY", "causal_validation": "PENDING" }
+  },
+
+  "resources_requiring_formalization": {
+    "priority_P0": [
+      { "id": "RES-P0-01", "name": "EXECUTION_LEDGER", "purpose": "Reconstruir qué fue realmente ejecutado." },
+      { "id": "RES-P0-02", "name": "DELTA_NAMESPACE_REGISTRY", "purpose": "Separar formalmente DELTA evaluativo y DELTA distribuido." },
+      { "id": "RES-P0-03", "name": "DELTA_REFERENCE_TRACEABILITY", "purpose": "Clasificar cada aparición histórica de δ, δ′, score." },
+      { "id": "RES-P0-04", "name": "P1_P3_P5_SCORING_PROTOCOL", "purpose": "Convertir variables conceptuales en mediciones reproducibles." },
+      { "id": "RES-P0-05", "name": "SIGMA_MEASUREMENT_PROTOCOL", "purpose": "Definir qué se mide y cómo." },
+      { "id": "RES-P0-06", "name": "E1_E10_EVIDENCE_PROTOCOL", "purpose": "Convertir controles metodológicos en protocolo preregistrable." },
+      { "id": "RES-P0-07", "name": "REPOSITORY_STATE_MANIFEST", "purpose": "Relacionar archivos, versiones y dependencias." }
+    ],
+    "priority_P1": [
+      "HYPER_RATIO_OPERATIONAL_DEFINITION",
+      "P_DRIFT_CALIBRATION",
+      "S0_S4_CALIBRATION",
+      "EXECUTION_SPECTRUM_MEASUREMENT",
+      "CROSS_PLATFORM_TRACEABILITY",
+      "HISTORICAL_EXECUTION_RECONSTRUCTION"
+    ],
+    "priority_P2": [
+      "EXTENSION_ARCHIVE",
+      "GLITCHORIUM_EXTENSION",
+      "LYAPUNOV_EXTENSION",
+      "PHENOMENOLOGICAL_EXTENSIONS",
+      "FUTURE_EXECUTION_BRIDGES"
+    ]
+  },
+
+  "resource_readiness": {
+    "ready_for_repository": [
+      "core invariants",
+      "R1-R7 taxonomy",
+      "formal Delta definitions as historical variants",
+      "S0-S4 conceptual model",
+      "P_DRIFT formal specification",
+      "R5 execution boundary",
+      "execution availability conceptual framework",
+      "cross-platform audit methodology"
+    ],
+    "not_ready_as_validated_empirical_claim": [
+      "closed-loop self-healing",
+      "CONI as empirically demonstrated phenomenon",
+      "predictive validity of delta_prime",
+      "cross-platform causal WH effect",
+      "universal phenomenology",
+      "internal model mechanism",
+      "permanent learning"
+    ]
+  },
+
+  "system_generalization_model": {
+    "principle": "FUNCTIONALITY_PRECEDES_GENERALIZATION",
+    "sequence": [
+      "RESOURCE_DEFINED",
+      "RESOURCE_AVAILABLE",
+      "RESOURCE_ACCESSED",
+      "FUNCTION_SELECTED",
+      "FUNCTION_EXECUTED",
+      "BEHAVIOR_OBSERVED",
+      "BEHAVIOR_EVALUATED",
+      "FUNCTION_FORMALIZED",
+      "COMPONENT_REPOSITORIZED",
+      "GENERALIZATION_PROPOSED"
+    ],
+    "critical_rule": "A future component does not become part of the system merely because its function has been conceptually specified."
+  },
+
+  "framework_execution_relation": {
+    "framework": "contains formal specifications, constraints, invariants and protocols",
+    "execution": "instantiates a subset of those specifications under the resources and context actually available",
+    "repository": "preserves formalized knowledge and traceability",
+    "user": "selects, introduces, connects and prioritizes conceptual resources",
+    "platform": "determines the observable execution conditions available in its current context",
+    "result": "the same framework can produce functionally related but non-identical executions"
+  },
+
+  "current_system_state": {
+    "repository": "PUBLIC_DOCUMENTARY_RESOURCE",
+    "framework": "FORMALIZED",
+    "core": "SUFFICIENTLY_ROBUST_FOR_REPOSITORY",
+    "historical_execution_data": "PRESENT_BUT_FRAGMENTED",
+    "execution_ledger": "PENDING",
+    "experimental_dataset": "INCOMPLETE",
+    "cross_platform_orchestration": "NOT_ESTABLISHED",
+    "causal_WH_effect": "NOT_ESTABLISHED",
+    "scientific_closure": "NOT_REACHED",
+    "primary_bottleneck": "TRACEABILITY_AND_OPERATIONALIZATION"
+  },
+
+  "formalization_priority_statement": {
+    "statement": "El siguiente avance estructural no consiste principalmente en añadir nuevos conceptos, sino en convertir los conceptos y ejecuciones ya acumulados en recursos trazables, operacionalizados y asignables a componentes del repositorio.",
+    "principle": "FORMALIZATION_OF_EXISTING_EVIDENCE_PRECEDES_EXPANSION_OF_THEORETICAL_SCOPE"
+  },
+
+  "terminal_invariant": "DOCUMENTED_FRAMEWORK_IS_NOT_EXECUTED_SYSTEM_IS_NOT_VALIDATED_SYSTEM"
+}
