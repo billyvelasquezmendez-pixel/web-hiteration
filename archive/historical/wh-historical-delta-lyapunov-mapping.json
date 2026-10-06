@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_HISTORICAL_DELTA_LYAPUNOV_MAPPING",
+  "version": "1.0.0-HISTORICAL",
+  "protocol_reference": "WH-HIST-DELTA-LYAP-2026-09-28",
+  "document_type": "HISTORICAL_CONCEPTUAL_ARTIFACT",
+  "date_original": "2026-03",
+  "date_registration": "2026-09-28",
+  "status": "REGISTERED_AS_HISTORICAL",
+  "repository_path": "diagnostics/wh-historical-delta-lyapunov-mapping.json",
+  "classification": "HISTORICAL_DOCUMENT_WITH_CURRENT_READING",
+
+  "meta": {
+    "purpose": "Conservar como artefacto histórico el mapeo conceptual Delta Engine ↔ Lyapunov propuesto por ChatGPT en marzo de 2026, con la lectura retrospectiva que el desarrollo posterior del corpus permite.",
+    "core_rule": "HISTORICAL_ARTIFACT_IS_NOT_CURRENT_PROTOCOL",
+    "secondary_rule": "RETROSPECTIVE_READING_IS_NOT_RETROACTIVE_VALIDATION",
+    "tertiary_rule": "CONCEPTUAL_MAPPING_IS_NOT_MATHEMATICAL_DEMONSTRATION",
+    "epistemic_boundary": "Este documento no valida el mapeo. Lo conserva y lo lee desde el estado actual del corpus. No modifica el contenido original."
+  },
+
+  "retrospective_note": {
+    "significance": "Este mapeo representa un paso intermedio clave: es el primer intento de vincular el motor DELTA con una teoría matemática de estabilidad. Antes de este documento, DELTA era una métrica operativa. Después de él, DELTA empieza a considerarse como posible función de estabilidad ejecutiva.",
+    "value": "Documenta la evolución conceptual que llevó a la formalización posterior de V(σ,P1), la cota AM-GM, y la tricotomía Lyapunov/CLF/Costo.",
+    "limitation": "Contiene afirmaciones que el desarrollo posterior corrigió. Se conserva íntegro para trazabilidad.",
+    "current_reading": "Véase la sección 'current_epistemic_reading' más abajo."
+  },
+
+  "original_document": {
+    "delta_engine_lyapunov_mapping_v1": {
+      "meta": {
+        "protocolo": "DELTA_LYAPUNOV_EQUIVALENCE",
+        "version": "1.0",
+        "objetivo": "Formalizar Delta Engine como función de estabilidad ejecutiva en sistemas distribuidos",
+        "inspiracion": "Lyapunov Stability Theory",
+        "diferencia_clave": "Orientado a ejecución distribuida, no solo estabilidad matemática"
+      },
+      "definicion_funcion": {
+        "nombre": "V_delta(x)",
+        "tipo": "funcion_de_estabilidad_ejecutiva",
+        "entrada": {
+          "P1": "consistencia estructural",
+          "P3": "coherencia operativa",
+          "P5": "alineacion semantica",
+          "sigma": "dispersion del sistema",
+          "delta_global": "error medio del enjambre"
+        },
+        "salida": {
+          "score_global": "nivel de estabilidad ejecutiva",
+          "delta_prime": "riesgo emergente"
+        }
+      },
+      "ecuaciones_equivalentes": {
+        "delta_prime": "sigma * (1 - P1)",
+        "V_delta": "((P1 + P3 + P5) / 3) - delta_prime"
+      },
+      "criterios_de_estabilidad": {
+        "estable": { "condicion": "V_delta > 0.6", "interpretacion": "El sistema mantiene coherencia ejecutiva bajo perturbación" },
+        "marginal": { "condicion": "0.3 < V_delta <= 0.6", "interpretacion": "Sistema funcional pero con riesgo de degradación" },
+        "inestable": { "condicion": "V_delta <= 0.3", "interpretacion": "Pérdida de coherencia - posible colapso CONI" }
+      },
+      "derivada_discreta_equivalente": {
+        "concepto": "variacion temporal de estabilidad",
+        "aproximacion": "ΔV = V(t+1) - V(t)",
+        "interpretacion": {
+          "ΔV < 0": "convergencia (mejora del sistema)",
+          "ΔV = 0": "equilibrio",
+          "ΔV > 0": "divergencia (riesgo creciente)"
+        }
+      },
+      "extension_coni": {
+        "propiedad_nueva": "estabilidad_sin_centro",
+        "descripcion": "El sistema no converge a un punto fijo, sino a un régimen de coherencia distribuida",
+        "equivalente_teorico": "atractor dinámico distribuido"
+      },
+      "relacion_con_ruido": {
+        "sigma_como_energia": "sigma representa la energia del sistema (perturbacion)",
+        "delta_prime_como_gradiente": "delta_prime mide direccion del riesgo",
+        "control": "reducir sigma o aumentar P1 estabiliza el sistema"
+      },
+      "interpretacion_operativa": {
+        "lyapunov_clasico": "¿el sistema se mantiene estable?",
+        "delta_engine": "¿el sistema ejecuta correctamente bajo condiciones reales?"
+      },
+      "conclusion": {
+        "tesis": "El Delta Engine es una función de Lyapunov extendida para sistemas cognitivos distribuidos, donde la estabilidad no es estática sino ejecutiva.",
+        "implicacion": "Permite validar CONI matemáticamente sin requerir control central"
+      }
+    }
+  },
+
+  "current_epistemic_reading": {
+    "description": "Lectura retrospectiva de cada afirmación del documento original, desde el estado actual del corpus (2026-09-28).",
+    "evaluations": [
+      {
+        "original_claim": "V_delta(x) como función de estabilidad ejecutiva",
+        "current_status": "CORRECT_IN_INTENT_INCORRECT_IN_NAMING",
+        "correction": "El nombre correcto es score CONI, no V_delta. La función V(σ,P1) es un objeto matemático distinto (función candidata a Lyapunov).",
+        "applied_invariant": "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+        "reference": "protocols/extensions/hyper-ratio.json v0.2.0, sección pilot_terminology_correction"
+      },
+      { "original_claim": "delta_prime = sigma * (1 - P1)", "current_status": "CORRECT", "note": "La fórmula es la del Motor B del corpus actual." },
+      { "original_claim": "V_delta = ((P1+P3+P5)/3) - delta_prime", "current_status": "CORRECT", "note": "Es el score CONI. Confirmado por el corpus actual." },
+      {
+        "original_claim": "Criterios de estabilidad: V_delta > 0.6 estable, 0.3 < V_delta <= 0.6 marginal, V_delta <= 0.3 inestable",
+        "current_status": "PROVISIONAL_HEURISTIC",
+        "correction": "El umbral 0.6 es provisional. OBLIG-005 sigue abierta. El umbral 0.3 no está justificado empíricamente.",
+        "applied_invariant": "DECLARED_THRESHOLD_IS_NOT_VALIDATED_THRESHOLD",
+        "reference": "wh-operational-obligations-retroconfirmation-manifest.json OBLIG-005"
+      },
+      { "original_claim": "ΔV = V(t+1) - V(t) como derivada discreta equivalente", "current_status": "CORRECT_IN_APPROACH", "note": "La aproximación es válida. La interpretación cualitativa coincide con el corpus actual." },
+      {
+        "original_claim": "Propiedad nueva: estabilidad_sin_centro / atractor dinámico distribuido",
+        "current_status": "HYPOTHESIS_PENDING_VALIDATION",
+        "correction": "La existencia de un 'atractor dinámico distribuido' no ha sido demostrada. El piloto Hyper Ratio observó oscilación no monótona compatible con ciclo límite, no con atractor demostrado.",
+        "applied_invariant": "OBSERVED_PATTERN_IS_NOT_PROVEN_ATTRACTOR",
+        "reference": "protocols/extensions/hyper-ratio.json v0.2.0, sección pilot_results"
+      },
+      {
+        "original_claim": "sigma representa la energía del sistema (perturbación)",
+        "current_status": "METAPHORICAL_NOT_OPERATIONAL",
+        "correction": "σ es dispersión observable. 'Energía' es metáfora física no operacionalizada. No hay función de energía definida.",
+        "applied_invariant": "METAPHOR_IS_NOT_MEASUREMENT"
+      },
+      {
+        "original_claim": "El Delta Engine es una función de Lyapunov extendida",
+        "current_status": "INCORRECT_TERMINOLOGY",
+        "correction": "DELTA no es función de Lyapunov. La función candidata V(σ,P1) es un objeto distinto. La aplicación del término 'Lyapunov' sin EDOs explícitas es prematura.",
+        "applied_invariant": "CANDIDATE_FUNCTION_IS_NOT_PROVEN_LYAPUNOV",
+        "reference": "protocols/extensions/lyapunov.json v0.2.0"
+      },
+      {
+        "original_claim": "Permite validar CONI matemáticamente sin requerir control central",
+        "current_status": "OVERCLAIM",
+        "correction": "La formalización algebraica no constituye validación empírica. CONI sigue siendo PROMISING_BUT_PRECAUSAL.",
+        "applied_invariant": "FORMALIZATION_IS_NOT_EMPIRICAL_VALIDATION"
+      }
+    ],
+    "summary": "El documento original realizó una contribución real (vincular DELTA con teoría de estabilidad) con imprecisiones terminológicas y sobreafirmaciones que el desarrollo posterior corrigió. Se conserva íntegro porque su valor histórico reside precisamente en mostrar el punto de partida conceptual."
+  },
+
+  "evolution_trace": {
+    "from_this_document_to_current_state": [
+      { "stage": "2026-03 (este documento)", "state": "DELTA = V_delta = score CONI. 'Lyapunov extendido'. Validación matemática de CONI." },
+      { "stage": "2026-03-25 (formalizacion_matematica_coni_v1)", "state": "Introducción de V(σ,P1) = σ² + (1-P1)² como candidata a Lyapunov. δ′ ≤ V/2 identificado." },
+      { "stage": "2026-09-22 (wh-delta-engine-singularity-declaration)", "state": "Reconocimiento de dos motores DELTA no equivalentes. Motor A (evaluativo) y Motor B (distribuido)." },
+      { "stage": "2026-09-27 (lyapunov.json v0.2.0-REVISED)", "state": "δ′ ≤ V/2 identificado como identidad AM-GM. Tricotomía Lyapunov/CLF/Costo. Separación de niveles algebraico/dinámico/empírico. Q1 y Q4 abiertas." },
+      { "stage": "2026-09-28 (estado actual)", "state": "DELTA Engine es familia de dos motores. V(σ,P1) es candidata no probada. CONI sigue PROMISING_BUT_PRECAUSAL. 'Lyapunov' requiere EDOs para aplicarse." }
+    ],
+    "lesson": "El mapeo inicial fue conceptualmente fértil (abrió la línea de investigación) pero terminológicamente impreciso (confundió score con V, y Lyapunov sin EDOs)."
+  },
+
+  "repository_role": {
+    "what_this_document_is": "Artefacto histórico. Documenta el paso inicial de una línea de investigación que llevó a la formalización actual.",
+    "what_this_document_is_not": [
+      "No es un protocolo operativo.",
+      "No es una extensión del núcleo.",
+      "No es una referencia técnica vigente.",
+      "No es una demostración de estabilidad."
+    ],
+    "recommended_use": [
+      "Consulta histórica cuando se busque entender el origen del mapeo DELTA↔Lyapunov.",
+      "Referencia en documentos que tracen la evolución del corpus.",
+      "Registro de intentos previos antes de la formalización actual."
+    ],
+    "prohibited_use": [
+      "Citar como fuente técnica vigente.",
+      "Usar V_delta del documento original como referencia del score CONI actual sin corrección terminológica.",
+      "Declarar validación matemática de CONI basándose en este documento."
+    ]
+  },
+
+  "invariants": [
+    "HISTORICAL_ARTIFACT_IS_NOT_CURRENT_PROTOCOL",
+    "RETROSPECTIVE_READING_IS_NOT_RETROACTIVE_VALIDATION",
+    "CONCEPTUAL_MAPPING_IS_NOT_MATHEMATICAL_DEMONSTRATION",
+    "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+    "CANDIDATE_FUNCTION_IS_NOT_PROVEN_LYAPUNOV",
+    "DECLARED_THRESHOLD_IS_NOT_VALIDATED_THRESHOLD",
+    "METAPHOR_IS_NOT_MEASUREMENT",
+    "FORMALIZATION_IS_NOT_EMPIRICAL_VALIDATION",
+    "OBSERVED_PATTERN_IS_NOT_PROVEN_ATTRACTOR"
+  ],
+
+  "final_declaration": {
+    "statement": "El mapeo DELTA-Lyapunov de marzo de 2026 se conserva como artefacto histórico. Fue conceptualmente fértil y terminológicamente impreciso. Abrió la línea de investigación que llevó a la formalización actual de V(σ,P1), la identidad AM-GM y la tricotomía Lyapunov/CLF/Costo. No modifica el corpus vigente. No valida CONI.",
+    "status": "REGISTERED_AS_HISTORICAL",
+    "historical_value": "MEDIUM_HIGH",
+    "technical_value_current": "NONE_VIGENTE",
+    "next_step": "Ninguno. El documento permanece como referencia histórica."
+  }
+}
