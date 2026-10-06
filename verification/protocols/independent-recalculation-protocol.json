@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_INDEPENDENT_RECALCULATION_PROTOCOL",
+  "version": "1.0.0",
+  "protocol_reference": "WH-RECALC-2026-09-23",
+  "document_type": "INDEPENDENT_RECALCULATION_PROTOCOL",
+  "date": "2026-09-23",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "evidence/independent-recalculation-protocol.json",
+  "classification": "EVIDENCE_INFRASTRUCTURE_PROTOCOL",
+
+  "meta": {
+    "purpose": "Definir el procedimiento formal mediante el cual las métricas declaradas en el corpus WEB_HITERATION pueden ser recalculadas independientemente desde los datos crudos preservados en el EXECUTION_LEDGER.",
+    "scope": "Toda métrica derivada de ejecuciones registradas en el ledger (P1, P3, P5, sigma, delta, delta_prime, score_global, HR, G).",
+    "role": "INDEPENDENT_RECALCULATION_LAYER",
+    "core_rule": "DECLARED_METRIC_IS_NOT_INDEPENDENTLY_RECALCULATED_METRIC",
+    "secondary_rule": "INDEPENDENT_RECALCULATION_IS_NOT_VALIDATION",
+    "tertiary_rule": "RECALCULATION_REQUIRES_PRESERVED_RAW_DATA",
+    "epistemic_boundary": "El recálculo verifica consistencia aritmética y reproducibilidad del procedimiento. No valida la métrica en sentido empírico ni establece causalidad."
+  },
+
+  "purpose_and_scope": {
+    "what_it_is": [
+      "El procedimiento técnico que implementa E08 (INDEPENDENT_RECALCULATION) del pipeline E1-E10.",
+      "La contraparte operativa de C3 (SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION).",
+      "El mecanismo mediante el cual un evaluador externo verifica que un valor declarado puede reproducirse desde los datos primarios.",
+      "El prerequisito de cualquier replicación o comparación cross-platform."
+    ],
+    "what_it_is_not": [
+      "No valida la métrica.",
+      "No establece causalidad.",
+      "No sustituye la replicación.",
+      "No convierte documentación en evidencia empírica.",
+      "No autoriza comparación cross-engine sin mapeo semántico."
+    ],
+    "dependency_chain": [
+      "EXECUTION_LEDGER_SCHEMA → define estructura de registro",
+      "EXECUTION_LEDGER_INSTANCE → contiene ejecuciones históricas",
+      "INDEPENDENT_RECALCULATION_PROTOCOL (este documento) → define procedimiento",
+      "RECALCULATION_REPORT → documenta resultado del recálculo",
+      "REPLICATION_PROTOCOL → repite la ejecución completa"
+    ]
+  },
+
+  "recalculation_principles": {
+    "principle_1_source_preservation": {
+      "statement": "El recálculo parte exclusivamente de raw_outputs preservados en el ledger.",
+      "prohibited": "Usar interpretaciones previas, resúmenes o reformulaciones como base del recálculo."
+    },
+    "principle_2_evaluator_separation": {
+      "statement": "El evaluador independiente no es el ejecutor original de la métrica declarada.",
+      "requirement": "Separación funcional verificable entre generación y recálculo."
+    },
+    "principle_3_formula_transparency": {
+      "statement": "La fórmula aplicada en el recálculo es la misma declarada en el protocolo correspondiente, sin modificación.",
+      "prohibited": "Ajustar la fórmula para que el resultado coincida con el valor declarado."
+    },
+    "principle_4_motor_declaration": {
+      "statement": "El recálculo declara explícitamente el motor (A o B) cuando la métrica lo requiere.",
+      "requirement": "DELTA_NAMESPACE_DECLARATION_001 aplica al recálculo."
+    },
+    "principle_5_divergence_reporting": {
+      "statement": "Toda divergencia entre valor declarado y valor recalculado se registra sin resolverla por inferencia.",
+      "prohibited": "Declarar el valor declarado como 'correcto' o 'incorrecto' sin análisis adicional."
+    }
+  },
+
+  "recalculation_procedure": {
+    "step_01_identify_target": {
+      "action": "Identificar la métrica a recalcular y su ejecución asociada en el ledger.",
+      "inputs_required": ["execution_id", "metric_id", "declared_value"],
+      "output": "Recalculation target record."
+    },
+    "step_02_retrieve_raw": {
+      "action": "Recuperar el raw_output íntegro desde el ledger usando execution_id.",
+      "validation": "Verificar output_hash si está disponible.",
+      "failure_mode": "Si raw_output es REFERENCE_ONLY, marcar como NOT_RECALCULABLE_WITHOUT_RAW_DATA."
+    },
+    "step_03_apply_formula": {
+      "action": "Aplicar la fórmula declarada en el protocolo correspondiente.",
+      "validation": "Fórmula debe ser exactamente la publicada, sin modificación.",
+      "motor_declaration": "Obligatoria cuando aplica."
+    },
+    "step_04_compute": {
+      "action": "Calcular el valor desde los datos crudos.",
+      "inputs": ["raw_output", "formula", "declared_parameters"],
+      "output": "recalculated_value"
+    },
+    "step_05_compare": {
+      "action": "Comparar declared_value vs recalculated_value.",
+      "tolerance": "Declarada previamente por protocolo. Sin tolerancia declarada, la comparación es exacta.",
+      "outputs": ["match", "divergence", "not_comparable"]
+    },
+    "step_06_report": {
+      "action": "Emitir un RECALCULATION_REPORT con el resultado.",
+      "fields_required": [
+        "recalculation_id",
+        "execution_id",
+        "metric_id",
+        "declared_value",
+        "recalculated_value",
+        "formula_used",
+        "motor_declared",
+        "evaluator_id",
+        "evaluator_independent",
+        "result",
+        "divergence_if_any",
+        "notes_declarative"
+      ]
+    },
+    "step_07_immutability": {
+      "action": "El reporte se sella. No se edita.",
+      "correction_pattern": "Correcciones generan reporte nuevo con parent_recalculation_id."
+    }
+  },
+
+  "recalculation_classes": {
+    "class_1_arithmetic_verification": {
+      "description": "Verifica que el valor declarado se puede obtener aplicando la fórmula a los mismos datos.",
+      "example": "delta_prime = sigma × (1 - P1) con valores declarados de sigma y P1.",
+      "evidence_level_achieved": "ARITHMETIC_CONSISTENCY",
+      "does_not_establish": "Validación empírica de la fórmula."
+    },
+    "class_2_source_verification": {
+      "description": "Verifica que los valores de entrada (P1, sigma) fueron derivados correctamente de los raw_outputs.",
+      "evidence_level_achieved": "SOURCE_TO_VALUE_TRACEABILITY",
+      "does_not_establish": "Corrección de la rúbrica de medición."
+    },
+    "class_3_full_recalculation": {
+      "description": "Verifica toda la cadena: raw_output → valores de entrada → métrica final.",
+      "evidence_level_achieved": "FULL_CHAIN_REPRODUCIBILITY",
+      "does_not_establish": "Replicación independiente."
+    }
+  },
+
+  "evaluator_specification": {
+    "independence_criteria": [
+      "Ejecuta el recálculo sin conocer el valor declarado previamente.",
+      "Utiliza la fórmula publicada, no una reformulación.",
+      "Produce el resultado antes de compararlo con el declarado.",
+      "Mantiene trazabilidad de su procedimiento.",
+      "No comparte estado operativo con el ejecutor original."
+    ],
+    "allowed_evaluators": [
+      "Evaluador humano independiente.",
+      "Plataforma distinta a la ejecutora.",
+      "Herramienta de cálculo sin dependencia del ejecutor."
+    ],
+    "prohibited_evaluators": [
+      "El mismo modelo que generó el valor declarado.",
+      "Evaluador que conoce el valor declarado antes de calcular."
+    ],
+    "verification_of_independence": "Declarar en el reporte el mecanismo de separación funcional."
+  },
+
+  "formula_registry": {
+    "description": "Fórmulas canónicas aplicables al recálculo. Se toman exactamente como están declaradas en los protocolos del repositorio.",
+    "formulas": [
+      {
+        "id": "FORM-DP-B",
+        "metric": "delta_prime",
+        "motor": "MOTOR_B_DISTRIBUTED",
+        "formula": "δ′ = σ × (1 - P1)",
+        "source": "protocols/delta-engine.json",
+        "status": "CANONICAL_FOR_MOTOR_B"
+      },
+      {
+        "id": "FORM-SCORE-B",
+        "metric": "score_global",
+        "motor": "MOTOR_B_DISTRIBUTED",
+        "formula": "score = (P1 + P3 + P5)/3 - δ′",
+        "source": "protocols/delta-engine.json",
+        "status": "CANONICAL_FOR_MOTOR_B"
+      },
+      {
+        "id": "FORM-DP-A",
+        "metric": "delta_prime",
+        "motor": "MOTOR_A_EVALUATIVE",
+        "formula": "δ′ = 0.4(1-P1) + 0.4(1-P3) + 0.2(1-P5)",
+        "source": "delta_engine_v1.0 (ChatGPT, no publicado en repo)",
+        "status": "HISTORICAL_FOR_MOTOR_A"
+      },
+      {
+        "id": "FORM-DELTA-A",
+        "metric": "delta",
+        "motor": "MOTOR_A_EVALUATIVE",
+        "formula": "δ = 1 - Σ(peso_i × Pn_norm_i)",
+        "source": "delta_engine_v1.0 (ChatGPT, no publicado en repo)",
+        "status": "HISTORICAL_FOR_MOTOR_A"
+      }
+    ],
+    "prohibition": "No añadir fórmulas no declaradas en protocolos canónicos o históricos verificables."
+  },
+
+  "result_classification": {
+    "MATCH": "Valor declarado y recalculado coinciden dentro de la tolerancia declarada.",
+    "DIVERGENCE": "Valor declarado y recalculado difieren. Se registra la diferencia sin resolverla.",
+    "NOT_COMPARABLE": "Los valores no son comparables por diferencias de motor, dominio o definición.",
+    "NOT_RECALCULABLE": "No hay raw_data suficiente para recalcular.",
+    "INVALID_FORMULA": "La fórmula aplicada no es la canónica declarada."
+  },
+
+  "recalculation_report_schema": {
+    "required_fields": [
+      "recalculation_id",
+      "execution_id",
+      "metric_id",
+      "formula_id",
+      "motor_declared",
+      "declared_value",
+      "recalculated_value",
+      "result",
+      "evaluator_id",
+      "evaluator_independent",
+      "timestamp_utc",
+      "notes_declarative"
+    ],
+    "optional_fields": [
+      "parent_recalculation_id",
+      "divergence_magnitude",
+      "raw_data_hash",
+      "tolerance_applied"
+    ],
+    "immutability": "Igual que el ledger. Append-only. Correcciones generan nuevos reportes."
+  },
+
+  "connection_to_e1_e10": {
+    "E08_INDEPENDENT_RECALCULATION": {
+      "dependency": "Este protocolo es la implementación técnica de E08.",
+      "guarantee": "El evaluador accede a raw_output sin depender del ejecutor original."
+    },
+    "E05_INDEPENDENT_EVALUATION": {
+      "dependency": "El recálculo es una forma específica de evaluación independiente.",
+      "scope": "Cubre la dimensión cuantitativa. La evaluación cualitativa es complementaria."
+    },
+    "E09_ABLATION": {
+      "dependency": "El recálculo permite verificar contribuciones diferenciales entre condiciones."
+    }
+  },
+
+  "connection_to_obligations": {
+    "OBLIG-015_INDEPENDENT_RECALCULATION_MECHANISM": {
+      "status": "DISCHARGED_BY_THIS_PROTOCOL",
+      "remaining": "Aplicación efectiva a ejecuciones concretas del ledger."
+    },
+    "OBLIG-014_OUTPUT_CAPTURE_PROCEDURE": {
+      "status": "PARTIAL",
+      "dependency": "El recálculo depende del ledger, que ya está definido."
+    }
+  },
+
+  "current_applicability": {
+    "historical_ledger_status": "18_OF_19_RECORDS_LACK_PRESERVED_RAW_OUTPUT",
+    "practical_consequence": "El protocolo es aplicable a ejecuciones futuras registradas según el schema estricto. Las ejecuciones históricas permanecen como NOT_RECALCULABLE_WITHOUT_RAW_DATA.",
+    "first_applicable_execution": "PRÓXIMA_EJECUCIÓN_CON_REGISTRO_COMPLETO"
+  },
+
+  "rules_of_use": {
+    "allowed": [
+      "Recalcular métricas desde raw_outputs preservados.",
+      "Reportar divergencias sin resolverlas.",
+      "Clasificar ejecuciones históricas como NOT_RECALCULABLE.",
+      "Aplicar el protocolo a nuevas ejecuciones."
+    ],
+    "prohibited": [
+      "Ajustar la fórmula para que coincida con el valor declarado.",
+      "Declarar validación empírica por recálculo exitoso.",
+      "Recalcular sin declarar motor cuando aplica.",
+      "Editar reportes anteriores.",
+      "Omitir divergencias.",
+      "Convertir MATCH en evidencia causal."
+    ]
+  },
+
+  "terminal_invariants": [
+    "DECLARED_METRIC_IS_NOT_INDEPENDENTLY_RECALCULATED_METRIC",
+    "INDEPENDENT_RECALCULATION_IS_NOT_VALIDATION",
+    "RECALCULATION_REQUIRES_PRESERVED_RAW_DATA",
+    "MATCH_IS_NOT_EMPIRICAL_CONFIRMATION",
+    "DIVERGENCE_IS_NOT_REFUTATION",
+    "NOT_RECALCULABLE_IS_NOT_FALSE",
+    "ARITHMETIC_CONSISTENCY_IS_NOT_SCIENTIFIC_VALIDITY"
+  ],
+
+  "final_declaration": {
+    "statement": "El INDEPENDENT_RECALCULATION_PROTOCOL define el procedimiento para verificar aritméticamente y trazablemente las métricas declaradas del corpus. No valida. No establece causalidad. Verifica consistencia entre declaración y procedimiento. Su aplicación efectiva requiere ejecuciones registradas según el schema del ledger.",
+    "scientific_closure": false,
+    "empirical_validation": "NOT_APPLICABLE_TO_PROTOCOL",
+    "next_artifact": "RECALCULATION_REPORT_INSTANCE (primera aplicación a ejecución con raw_data preservado)"
+  }
+}
