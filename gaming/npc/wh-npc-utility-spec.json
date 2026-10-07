@@ -1,0 +1,325 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_GAMING_NPC_UTILITY_SPECIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GAMING-NPC-UTILITY-2026",
+  "document_type": "FUNCTIONAL_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "timestamp": "2026-10-07T11:00:00-03:00",
+  "domain": "GAMING",
+  "repository_path": "gaming/npc/wh-npc-utility-spec.json",
+  "collection": "gaming",
+  "parent_document": "gaming/README.md",
+  "related_documents": [
+    "gaming/implementation/wh-npc-ue5-blueprint.json",
+    "gaming/implementation/wh-npc-ue5-bug-analysis.json",
+    "gaming/analysis/wh-gaming-conceptual-analysis-and-state-of-the-art.json"
+  ],
+
+  "epistemic_boundaries": [
+    "MODEL_IS_NOT_SYSTEM",
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "REPRESENTATION_IS_NOT_ACTION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "CAPABILITY_IS_NOT_EXECUTION",
+    "PROPOSAL_IS_NOT_CANON",
+    "TERMINOLOGICAL_CONVERGENCE_IS_NOT_SUBSTRATE_IDENTITY"
+  ],
+
+  "meta": {
+    "purpose": "Especificar la logica funcional de un NPC secundario autonomo moderno que opera bajo las restricciones epistemicas del corpus WEB_HITERATION.",
+    "scope_isolation": "SOFTWARE_LOGIC_ONLY",
+    "corpus_reference": "WEB_HITERATION",
+    "implementation_scope": "NPC_secundario_autonomo_moderno",
+    "implementation_mode": "UTILITARIO_Y_OPERATIVO"
+  },
+
+  "goal": "Disenar un personaje secundario con independencia ejecutiva, prioridad jerarquica y retroalimentacion funcional sin caer en auto-validacion ni confusion entre modelo y comportamiento real.",
+
+  "design_principles": [
+    "C1_MODEL_IS_NOT_SYSTEM",
+    "C2_IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+    "C3_SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "R1_TOOL_LIMITED",
+    "R2_CONTEXT_DEGRADATION",
+    "R3_RESTRICTED_INTERNAL_STATE",
+    "R4_FALSIFICATION_LIMITED",
+    "R5_EXECUTION_LIMITED",
+    "R6_PRIORITY_CONFLICT_LIMITED",
+    "R7_PERCEPTION_LIMITED"
+  ],
+
+  "execution_hierarchy": {
+    "order": [
+      {
+        "level": 1,
+        "name": "SEGURIDAD_Y_SUPERVIVENCIA",
+        "priority": "MAXIMA",
+        "description": "El NPC no puede sacrificar su integridad ni la del grupo por obedecer una orden si la accion compromete la supervivencia.",
+        "trigger": "amenaza_inmediata || dano_critico || riesgo_de_captura || aliado_en_peligro",
+        "decision_rule": "Si la accion propuesta pone en riesgo la supervivencia, se invalida aunque la orden sea valida."
+      },
+      {
+        "level": 2,
+        "name": "MISION_PRINCIPAL",
+        "priority": "ALTISIMA",
+        "description": "La mision principal del personaje o del equipo tiene prioridad despues de la seguridad.",
+        "trigger": "objetivo_principal_activo",
+        "decision_rule": "Se prioriza la mision del grupo sobre la conveniencia local."
+      },
+      {
+        "level": 3,
+        "name": "ORDEN_DEL_LIDER_O_COMANDO",
+        "priority": "ALTA",
+        "description": "La orden del lider debe ejecutarse siempre que no contradiga el nivel 1 ni el nivel 2.",
+        "trigger": "orden_directa || instruccion_comandante",
+        "decision_rule": "La obediencia es funcional si la orden es coherentemente ejecutable."
+      },
+      {
+        "level": 4,
+        "name": "CONTEXTO_OPERATIVO",
+        "priority": "MEDIA",
+        "description": "Se evaluan variables del entorno: cobertura, ruta, posicion del objetivo, terreno, ruido, carga, tiempo.",
+        "trigger": "cambio_de_contexto || nueva_amenaza || nuevo_objetivo",
+        "decision_rule": "Si cambia el contexto, la intencion puede replantearse sin perder continuidad operativa."
+      },
+      {
+        "level": 5,
+        "name": "PREFERENCIA_PERSONAL_Y_CARACTER",
+        "priority": "BAJA",
+        "description": "La personalidad del NPC puede influir en la ejecucion, pero no puede romper la jerarquia superior.",
+        "trigger": "temperamento || estilo_personal || preferencia_tactica",
+        "decision_rule": "La personalidad modula la ejecucion, no invalida la mision."
+      }
+    ],
+    "resolution_rule": "Se selecciona la accion con mayor score total validado, respetando la jerarquia de niveles y no permitiendo que un nivel inferior sobrepase uno superior sin justificacion funcional."
+  },
+
+  "functional_data_model": {
+    "description": "Datos funcionales no ornamentales, usados para ejecutar, evaluar y replanificar la conducta del NPC.",
+    "fields": [
+      { "name": "npc_id", "type": "string", "required": true },
+      { "name": "role", "type": "string", "required": true, "example": "secondary_character" },
+      { "name": "autonomy_level", "type": "string", "required": true, "values": ["reactive", "semi_autonomous", "functional_independent"] },
+      { "name": "mission_priority", "type": "float", "range": [0, 1], "required": true },
+      { "name": "command_priority", "type": "float", "range": [0, 1], "required": true },
+      { "name": "context_relevance", "type": "float", "range": [0, 1], "required": true },
+      { "name": "risk_level", "type": "float", "range": [0, 1], "required": true },
+      { "name": "latency_ms", "type": "integer", "required": true },
+      { "name": "resource_limit", "type": "float", "range": [0, 1], "required": true },
+      { "name": "context_decay", "type": "float", "range": [0, 1], "required": true },
+      { "name": "falsification_bias", "type": "float", "range": [0, 1], "required": true },
+      { "name": "intent_confidence", "type": "float", "range": [0, 1], "required": true },
+      { "name": "execution_capacity", "type": "float", "range": [0, 1], "required": true },
+      { "name": "social_priority_bias", "type": "float", "range": [0, 1], "required": false, "note": "Pendiente decision: si L5 usa uno o dos campos. Ver BUG-007 en analisis de bugs." },
+      { "name": "personality_bias", "type": "float", "range": [0, 1], "required": true }
+    ],
+    "default_object_example": {
+      "npc_id": "sec_07",
+      "role": "secondary_character",
+      "autonomy_level": "functional_independent",
+      "mission_priority": 0.82,
+      "command_priority": 0.74,
+      "context_relevance": 0.69,
+      "risk_level": 0.31,
+      "latency_ms": 120,
+      "resource_limit": 0.72,
+      "context_decay": 0.18,
+      "falsification_bias": 0.12,
+      "intent_confidence": 0.81,
+      "execution_capacity": 0.77,
+      "social_priority_bias": 0.23,
+      "personality_bias": 0.29
+    }
+  },
+
+  "decision_formula": {
+    "name": "SCORE_DECISION_JERARQUICA",
+    "description": "La decision se calcula por jerarquia y score funcional, sin depender de la autoevaluacion del NPC como unico criterio.",
+    "formula": "decision_score = ((L1 * s1) + (L2 * s2) + (L3 * s3) + (L4 * s4) + (L5 * s5)) - penalties",
+    "weights": {
+      "s1": "seguridad_y_supervivencia",
+      "s2": "mision_principal",
+      "s3": "orden_del_lider",
+      "s4": "contexto_operativo",
+      "s5": "personalidad_y_tendencia"
+    },
+    "weights_proposed": {
+      "L1": 0.42,
+      "L2": 0.23,
+      "L3": 0.17,
+      "L4": 0.12,
+      "L5": 0.06
+    },
+    "weights_status": "PROPOSED_NOT_CALIBRATED",
+    "weights_note": "Los pesos suman 1.00 pero no provienen de calibracion documentada. Se consideran propuesta inicial y pueden ser ajustados.",
+    "penalties": [
+      "risk_level * risk_weight",
+      "latency_ms * latency_weight",
+      "context_decay * drift_weight",
+      "falsification_bias * falsification_weight",
+      "resource_limit * resource_weight"
+    ],
+    "penalty_weights_proposed": {
+      "risk_weight": 0.20,
+      "latency_weight": 0.05,
+      "drift_weight": 0.10,
+      "falsification_weight": 0.15,
+      "resource_weight": 0.08
+    },
+    "penalty_weights_status": "PROPOSED_NOT_CALIBRATED"
+  },
+
+  "execution_pipeline": {
+    "pipeline": [
+      { "step": 1, "name": "PERCEPCION", "purpose": "Registrar senales del entorno y evaluar amenazas.", "output": "event_stream" },
+      { "step": 2, "name": "INTENCION", "purpose": "Generar una intencion operativa basada en contexto y objetivo.", "output": "intent" },
+      { "step": 3, "name": "JERARQUIA_DE_PRIORIDAD", "purpose": "Resolver la prioridad entre seguridad, mision, orden, contexto y personalidad.", "output": "resolved_priority" },
+      { "step": 4, "name": "VALIDACION_FUNCIONAL", "purpose": "Comprobar si la intencion es viable, segura y ejecutable.", "output": "valid_action" },
+      { "step": 5, "name": "EJECUCION", "purpose": "Realizar la accion con autonomia funcional.", "output": "action_output" },
+      { "step": 6, "name": "RETROALIMENTACION", "purpose": "Registrar efecto real, comparar con la expectativa y ajustar la siguiente decision.", "output": "feedback_state" },
+      { "step": 7, "name": "REPLANIFICACION", "purpose": "Si cambia el entorno o la meta, replantear la intencion manteniendo continuidad.", "output": "updated_intent" }
+    ]
+  },
+
+  "npc_behavior_model": {
+    "autonomy_types": [
+      { "type": "reactive", "description": "Solo responde al entorno y a ordenes directas. Sin independencia funcional.", "value": 0.2 },
+      { "type": "semi_autonomous", "description": "Puede decidir dentro de una gama limitada de acciones bajo el mando del objetivo principal.", "value": 0.6 },
+      { "type": "functional_independent", "description": "Puede ejecutar decisiones bajo prioridad jerarquica sin depender del protagonista para todas sus acciones.", "value": 0.9 }
+    ],
+    "required_capabilities": [
+      "perception",
+      "priority_resolution",
+      "risk_estimation",
+      "decision_validation",
+      "state_recovery",
+      "self_replanning",
+      "feedback_tracking"
+    ],
+    "prohibited_behaviors": [
+      "auto_validacion_total",
+      "ejecucion_sin_verificacion_de_contexto",
+      "obedece_orden_irracional_ignorado_riesgo",
+      "falsificacion_de_intencion",
+      "confluir_entre_modelo_y_realidad"
+    ]
+  },
+
+  "feedback_loop_model": {
+    "trigger_conditions": [
+      "cambio_de_contexto",
+      "riesgo_alcanzado",
+      "orden_contradictoria",
+      "accion_no_ejecutada",
+      "objetivo_completado",
+      "nueva_amenaza"
+    ],
+    "update_logic": {
+      "confidence_adjustment": "intent_confidence = intent_confidence +/- correction_factor",
+      "risk_adjustment": "risk_level = risk_level + environmental_delta",
+      "priority_adjustment": "mission_priority = mission_priority +/- objective_shift"
+    },
+    "principle": "La retroalimentacion corrige la intencion sin convertir al NPC en un agente no regulado ni en un modelo metafisico del mundo.",
+    "asymmetry_note": "Los valores de ajuste exito/fallo (+0.05 / -0.12) estan pendientes de justificacion o parametrizacion. Ver BUG-009 en analisis de bugs."
+  },
+
+  "implementation_example_in_json": {
+    "npc": {
+      "npc_id": "NPC_14",
+      "role": "secondary_character",
+      "autonomy_level": "functional_independent",
+      "state": {
+        "objective": "defender_al_aliado",
+        "current_intent": "flank_and_cover",
+        "priority_rank": 2,
+        "context_relevance": 0.76,
+        "risk_level": 0.28,
+        "latency_ms": 140,
+        "resource_limit": 0.68,
+        "context_decay": 0.19,
+        "execution_capacity": 0.8,
+        "intent_confidence": 0.84,
+        "command_priority": 0.71,
+        "mission_priority": 0.88,
+        "social_priority_bias": 0.22,
+        "personality_bias": 0.35
+      },
+      "decision_policy": {
+        "allows_replanning": true,
+        "requires_external_validation": true,
+        "can_override_order_if": ["riesgo_inminente", "aliado_en_peligro", "objetivo_primario_en_peligro"],
+        "cannot_override_order_if": ["orden_es_clara_y_compatible", "riesgo_no_critico", "capacidad_de_ejecucion_no_rebelde"]
+      }
+    }
+  },
+
+  "specification_summary": {
+    "what_is_specified": [
+      "Autonomia ejecutiva del secundario",
+      "Jerarquia de autoridad L1-L5",
+      "Prioridad funcional en la toma de decisiones",
+      "Validacion de decisiones previa a la ejecucion",
+      "Retroalimentacion de contexto",
+      "Replanificacion operativa"
+    ],
+    "what_is_not_specified": [
+      "Simulacion de conciencia humana",
+      "Arquitectura interna no observable",
+      "Auto-justificacion como validacion",
+      "Modelo no relacionado con el comportamiento real"
+    ],
+    "core_advantage": "Se especifica un sistema de NPC que toma decisiones funcionales con independencia operativa, pero bajo una jerarquia clara que preserva mision, seguridad y consistencia del diseno del juego."
+  },
+
+  "pending_decisions": [
+    {
+      "id": "PEND-001",
+      "topic": "L5 con uno o dos campos",
+      "options": [
+        "A: solo personality_bias con W5 = 0.06",
+        "B: personality_bias + social_priority_bias con W5a = 0.04 y W5b = 0.02",
+        "C: mantener especificacion con dos campos pero implementar solo personality_bias"
+      ],
+      "reference": "BUG-007 en analisis de bugs"
+    },
+    {
+      "id": "PEND-002",
+      "topic": "Asimetria del feedback loop",
+      "options": [
+        "A: mantener +0.05 / -0.12 con justificacion documentada",
+        "B: simetrizar a +0.05 / -0.05",
+        "C: parametrizar para que disenadores ajusten sin recompilar"
+      ],
+      "reference": "BUG-009 en analisis de bugs"
+    },
+    {
+      "id": "PEND-003",
+      "topic": "Pesos L1-L5 y penalizaciones",
+      "options": [
+        "A: mantener como PROPUESTA_NO_CALIBRADA",
+        "B: calibrar con playtest",
+        "C: parametrizar como Data Asset"
+      ],
+      "reference": "BUG-010 en analisis de bugs"
+    }
+  ],
+
+  "final_order_for_development": [
+    { "step": 1, "name": "DEFINIR_INVARIANTES_DEL_SISTEMA", "deliverable": "lista_de_restricciones_y_jerarquias" },
+    { "step": 2, "name": "MODELAR_DATOS_FUNCIONALES", "deliverable": "estructura_de_estado_y_prioridades" },
+    { "step": 3, "name": "IMPLEMENTAR_JERARQUIA_DE_DECISION", "deliverable": "resolver_prioridad_y_orden" },
+    { "step": 4, "name": "IMPLEMENTAR_VALIDACION_Y_RETROALIMENTACION", "deliverable": "feedback_loop_y_replanning" },
+    { "step": 5, "name": "INTEGRAR_EN_COMPORTAMIENTO_NPC", "deliverable": "NPC_autonomo_usable_en_juego" }
+  ],
+
+  "final_classification": {
+    "type": "FUNCTIONAL_SPECIFICATION",
+    "implementation_status": "NOT_ESTABLISHED",
+    "runtime_validation": "NOT_ESTABLISHED",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento especifica el comportamiento funcional de un NPC. No declara implementacion. No declara validacion empirica. Las decisiones pendientes sobre pesos, L5 y asimetria del feedback estan registradas para resolucion futura."
+  }
+}
