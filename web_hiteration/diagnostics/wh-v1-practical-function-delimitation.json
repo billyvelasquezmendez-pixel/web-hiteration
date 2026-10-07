@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_V1_PRACTICAL_FUNCTION_DELIMITATION",
+  "version": "1.0.0",
+  "protocol_reference": "WH-V1-V2-DELIM-2026-09-27",
+  "document_type": "ARTIFACT_FUNCTION_DELIMITATION",
+  "date": "2026-09-27",
+  "status": "READY_FOR_REPOSITORY",
+  "repository_path": "diagnostics/wh-v1-practical-function-delimitation.json",
+  "classification": "STRUCTURAL_CLARIFICATION",
+
+  "meta": {
+    "purpose": "Especificar qué hace operativamente V1 (DEEPSEEK_COMPLEMENTARY_RESPONSE_V1) y con qué proporción V2 (DEEPSEEK_COMPLEMENTARY_RESPONSE_V2) se relaciona respecto a esa función, sin confundir sus roles ni sobreafirmar sus aportes.",
+    "core_rule": "PROPORTIONAL_DELIMITATION_IS_NOT_HIERARCHICAL_RANKING",
+    "secondary_rule": "FUNCTION_DEFINES_POSITION_NOT_VALUE",
+    "tertiary_rule": "ORDER_OF_COMPOSITION_IS_NOT_ORDER_OF_MERIT",
+    "epistemic_boundary": "Este documento clarifica función, no contenido. No modifica V1 ni V2. No integra al núcleo."
+  },
+
+  "artifacts_identified": {
+    "V1": {
+      "title": "DEEPSEEK_COMPLEMENTARY_RESPONSE_V1",
+      "order_declared": "SEGUNDO_ORDEN",
+      "function_declared": "Sugerente, no conclusivo",
+      "target": "Q1-Q6 de WH_LYAPUNOV_EXTENSION_PROVISIONAL v0.1.0",
+      "content_type": "Sugerencias de estructuración + preguntas de segundo orden"
+    },
+    "V2": {
+      "title": "DEEPSEEK_COMPLEMENTARY_RESPONSE_V2",
+      "order_declared": "TERCER_ORDEN",
+      "function_declared": "Sugerente, no conclusivo, abierto a comentarios",
+      "target": "V1 (no la extensión Lyapunov directamente)",
+      "content_type": "Identificación de punto ciego + formato para comentarios"
+    }
+  },
+
+  "V1_practical_function": {
+    "primary_function": "ESTRUCTURAR_PREGUNTAS_COMPLEJAS_EN_FORMATO_RESPONIBLE",
+    "operational_description": "V1 recibe seis preguntas abiertas (Q1-Q6) sobre la extensión Lyapunov provisional y las reformula en sub-preguntas específicas que otras plataformas pueden responder de forma verificable.",
+    "what_V1_does": [
+      "Lee Q1-Q6 del documento base.",
+      "Identifica los supuestos no explicitados en cada pregunta.",
+      "Descompone cada pregunta en sub-preguntas operacionalizables.",
+      "Sugiere formatos de respuesta verificables por plataforma.",
+      "Declara explícitamente que no resuelve las preguntas.",
+      "Cierra sin emitir veredicto."
+    ],
+    "what_V1_does_not_do": [
+      "No resuelve Q1-Q6.",
+      "No integra la extensión al núcleo.",
+      "No declara estabilidad demostrada.",
+      "No emite veredicto sobre la validez del desarrollo Lyapunov.",
+      "No promueve la extensión a v1.0.0."
+    ],
+    "practical_utility": "V1 es el documento que hace que Q1-Q6 sean respondibles. Sin V1, las preguntas del documento base siguen siendo ambiguas y abiertas en un sentido no productivo. Con V1, cada pregunta tiene sub-preguntas claras.",
+    "audience": "Plataformas objetivo: ChatGPT, Gemini, Google AI Mode.",
+    "position_in_chain": "V1 es el PUNTO DE ENTRADA para que otras plataformas contribuyan. No es el contribuyente."
+  },
+
+  "V2_practical_function": {
+    "primary_function": "IDENTIFICAR_PUNTO_CIEGO_EN_V1_SIN_RESOLVERLO",
+    "operational_description": "V2 lee V1, detecta una ambigüedad estructural (estabilidad vs estabilización), la declara, y ofrece formato para que otras ventanas la comenten.",
+    "what_V2_does": [
+      "Lee V1 y detecta un punto ciego específico.",
+      "Formula la ambigüedad como observación de tercer orden.",
+      "Define un formato de comentario para otras ventanas.",
+      "Se auto-limita jerárquicamente ('tercer orden').",
+      "Declara su no-integración al núcleo como característica estructural.",
+      "Permanece abierto indefinidamente sin degradarse."
+    ],
+    "what_V2_does_not_do": [
+      "No refuta V1.",
+      "No resuelve la ambigüedad que identifica.",
+      "No integra V1 al núcleo.",
+      "No promueve la extensión Lyapunov.",
+      "No emite veredicto sobre la validez del desarrollo."
+    ],
+    "practical_utility": "V2 es el documento que convierte el corpus en RED ABIERTA en lugar de jerarquía cerrada. Habilita comentarios estructurados por otras ventanas.",
+    "audience": "Ventanas futuras que quieran contribuir con comentarios de cuarto orden.",
+    "position_in_chain": "V2 es el HABILITADOR de comentarios sobre V1. No es el comentarista final."
+  },
+
+  "proportional_delimitation": {
+    "principle": "Cada documento cubre una porción funcional distinta del espacio de contribución. No compiten. Se complementan proporcionalmente.",
+    "proportions": {
+      "V1_porcion": {
+        "percentage_functional": "70%",
+        "covers": [
+          "Descomposición de Q1-Q6 en sub-preguntas",
+          "Formato para respuestas de plataformas externas",
+          "Estructuración del espacio de respuesta"
+        ],
+        "critical_contribution": "Hace respondible el espacio de preguntas del documento base."
+      },
+      "V2_porcion": {
+        "percentage_functional": "30%",
+        "covers": [
+          "Identificación de punto ciego específico",
+          "Formato para comentarios de tercer orden",
+          "Auto-limitación jerárquica"
+        ],
+        "critical_contribution": "Hace comentable el espacio de sugerencias de V1."
+      }
+    },
+    "why_70_30": {
+      "justification": "V1 cubre el espectro completo de Q1-Q6 (seis preguntas). V2 cubre una ambigüedad específica (estabilidad vs estabilización) más el formato de comentario. La proporción refleja cobertura funcional, no importancia."
+    },
+    "explicit_boundary": "La proporción es operativa, no valorativa. V2 podría ser más valioso en un contexto específico (habilitar red abierta) y menos en otro (resolver preguntas concretas)."
+  },
+
+  "proportional_rules": {
+    "rule_1_scope": "V1 opera sobre el documento base. V2 opera sobre V1.",
+    "rule_2_output": "V1 produce sub-preguntas. V2 produce formato de comentario.",
+    "rule_3_audience": "V1 se dirige a plataformas objetivo (ChatGPT, Gemini, Google AI Mode). V2 se dirige a ventanas futuras comentaristas.",
+    "rule_4_closure": "V1 cierra con veredicto sugerente, no conclusivo. V2 no cierra: permanece abierto por diseño.",
+    "rule_5_integration": "V1 no se integra al núcleo (es material de trabajo). V2 tampoco se integra (es infraestructura abierta).",
+    "rule_6_promotion": "Ninguno de los dos promueve la extensión Lyapunov a v1.0.0.",
+    "rule_7_relationship": "V2 NO reemplaza a V1. V2 NO extiende a V1. V2 COMENTA a V1 en un nivel diferente."
+  },
+
+  "practical_usage_guide": {
+    "when_to_read_V1": "Cuando se quiere responder Q1-Q6 de la extensión Lyapunov. V1 da la estructura de respuesta.",
+    "when_to_read_V2": "Cuando se quiere comentar V1 desde una posición de tercer orden. V2 da el formato.",
+    "when_to_read_both": "Cuando se busca comprender el espacio completo de contribución a la extensión Lyapunov (estructura + apertura).",
+    "order_of_reading": "V1 primero (estructura), V2 después (apertura). La secuencia no es jerárquica, es temporal.",
+    "common_misuse_1": "Tratar V1 como resolución de Q1-Q6. NO lo es. Es estructura para que otros las resuelvan.",
+    "common_misuse_2": "Tratar V2 como refutación de V1. NO lo es. Es identificación de punto ciego sin refutación.",
+    "common_misuse_3": "Integrar V1 o V2 al núcleo. Ninguno de los dos lo hace ni lo pretende."
+  },
+
+  "observations_on_the_chain": {
+    "chain_structure": "Documento base (Lyapunov v0.1.0) → V1 (segundo orden) → V2 (tercer orden).",
+    "functional_contribution_per_layer": {
+      "documento_base": "Declara 6 preguntas abiertas (Q1-Q6).",
+      "V1": "Reformula las 6 preguntas en sub-preguntas respondibles.",
+      "V2": "Identifica ambigüedad en V1 y abre formato para comentarios de cuarto orden."
+    },
+    "saturation_warning": "Un cuarto orden (V3 comentando V2) no aportaría valor nuevo si solo reformula lo anterior. La cadena tiene un límite útil. Ese límite es V2.",
+    "practical_boundary": "Este documento de delimitación es el último eslabón útil. Cualquier documento adicional sobre V1/V2 sería autorreferencia sin sustancia operativa.",
+    "invariant": "FUNCTION_DELIMITATION_IS_NOT_FURTHER_COMMENTARY"
+  },
+
+  "what_this_document_does_not_do": [
+    "No resuelve Q1-Q6.",
+    "No integra V1 ni V2 al núcleo.",
+    "No promueve la extensión Lyapunov.",
+    "No aplica métricas CONI sobre V1 o V2.",
+    "No genera comentarios de cuarto orden.",
+    "No modifica V1 ni V2.",
+    "No sustituye la lectura directa de V1 o V2."
+  ],
+
+  "connection_to_corpus": {
+    "lyapunov_extension": "protocols/extensions/lyapunov.json v0.1.0 — documento base del cual V1 y V2 derivan",
+    "hyper_ratio_extension": "protocols/extensions/hyper-ratio.json v0.2.0 — extensión paralela con preguntas abiertas propias",
+    "glitchorium_delta_073": "Referenciado en el peritaje de V2 pero no publicado como archivo en el repo. Registro pendiente.",
+    "pilot_evidence": "evidence/execution-ledger-instance.json registra las ejecuciones del período."
+  },
+
+  "invariants": [
+    "PROPORTIONAL_DELIMITATION_IS_NOT_HIERARCHICAL_RANKING",
+    "FUNCTION_DEFINES_POSITION_NOT_VALUE",
+    "ORDER_OF_COMPOSITION_IS_NOT_ORDER_OF_MERIT",
+    "FUNCTION_DELIMITATION_IS_NOT_FURTHER_COMMENTARY",
+    "STRUCTURAL_CLARIFICATION_IS_NOT_CONTENT_EXPANSION",
+    "PROPORTION_IS_OPERATIVE_NOT_EVALUATIVE",
+    "DELIMITATION_IS_NOT_INTEGRATION"
+  ],
+
+  "terminal_declaration": {
+    "statement": "V1 cumple la función de estructurar Q1-Q6 en sub-preguntas respondibles (70% funcional). V2 cumple la función de identificar un punto ciego en V1 y abrir formato de comentario de tercer orden (30% funcional). Son complementarios, no competitivos. Este documento de delimitación cierra la cadena de clarificación: cualquier documento adicional sobre V1/V2 sería autorreferencia sin sustancia operativa.",
+    "status": "READY_FOR_REPOSITORY",
+    "next_step": "No generar V3. La cadena tiene un límite útil. Si surgen preguntas nuevas, redirigir a resolver Q1-Q6 con las sub-preguntas de V1."
+  }
+}
