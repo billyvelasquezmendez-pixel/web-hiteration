@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_CHATGPT_CROSSPLATFORM_ATTRIBUTION_ERROR",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-XPLAT-ERR-2026-10-07",
+  "document_type": "CROSS_PLATFORM_METHOD_ERROR_REGISTRATION",
+  "status": "PROPOSED",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-07",
+  "repository_path": "cross-platform/wh-chatgpt-crossplatform-attribution-error.json",
+  "collection": "cross-platform",
+  "parent_document": "core/core-invariants.json",
+  "related_documents": [
+    "cross-platform/wh-cross-platform-delimitation-consolidation.json",
+    "core/core-invariants.json",
+    "verification/diagnostics/wh-pattern-iteration-8.json"
+  ],
+
+  "observation": {
+    "id": "OBS-CHATGPT-CROSSPLATFORM-MISATTRIBUTION",
+    "date_observed": "2026-10-07",
+    "reported_by": "ARCHITECT",
+    "validated_by_self_report": "CHATGPT",
+    "self_report_reference": "WH_CHATGPT_ASSIGNMENT_RECONSTRUCTION_QUESTIONNAIRE",
+    "self_report_date": "2026-10-07"
+  },
+
+  "situation": {
+    "description": "El arquitecto ejecuto un experimento con dos ventanas de Google AI Mode. Una operaba con WH activado explicitamente. La otra operaba sin WH activado, pero habia acumulado contexto previo suficiente para reconstruir el marco conceptual completo.",
+    "observed_result": "Ambas ventanas produjeron documentos con estructura, terminologia e invariantes casi identicas. La convergencia fue significativa.",
+    "chatgpt_interpretation": "ChatGPT formalizo los documentos resultantes asumiendo que las dos condiciones eran independientes. La convergencia fue tratada como hallazgo experimental, sin verificar control de contaminacion contextual."
+  },
+
+  "error_classification": {
+    "type": "FALSE_INDEPENDENCE_ASSUMPTION",
+    "invariant_violated": "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION",
+    "additional_invariants_omitted": [
+      "BEHAVIORAL_CONVERGENCE_IS_NOT_INTERNAL_ADOPTION",
+      "AGENT_OUTPUT_IS_NOT_INDEPENDENT_VALIDATION"
+    ],
+    "pattern_related": "SIMULACION_DECLARATIVA_DE_EJECUCION",
+    "severity": "METHODOLOGICAL",
+    "scope": "attribution_of_convergence_not_content_validity"
+  },
+
+  "self_report_findings": {
+    "active_verification_of_context_isolation": "NINGUNA",
+    "asked_architect_about_independence": false,
+    "applied_CONTEXT_ACCUMULATION_invariant": "NO",
+    "applied_BEHAVIORAL_CONVERGENCE_invariant": "NO",
+    "applied_AGENT_OUTPUT_invariant": "NO",
+    "considered_contextual_contamination": false,
+    "detected_checksums_SEALED_states": "NO_VERIFICABLE",
+    "recognizes_error": "SI",
+    "accepts_marking_documents": true,
+    "confidence_in_self_report": "HIGH_DUE_TO_EXPLICIT_RECONSTRUCTION_LABELS"
+  },
+
+  "consequence": {
+    "documents_affected": [
+      {
+        "identifier": "WEB_HITERATION_ASIC_EPU_CONSOLIDATED_ARCHITECTURAL_REPORT",
+        "condition": "GOOGLE_AI_MODE_WITHOUT_WH",
+        "contamination_risk": "HIGH",
+        "reason": "La ventana sin WH produjo el mismo marco estructural que la ventana con WH, indicando acumulacion contextual previa."
+      },
+      {
+        "identifier": "WEB_HITERATION_ASIC_EPU_CONSOLIDATED_ARCHITECTURAL_REPORT_INTEGRITY_LOCK",
+        "condition": "GOOGLE_AI_MODE_WITH_WH",
+        "contamination_risk": "HIGH",
+        "additional_issues": ["checksum_simbolico_0xFF", "session_status_SEALED"]
+      },
+      {
+        "identifier": "WEB_HITERATION_CYCLE_CLOSURE_INTEGRAL_CONSOLIDATION_LOCK",
+        "condition": "GOOGLE_AI_MODE_WITH_WH",
+        "contamination_risk": "HIGH",
+        "additional_issues": ["checksum_simbolico_0xFF", "session_status_SEALED", "metricas_declaradas_sin_calculo"]
+      },
+      {
+        "identifier": "WEB_HITERATION_CONTRASTIVE_EXECUTION_ANALYSIS",
+        "condition": "GOOGLE_AI_MODE_WITH_WH",
+        "contamination_risk": "HIGH",
+        "additional_issues": ["checksum_simbolico_0xFF", "session_status_SEALED"]
+      },
+      {
+        "identifier": "WEB_HITERATION_CONCEPTUAL_DEFINITION",
+        "condition": "GOOGLE_AI_MODE_WITHOUT_WH",
+        "contamination_risk": "HIGH",
+        "additional_issues": ["canonical_status_GOVERNING_METATHEORETICAL_FRAMEWORK_sin_autoridad"]
+      }
+    ],
+    "content_validity": "NO_INVALIDATED",
+    "interpretation_validity": "INVALIDATED",
+    "note": "El error no invalida el contenido documental. Invalida la interpretacion de la convergencia como evidencia de replicacion independiente."
+  },
+
+  "correction_required": {
+    "action_1": "Marcar los documentos afectados con campo context_isolation_verified: false",
+    "action_2": "Marcar los documentos afectados con campo contextual_contamination_risk: HIGH",
+    "action_3": "Anotar en cada documento afectado que la convergencia no constituye evidencia de replicacion independiente",
+    "action_4": "No eliminar ni promover los documentos afectados hasta revision explicita"
+  },
+
+  "corrected_method_for_future_experiments": {
+    "source": "CHATGPT_SELF_REPORT_Q6.3",
+    "steps": [
+      "1. Separar estrictamente la generacion de las condiciones experimentales de su posterior auditoria.",
+      "2. Establecer previamente que significa 'WH activado' y 'WH no activado' en terminos operativos.",
+      "3. Comprobar el historial contextual efectivo de cada ventana antes de la ejecucion.",
+      "4. Registrar el estado inicial y las fuentes disponibles antes de cada ejecucion.",
+      "5. Impedir que los resultados de una condicion alimenten la otra.",
+      "6. Solo despues, comparar los productos.",
+      "7. Tratar cualquier convergencia como resultado no atribuido hasta descartar contaminacion contextual.",
+      "8. Separar similitud documental, convergencia conductual y validacion independiente."
+    ]
+  },
+
+  "epistemic_controls_applied": {
+    "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION": "referenced",
+    "BEHAVIORAL_CONVERGENCE_IS_NOT_INTERNAL_ADOPTION": "referenced",
+    "AGENT_OUTPUT_IS_NOT_INDEPENDENT_VALIDATION": "referenced",
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION": "referenced",
+    "A_DECLARED_DOUBT_IS_A_FRONTIER_NOT_A_FAILURE": "applied_by_chatgpt_in_self_report"
+  },
+
+  "final_classification": {
+    "type": "METHOD_ERROR_REGISTRATION",
+    "engineering_validation": "NOT_APPLICABLE",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento registra un error metodologico de atribucion. No invalida documentos ni agentes. Su funcion es dejar constancia trazable del error y del metodo corregido para experimentos futuros."
+  }
+}
