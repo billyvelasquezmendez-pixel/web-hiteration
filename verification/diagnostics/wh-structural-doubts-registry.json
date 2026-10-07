@@ -443,15 +443,3 @@
 
   "final_declaration": {
     "statement": "El corpus WEB_HITERATION tiene 32 dudas estructurales documentadas: 18 abiertas, 6 parcialmente resueltas, 2 diferidas, 5 declaradas, 1 resuelta terminológicamente. La mayoría se concentran en operacionalización de métricas (34%) y requieren decisión arquitectónica o complementación externa. Este registro no las resue
-
-  "invariants": [
-    "A_DECLARED_DOUBT_IS_A_FRONTIER_NOT_A_FAILURE",
-    "DOUBT_REGISTRY_IS_NOT_DOUBT_RESOLUTION",
-    "UNRESOLVED_IS_NOT_INCORRECT",
-    "DOUBT_CONSOLIDATION_IS_NOT_PROBLEM_SOLVING",
-    "OPEN_QUESTION_IS_NOT_MISSING_ANSWER",
-    "STRUCTURAL_DOUBT_IS_NOT_STRUCTURAL_DEFECT"
-  ],
-
-  "final_declaration": {
-    "statement": "El corpus WEB_HITERATION tiene 32 dudas estructurales documentadas: 18 abiertas, 6 parcialmente resueltas, 2 diferidas, 5 declaradas, 1 resuelta terminológicamente. La mayoría se concentran en operacionalización de métricas (34%) y requieren decisión arquitectónica o complementación externa. Este registro no las resue
