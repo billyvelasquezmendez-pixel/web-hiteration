@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_GAMING_NPC_UE5_BLUEPRINT",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GAMING-BLUEPRINT-2026-10-08",
+  "document_type": "SOFTWARE_BLUEPRINT_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "timestamp": "2026-10-08T00:00:00-03:00",
+  "domain": "GAMING",
+  "repository_path": "gaming/implementation/wh-npc-ue5-blueprint.json",
+  "collection": "gaming",
+  "parent_document": "gaming/README.md",
+  "related_documents": [
+    "gaming/npc/wh-npc-utility-spec.json",
+    "gaming/implementation/wh-npc-ue5-bug-analysis.json",
+    "gaming/analysis/wh-gaming-conceptual-analysis-and-state-of-the-art.json"
+  ],
+
+  "epistemic_boundaries": [
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "CODE_IS_NOT_COMPILED_BINARY",
+    "BLUEPRINT_IS_NOT_RUNTIME_EXECUTION",
+    "DECLARED_STATE_IS_NOT_VERIFIED_STATE",
+    "TERMINOLOGICAL_CONVERGENCE_IS_NOT_SUBSTRATE_IDENTITY"
+  ],
+
+  "meta": {
+    "target_framework": "Unreal Engine 5 (C++ / Behavior Tree / Blackboard / NavMesh)",
+    "language_counterpart": "C# (.NET 8 Core Evaluator)",
+    "scope_isolation": "SOFTWARE_LOGIC_ONLY",
+    "struct_architecture": "THREE_NESTED_STRUCTS",
+    "struct_rationale": "Division por frecuencia de actualizacion: identidad (spawn-time), prioridades (event-driven), runtime (per-tick). Reduce costo de escritura en Blackboard y preserva los 15 campos canonicos de la especificacion funcional.",
+    "refactor_source": "Delimitacion estructural de Google AI Mode (WH-GAMING-DIVERGENCE-DELIMIT-2026-10-08-RESP) aplicada sobre blueprint previo de Gemini (WH-GAMING-BLUEPRINT-REFACTORED-2026-10-08)"
+  },
+
+  "cpp_implementation": {
+    "structs": {
+      "FNPCIdentityData": {
+        "note": "Identidad inmutable tras el spawn. Sin allocacion de heap en runtime.",
+        "fields": [
+          { "name": "NpcId", "type": "FName", "bytes": 8, "rationale": "Indexado en NameTable, sin heap allocation" },
+          { "name": "Role", "type": "uint8", "rationale": "Enum comprimido, ver ENPCRole" },
+          { "name": "AutonomyLevel", "type": "uint8", "rationale": "Enum comprimido, ver ENPCAutonomyLevel" }
+        ]
+      },
+      "FNPCPriorityState": {
+        "note": "Prioridades de baja frecuencia. Modificadas por eventos de mision, no por tick.",
+        "fields": [
+          { "name": "MissionPriority", "type": "float", "range": [0, 1] },
+          { "name": "CommandPriority", "type": "float", "range": [0, 1] },
+          { "name": "ContextRelevance", "type": "float", "range": [0, 1] },
+          { "name": "ExecutionCapacity", "type": "float", "range": [0, 1] },
+          { "name": "PersonalityBias", "type": "float", "range": [0, 1] }
+        ]
+      },
+      "FNPCRuntimeState": {
+        "note": "Estado operativo de alta frecuencia. Modificado en cada tick del Behavior Tree.",
+        "fields": [
+          { "name": "RiskLevel", "type": "float", "range": [0, 1] },
+          { "name": "LatencyMs", "type": "float" },
+          { "name": "ResourceLimit", "type": "float", "range": [0, 1] },
+          { "name": "ContextDecay", "type": "float", "range": [0, 1] },
+          { "name": "FalsificationBias", "type": "float", "range": [0, 1] },
+          { "name": "IntentConfidence", "type": "float", "range": [0, 1] },
+          { "name": "SocialPriorityBias", "type": "float", "range": [0, 1] }
+        ]
+      },
+      "FNPCOperationalState": {
+        "note": "Contenedor canonico. Anida los tres structs. Total: 15 campos.",
+        "fields": ["Identity (FNPCIdentityData)", "Priorities (FNPCPriorityState)", "Runtime (FNPCRuntimeState)"]
+      }
+    },
+    "enums": {
+      "ENPCRole": {
+        "type": "uint8",
+        "values": [
+          { "value": 0, "name": "SECONDARY_CHARACTER" },
+          { "value": 1, "name": "PRIMARY_CHARACTER" },
+          { "value": 2, "name": "NEUTRAL" },
+          { "value": 3, "name": "HOSTILE" }
+        ],
+        "note": "Mapeo propuesto. Requiere revision del arquitecto."
+      },
+      "ENPCAutonomyLevel": {
+        "type": "uint8",
+        "values": [
+          { "value": 0, "name": "REACTIVE" },
+          { "value": 1, "name": "SEMI_AUTONOMOUS" },
+          { "value": 2, "name": "FUNCTIONAL_INDEPENDENT" }
+        ],
+        "note": "Los valores float 0.2, 0.6, 0.9 de la spec se derivan via tabla de conversion."
+      }
+    },
+    "configuration_structs": {
+      "FNPCUtilityWeightConfig": "USTRUCT(BlueprintType) con pesos L1-L5 y penalizaciones, expuestos via UPROPERTY para Data Asset.",
+      "FNPCMovementConfig": "USTRUCT(BlueprintType) con velocidades y acceptance radius, expuestos via UPROPERTY."
+    },
+    "classes": {
+      "UNPCOperationalStateObject": "Wrapper UObject que envuelve el struct contenedor completo para almacenamiento en Blackboard.",
+      "UNPCBlackboardExtensions": "BlueprintFunctionLibrary con GetNPCOperationalState y SetNPCOperationalState. Set usa NewObject para instanciacion perezosa si la clave esta vacia.",
+      "UBTTask_EvaluateAndExecuteUtility": "Task principal. ExecuteTask valida compuerta R4, TickTask persiste ContextDecay y llama FinishLatentTask cuando PathFollowingComponent esta Idle.",
+      "UBTDecorator_EvaluateRiskLimit": "Decorator con Observer Aborts = Lower Priority cuando RiskLevel >= CriticalRiskLimit.",
+      "ANPCController": "AIController con AIPerceptionComponent + AISenseConfig_Sight. Actualiza estado en OnTargetPerceived.",
+      "UNPCAnimInstance": "AnimInstance que lee RiskLevel, ContextRelevance y Speed del Blackboard para alimentar AnimGraph.",
+      "UBTTask_FindRetreatLocation": "Calcula punto de retirada opuesto a la amenaza via NavMesh.",
+      "UBTTask_FindNearestCover": "Busca cobertura mediante raycasts radiales que bloqueen LoS con la amenaza.",
+      "UBTTask_GetNextPatrolWaypoint": "Avanza al siguiente waypoint en el arreglo ciclico."
+    }
+  },
+
+  "csharp_implementation": {
+    "note": "Contraparte C#. Debe mantener paridad 1 a 1 con los tres structs de C++.",
+    "structs": {
+      "NPCOperationalState": {
+        "fields": [
+          "NpcId (string)",
+          "Role (byte)",
+          "AutonomyLevel (byte)",
+          "MissionPriority (float)",
+          "CommandPriority (float)",
+          "ContextRelevance (float)",
+          "ExecutionCapacity (float)",
+          "PersonalityBias (float)",
+          "RiskLevel (float)",
+          "LatencyMs (float)",
+          "ResourceLimit (float)",
+          "ContextDecay (float)",
+          "FalsificationBias (float)",
+          "IntentConfidence (float)",
+          "SocialPriorityBias (float)"
+        ],
+        "total_fields": 15,
+        "json_naming": "camelCase via JsonPropertyName explicito"
+      }
+    },
+    "evaluator": {
+      "class": "NPCUtilityEvaluator",
+      "method": "CalculateDecisionScore",
+      "structure": "Compuerta R4 al inicio (return 0.0f si RiskLevel >= CriticalRiskLimit), luego formula ponderada con penalizaciones completas incluyendo LatencyMs.",
+      "clamp": "Math.Clamp(finalScore, 0.0f, 1.0f)"
+    }
+  },
+
+  "behavior_tree_structure": {
+    "root": "Selector con evaluacion de izquierda a derecha",
+    "branches": [
+      {
+        "priority": 1,
+        "name": "RETREAT_BRANCH",
+        "decorator": "RiskLevel >= 0.80",
+        "observer_aborts": "Lower Priority",
+        "tasks": ["UBTTask_FindRetreatLocation", "MoveTo (600 cm/s)", "Wait 1.0s"]
+      },
+      {
+        "priority": 2,
+        "name": "COVER_BRANCH",
+        "decorator": "RiskLevel >= 0.40",
+        "observer_aborts": "Lower Priority",
+        "tasks": ["UBTTask_FindNearestCover", "MoveTo (450 cm/s)", "RotateToFaceBBEntry", "PlayAnimation"]
+      },
+      {
+        "priority": 3,
+        "name": "PATROL_BRANCH",
+        "decorator": null,
+        "tasks": ["UBTTask_GetNextPatrolWaypoint", "MoveTo (300 cm/s)", "Wait 2.0-4.0s"]
+      }
+    ]
+  },
+
+  "divergences_pending_resolution": [
+    {
+      "id": "DIV-RES-001",
+      "topic": "Multiplicador IntentConfidence en formula C#",
+      "description": "La formula C# multiplica baseScore por IntentConfidence. La formula C++ no lo hace. Divergencia entre lenguajes.",
+      "status": "PENDING_RESOLUTION",
+      "options": [
+        "A: Eliminar el multiplicador de C# para igualar a C++",
+        "B: Agregar el multiplicador a C++ para igualar a C#",
+        "C: Declarar la diferencia como decision de diseno intencional y documentarla"
+      ]
+    },
+    {
+      "id": "DIV-RES-002",
+      "topic": "ApplyFeedbackLoop sin FMath::Clamp visible",
+      "description": "No hay implementacion actualizada de ApplyFeedbackLoop con Clamp explicito en el blueprint consolidado. Los valores +0.05 / -0.12 pueden desbordar sin Clamp.",
+      "status": "PENDING_RESOLUTION",
+      "options": [
+        "A: Implementar ApplyFeedbackLoop con FMath::Clamp en cada mutacion",
+        "B: Aceptar la ausencia y confiar en la validacion en otros puntos del pipeline"
+      ]
+    },
+    {
+      "id": "DIV-RES-003",
+      "topic": "MoveTo ausente en ExecuteTask",
+      "description": "El ExecuteTask del blueprint refactorizado no contiene la llamada a AIController->MoveTo. La tarea quedo reducida a validar compuerta R4 y retornar InProgress sin iniciar movimiento.",
+      "status": "PENDING_RESOLUTION",
+      "options": [
+        "A: Restaurar la llamada a MoveTo con FAIMoveRequest y la ubicacion destino del Blackboard",
+        "B: Delegar el movimiento a un MoveTo task separado en la rama del Behavior Tree"
+      ]
+    },
+    {
+      "id": "DIV-RES-004",
+      "topic": "ENPCRole y ENPCAutonomyLevel sin validacion",
+      "description": "Los enums fueron introducidos por el arquitecto para comprimir los campos Role y AutonomyLevel. Los valores propuestos no estan aprobados.",
+      "status": "PENDING_RESOLUTION",
+      "options": [
+        "A: Aprobar los valores propuestos",
+        "B: Modificar el mapeo"
+      ]
+    }
+  ],
+
+  "final_classification": {
+    "type": "SOFTWARE_BLUEPRINT_SPECIFICATION",
+    "compilation_status": "NOT_COMPILED",
+    "runtime_validation": "NOT_ESTABLISHED",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento contiene el codigo fuente C++ y C# del blueprint consolidado. No declara compilacion. No declara ejecucion en motor real. Las 4 divergencias residuales estan registradas para resolucion futura."
+  }
+}
