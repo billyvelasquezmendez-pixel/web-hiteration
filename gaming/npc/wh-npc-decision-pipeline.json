@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_NPC_DECISION_PIPELINE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GAMING-PIPELINE-2026-10-09",
+  "document_type": "FUNCTIONAL_PIPELINE_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-09",
+  "domain": "GAMING",
+  "repository_path": "gaming/npc/wh-npc-decision-pipeline.json",
+  "collection": "gaming",
+  "parent_document": "gaming/README.md",
+  "related_documents": [
+    "gaming/npc/wh-npc-utility-spec.json",
+    "gaming/implementation/wh-npc-ue5-blueprint.json"
+  ],
+
+  "epistemic_boundaries": [
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "PIPELINE_IS_NOT_RUNTIME_EXECUTION",
+    "DECLARED_FLOW_IS_NOT_IMPLEMENTED_FLOW",
+    "TERMINOLOGICAL_CONVERGENCE_IS_NOT_SUBSTRATE_IDENTITY"
+  ],
+
+  "meta": {
+    "purpose": "Especificar el pipeline de decision del NPC autonomo: las fases por las que atraviesa cada decision desde la percepcion hasta la retroalimentacion y replanificacion.",
+    "scope_isolation": "SOFTWARE_LOGIC_ONLY",
+    "note": "Este documento detalla el pipeline declarado como 'execution_pipeline' en la especificacion funcional. No declara ejecucion en motor. Solo especifica flujo."
+  },
+
+  "pipeline_overview": {
+    "total_phases": 7,
+    "cycle_type": "ITERATIVE_PER_TICK",
+    "note": "El pipeline se ejecuta una vez por ciclo de decision del NPC. Cada fase puede producir continuacion, aborto o replanificacion."
+  },
+
+  "phases": [
+    {
+      "phase_id": "PIPE-01",
+      "name": "PERCEPCION",
+      "purpose": "Registrar senales del entorno y evaluar amenazas.",
+      "inputs": [
+        "AIPerceptionComponent events",
+        "Environmental sensors",
+        "External events (allies, mission updates)"
+      ],
+      "processing": [
+        "Recibir estimulos de AIPerception",
+        "Actualizar LastKnownLocation si aplica",
+        "Agregar riesgo de multiples amenazas",
+        "Actualizar ContextRelevance"
+      ],
+      "outputs": ["event_stream", "updated_RiskLevel", "updated_ContextRelevance"],
+      "failure_modes": [
+        "Perdida de contacto visual (transicion a COVER/INVESTIGATE)",
+        "Multiples amenazas simultaneas (escalada de riesgo no lineal)"
+      ],
+      "implementation_reference": "ANPCController::OnTargetPerceived"
+    },
+    {
+      "phase_id": "PIPE-02",
+      "name": "INTENCION",
+      "purpose": "Generar una intencion operativa basada en contexto y objetivo.",
+      "inputs": ["event_stream", "current_mission", "current_command"],
+      "processing": [
+        "Leer mission_priority y command_priority del Blackboard",
+        "Consultar objetivos activos",
+        "Generar intencion tentativa"
+      ],
+      "outputs": ["intent"],
+      "failure_modes": [
+        "Conflicto entre mision y orden directa",
+        "Intencion no alineada con estado actual"
+      ],
+      "implementation_reference": "Pending implementation"
+    },
+    {
+      "phase_id": "PIPE-03",
+      "name": "JERARQUIA_DE_PRIORIDAD",
+      "purpose": "Resolver la prioridad entre seguridad, mision, orden, contexto y personalidad.",
+      "inputs": [
+        "intent",
+        "survival_threat",
+        "mission_priority",
+        "command_order",
+        "context_delta",
+        "personality_preference"
+      ],
+      "processing": [
+        "Aplicar jerarquia L1-L5",
+        "Detectar override por supervivencia (L1)",
+        "Detectar conflicto entre mision (L2) y orden (L3)",
+        "Resolver segun orden jerarquico"
+      ],
+      "outputs": ["resolved_priority"],
+      "failure_modes": [
+        "Orden irracional que ignora riesgo (prohibido)",
+        "Prioridad personal sobrepasando niveles superiores (prohibido)"
+      ],
+      "implementation_reference": "FNPCUtilityWeightConfig + CalculateDecisionScore"
+    },
+    {
+      "phase_id": "PIPE-04",
+      "name": "VALIDACION_FUNCIONAL",
+      "purpose": "Comprobar si la intencion es viable, segura y ejecutable.",
+      "inputs": ["resolved_priority", "resource_limit", "execution_capacity"],
+      "processing": [
+        "Verificar compuerta R4 (RiskLevel >= CriticalRiskLimit)",
+        "Verificar recursos disponibles",
+        "Verificar viabilidad teorica",
+        "Calcular DecisionScore",
+        "Verificar contra MinUtilityThreshold"
+      ],
+      "outputs": ["valid_action", "DecisionScore"],
+      "failure_modes": [
+        "Score bajo el umbral (retorno a PIPE-02 con nueva intencion)",
+        "Compuerta R4 activada (aborto directo a PIPE-07)"
+      ],
+      "implementation_reference": "UBTTask_EvaluateAndExecuteUtility::ExecuteTask"
+    },
+    {
+      "phase_id": "PIPE-05",
+      "name": "EJECUCION",
+      "purpose": "Realizar la accion con autonomia funcional.",
+      "inputs": ["valid_action", "current_context"],
+      "processing": [
+        "Despachar FAIMoveRequest al AIController",
+        "Registrar StartTime en NodeMemory",
+        "Retornar InProgress al Behavior Tree"
+      ],
+      "outputs": ["action_output", "execution_flow"],
+      "failure_modes": [
+        "PathFollowing falla (retorno a PIPE-04 con alternative)",
+        "Riesgo escala durante ejecucion (aborto desde PIPE-06)"
+      ],
+      "implementation_reference": "UBTTask_EvaluateAndExecuteUtility::ExecuteTask (MoveTo)"
+    },
+    {
+      "phase_id": "PIPE-06",
+      "name": "RETROALIMENTACION",
+      "purpose": "Registrar efecto real, comparar con la expectativa y ajustar la siguiente decision.",
+      "inputs": [
+        "action_output",
+        "observed_outcome",
+        "actual_duration",
+        "actual_risk",
+        "anomalies_detected"
+      ],
+      "processing": [
+        "Calcular TaskDuration real",
+        "Comparar expectativa vs observacion",
+        "Aplicar feedback loop con Clamp",
+        "Actualizar IntentConfidence y FalsificationBias",
+        "Persistir al Blackboard"
+      ],
+      "outputs": ["feedback_state", "updated_Runtime"],
+      "failure_modes": [
+        "Divergencia alta (activar revalidacion)",
+        "Anomalia critica (transicion a emergencia)"
+      ],
+      "implementation_reference": "UBTTask_EvaluateAndExecuteUtility::OnTaskFinished + ApplyFeedbackLoop"
+    },
+    {
+      "phase_id": "PIPE-07",
+      "name": "REPLANIFICACION",
+      "purpose": "Si cambia el entorno o la meta, replantear la intencion manteniendo continuidad.",
+      "inputs": [
+        "feedback_state",
+        "updated_Runtime",
+        "updated_context",
+        "observed_anomalies"
+      ],
+      "processing": [
+        "Reevaluar mision (todavia valida?)",
+        "Reevaluar orden (todavia valida?)",
+        "Reevaluar seguridad (todavia segura?)",
+        "Generar nueva intencion o invalidar plan actual",
+        "Registrar nuevo estado"
+      ],
+      "outputs": ["updated_intent", "revalidation_result"],
+      "failure_modes": [
+        "Replanificacion ciclica sin progreso",
+        "Fallo de continuidad contextual"
+      ],
+      "implementation_reference": "Pending implementation"
+    }
+  ],
+
+  "emergency_path": {
+    "description": "Camino de emergencia que bypasea el flujo regular si se detecta condicion critica.",
+    "trigger_conditions": [
+      "health_percent < 20",
+      "critical_threat_detected",
+      "path_blocked",
+      "ally_in_critical_danger"
+    ],
+    "action": "Ejecutar accion de supervivencia inmediata. Notificar a PIPE-07 para revalidacion.",
+    "implementation_reference": "Pending implementation"
+  },
+
+  "state_persistence": {
+    "description": "El estado del NPC persiste en el Blackboard via UNPCOperationalStateObject entre ciclos.",
+    "structure": "FNPCOperationalState con tres structs anidados (Identity, Priorities, Runtime).",
+    "note": "La persistencia entre fases garantiza que el NPC recuerde lo aprendido."
+  },
+
+  "final_classification": {
+    "type": "FUNCTIONAL_PIPELINE_SPECIFICATION",
+    "implementation_status": "PARTIALLY_IMPLEMENTED",
+    "runtime_validation": "NOT_ESTABLISHED",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento especifica el pipeline declarado. Algunas fases tienen implementacion en el blueprint (PIPE-01, PIPE-03, PIPE-04, PIPE-05, PIPE-06). Otras estan pendientes (PIPE-02, PIPE-07, emergency_path)."
+  }
+}
