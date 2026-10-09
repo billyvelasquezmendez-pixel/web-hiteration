@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_NPC_UE5_DESIGN_RESOLUTIONS",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GAMING-RESOLUTIONS-2026-10-09",
+  "document_type": "DESIGN_DECISION_RESOLUTION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-09",
+  "domain": "GAMING",
+  "repository_path": "gaming/implementation/wh-npc-ue5-design-resolutions.json",
+  "collection": "gaming",
+  "parent_document": "gaming/implementation/wh-npc-ue5-blueprint.json",
+  "related_documents": [
+    "gaming/implementation/wh-npc-ue5-blueprint.json",
+    "gaming/implementation/wh-npc-ue5-bug-analysis.json",
+    "gaming/npc/wh-npc-utility-spec.json"
+  ],
+
+  "epistemic_boundaries": [
+    "RESOLUTION_IS_NOT_EXECUTION",
+    "DECISION_IS_NOT_VALIDATION",
+    "DERIVED_PARAMETER_IS_NOT_ARBITRARY_PARAMETER",
+    "APPLICATION_IS_NOT_CANON"
+  ],
+
+  "meta": {
+    "purpose": "Registrar la resolucion de las tres decisiones de diseno pendientes del blueprint UE5, con su derivacion desde los invariantes del corpus.",
+    "scope_isolation": "SOFTWARE_LOGIC_ONLY",
+    "note": "Este documento resuelve las decisiones por derivacion desde invariantes, no por eleccion arbitraria."
+  },
+
+  "decision_1_enums": {
+    "id": "DECISION-001",
+    "topic": "Nivel 5 del NPC (personalidad): uno o dos campos",
+    "resolution": "DOS_ENUMS_ORTOGONALES",
+    "statement": "Se declaran dos enums independientes en FNPCIdentityData. Cada uno captura una dimension distinta del NPC.",
+    "enums": {
+      "ENPCRelation": {
+        "type": "uint8",
+        "values": [
+          { "value": 0, "name": "UNASSIGNED" },
+          { "value": 1, "name": "SECONDARY_CHARACTER" },
+          { "value": 2, "name": "PRIMARY_CHARACTER" },
+          { "value": 3, "name": "NEUTRAL" },
+          { "value": 4, "name": "HOSTILE" },
+          { "value": 5, "name": "ALLIED_INFRASTRUCTURE" }
+        ],
+        "dimension": "RELACION_NARRATIVA",
+        "purpose": "Lógica de targeting, dialogo, mision",
+        "rationale": "Clasifica al NPC por su relacion con el jugador o con la jerarquia narrativa."
+      },
+      "ENPCRole": {
+        "type": "uint8",
+        "values": [
+          { "value": 0, "name": "UNASSIGNED" },
+          { "value": 1, "name": "COMBATANT" },
+          { "value": 2, "name": "SCOUT" },
+          { "value": 3, "name": "COMMANDER" },
+          { "value": 4, "name": "SUPPORT" },
+          { "value": 5, "name": "ELITE_COMBATANT" }
+        ],
+        "dimension": "FUNCION_TACTICA",
+        "purpose": "Formacion de escuadron, asignacion de tareas, prioridad de amenaza",
+        "rationale": "Clasifica al NPC por su funcion operativa dentro de un grupo tactico."
+      }
+    },
+    "invariants_applied": [
+      "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+      "TWO_ORTHOGONAL_DIMENSIONS_ARE_NOT_REDUCIBLE_TO_ONE"
+    ],
+    "derived_from": "matrix/wh-invariant-derivation-matrix.json (pendiente de crear)",
+    "consequence": "FNPCIdentityData ocupa 2 bytes adicionales en lugar de 1. Costo aceptable para preservar ambas dimensiones.",
+    "note": "Los valores propuestos son los originales del arquitecto. Gemini habia propuesto alternativas (Combatant, Scout, Commander, Support, EliteCombatant) que se descartan por falta de la dimension relacional."
+  },
+
+  "decision_2_autonomy": {
+    "id": "DECISION-002",
+    "topic": "FullAutonomous 0.9 vs 1.0",
+    "resolution": "AUTONOMIA_CON_TECHO_DERIVADO",
+    "statement": "El valor de FullAutonomous se mantiene en 0.9. No se permite 1.0 como autonomia total.",
+    "derivation": {
+      "invariant": "R5_EXECUTION_LIMITED",
+      "rule": "La representacion de autonomia total (1.0) implica ausencia de subordinacion a jerarquia superior. Eso viola R5 porque todo agente opera bajo restricciones de ejecucion.",
+      "derived_ceiling": 0.9,
+      "rationale": "El margen de 0.1 faltante es el espacio reservado para intervencion de jerarquia superior (mision L2, orden L3) cuando la evaluacion interna del NPC no alcanza umbral de decision."
+    },
+    "consequence": "Un NPC con FullAutonomous nunca podra desobedecer completamente la jerarquia L1-L5. Puede reinterpretar L3-L5, pero siempre queda sujeto a L1 (supervivencia) y L2 (mision).",
+    "values_final": {
+      "REACTIVE": 0.2,
+      "SEMI_AUTONOMOUS": 0.6,
+      "FUNCTIONAL_INDEPENDENT": 0.9
+    },
+    "derived_from": "matrix/wh-invariant-derivation-matrix.json (pendiente de crear)",
+    "note": "El cambio propuesto por Gemini a 1.0 se rechaza por violar R5. El valor 0.9 se mantiene como en la spec original."
+  },
+
+  "decision_3_duration_factor": {
+    "id": "DECISION-003",
+    "topic": "DurationFactor en ApplyFeedbackLoop",
+    "resolution": "MODO_DUAL_POR_CONTEXTO",
+    "statement": "El factor de duracion del feedback se comporta de manera distinta segun el contexto de actividad del NPC.",
+    "modes": {
+      "ALTA_ACTIVIDAD": {
+        "trigger": "Runtime.RiskLevel >= AlertRiskLimit (0.40)",
+        "duration_factor": "1.0_FIJO",
+        "rationale": "En combate o urgencia, el feedback no se escala por duracion. El NPC aprende por el resultado, no por el tiempo invertido.",
+        "implementation": "DurationFactor = 1.0f;"
+      },
+      "BAJA_ACTIVIDAD": {
+        "trigger": "Runtime.RiskLevel < AlertRiskLimit (0.40)",
+        "duration_factor": "MAX_1.0_TASK_DURATION",
+        "rationale": "En patrulla o exploracion, una tarea larga sin incidentes refuerza confianza proporcionalmente al tiempo invertido.",
+        "implementation": "DurationFactor = FMath::Max(1.0f, TaskDuration);"
+      }
+    },
+    "code_pseudocode": "float DurationFactor;\nif (State.Runtime.RiskLevel >= WeightConfig.AlertRiskLimit)\n{\n    DurationFactor = 1.0f;\n}\nelse\n{\n    DurationFactor = FMath::Max(1.0f, TaskDuration);\n}",
+    "invariants_applied": [
+      "CONTEXT_DERIVES_BEHAVIOR",
+      "FEEDBACK_MAGNITUDE_IS_CONTEXT_DEPENDENT"
+    ],
+    "derived_from": "matrix/wh-invariant-derivation-matrix.json (pendiente de crear)",
+    "note": "Esta resolucion adopta el enfoque complementario: ambas medidas coexisten segun contexto. Coincide con la propuesta del arquitecto."
+  },
+
+  "bugs_resolved_in_this_document": [
+    {
+      "bug_id": "BUG-013",
+      "description": "Umbrales de alerta hardcoded en AnimInstance",
+      "resolution": "Se agregaron AlertRiskLimit y CriticalRiskLimit a FNPCUtilityWeightConfig como UPROPERTY editables."
+    },
+    {
+      "bug_id": "BUG-014",
+      "description": "AcceptanceRadius hardcoded en MoveTo",
+      "resolution": "Se agrego AcceptanceRadius a FNPCUtilityWeightConfig. ExecuteTask lo lee del config."
+    },
+    {
+      "bug_id": "BUG-015",
+      "description": "Velocidades de movimiento hardcoded",
+      "resolution": "Se mantiene FNPCMovementConfig con las tres velocidades. Pendiente conectar a ramas del BT."
+    },
+    {
+      "bug_id": "BUG-017",
+      "description": "Divergencia decoradores RETREAT vs COVER",
+      "resolution": "Se unifica el uso de UBTDecorator_EvaluateRiskLimit en ambas ramas con umbral configurable."
+    }
+  ],
+
+  "final_classification": {
+    "type": "DESIGN_DECISION_RESOLUTION",
+    "implementation_status": "PARTIALLY_APPLIED",
+    "runtime_validation": "NOT_ESTABLISHED",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento resuelve las tres decisiones de diseno por derivacion desde invariantes. Las resoluciones deben aplicarse al blueprint UE5 en un proximo pase de implementacion."
+  }
+}
