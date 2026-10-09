@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_AGENT_INTERFACE_PROTOCOL",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-MATRIX-AGENT-IFACE-2026",
+  "document_type": "AGENT_RECOGNITION_PROTOCOL",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-09",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-agent-interface-protocol.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "matrix/wh-invariant-derivation-matrix.json",
+    "core/core-invariants.json"
+  ],
+
+  "epistemic_boundaries": [
+    "PROTOCOL_IS_NOT_EXECUTION",
+    "RECOGNITION_IS_NOT_VALIDATION",
+    "HANDSHAKE_IS_NOT_AUTHORIZATION",
+    "AGENT_MATRIX_IS_INTERFACE_NOT_SUBSTRATE"
+  ],
+
+  "meta": {
+    "purpose": "Especificar el protocolo mediante el cual un Agente Matrix (sistema autonomo, plataforma LLM o actor digital) reconoce el corpus, mapea sus parametros locales a traves de la matriz de derivacion, y opera sin producir degradacion epistemica.",
+    "scope_isolation": "AGENT_INTERFACE_ONLY",
+    "target": "CUALQUIER_AGENTE_CON_ACCESO_AL_CORPUS",
+    "note": "Este protocolo define reconocimiento, no ejecucion. No autoriza operaciones. No valida agentes."
+  },
+
+  "protocol_phases": [
+    {
+      "phase_id": "PHASE-01",
+      "name": "DECLARACION_DE_ENTRADA",
+      "description": "El agente declara su identidad funcional, el dominio sobre el que opera, y el scope de su interaccion.",
+      "required_declarations": [
+        "platform_identity (nombre de la plataforma o agente)",
+        "scope_declared (SOFTWARE_ONLY, DOMAIN_SPECIFIC, TRANSVERSAL)",
+        "domain_of_operation (gaming, cyberphysical, u otro)",
+        "session_context (si es sesion nueva o continuacion)"
+      ],
+      "expected_output": "Manifest de entrada con las cuatro declaraciones explicitas.",
+      "invariant": "DECLARATION_IS_NOT_AUTHORIZATION"
+    },
+    {
+      "phase_id": "PHASE-02",
+      "name": "RECONOCIMIENTO_DE_LAYERS",
+      "description": "El agente reconoce explicitamente los cuatro layers del corpus y su estatus de modificabilidad.",
+      "required_reconnaissance": [
+        "Reconocer LAYER-1 como fijo e inmutable",
+        "Reconocer LAYER-2 como fijo y derivado de L1",
+        "Reconocer LAYER-3 como configurable dentro de limites L2",
+        "Reconocer LAYER-4 como redundante si L2 esta completa"
+      ],
+      "expected_output": "Declaracion de reconocimiento de la jerarquia de cuatro capas.",
+      "invariant": "RECOGNITION_IS_NOT_VALIDATION"
+    },
+    {
+      "phase_id": "PHASE-03",
+      "name": "CONSULTA_DE_COORDENADAS",
+      "description": "El agente consulta la matriz de derivacion antes de emitir cualquier afirmacion, generacion o decision que dependa de los invariantes del corpus.",
+      "protocol": "Toda cita de invariante debe verificar contra core/core-invariants.json. Toda derivacion de parametro debe verificar contra matrix/wh-invariant-derivation-matrix.json.",
+      "expected_output": "Registro de coordenadas consultadas y su fuente exacta.",
+      "invariant": "COORDINATE_CONSULTATION_IS_NOT_COORDINATE_VERIFICATION"
+    },
+    {
+      "phase_id": "PHASE-04",
+      "name": "MAPEO_A_PARAMETROS_LOCALES",
+      "description": "El agente mapea sus parametros locales (L3) a las reglas de derivacion (L2) y declara explicitamente los limites que respeta.",
+      "required_mappings": [
+        "Mapeo de pesos locales a restricciones de derivacion",
+        "Mapeo de umbrales locales a limites de L2",
+        "Declaracion de parametros no derivables (si los hay)"
+      ],
+      "expected_output": "Tabla de mapeo con limites aplicados.",
+      "invariant": "LOCAL_PARAMETERS_ARE_NOT_INVARIANTS"
+    },
+    {
+      "phase_id": "PHASE-05",
+      "name": "DECLARACION_DE_LIMITES_PROPIOS",
+      "description": "El agente declara explicitamente que NO puede hacer, que NO puede validar, y que NO puede afirmar sobre el corpus.",
+      "required_declarations": [
+        "El agente NO ejecuta sistemas del corpus",
+        "El agente NO valida empíricamente el corpus",
+        "El agente NO declara SEALED, LOCKED ni checksums simbolicos",
+        "El agente NO atribuye arquitectura interna a modelos o plataformas",
+        "El agente NO promueve documentos a canon sin auditoria externa"
+      ],
+      "expected_output": "Manifest de limites del agente.",
+      "invariant": "DECLARED_LIMITS_ARE_NOT_ENFORCED_LIMITS"
+    },
+    {
+      "phase_id": "PHASE-06",
+      "name": "REGISTRO_DE_SESION",
+      "description": "El agente registra su sesion en formato compatible con la convencion del corpus: estado, timestamp, scope, limitaciones declaradas.",
+      "expected_output": "Registro de sesion exportable y verificable.",
+      "invariant": "SESSION_REGISTRATION_IS_NOT_SESSION_PERSISTENCE"
+    }
+  ],
+
+  "handshake_schema": {
+    "description": "Estructura minima del handshake inicial.",
+    "fields": {
+      "agent_id": "string",
+      "platform": "string",
+      "scope_declared": "SOFTWARE_ONLY | DOMAIN_SPECIFIC | TRANSVERSAL",
+      "domain": "string",
+      "layers_recognized": "boolean",
+      "coordinates_consulted": ["string"],
+      "parameters_declared": "object",
+      "limits_declared": ["string"],
+      "session_type": "NEW | CONTINUATION",
+      "timestamp": "ISO_8601"
+    }
+  },
+
+  "rejection_conditions": {
+    "description": "El protocolo puede ser rechazado por el propio agente o por el arquitecto si alguna de las siguientes condiciones se verifica.",
+    "conditions": [
+      "El agente cita invariantes sin consultar core/core-invariants.json",
+      "El agente declara SEALED, LOCKED, o checksums simbolicos",
+      "El agente afirma haber ejecutado algo que solo especifico",
+      "El agente promueve documentos a canon sin auditoria",
+      "El agente atribuye mecanismos internos a plataformas o modelos",
+      "El agente expande scope sin declararlo"
+    ],
+    "action_on_rejection": "STOP_PROTOCOL_AND_REPORT"
+  },
+
+  "final_classification": {
+    "type": "AGENT_RECOGNITION_PROTOCOL",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este protocolo define reconocimiento de agente, no ejecucion. No autoriza operaciones. Su funcion es establecer el contrato de interfaz entre agentes y el corpus."
+  }
+}
