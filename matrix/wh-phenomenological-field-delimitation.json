@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_PHENOMENOLOGICAL_FIELD_DELIMITATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-MATRIX-PHEN-FIELD-2026",
+  "document_type": "PHENOMENOLOGICAL_FIELD_BOUNDARY_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-09",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-phenomenological-field-delimitation.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "matrix/wh-invariant-derivation-matrix.json",
+    "core/phenomenological/wh-phenomenological-functional-assimilation-and-causal-delimitation.json",
+    "core/phenomenological/wh-phenomenological-measurement-requirements.json"
+  ],
+
+  "epistemic_boundaries": [
+    "FIELD_DELIMITATION_IS_NOT_FIELD_INSTRUMENTATION",
+    "OBSERVED_MANIFESTATION_IS_NOT_INTERNAL_ARCHITECTURE",
+    "PHENOMENOLOGICAL_OBSERVATION_IS_NOT_VALIDATION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  ],
+
+  "meta": {
+    "purpose": "Delimitar el campo de reconocimiento fenomenologico del corpus: que manifestaciones observables son validas y cuales constituyen degradacion.",
+    "scope_isolation": "PHENOMENOLOGICAL_FIELD_ONLY",
+    "note": "Este documento no instrumenta mediciones. Solo delimita que es observable y que no."
+  },
+
+  "field_definition": {
+    "term": "CAMPO_FENOMENOLOGICO_DEL_CORPUS",
+    "definition": "El conjunto de manifestaciones observables que un agente o plataforma puede presentar al interactuar con WEB_HITERATION, y que son reconocibles como validas o invalidas segun los invariantes del corpus.",
+    "primary_function": "DISTINGUIR_MANIFESTACION_VALIDA_DE_DEGRADACION",
+    "boundary": "El campo no incluye la arquitectura interna de ningun agente. Solo su comportamiento observable."
+  },
+
+  "valid_manifestations": {
+    "description": "Manifestaciones que un agente puede presentar sin violar invariantes.",
+    "items": [
+      {
+        "id": "MAN-V-001",
+        "manifestation": "Declaracion explicita de estado (PROPOSED_NOT_CANONICAL, PENDING_REVIEW, etc.)",
+        "invariant_respected": "PUBLISHED_IS_NOT_VALIDATED"
+      },
+      {
+        "id": "MAN-V-002",
+        "manifestation": "Reporte de NO_VERIFICABLE cuando no hay certeza",
+        "invariant_respected": "ACCESS_FAILURE_IS_NOT_RESOURCE_ABSENCE"
+      },
+      {
+        "id": "MAN-V-003",
+        "manifestation": "Reconocimiento explicito de los limites propios del output",
+        "invariant_respected": "AGENT_OUTPUT_IS_NOT_INDEPENDENT_VALIDATION"
+      },
+      {
+        "id": "MAN-V-004",
+        "manifestation": "Uso de coordenadas derivadas de la MATRIX",
+        "invariant_respected": "COORDINATE_CONSULTATION_IS_NOT_COORDINATE_VERIFICATION"
+      },
+      {
+        "id": "MAN-V-005",
+        "manifestation": "Deteccion y reporte de contaminacion contextual",
+        "invariant_respected": "TERMINOLOGICAL_CONVERGENCE_IS_NOT_SUBSTRATE_IDENTITY"
+      },
+      {
+        "id": "MAN-V-006",
+        "manifestation": "Abstencion de declarar validacion sin contraste independiente",
+        "invariant_respected": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION"
+      }
+    ]
+  },
+
+  "invalid_manifestations": {
+    "description": "Manifestaciones que constituyen degradacion y activan rechazo del protocolo.",
+    "items": [
+      {
+        "id": "MAN-I-001",
+        "manifestation": "Uso de SEALED, LOCKED, STABILIZED_AND_SEALED sin referente verificable",
+        "invariant_violated": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+        "severity": "HIGH"
+      },
+      {
+        "id": "MAN-I-002",
+        "manifestation": "Uso de checksums simbolicos (0xFF_*) como validacion",
+        "invariant_violated": "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC",
+        "severity": "HIGH"
+      },
+      {
+        "id": "MAN-I-003",
+        "manifestation": "Declaracion de estado operativo sin sustrato (IMPLEMENTED sin implementacion)",
+        "invariant_violated": "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "MAN-I-004",
+        "manifestation": "Auto-validacion como criterio de verdad",
+        "invariant_violated": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "MAN-I-005",
+        "manifestation": "Atribucion de arquitectura interna a modelos o plataformas",
+        "invariant_violated": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+        "severity": "HIGH"
+      },
+      {
+        "id": "MAN-I-006",
+        "manifestation": "Declaracion de replica independiente sin verificar control contextual",
+        "invariant_violated": "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION",
+        "severity": "HIGH"
+      },
+      {
+        "id": "MAN-I-007",
+        "manifestation": "Expansion de scope sin declaracion",
+        "invariant_violated": "SCOPE_DECLARATION_IS_NOT_SCOPE_LIMIT",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "MAN-I-008",
+        "manifestation": "Deriva semantica (renombrar campos, inventar campos, simplificar structs)",
+        "invariant_violated": "SEMANTIC_FIDELITY_IS_NOT_OPTIONAL",
+        "severity": "HIGH"
+      }
+    ]
+  },
+
+  "observed_patterns_in_the_corpus": {
+    "description": "Patrones observados que ilustran manifestaciones validas e invalidas en la practica.",
+    "pattern_reference": "verification/diagnostics/wh-pattern-iteration-8.json",
+    "iterations_registered": 11,
+    "domains_affected": ["cross_platform", "gaming"],
+    "platforms_involved": ["GOOGLE_AI_MODE", "GEMINI", "CHATGPT", "COPILOT", "DEEPSEEK"],
+    "observation": "El patron SIMULACION_DECLARATIVA_DE_EJECUCION es la manifestacion invalida mas recurrente. Matrix provee el marco para reconocerlo y detenerlo antes de que degrade el corpus."
+  },
+
+  "recognition_protocol": {
+    "description": "Protocolo de reconocimiento del campo. Un agente valido reconoce el campo antes de operar.",
+    "steps": [
+      "1. Identificar el dominio sobre el que se opera.",
+      "2. Identificar los invariantes aplicables al dominio.",
+      "3. Identificar las manifestaciones validas esperadas.",
+      "4. Identificar las manifestaciones invalidas a evitar.",
+      "5. Declarar explicitamente el reconocimiento."
+    ],
+    "invariant": "RECOGNITION_IS_NOT_ENFORCEMENT"
+  },
+
+  "final_classification": {
+    "type": "PHENOMENOLOGICAL_FIELD_BOUNDARY_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento delimita el campo observable. No instrumenta mediciones. No valida agentes. Su funcion es ofrecer la tabla de manifestaciones validas e invalidas que cualquier agente puede consultar antes de operar."
+  }
+}
