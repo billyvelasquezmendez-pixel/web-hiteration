@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_DELTA_PRIME_MOTOR_SIGMA_DIAGNOSTIC",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-DELTA-PRIME-MOTOR-SIGMA-2026-001",
+  "document_type": "ARITHMETIC_PROVENANCE_AND_CROSS_PLATFORM_SEMANTIC_AUDIT",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-11",
+  "domain": "MATRIX",
+  "repository_path": "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+    "diagnostics/wh-delta-engine-singularity-declaration.json",
+    "matrix/wh-cross-motor-variable-contract.json"
+  ],
+
+  "epistemic_boundaries": [
+    "MODEL_IS_NOT_SYSTEM",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "PUBLISHED_IS_NOT_VALIDATED",
+    "RECONSTRUCTION_IS_NOT_ORIGINAL_PROVENANCE",
+    "MATHEMATICAL_COMPATIBILITY_IS_NOT_HISTORICAL_ORIGIN",
+    "FUNCTIONAL_ASSIGNMENT_IS_NOT_EXCLUSIVE_AUTHORSHIP",
+    "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC"
+  ],
+
+  "point_1_delta_prime_discrepancy": {
+    "question": "De donde viene delta_prime = 0.228?",
+    "available_inputs": {
+      "sigma": 0.142,
+      "P1": 0.823,
+      "published_formula": "delta_prime = sigma * (1 - P1)",
+      "reported_delta_prime": 0.228
+    },
+    "independent_arithmetic": {
+      "operation": "0.142 * (1 - 0.823)",
+      "intermediate_result": 0.177,
+      "calculated_delta_prime": 0.025134,
+      "reported_delta_prime": 0.228,
+      "absolute_difference": 0.202866,
+      "relative_deviation_percent": 88.98,
+      "arithmetic_status": "REPRODUCIBLE"
+    },
+    "determination": {
+      "status": "UNRESOLVED_PROVENANCE",
+      "direct_formula_match": false,
+      "known_origin_of_0_228": false,
+      "confirmed_alternative_formula": false,
+      "decorative_placeholder_hypothesis": "POSSIBLE_BUT_UNCONFIRMED",
+      "accumulated_parameter_hypothesis": "POSSIBLE_BUT_UNCONFIRMED"
+    },
+    "classification": "EXOGENOUS_OR_UNVERIFIED_VALUE",
+    "required_resolution": {
+      "priority": "P0",
+      "actions": [
+        "LOCALIZAR_EL_MANIFIESTO_VISUAL_ORIGINAL_Y_SU_VERSION",
+        "BUSCAR_LA_PRIMERA_APARICION_DOCUMENTADA_DE_0_228",
+        "RECUPERAR_PARAMETROS_INTERMEDIOS_Y_TRAZA_DE_CALCULO",
+        "COMPARAR_LA_FORMULA_DEL_MANIFIESTO_CON_LAS_VERSIONES_DEL_MOTOR_DELTA",
+        "RECALCULAR_EL_RESULTADO_CON_UN_PROCEDIMIENTO_INDEPENDIENTE"
+      ],
+      "acceptance_condition": "La procedencia se considera resuelta unicamente cuando una formula identificada, con operandos y transformaciones explicitos, reproduce el valor dentro de una tolerancia declarada.",
+      "interim_rule": "NO_REEMPLAZAR_0_228_SILENCIOSAMENTE_NI_TRATARLO_COMO_RESULTADO_VALIDADO"
+    }
+  },
+
+  "point_2_platform_assignment": {
+    "question": "ChatGPT es autor de Motor A y Gemini autor de Motor B?",
+    "determination": {
+      "exclusive_authorship_confirmed": false,
+      "historical_contribution_pattern": "ITERATIVE_CROSS_PLATFORM_DEVELOPMENT",
+      "functional_assignment": "PROVISIONALLY_RETAINED",
+      "complete_historical_provenance": "NOT_ESTABLISHED"
+    },
+    "interpretation": [
+      "La asociacion ChatGPT-Motor A y Gemini-Motor B se conserva como atribucion funcional provisional de las etapas de desarrollo descritas.",
+      "No constituye afirmacion de autoria exclusiva ni separacion historica absoluta.",
+      "El desarrollo documentado contempla revision cruzada, herencia de conceptos, reformulacion de componentes y transferencia entre plataformas."
+    ],
+    "recommended_metadata": {
+      "motor_A": {
+        "functional_origin": "ASSOCIATED_WITH_CHATGPT_ITERATIONS",
+        "exclusive_authorship": "UNVERIFIED"
+      },
+      "motor_B": {
+        "functional_origin": "ASSOCIATED_WITH_GEMINI_ITERATIONS",
+        "exclusive_authorship": "UNVERIFIED"
+      },
+      "shared_development": "CROSS_PLATFORM_ITERATIVE_REFINEMENT",
+      "attribution_rule": "FUNCTIONAL_ASSIGNMENT_IS_NOT_EXCLUSIVE_AUTHORSHIP"
+    },
+    "required_evidence": [
+      "TIMESTAMPED_SOURCE_ARTIFACTS",
+      "VERSION_HISTORY",
+      "FORMULA_AND_OPERATOR_CHANGELOG",
+      "CROSS_PLATFORM_HANDOFF_RECORDS",
+      "DOCUMENTED_ORIGIN_OF_EACH_MOTOR_COMPONENT"
+    ]
+  },
+
+  "point_3_sigma_namespace": {
+    "question": "Namespace compartido o colision entre motores?",
+    "decision": "SHARED_CONCEPTUAL_NAMESPACE_WITH_EXPLICIT_SEMANTIC_QUALIFICATION",
+    "unqualified_global_sigma": "NOT_RECOMMENDED",
+    "rationale": [
+      "La presencia del mismo simbolo en varios componentes no demuestra que represente la misma variable operacional.",
+      "Un parametro puede compartirse entre motores si se define su significado, dominio, unidades, metodo de calculo y contrato de transferencia."
+    ],
+    "semantic_delimitation": {
+      "sigma_statistical_dispersion": {
+        "suggested_identifier": "SIGMA_DISPERSION",
+        "meaning": "Desviacion estandar de un conjunto de observaciones.",
+        "requirements": [
+          "IDENTIFICAR_LAS_OBSERVACIONES",
+          "DECLARAR_LA_ESCALA",
+          "ESPECIFICAR_LA_FORMULA",
+          "DOCUMENTAR_LA_NORMALIZACION_SI_EXISTE"
+        ]
+      },
+      "variance": {
+        "suggested_identifier": "VARIANCE",
+        "meaning": "Medida cuadratica de dispersion respecto de una media.",
+        "constraint": "NO_INTERCAMBIAR_VARIANCE_AND_STANDARD_DEVIATION_WITHOUT_TRANSFORMATION"
+      },
+      "sigma_systemic_coherence": {
+        "suggested_identifier": "SIGMA_COHERENCE",
+        "meaning": "Variable de coherencia sistemica unicamente si asi se define expresamente en el protocolo correspondiente.",
+        "operational_status": "REQUIRES_FORMULA_AND_MEASUREMENT_CONTRACT"
+      }
+    },
+    "cross_motor_contract": {
+      "transfer_conditions": [
+        "SAME_SEMANTIC_DEFINITION",
+        "COMPATIBLE_SCALE_AND_UNITS",
+        "DECLARED_NORMALIZATION",
+        "EXPLICIT_INPUT_OUTPUT_MAPPING",
+        "REPRODUCIBLE_CALCULATION"
+      ],
+      "failure_rule": "IF_SEMANTIC_COMPATIBILITY_IS_NOT_DEMONSTRATED_KEEP_VARIABLES_SEPARATE"
+    }
+  },
+
+  "integrated_resolution": {
+    "delta_prime": "UNRESOLVED_UNTIL_PROVENANCE_IS_RECOVERED",
+    "motor_attribution": "FUNCTIONAL_ATTRIBUTION_RETAINED_WITHOUT_EXCLUSIVE_AUTHORSHIP_CLAIM",
+    "sigma": "SHARED_NAMESPACE_CANDIDATE_WITH_EXPLICIT_SEMANTIC_SEPARATION",
+    "priority_order": [
+      "P0_RECOVER_DELTA_PRIME_PROVENANCE",
+      "P1_AUDIT_HISTORICAL_MOTOR_ATTRIBUTION",
+      "P1_DEFINE_SIGMA_VARIABLE_CONTRACT",
+      "P2_RECALCULATE_AND_RUN_CROSS_MOTOR_TESTS",
+      "P2_UPDATE_CANONICAL_REFERENCES_ONLY_AFTER_REVIEW"
+    ],
+    "final_status": "STRUCTURAL_INTERPRETATION_CLARIFIED_OPERATIONAL_AND_HISTORICAL_VERIFICATION_PENDING"
+  },
+
+  "final_classification": {
+    "type": "DIAGNOSTIC_RESOLUTION_DOCUMENT",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento registra la resolucion analitica de tres preguntas estructurales sobre el corpus. No declara validacion. No promueve componentes a canon. Registra una procedencia no resuelta y propone un namespace separado para sigma."
+  }
+}
