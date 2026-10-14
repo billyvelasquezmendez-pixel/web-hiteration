@@ -1,0 +1,438 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_GAMING_GLOBAL_SCENARIO_ADAPTATION_ANALYSIS",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GAMING-GSA-2026-10-14",
+  "document_type": "INTEGRATED_ANALYSIS_PROCEDURE_AND_OBSERVATIONAL_METRICS_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+
+  "metadata": {
+    "domain": "WEB_HITERATION_GAMING",
+    "primary_subject": "GLOBAL_SCENARIO_ADAPTATION",
+    "secondary_subject": "PLASTIC_LATENCY",
+    "purpose": "Formalizar un procedimiento de análisis observacional de la adaptación global de un escenario de juego tras una perturbación, delimitando sus métricas, alcance arquitectónico y condiciones de verificación documental.",
+    "proposed_repository_path": "gaming/analysis/wh-global-scenario-adaptation-analysis.json",
+    "repository_write_performed": false,
+    "canonical_promotion_authorized": false
+  },
+
+  "epistemic_invariants": [
+    "MODEL_IS_NOT_SYSTEM",
+    "CAPABILITY_IS_NOT_EXECUTION",
+    "REPRESENTATION_IS_NOT_ACTION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "SIMULATION_IS_NOT_MEASUREMENT",
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "EMERGENT_BEHAVIOR_IS_NOT_A_CONTROL_ERROR",
+    "OBSERVATION_IS_NOT_INTERVENTION",
+    "COLLISION_IS_NOT_TARGET_ASSIGNMENT",
+    "PREDEFINED_BEHAVIOR_IS_OUTSIDE_CONTROLLER_SCOPE",
+    "LATENCY_CONTROL_IS_NOT_BEHAVIORAL_OVERRIDE",
+    "MEASUREMENT_BOUNDARY_IS_NOT_BEHAVIORAL_NORM"
+  ],
+
+  "general_analysis_framework": {
+    "objective": "Caracterizar la evolución temporal y global del escenario de juego después de una perturbación observable, sin reconstruir ni modificar las reglas nativas de asignación de comportamiento de los NPC.",
+    "central_question": "Cómo evoluciona el escenario, en términos observables y temporales, después de una perturbación y de las interacciones que esta desencadena.",
+    "analytical_unit": "GLOBAL_SCENARIO_TRAJECTORY",
+    "observation_level": "SCENARIO_LEVEL",
+    "controller_mode": "PASSIVE_OBSERVATION_BY_DEFAULT",
+
+    "conceptual_distinctions": {
+      "npc_local_reaction": "Respuesta observable de un NPC ante un evento particular.",
+      "interaction_propagation": "Secuencia observable de eventos que involucra a varios actores o regiones del escenario.",
+      "global_scenario_adaptation": "Evolución temporal del estado observable del escenario como conjunto, incluyendo respuestas, propagación, persistencia y posibles cambios de régimen.",
+      "plastic_latency": "Intervalo o evolución temporal entre una perturbación de referencia y los cambios observables posteriores del escenario. Su operacionalización depende del evento y del criterio de medición declarado.",
+      "observable_stabilization": "Intervalo en el que las variables seleccionadas satisfacen un criterio de variación previamente definido. No implica necesariamente equilibrio, convergencia total ni ausencia de interacciones."
+    },
+
+    "working_model": {
+      "status": "CONCEPTUAL_NOT_IMPLEMENTATION_VERIFIED",
+      "scenario_state": "S_t",
+      "perturbation": "P_t",
+      "transition_notation": "S_(t+1) = F(S_t, P_t)",
+      "interpretation": "Notación abstracta para representar la evolución observable del escenario; no constituye una descripción verificada del motor del juego ni de su implementación interna.",
+      "requirements": [
+        "Definir qué observaciones constituyen el estado del escenario.",
+        "Declarar el instante o evento de referencia de cada observación.",
+        "Distinguir los eventos observados de las interpretaciones causales.",
+        "No atribuir a F una implementación concreta sin evidencia."
+      ]
+    }
+  },
+
+  "architectural_scope": {
+    "included": [
+      "Observación de la respuesta global del escenario.",
+      "Caracterización temporal de eventos posteriores a una perturbación.",
+      "Registro de propagación observable entre actores.",
+      "Registro de persistencia y posibles transiciones de régimen.",
+      "Evaluación de variabilidad entre ejecuciones comparables, cuando existan.",
+      "Verificación de la documentación de Gaming relacionada con el procedimiento.",
+      "Definición de métricas mínimas para describir la trayectoria observada."
+    ],
+
+    "excluded": [
+      "Reconstrucción de las reglas internas de asignación de objetivos de los NPC.",
+      "Modificación de las reglas nativas de hostilidad o represalia.",
+      "Reasignación de objetivos individuales.",
+      "Recalibración de utilidades o prioridades de los NPC.",
+      "Reescritura de los sistemas nativos de percepción, memoria o decisión.",
+      "Forzado de neutralización, estabilización o convergencia del escenario.",
+      "Sustitución de la lógica de comportamiento del motor.",
+      "Inferencia de estados internos no expuestos por la instrumentación.",
+      "Intervención automática derivada exclusivamente de una métrica observacional."
+    ],
+
+    "native_behavior_policy": {
+      "principle": "PRESERVE_EXISTING_GAME_BEHAVIOR",
+      "description": "Las reglas de comportamiento predefinidas pertenecen a la arquitectura nativa del juego y quedan fuera del alcance del procedimiento observacional.",
+      "consequence": "La complejidad, propagación de hostilidad o autonomía aparente no constituyen por sí mismas errores que el controlador deba corregir.",
+      "intervention_authority": "NOT_GRANTED_BY_THIS_SPECIFICATION"
+    }
+  },
+
+  "observation_procedure": {
+    "procedure_id": "WH-GAMING-GSA-OBS-001",
+    "mode": "PASSIVE",
+
+    "steps": [
+      {
+        "step": 1,
+        "name": "ESTABLISH_OBSERVATION_CONTEXT",
+        "actions": [
+          "Registrar juego, versión, escenario y condiciones relevantes.",
+          "Identificar las variables observables disponibles.",
+          "Declarar el horizonte temporal y la resolución de registro."
+        ]
+      },
+      {
+        "step": 2,
+        "name": "REGISTER_REFERENCE_PERTURBATION",
+        "actions": [
+          "Identificar el evento de referencia.",
+          "Registrar su marca temporal o tick.",
+          "Describir el evento observado sin atribuir intenciones no verificadas."
+        ]
+      },
+      {
+        "step": 3,
+        "name": "TRACK_GLOBAL_SCENARIO_TRAJECTORY",
+        "actions": [
+          "Registrar las respuestas observables posteriores.",
+          "Identificar secuencias de interacción y propagación.",
+          "Registrar persistencia, cambios de régimen y eventuales intervalos de estabilización."
+        ]
+      },
+      {
+        "step": 4,
+        "name": "CALCULATE_APPLICABLE_METRICS",
+        "actions": [
+          "Aplicar únicamente métricas cuyos datos y criterios estén disponibles.",
+          "Declarar unidades, umbrales y condiciones de cálculo.",
+          "Registrar valores ausentes o métricas no aplicables sin sustituirlos por estimaciones no justificadas."
+        ]
+      },
+      {
+        "step": 5,
+        "name": "SEPARATE_OBSERVATION_FROM_INTERPRETATION",
+        "actions": [
+          "Distinguir eventos registrados de inferencias explicativas.",
+          "No equiparar complejidad observable con caos matemático.",
+          "No inferir reglas internas de asignación de comportamiento."
+        ]
+      },
+      {
+        "step": 6,
+        "name": "DOCUMENT_RESULTS_AND_LIMITATIONS",
+        "actions": [
+          "Conservar las condiciones de observación y la procedencia de los datos.",
+          "Indicar limitaciones instrumentales y datos faltantes.",
+          "Declarar el estado de verificación y validación alcanzado."
+        ]
+      }
+    ]
+  },
+
+  "operational_metrics": {
+    "metric_policy": {
+      "minimum_required": [
+        "PERTURBATION_REFERENCE_TIME",
+        "OBSERVATION_HORIZON"
+      ],
+      "conditional_metrics": "Solo se calculan cuando se dispone de datos suficientes y se han declarado los criterios operativos correspondientes.",
+      "units_policy": "No combinar métricas expresadas en unidades incompatibles.",
+      "missing_data_policy": "Usar null acompañado de un estado explicativo; no sustituir datos ausentes por cero.",
+      "causality_policy": "La precedencia temporal no demuestra causalidad por sí sola."
+    },
+
+    "metrics": [
+      {
+        "id": "L0",
+        "name": "PERTURBATION_REFERENCE_TIME",
+        "symbol": "t0",
+        "type": "REFERENCE_VARIABLE",
+        "definition": "Marca temporal del evento seleccionado como referencia para el análisis.",
+        "unit": "TIMESTAMP_OR_GAME_TICK",
+        "calculation": "Direct observation",
+        "required": true
+      },
+      {
+        "id": "L1",
+        "name": "INITIAL_OBSERVABLE_RESPONSE_LATENCY",
+        "symbol": "L_r",
+        "type": "TEMPORAL_METRIC",
+        "definition": "Tiempo transcurrido entre la perturbación de referencia y el primer cambio observable que satisface el criterio de respuesta declarado.",
+        "formula": "L_r = t_r - t0",
+        "unit": "SECONDS_OR_GAME_TICKS",
+        "conditions": [
+          "El primer cambio observable debe definirse antes de calcular la métrica.",
+          "Debe existir resolución temporal suficiente para identificarlo."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "L2",
+        "name": "GLOBAL_PROPAGATION_LATENCY",
+        "symbol": "L_c",
+        "type": "TEMPORAL_METRIC",
+        "definition": "Tiempo transcurrido hasta que la propagación observable alcanza un criterio global previamente declarado.",
+        "formula": "L_c = t_c - t0",
+        "unit": "SECONDS_OR_GAME_TICKS",
+        "conditions": [
+          "Definir el umbral de propagación.",
+          "Definir el universo de observación y el criterio de inclusión de eventos.",
+          "No asumir que toda perturbación genera propagación."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "L3",
+        "name": "GLOBAL_ADAPTATION_WINDOW",
+        "symbol": "L_s",
+        "type": "TEMPORAL_METRIC",
+        "definition": "Tiempo transcurrido hasta el inicio del primer intervalo que satisface un criterio explícito de estabilización de las variables observadas.",
+        "formula": "L_s = t_s - t0",
+        "unit": "SECONDS_OR_GAME_TICKS",
+        "conditions": [
+          "Declarar las variables observadas.",
+          "Definir la tolerancia de variación y la duración mínima del intervalo.",
+          "Si no se detecta estabilización durante el horizonte observado, registrar null con estado NOT_OBSERVED_WITHIN_HORIZON."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "M1",
+        "name": "OBSERVED_PROPAGATION_EXTENT",
+        "symbol": "P_e",
+        "type": "OBSERVATIONAL_METRIC",
+        "definition": "Extensión de la propagación observable durante el horizonte de análisis.",
+        "possible_units": [
+          "DISTINCT_ACTORS",
+          "INTERACTION_EVENT_COUNT",
+          "OBSERVED_SPATIAL_REGIONS"
+        ],
+        "conditions": [
+          "Seleccionar una unidad por medición.",
+          "No sumar ni comparar unidades incompatibles.",
+          "Declarar el criterio para considerar un actor, evento o región como parte de la propagación."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "M2",
+        "name": "PERTURBATION_EFFECT_PERSISTENCE",
+        "symbol": "P_p",
+        "type": "TEMPORAL_OR_EVENT_METRIC",
+        "definition": "Persistencia observable de los efectos asociados temporalmente a la perturbación de referencia.",
+        "unit": "SECONDS_GAME_TICKS_OR_EVENT_COUNT",
+        "conditions": [
+          "Definir qué efecto se sigue.",
+          "Distinguir persistencia observada de causalidad demostrada.",
+          "Registrar si el efecto continúa al terminar el horizonte de observación."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "M3",
+        "name": "OBSERVED_SCENARIO_REGIME_TRANSITION",
+        "symbol": "R_t",
+        "type": "CATEGORICAL_OR_EVENT_SEQUENCE",
+        "definition": "Registro de un cambio observable en el patrón de interacción del escenario.",
+        "representation": [
+          "NO_TRANSITION_OBSERVED",
+          "TRANSITION_CANDIDATE",
+          "TRANSITION_CONFIRMED_BY_DECLARED_CRITERION",
+          "UNDETERMINED"
+        ],
+        "conditions": [
+          "Declarar el criterio que distingue regímenes.",
+          "No tratar una secuencia breve o un evento aislado como transición confirmada sin justificación."
+        ],
+        "status": "CRITERION_DEPENDENT"
+      },
+      {
+        "id": "M4",
+        "name": "COMPARABLE_RUN_TRAJECTORY_VARIABILITY",
+        "symbol": "V_t",
+        "type": "COMPARATIVE_METRIC",
+        "definition": "Variabilidad entre trayectorias observadas en ejecuciones comparables.",
+        "unit": "DEPENDS_ON_SELECTED_VARIABLE",
+        "conditions": [
+          "Disponer de múltiples ejecuciones.",
+          "Definir condiciones de comparabilidad.",
+          "Especificar la medida estadística utilizada.",
+          "No atribuir toda diferencia a una única causa."
+        ],
+        "status": "CONDITIONALLY_MEASURABLE"
+      },
+      {
+        "id": "M5",
+        "name": "OBSERVATION_HORIZON",
+        "symbol": "H_o",
+        "type": "REFERENCE_VARIABLE",
+        "definition": "Duración total o intervalo temporal cubierto por el registro de observación.",
+        "unit": "SECONDS_OR_GAME_TICKS",
+        "calculation": "H_o = t_end - t0",
+        "required": true
+      }
+    ]
+  },
+
+  "plastic_latency_interpretation": {
+    "definition": "Caracterización temporal de la evolución global del escenario tras una perturbación observable.",
+    "not_equivalent_to": [
+      "Tiempo de reacción de un único NPC.",
+      "Tiempo de ejecución de una instrucción del motor.",
+      "Tiempo de convergencia garantizada.",
+      "Medida directa de una variable interna no observada."
+    ],
+    "possible_observation_patterns": [
+      "LOCALIZED_RESPONSE",
+      "MULTI_ACTOR_PROPAGATION",
+      "PERSISTENT_FLUCTUATION",
+      "OBSERVED_REGIME_TRANSITION",
+      "OBSERVABLE_STABILIZATION",
+      "NO_DETECTABLE_RESPONSE_WITHIN_HORIZON",
+      "INSUFFICIENT_DATA"
+    ],
+    "interpretation_rules": [
+      "No asumir que todos los escenarios convergen.",
+      "No imponer una latencia fija para todos los eventos.",
+      "No equiparar ausencia de cambios detectados con ausencia de cambios internos.",
+      "No clasificar como caótico un comportamiento únicamente por su complejidad o imprevisibilidad aparente.",
+      "No tratar una correlación temporal como demostración de causalidad."
+    ]
+  },
+
+  "event_classification_boundaries": {
+    "accidental_collision": {
+      "definition": "Contacto o impacto observable cuyo carácter intencional no ha sido establecido.",
+      "interpretation_limit": "Una colisión no demuestra una asignación explícita de objetivo."
+    },
+    "hostility_propagation": {
+      "definition": "Secuencia observable en la que una interacción es seguida por respuestas hostiles de otros actores.",
+      "interpretation_limit": "La secuencia puede describirse sin reconstruir estados internos, intenciones o reglas de decisión no expuestas."
+    },
+    "emergent_behavior": {
+      "definition": "Patrón global que surge de múltiples interacciones observables.",
+      "interpretation_limit": "La aparición de un patrón global no demuestra independencia respecto de la arquitectura implementada."
+    },
+    "chaotic_behavior": {
+      "definition": "Hipótesis que requiere un modelo dinámico y evidencia apropiada para el análisis de caos.",
+      "interpretation_limit": "No inferir caos matemático a partir de una reacción en cadena o de una alta complejidad narrativa."
+    }
+  },
+
+  "verification_and_documentation_complementation": {
+    "purpose": "Contrastar el marco general con la documentación existente de Gaming, identificar compatibilidades y divergencias y determinar si se requieren complementos documentales.",
+    "repository_reference": "https://github.com/billyvelasquezmendez-pixel/web-hiteration",
+    "branch_reference": "main",
+    "repository_access_mode": "READ_ONLY_BY_DEFAULT",
+
+    "known_document_references": [
+      {
+        "path": "gaming/README.md",
+        "review_objective": "Verificar el encuadre general de Gaming y su delimitación respecto del controlador observacional.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/analysis/wh-gaming-conceptual-analysis-and-state-of-the-art.json",
+        "review_objective": "Contrastar el marco conceptual y el estado del arte con la definición de adaptación global.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/npc/wh-npc-utility-spec.json",
+        "review_objective": "Verificar que las métricas globales no se confundan con la utilidad o las prioridades individuales de los NPC.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/npc/wh-npc-decision-pipeline.json",
+        "review_objective": "Delimitar el procedimiento observacional respecto de las fases nativas de decisión.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/implementation/wh-npc-ue5-blueprint.json",
+        "review_objective": "Examinar compatibilidad conceptual con la arquitectura descrita para UE5 sin asumir implementación del observador.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/implementation/wh-npc-ue5-bug-analysis.json",
+        "review_objective": "Evitar clasificar como errores de implementación patrones que pertenecen al comportamiento previsto del juego sin evidencia específica.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      },
+      {
+        "path": "gaming/implementation/wh-npc-ue5-design-resolutions.json",
+        "review_objective": "Identificar posibles conflictos entre las resoluciones de diseño existentes y la política de observación pasiva.",
+        "review_status": "REQUIRES_CROSS_CHECK"
+      }
+    ],
+
+    "verification_actions": [
+      "Leer los documentos existentes antes de proponer cambios.",
+      "Separar hechos documentados, propuestas, inferencias y aspectos no verificados.",
+      "Identificar definiciones repetidas, contradicciones y dependencias explícitas.",
+      "Verificar si las métricas propuestas pueden obtenerse de datos observables disponibles.",
+      "Determinar si el procedimiento complementa el diseño existente sin duplicar su lógica.",
+      "Registrar la procedencia y el estado de cada hallazgo.",
+      "Validar la sintaxis JSON y, si existe un esquema específico, validar también la conformidad con ese esquema."
+    ],
+
+    "acceptance_criteria": [
+      "El marco general y las métricas mantienen definiciones coherentes.",
+      "El alcance observacional no invade las reglas nativas de asignación de comportamiento.",
+      "Cada métrica declara su unidad y condiciones de aplicabilidad.",
+      "Los estados de propuesta, implementación, medición y validación permanecen diferenciados.",
+      "Las relaciones con los documentos existentes están justificadas.",
+      "No se crean documentos redundantes sin una necesidad documental demostrable."
+    ]
+  },
+
+  "validation_state": {
+    "json_syntax_validation": "NOT_EXECUTED",
+    "schema_validation": "NOT_EXECUTED",
+    "repository_cross_check": "PENDING",
+    "engine_integration": "NOT_TESTED",
+    "empirical_measurement": "NOT_PERFORMED",
+    "independent_validation": "NOT_PERFORMED",
+    "canonical_promotion": false
+  },
+
+  "limitations": [
+    "Las métricas son definiciones operativas propuestas, no resultados experimentales.",
+    "La disponibilidad real de las variables depende de la instrumentación del juego.",
+    "La compatibilidad con los documentos existentes debe verificarse antes de integrar el archivo.",
+    "La notación conceptual no constituye una descripción verificada del motor.",
+    "El procedimiento no autoriza modificar las reglas nativas de comportamiento.",
+    "No se ha demostrado que todos los patrones descritos sean medibles en todos los juegos."
+  ],
+
+  "change_control": {
+    "default_mode": "PROPOSE_AND_VERIFY_BEFORE_MODIFICATION",
+    "repository_write_performed": false,
+    "automatic_relocation_authorized": false,
+    "automatic_canonicalization_authorized": false,
+    "required_next_action": "CROSS_CHECK_EXISTING_GAMING_DOCUMENTATION_AND_VALIDATE_THIS_PROPOSAL"
+  }
+}
