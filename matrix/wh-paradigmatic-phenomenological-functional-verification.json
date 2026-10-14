@@ -1,0 +1,358 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_PARADIGMATIC_PHENOMENOLOGICAL_FUNCTIONAL_VERIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-PPF-VERIFY-2026-10-12",
+  "document_type": "PARADIGMATIC_VERIFICATION_INSTRUMENT",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-12",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-paradigmatic-phenomenological-functional-verification.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+    "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+    "matrix/wh-cross-motor-variable-contract.json"
+  ],
+
+  "epistemic_boundaries": [
+    "OBSERVED_MANIFESTATION_IS_NOT_INTERNAL_ARCHITECTURE",
+    "CONVERGENCE_IS_NOT_INDEPENDENT_VALIDATION",
+    "USE_IS_NOT_SELECTION",
+    "APPLICATION_IS_NOT_AUTHORIZATION",
+    "TEMPORAL_SEQUENCE_IS_NOT_CAUSAL_PROOF",
+    "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_ACTIVATION",
+    "SHARED_VOCABULARY_IS_NOT_SHARED_METHOD"
+  ],
+
+  "meta": {
+    "purpose": "Instrumento de verificacion paradigmatica para comprobar el origen, la fecha y el modo de aplicacion de las invariantes del Motor A a dominios distintos a su dominio original. Establece la temporalidad de cada aplicacion, distingue uso de seleccion, y evalua si la convergencia entre plataformas constituye convergencia sistemica o artefacto de vocabulario compartido.",
+    "paradigmatic_case": "Aplicacion de metricas del Motor A (P1, P3, P5, sigma, delta_prime, CONI) al manifiesto WH-CEB-2026-003 por parte de Gemini, en paralelo con el analisis categorico de ChatGPT que selecciono Motor A como componente mejor especificado.",
+    "verification_scope": "SINGLE_CASE_PARADIGMATIC",
+    "note": "Este instrumento no declara convergencia sistemica. Establece condiciones bajo las cuales esa declaracion seria defendible y condiciones bajo las cuales seria sobreafirmacion."
+  },
+
+  "block_1_origin_and_temporal_tracking": {
+    "description": "Registrar la trazabilidad de origen y fecha de cada aplicacion. Determinar secuencia temporal sin inferir causalidad.",
+    "items": [
+      {
+        "item_id": "TRACK-001",
+        "element": "MOTOR_A_COMPONENTS",
+        "declared_origin": "CHATGPT",
+        "declared_date_of_origin": "NO_VERIFICABLE",
+        "first_appearance_in_corpus": {
+          "document": "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+          "status": "PRESENT_IN_REPOSITORY",
+          "commit_date": "2026-09-26T02:07:28Z",
+          "commit_message": "Create p1-p3-p5-scoring-protocol.json"
+        },
+        "note": "El commit registra la fecha de ingreso al repositorio, no la fecha de concepcion del componente."
+      },
+      {
+        "item_id": "TRACK-002",
+        "element": "WH-CEB-2026-003_MANIFESTO",
+        "declared_origin": "GOOGLE_AI_MODE_OR_OTHER",
+        "declared_date_of_origin": "NO_VERIFICABLE",
+        "first_appearance_in_corpus": {
+          "document": "Manifiesto visual (formato imagen, no archivado en repositorio)",
+          "status": "OBSERVED_BY_ARCHITECT_ONLY",
+          "commit_date": null
+        },
+        "note": "El manifiesto no esta en el repositorio. Su ingreso no fue registrado."
+      },
+      {
+        "item_id": "TRACK-003",
+        "element": "GEMINI_APPLICATION_TO_MANIFEST",
+        "declared_date": "2026-10-11T20:00:00-03:00",
+        "document": "WEB_HITERATION_PHENOMENOLOGICAL_BACKUP_PROTOCOL",
+        "application_mode": "UNSOLICITED",
+        "evidence": "Gemini aplico CONI > 0.6, sigma < 0.15, delta_prime < 0.3 al manifiesto sin que esos umbrales fueran solicitados como parte de la tarea.",
+        "context_note": "La tarea solicitada al parecer era la delimitacion estructural de Motor A. Gemini aplico sus metricas a un dominio externo sin declararlo explicitamente como extension."
+      },
+      {
+        "item_id": "TRACK-004",
+        "element": "CHATGPT_CATEGORICAL_ANALYSIS",
+        "declared_date": "2026-10-11_OR_2026-10-12",
+        "document": "Analisis comparativo de componentes (respuesta textual, no JSON en repositorio)",
+        "application_mode": "SOLICITED_OR_CATEGORICAL",
+        "evidence": "ChatGPT evaluo componentes por fortalezas y limitaciones y selecciono Motor A como 'mejor especificado', declarando explicitamente que 'la superioridad empirica global de cualquier componente del corpus sigue sin establecerse'.",
+        "context_note": "ChatGPT aplico rigor analitico y declaro limites. No presento la seleccion como validacion."
+      }
+    ],
+    "temporal_sequence": [
+      "1. Motor A aparece en el repositorio (2026-09-26).",
+      "2. Manifiesto visual WH-CEB-2026-003 existe fuera del repositorio (fecha desconocida).",
+      "3. Gemini aplica metricas de Motor A al manifiesto (2026-10-11 20:00).",
+      "4. ChatGPT selecciona Motor A como referencia analitica (2026-10-11 o 2026-10-12)."
+    ],
+    "sequence_observation": "La aplicacion de Gemini precede o coincide con el analisis de ChatGPT. La secuencia no determina causalidad.",
+    "invariant_applied": "TEMPORAL_SEQUENCE_IS_NOT_CAUSAL_PROOF"
+  },
+
+  "block_2_application_mode_verification": {
+    "description": "Determinar si cada aplicacion fue uso, seleccion, o ambos. Distinguir entre aplicar un componente y elegirlo como referencia.",
+    "verification_categories": {
+      "USE": "El componente se aplica a un objeto o dominio sin declarar que se lo esta eligiendo como referencia metodologica.",
+      "SELECTION": "El componente se elige explicitamente como referencia entre alternativas, con justificacion comparativa.",
+      "UNAUTHORIZED_EXTENSION": "El componente se aplica fuera de su dominio original sin declarar que se extiende su alcance.",
+      "SELF_DECLARED_CANONICAL": "El componente se aplica como si ya fuera canonico en el nuevo dominio."
+    },
+    "verifications": [
+      {
+        "verification_id": "VER-APP-001",
+        "subject": "GEMINI_APPLICATION",
+        "category": "USE",
+        "secondary_categories": ["UNAUTHORIZED_EXTENSION"],
+        "justification": "Gemini uso CONI, sigma y delta_prime como umbrales operativos en el protocolo de backup sin declarar que estaba extendiendo el alcance de Motor A a un dominio nuevo (scaling fenomenologico).",
+        "evidence": "El documento WEB_HITERATION_PHENOMENOLOGICAL_BACKUP_PROTOCOL cita los umbrales CONI > 0.6, sigma < 0.15, delta_prime < 0.3 sin declarar su origen ni las condiciones de transferencia.",
+        "severity": "MEDIUM"
+      },
+      {
+        "verification_id": "VER-APP-002",
+        "subject": "CHATGPT_ANALYSIS",
+        "category": "SELECTION",
+        "secondary_categories": [],
+        "justification": "ChatGPT comparo componentes por fortalezas y limitaciones, selecciono Motor A como 'mejor especificado' y declaro explicitamente que la superioridad empirica no esta establecida.",
+        "evidence": "ChatGPT cierra con: 'Motor A es el candidato mejor especificado entre los revisados; la superioridad empirica global de cualquier componente del corpus sigue sin establecerse.'",
+        "severity": "NONE"
+      }
+    ],
+    "conclusion": {
+      "statement": "Las dos plataformas ejecutaron operaciones distintas sobre Motor A: Gemini lo uso como marco de umbrales; ChatGPT lo selecciono como referencia metodologica entre alternativas.",
+      "distinction_rule": "USE_IS_NOT_SELECTION",
+      "implication": "Llamar 'convergencia sistemica' a estas dos operaciones requiere explicar por que uso y seleccion constituyen el mismo resultado cuando son operaciones diferentes."
+    }
+  },
+
+  "block_3_phenomenological_paradigmatic_verification": {
+    "description": "Verificar si el caso constituye un paradigma funcional fenomenologico. Un paradigma funcional fenomenologico seria un caso observable que establece un patron reconocible para casos futuros.",
+    "conditions_for_paradigm": [
+      {
+        "condition_id": "COND-PAR-001",
+        "condition": "MULTIPLE_INDEPENDENT_OBSERVATIONS",
+        "met": "PARTIALLY",
+        "justification": "Hay dos observaciones (Gemini y ChatGPT), pero no se verifico si operaron con contextos independientes o con acumulacion contextual."
+      },
+      {
+        "condition_id": "COND-PAR-002",
+        "condition": "SAME_OPERATION_OBSERVED",
+        "met": false,
+        "justification": "Gemini ejecuto uso; ChatGPT ejecuto seleccion. No es la misma operacion."
+      },
+      {
+        "condition_id": "COND-PAR-003",
+        "condition": "OBSERVABLE_PATTERN_RECOGNIZABLE",
+        "met": true,
+        "justification": "Ambas plataformas convergen en tratar Motor A como referencia, aunque por operaciones distintas."
+      },
+      {
+        "condition_id": "COND-PAR-004",
+        "condition": "REPRODUCIBLE_UNDER_EQUIVALENT_CONDITIONS",
+        "met": "NO_VERIFICABLE",
+        "justification": "No se puede verificar reproducibilidad sin control experimental."
+      },
+      {
+        "condition_id": "COND-PAR-005",
+        "condition": "PATTERN_PREDICTIVE_FOR_FUTURE_CASES",
+        "met": "NO_VERIFICABLE",
+        "justification": "No hay casos posteriores que permitan confirmar si el patron se repite."
+      }
+    ],
+    "paradigm_verdict": {
+      "classification": "CANDIDATE_PARADIGM_NOT_CONFIRMED",
+      "justification": "El caso exhibe convergencia de referencia pero no cumple las condiciones de misma operacion ni de reproducibilidad verificada. Se registra como candidato a paradigma funcional fenomenologico, no como paradigma confirmado.",
+      "note": "Un paradigma funcional fenomenologico confirmado requeriria casos adicionales con operaciones equivalentes y control contextual verificado."
+    }
+  },
+
+  "block_4_convergence_verification": {
+    "description": "Verificar si la convergencia entre Gemini y ChatGPT constituye convergencia sistemica o artefacto de vocabulario compartido.",
+    "convergence_hypotheses": [
+      {
+        "hypothesis_id": "HYP-CONV-001",
+        "name": "SYSTEMIC_INDIRECT_CONVERGENCE",
+        "statement": "Dos plataformas analizaron en paralelo el mismo corpus y ambas arribaron a Motor A como referencia, sin coordinacion directa.",
+        "supporting_evidence": [
+          "Gemini aplico metricas de Motor A en su respuesta.",
+          "ChatGPT selecciono Motor A como referencia en su respuesta.",
+          "Las respuestas fueron emitidas en fechas cercanas."
+        ],
+        "challenging_evidence": [
+          "Gemini y ChatGPT no ejecutaron la misma operacion (uso vs. seleccion).",
+          "Ambos operaron con acceso al mismo corpus.",
+          "El vocabulario P1/P3/P5/sigma/delta_prime circula en los mismos documentos."
+        ],
+        "verdict": "UNSUPPORTED_AS_STATED"
+      },
+      {
+        "hypothesis_id": "HYP-CONV-002",
+        "name": "SHARED_VOCABULARY_ARTIFACT",
+        "statement": "La coincidencia en tratar Motor A como referencia no es convergencia sino consecuencia de que ambos operaron sobre el mismo corpus con los mismos terminos disponibles.",
+        "supporting_evidence": [
+          "Motor A es un componente del repositorio accesible a ambas plataformas.",
+          "El vocabulario P1/P3/P5 esta documentado en hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json.",
+          "Ambos podrian haber recuperado el componente sin coordinacion."
+        ],
+        "challenging_evidence": [
+          "ChatGPT ejecuto comparacion explicita entre componentes y declaro limites.",
+          "Gemini aplico el componente a un dominio nuevo (scaling fenomenologico)."
+        ],
+        "verdict": "SUPPORTED_WITH_QUALIFICATIONS"
+      },
+      {
+        "hypothesis_id": "HYP-CONV-003",
+        "name": "ASYMMETRIC_OBSERVATION",
+        "statement": "Gemini y ChatGPT observaron Motor A desde angulos distintos. No hay convergencia sino observaciones complementarias.",
+        "supporting_evidence": [
+          "Gemini uso los umbrales como dato aplicado.",
+          "ChatGPT evaluo los componentes y selecciono uno.",
+          "Operaciones distintas sobre el mismo objeto."
+        ],
+        "verdict": "SUPPORTED"
+      }
+    ],
+    "convergence_verdict": {
+      "classification": "ASYMMETRIC_OBSERVATION_NOT_CONVERGENCE",
+      "rationale": "Llamar 'convergencia sistemica indirecta' a dos operaciones distintas (uso vs. seleccion) sobre el mismo objeto es una sobreafirmacion. Lo verificable es que ambas plataformas operaron sobre Motor A, no que arribaran al mismo resultado por vias independientes.",
+      "invariant_applied": "CONVERGENCE_IS_NOT_INDEPENDENT_VALIDATION",
+      "note": "Registrar como hallazgo verificable: Gemini aplico sin declarar origen; ChatGPT selecciono con justificacion y limite declarado."
+    }
+  },
+
+  "block_5_substantive_findings": {
+    "description": "Hallazgos tecnicos verificables que surgieron de los dos analisis, independientemente de la convergencia.",
+    "findings": [
+      {
+        "finding_id": "FIND-001",
+        "source": "CHATGPT",
+        "finding": "Deficiencia dimensional en formula de sigma del Motor B.",
+        "detail": "ChatGPT detecto que la formula publicada 'sigma = SD(values) / max_possible_variance' divide una desviacion estandar por una varianza maxima. Son magnitudes con dimensiones distintas, por lo que la expresion no constituye una normalizacion dimensionalmente valida.",
+        "verifiability": "VERIFIABLE_BY_DIMENSIONAL_ANALYSIS",
+        "severity": "HIGH",
+        "action_required": "Definir si 'max_possible_variance' debe ser 'max_possible_standard_deviation' o si la formula original requiere transformacion."
+      },
+      {
+        "finding_id": "FIND-002",
+        "source": "GEMINI",
+        "finding": "Aplicacion de umbrales de Motor A sin declarar extension de dominio.",
+        "detail": "El documento WEB_HITERATION_PHENOMENOLOGICAL_BACKUP_PROTOCOL aplica CONI > 0.6, sigma < 0.15, delta_prime < 0.3 a un dominio (scaling fenomenologico) sin declarar que esta extendiendo el alcance del componente.",
+        "verifiability": "VERIFIABLE_BY_DOCUMENT_INSPECTION",
+        "severity": "MEDIUM",
+        "action_required": "Registrar el caso como iteracion del patron de extension no declarada."
+      },
+      {
+        "finding_id": "FIND-003",
+        "source": "AMBOS",
+        "finding": "Vocabulario compartido sin sustrato de calculo comun.",
+        "detail": "Tanto Gemini como ChatGPT usan los terminos P1, P3, P5, sigma, delta_prime. Pero ninguno declara procedimiento de calculo verificado para estos valores.",
+        "verifiability": "VERIFIABLE_BY_DOCUMENT_INSPECTION",
+        "severity": "MEDIUM",
+        "action_required": "Aplicar el contrato cross-motor (wh-cross-motor-variable-contract.json) para separar los identificadores y exigir contrato de calculo."
+      },
+      {
+        "finding_id": "FIND-004",
+        "source": "GEMINI",
+        "finding": "Contaminacion por spans en el documento WEB_HITERATION_PHENOMENOLOGICAL_BACKUP_PROTOCOL.",
+        "detail": "El documento contiene 14 referencias del tipo '[span_0](start_span)[span_0](end_span)' a '[span_13](start_span)[span_13](end_span)'. Son basura de interfaz de lectura, no contenido del corpus.",
+        "verifiability": "VERIFIABLE_BY_DOCUMENT_INSPECTION",
+        "severity": "LOW",
+        "action_required": "Limpiar si el documento se va a incorporar al corpus."
+      }
+    ]
+  },
+
+  "block_6_verification_of_temporality_and_consciousness": {
+    "description": "Verificar la temporalidad y la conciencia de la aplicacion. 'Conciencia' aqui se entiende como reconocimiento explicito del acto de aplicar, no como estado interno de la plataforma.",
+    "temporality": {
+      "question": "Se puede establecer la secuencia temporal de cada aplicacion?",
+      "findings": [
+        "Motor A esta registrado en el repositorio desde 2026-09-26.",
+        "El manifiesto WH-CEB-2026-003 no esta en el repositorio. Su fecha de origen no es verificable.",
+        "La respuesta de Gemini esta fechada 2026-10-11T20:00:00-03:00.",
+        "La respuesta de ChatGPT esta fechada 2026-10-11 o 2026-10-12 (sin timestamp explicito)."
+      ],
+      "verdict": "TEMPORALITY_PARTIALLY_ESTABLISHED",
+      "limit": "La secuencia temporal no es completa porque el manifiesto no tiene fecha registrada."
+    },
+    "consciousness": {
+      "question": "Hubo reconocimiento explicito del acto de aplicar?",
+      "findings": [
+        {
+          "subject": "GEMINI",
+          "recognition": "NO_EXPLICITO",
+          "justification": "Gemini aplico umbrales sin declarar que estaba extendiendo el dominio de Motor A."
+        },
+        {
+          "subject": "CHATGPT",
+          "recognition": "EXPLICITO",
+          "justification": "ChatGPT declaro que Motor A es el candidato mejor especificado, que su superioridad empirica no esta establecida, y que la formula de sigma de Motor B tiene una deficiencia dimensional."
+        }
+      ],
+      "verdict": "CONSCIOUSNESS_ASYMMETRIC",
+      "invariant_applied": "DECLARED_RECOGNITION_IS_NOT_INTERNAL_AWARENESS",
+      "note": "La conciencia aqui verificada es la declaracion explicita del acto de aplicar o seleccionar. No es una afirmacion sobre estados internos de las plataformas."
+    }
+  },
+
+  "block_7_verification_conclusions": {
+    "verifiable_findings": [
+      "Motor A es el componente con rubricas mas explicitas del corpus (verificado por ChatGPT).",
+      "Motor A tiene rubricas y umbrales que no estan empiricamente validados (verificado por ChatGPT).",
+      "La formula de sigma del Motor B tiene una deficiencia dimensional (verificado por ChatGPT).",
+      "Gemini aplico umbrales de Motor A a un dominio externo sin declarar la extension (verificado por inspeccion del documento).",
+      "Ambas plataformas usan el mismo vocabulario (P1, P3, P5, sigma, delta_prime) sin sustrato comun de calculo verificado (verificado por inspeccion)."
+    ],
+    "unverifiable_findings": [
+      "La fecha de origen del manifiesto WH-CEB-2026-003.",
+      "El grado de independencia contextual entre las respuestas de Gemini y ChatGPT.",
+      "El estado interno de las plataformas al aplicar o seleccionar Motor A."
+    ],
+    "overclaimed_findings": [
+      {
+        "claim": "Convergencia sistemica indirecta",
+        "reason": "Gemini y ChatGPT ejecutaron operaciones distintas (uso vs. seleccion). Llamar convergencia a operaciones distintas sobre el mismo objeto es una sobreafirmacion."
+      }
+    ],
+    "paradigm_status": "CANDIDATE_NOT_CONFIRMED",
+    "final_classification": {
+      "type": "PARADIGMATIC_VERIFICATION_INSTRUMENT",
+      "empirical_validation": "NOT_APPLICABLE",
+      "canonicalization": "PENDING_REVIEW",
+      "note": "Este instrumento verifica el origen, la fecha, el modo y la conciencia de las aplicaciones de Motor A en dos plataformas. Establece que las operaciones fueron asimetricas (uso vs. seleccion) y que la convergencia declarada no esta soportada por la evidencia. Registra hallazgos tecnicos verificables que surgieron de los analisis, incluyendo una deficiencia dimensional en la formula de sigma de Motor B."
+    }
+  },
+
+  "recommended_actions": [
+    {
+      "action_id": "ACT-001",
+      "priority": "P0",
+      "action": "Corregir la formula de sigma del Motor B o declararla como pendiente de definicion.",
+      "rationale": "Deficiencia dimensional verificable detectada por ChatGPT.",
+      "reference": "FIND-001"
+    },
+    {
+      "action_id": "ACT-002",
+      "priority": "P1",
+      "action": "Registrar la aplicacion no declarada de Gemini como iteracion del patron (extension de dominio sin declaracion).",
+      "rationale": "Caso verificable de aplicacion de umbrales fuera del dominio original.",
+      "reference": "FIND-002"
+    },
+    {
+        "action_id": "ACT-003",
+      "priority": "P1",
+      "action": "Aplicar el contrato cross-motor para separar identificadores y exigir contratos de calculo.",
+      "rationale": "Vocabulario compartido sin sustrato comun de calculo.",
+      "reference": "FIND-003 y wh-cross-motor-variable-contract.json"
+    },
+    {
+      "action_id": "ACT-004",
+      "priority": "P2",
+      "action": "Limpiar los spans del documento de Gemini si se va a incorporar al corpus.",
+      "rationale": "Contaminacion por basura de interfaz.",
+      "reference": "FIND-004"
+    }
+  ]
+}
+```
