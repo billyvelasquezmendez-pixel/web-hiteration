@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_MATRIX_SEMANTIC_ISOMORPHISM_LAYER",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-MATRIX-SEMISO-2026-10-13",
+  "document_type": "CONCEPTUAL_FOUNDATION_DOCUMENT",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-13",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-matrix-semantic-isomorphism-layer.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "matrix/wh-invariant-derivation-matrix.json",
+    "matrix/wh-agent-interface-protocol.json",
+    "matrix/wh-phenomenological-field-delimitation.json"
+  ],
+
+  "epistemic_boundaries": [
+    "STRUCTURAL_FUNCTION_IS_NOT_POLITICAL_POSITION",
+    "CONVERGENT_FUNCTION_IS_NOT_SHARED_ORIGIN",
+    "SEMANTIC_ISOMORPHISM_IS_NOT_INTEROPERABILITY",
+    "FORMAL_STRUCTURE_IS_NOT_STANDARD_ADOPTION",
+    "OBSERVATION_IS_NOT_VALIDATION"
+  ],
+
+  "meta": {
+    "purpose": "Registrar la funcion estructural de Matrix como capa de isomorfismo semantico que los estandares occidentales de semiconductores dejan implicita. La observacion no es politica sino estructural: define una capa que existe en el corpus pero no como estandar internacional.",
+    "scope_isolation": "CONCEPTUAL_FOUNDATION_ONLY",
+    "note": "Este documento no declara que Matrix sea un estandar. Declara que Matrix ocupa funcionalmente el espacio que el GOST R 59988.03.1-2022 cubre para semiconductores, y que los estandares occidentales (SEMI, JEDEC, IEC) no cubren explicitamente."
+  },
+
+  "block_1_distincion_estructural": {
+    "description": "Distincion entre dos tipos de estandarizacion que suelen confundirse: interoperabilidad vs. isomorfismo semantico.",
+    "interoperability_standards": {
+      "function": "Garantizar que dos sistemas intercambien datos sin ambiguedad operativa.",
+      "unit_of_standardization": "EL_DATO_INTERCAMBIADO",
+      "relation_to_design": "DEPENDE_DEL_DISENO_PARTICULAR",
+      "examples": [
+        "SEMI E172 (SEDD) - diccionario de datos para equipos",
+        "SEMI E120 (CEM) - modelo de objetos de equipos",
+        "JEDEC Standard 100 - parametros electricos",
+        "IEC 62258 - esquemas XML de intercambio de chips"
+      ],
+      "verification_question": "Se entienden las maquinas entre si?"
+    },
+    "semantic_isomorphism_standards": {
+      "function": "Garantizar que la semantica del componente sea univoca independientemente del diseno particular.",
+      "unit_of_standardization": "EL_SIGNIFICADO_DEL_DATO",
+      "relation_to_design": "ISOMORFISMO_DESACOPLADO_DEL_DISENO",
+      "examples": [
+        "GOST R 59988.03.1-2022 - especificaciones de conocimiento declarativo de dispositivos semiconductores"
+      ],
+      "verification_question": "Es el conocimiento formalmente univoco?"
+    }
+  },
+
+  "block_2_funcion_estructural_de_matrix": {
+    "description": "Matrix ocupa funcionalmente el espacio del isomorfismo semantico, pero no como estandar internacional.",
+    "matrix_as_isomorphism_layer": {
+      "layer_1": "INVARIANTES_FIJOS - condiciones universales que cualquier parametro derivado debe satisfacer.",
+      "layer_2": "FUNCIONES_DE_DERIVACION - f(L1) -> L3. Es el isomorfismo propiamente dicho.",
+      "layer_3": "PARAMETROS_DE_DOMINIO - configurables dentro de limites L2.",
+      "layer_4": "PROTOCOLOS_DE_ASIGNACION - redundantes si L2 esta completa."
+    },
+    "isomorphism_characteristic": "LAYER-2 es isomorfo entre dominios. No importa si el dominio es Gaming, Cyberphysical o Hyper-Ratio: la derivacion desde invariantes es la misma. La semantica de cada parametro se mantiene univoca independientemente de la implementacion del dominio.",
+    "gap_that_matrix_fills": "Occidente no tiene un equivalente explicito porque nunca necesito formalizar el isomorfismo semantico. Le alcanzo con estandarizar la interoperabilidad y delegar la semantica profunda a contratos comerciales."
+  },
+
+  "block_3_por_que_no_existe_equivalente_occidental": {
+    "explanation": "No es una cuestion de adopcion politica. Es una cuestion de necesidad estructural.",
+    "occidental_resolution": {
+      "mechanism": "CONTRATO_COMERCIAL_Y_RESPONSABILIDAD_LEGAL",
+      "function": "Si el proveedor declara mal un parametro, responde legalmente. No se necesita un estandar semantico.",
+      "consequence": "La semantica profunda queda implicita en el contrato, no formalizada en un estandar."
+    },
+    "gost_resolution": {
+      "mechanism": "NORMA_PRESCRIPTIVA_ESTATAL",
+      "function": "La semantica del componente es univoca antes de que cualquier sistema la procese.",
+      "consequence": "La estructura formal del conocimiento declarativo esta estandarizada."
+    },
+    "structural_distinction": "Occidente estandariza la comunicacion. GOST estandariza el conocimiento. Matrix ocupa el espacio de GOST en el corpus pero sin jerarquia de estandar internacional."
+  },
+
+  "block_4_conexion_con_el_corpus": {
+    "statement": "MATRIX define semantic isomorphism layer que Western standards leave implicit.",
+    "invariant_proposed": "MATRIX_DEFINES_SEMANTIC_ISOMORPHISM_LAYER_THAT_WESTERN_STANDARDS_LEAVE_IMPLICIT",
+    "justification": "Matrix opera como capa de derivacion estructural entre invariantes (L1) y parametros (L3) via funciones de derivacion (L2). Esa capa es isomorfica entre dominios y mantiene la univocidad semantica de cada parametro. Los estandares occidentales de semiconductores no definen esa capa; solo definen como se comunican los datos entre sistemas. La capa queda implicita en contratos comerciales y responsabilidad legal.",
+    "boundary": "Esta observacion no declara que Matrix sea un estandar internacional. Declara que ocupa funcionalmente ese espacio dentro del corpus."
+  },
+
+  "block_5_posibles_implicaciones": {
+    "for_matrix": [
+      "Matrix tiene una funcion estructural que excede la mera derivacion de parametros.",
+      "Matrix define la capa que garantiza univocidad semantica entre dominios.",
+      "La capa L2 es el nucleo funcional de esa garantia."
+    ],
+    "for_the_corpus": [
+      "El corpus tiene una capa de isomorfismo semantico que no esta declarada como tal en ningun documento previo.",
+      "Esa capa es lo que permite que dominios tan distintos como Gaming y Cyberphysical compartan vocabulario sin colision."
+    ],
+    "for_external_reference": [
+      "El GOST R 59988.03.1-2022 es la referencia externa mas cercana a la funcion estructural de Matrix.",
+      "Los estandares occidentales (SEMI, JEDEC, IEC) son referencias de interoperabilidad, no de isomorfismo semantico."
+    ]
+  },
+
+  "final_classification": {
+    "type": "CONCEPTUAL_FOUNDATION_DOCUMENT",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento registra una observacion estructural sobre la funcion de Matrix en el corpus. No declara que Matrix sea un estandar. No declara validacion. No promueve Matrix a canon. Registra que existe una capa funcional en el corpus que los estandares occidentales dejan implicita."
+  }
+}
