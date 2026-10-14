@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_GAMING_DERIVATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-MATRIX-GAMING-DERIV-2026-10-14",
+  "document_type": "DOMAIN_DERIVATION_FROM_INVARIANTS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-14",
+  "domain": "MATRIX",
+  "repository_path": "matrix/derivations/gaming-derivation.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "gaming/npc/wh-npc-utility-spec.json",
+    "gaming/implementation/wh-npc-ue5-design-resolutions.json",
+    "gaming/implementation/wh-npc-ue5-blueprint.json",
+    "core/core-invariants.json"
+  ],
+
+  "epistemic_boundaries": [
+    "DERIVATION_IS_NOT_EXECUTION",
+    "DERIVED_PARAMETER_IS_NOT_ARBITRARY_PARAMETER",
+    "L1_INVARIANTS_ARE_NOT_CONFIGURABLE",
+    "L3_PARAMETERS_ARE_CONFIGURABLE_WITHIN_L2_BOUNDS",
+    "DERIVATION_DOES_NOT_REPLACE_JUDGMENT",
+    "DERIVED_VALUE_IS_NOT_EMPIRICALLY_VALIDATED_VALUE"
+  ],
+
+  "meta": {
+    "purpose": "Derivar los parametros operativos del dominio Gaming desde los invariantes del corpus (LAYER-1) via las funciones de derivacion de Matrix (LAYER-2). Resolver por derivacion las tres decisiones de diseno que habian sido tomadas por criterio directo: enums ortogonales, techo de autonomia, y modo dual del feedback loop.",
+    "scope_isolation": "SOFTWARE_LOGIC_ONLY",
+    "target_domain": "GAMING",
+    "derivation_type": "L1_INVARIANTS_TO_L3_PARAMETERS",
+    "note": "Este documento no declara implementacion. Declara derivacion. Los valores derivados son los que el dominio Gaming deberia usar para ser coherente con los invariantes del corpus."
+  },
+
+  "block_1_derivation_framework": {
+    "description": "Cadena de derivacion para el dominio Gaming: de invariantes universales (L1) a parametros operativos (L3) via funciones de derivacion (L2).",
+    "chain": [
+      {
+        "layer": "L1",
+        "name": "INVARIANTS_OF_THE_CORPUS",
+        "content": "Invariantes C1-C5, R5, R1-R7 definidos en core/core-invariants.json.",
+        "status": "FIXED_NOT_CONFIGURABLE"
+      },
+      {
+        "layer": "L2",
+        "name": "DERIVATION_FUNCTIONS",
+        "content": "Funciones f(L1) -> L3 que fijan limites parametricos para el dominio Gaming.",
+        "status": "FIXED_DERIVED_FROM_L1"
+      },
+      {
+        "layer": "L3",
+        "name": "GAMING_PARAMETERS",
+        "content": "Enums, techo de autonomia, modos de feedback, pesos, umbrales.",
+        "status": "CONFIGURABLE_WITHIN_L2_BOUNDS"
+      }
+    ]
+  },
+
+  "block_2_decision_1_enums": {
+    "decision_id": "DECISION-001",
+    "topic": "Nivel 5 del NPC (personalidad): uno o dos campos",
+    "prior_resolution": "DOS_ENUMS_ORTOGONALES (confirmado por arquitecto)",
+    "derivation_chain": {
+      "source_invariants": [
+        {
+          "code": "R6",
+          "name": "PRIORITY_CONFLICT_LIMITED",
+          "role": "Restringe como se resuelven conflictos entre dimensiones distintas del NPC."
+        },
+        {
+          "code": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+          "role": "Establece que las dimensiones observables del NPC deben declararse explicitamente, no inferirse."
+        },
+        {
+          "code": "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+          "role": "Prohibe colapsar dos dimensiones distintas bajo un mismo identificador."
+        }
+      ],
+      "derivation_function": "UN_NPC_OBSERVA_DOS_DIMENSIONES_INDEPENDIENTES: (1) su relacion con el jugador o jerarquia narrativa, (2) su funcion tactica dentro de un grupo. Colapsarlas en un solo campo viola SAME_SYMBOL_IS_NOT_SAME_MEANING porque obliga a un unico valor a expresar dos cosas. R6 requiere que las prioridades se resuelvan entre dimensiones distintas, no dentro de una sola.",
+      "derived_constraint": "El NPC debe declarar al menos dos dimensiones ortogonales. Cada una con su propio enum.",
+      "derived_parameters": {
+        "ENPCRelation": {
+          "type": "uint8",
+          "dimension": "RELACION_NARRATIVA",
+          "purpose": "Logica de targeting, dialogo, mision",
+          "values": [
+            { "value": 0, "name": "UNASSIGNED" },
+            { "value": 1, "name": "SECONDARY_CHARACTER" },
+            { "value": 2, "name": "PRIMARY_CHARACTER" },
+            { "value": 3, "name": "NEUTRAL" },
+            { "value": 4, "name": "HOSTILE" },
+            { "value": 5, "name": "ALLIED_INFRASTRUCTURE" }
+          ]
+        },
+        "ENPCRole": {
+          "type": "uint8",
+          "dimension": "FUNCION_TACTICA",
+          "purpose": "Formacion de escuadron, asignacion de tareas, prioridad de amenaza",
+          "values": [
+            { "value": 0, "name": "UNASSIGNED" },
+            { "value": 1, "name": "COMBATANT" },
+            { "value": 2, "name": "SCOUT" },
+            { "value": 3, "name": "COMMANDER" },
+            { "value": 4, "name": "SUPPORT" },
+            { "value": 5, "name": "ELITE_COMBATANT" }
+          ]
+        }
+      },
+      "storage": "Ambos enums ocupan 2 bytes en FNPCIdentityData. Costo aceptable para preservar ambas dimensiones.",
+      "why_this_resolves_the_decision": "La decision ya no es 'un campo o dos' sino 'que dos dimensiones ortogonales declarar'. Los invariantes determinan que deben ser dos. Los valores concretos de cada enum son L3, configurables."
+    }
+  },
+
+  "block_3_decision_2_autonomy": {
+    "decision_id": "DECISION-002",
+    "topic": "FullAutonomous 0.9 vs 1.0",
+    "prior_resolution": "AUTONOMIA_CON_TECHO_DERIVADO (confirmado por arquitecto)",
+    "derivation_chain": {
+      "source_invariants": [
+        {
+          "code": "R5",
+          "name": "EXECUTION_LIMITED",
+          "role": "Establece que ningun agente tiene ejecucion ilimitada. Toda ejecucion esta restringida por jerarquia."
+        },
+        {
+          "code": "R6",
+          "name": "PRIORITY_CONFLICT_LIMITED",
+          "role": "Establece que la jerarquia L1-L5 debe poder intervenir en cualquier decision."
+        },
+        {
+          "code": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+          "role": "La identidad del NPC no autoriza ejecucion sin restriccion."
+        }
+      ],
+      "derivation_function": "AUTONOMIA_TOTAL_IMPLICA_AUSENCIA_DE_SUBORDINACION: Si un NPC tiene autonomia 1.0, su evaluacion interna es la unica autoridad. Eso viola R5 porque no hay jerarquia superior que pueda intervenir. R6 requiere que la jerarquia L1-L5 siempre pueda hacer override cuando corresponda. Para que la jerarquia pueda intervenir, debe existir un margen no-cero de subordinacion.",
+      "derived_constraint": "El techo de autonomia debe ser estrictamente menor a 1.0. El margen faltante es el espacio reservado para intervencion de jerarquia superior.",
+      "derived_parameters": {
+        "autonomy_ceiling": 0.9,
+        "margin_for_hierarchy_override": 0.1,
+        "values": {
+          "REACTIVE": 0.2,
+          "SEMI_AUTONOMOUS": 0.6,
+          "FUNCTIONAL_INDEPENDENT": 0.9
+        }
+      },
+      "why_this_resolves_the_decision": "El valor 1.0 queda excluido por derivacion, no por preferencia. Un NPC con autonomia 1.0 violaria R5 porque no dejaria espacio para que la jerarquia L1-L5 intervenga. El 0.9 es el maximo que preserva la restriccion."
+    }
+  },
+
+  "block_4_decision_3_feedback_loop": {
+    "decision_id": "DECISION-003",
+    "topic": "DurationFactor en ApplyFeedbackLoop",
+    "prior_resolution": "MODO_DUAL_POR_CONTEXTO (confirmado por arquitecto)",
+    "derivation_chain": {
+      "source_invariants": [
+        {
+          "code": "C5",
+          "name": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+          "role": "Establece que la falsacion y el contraste requieren condiciones distintas segun el contexto."
+        },
+        {
+          "code": "R2",
+          "name": "CONTEXT_DEGRADATION",
+          "role": "Reconoce que el contexto del NPC se degrada segun la actividad."
+        },
+        {
+          "code": "CONTEXT_DERIVES_BEHAVIOR",
+          "role": "El comportamiento depende del contexto de actividad, no de un valor unico."
+        }
+      ],
+      "derivation_function": "EL_FEEDBACK_NO_DEBE_SER_UNIFORME_ENTRE_CONTEXTOS: En contextos de alta actividad (combate, urgencia), el NPC aprende por el resultado, no por el tiempo invertido. Un feedback que escala con la duracion distorsionaria la evaluacion. En contextos de baja actividad (patrulla, exploracion), una tarea larga sin incidentes si refuerza confianza proporcionalmente al tiempo. C5 requiere que el contraste sea independiente; eso implica que el feedback debe adaptarse al contexto, no escalar uniformemente.",
+      "derived_constraint": "El DurationFactor debe ser context-dependent. No puede ser un valor unico.",
+      "derived_parameters": {
+        "modes": {
+          "ALTA_ACTIVIDAD": {
+            "trigger": "Runtime.RiskLevel >= AlertRiskLimit (0.40)",
+            "duration_factor": "1.0_FIJO",
+            "rationale": "En combate, el NPC aprende por el resultado."
+          },
+          "BAJA_ACTIVIDAD": {
+            "trigger": "Runtime.RiskLevel < AlertRiskLimit (0.40)",
+            "duration_factor": "MAX_1.0_TASK_DURATION",
+            "rationale": "En patrulla, el tiempo invertido refuerza confianza."
+          }
+        },
+        "alert_risk_limit_source": "Es el mismo valor que dispara COVER_BRANCH en el Behavior Tree. Coherencia con el blueprint."
+      },
+      "why_this_resolves_the_decision": "La asimetria 2.4:1 (+0.05 / -0.12) se mantiene como valor de la magnitud del feedback. El DurationFactor se vuelve condicional al contexto. Ambas medidas coexisten segun contexto, no se excluyen."
+    }
+  },
+
+  "block_5_derived_parameters_summary": {
+    "description": "Resumen de los parametros derivados para el dominio Gaming.",
+    "enums": {
+      "ENPCRelation": ["UNASSIGNED", "SECONDARY_CHARACTER", "PRIMARY_CHARACTER", "NEUTRAL", "HOSTILE", "ALLIED_INFRASTRUCTURE"],
+      "ENPCRole": ["UNASSIGNED", "COMBATANT", "SCOUT", "COMMANDER", "SUPPORT", "ELITE_COMBATANT"]
+    },
+    "autonomy": {
+      "ceiling": 0.9,
+      "values": { "REACTIVE": 0.2, "SEMI_AUTONOMOUS": 0.6, "FUNCTIONAL_INDEPENDENT": 0.9 }
+    },
+    "feedback_loop": {
+      "mode_dual": true,
+      "alert_risk_limit": 0.40,
+      "duration_factor_high_activity": 1.0,
+      "duration_factor_low_activity": "MAX_1.0_TASK_DURATION",
+      "asymmetry": { "success": 0.05, "failure": -0.12 }
+    }
+  },
+
+  "block_6_relationship_to_prior_documents": {
+    "wh-npc-ue5-design-resolutions.json": "Ese documento registro las decisiones por criterio directo del arquitecto. Este documento las re-deriva desde invariantes. Si ambos coinciden, las decisiones quedan doblemente fundamentadas. Si divergen, la derivacion desde invariantes tiene prioridad sobre la eleccion directa.",
+    "wh-invariant-derivation-matrix.json": "Proporciona el modelo de cuatro capas y las funciones de derivacion generales. Este documento aplica esas funciones al dominio Gaming especificamente.",
+    "core/core-invariants.json": "Proporciona los invariantes L1 que son la fuente de toda derivacion."
+  },
+
+  "final_classification": {
+    "type": "DOMAIN_DERIVATION_DOCUMENT",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento deriva tres decisiones de Gaming desde los invariantes del corpus. No declara implementacion. No declara validacion empirica. Los valores derivados son los que el dominio deberia usar para ser coherente con los invariantes."
+  }
+}
