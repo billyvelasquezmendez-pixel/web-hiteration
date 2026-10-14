@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_DELTA_PRIME_GENERAL_DIAGNOSTIC",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-DELTA-PRIME-GENERAL-DIAGNOSTIC-2026-10-13",
+  "document_type": "GENERAL_STATE_ASSESSMENT_AND_PENDING_VERIFICATION_REGISTER",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-13",
+  "domain": "MATRIX",
+  "repository_path": "matrix/derivations/wh-delta-prime-general-diagnostic.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-invariant-derivation-matrix.json",
+  "related_documents": [
+    "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+    "matrix/wh-cross-motor-variable-contract.json",
+    "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+    "diagnostics/wh-delta-engine-singularity-declaration.json"
+  ],
+
+  "epistemic_boundaries": [
+    "FORMULA_IS_NOT_MEASUREMENT",
+    "PUBLISHED_IS_NOT_VALIDATED",
+    "DECLARED_VALUE_IS_NOT_REPRODUCED_VALUE",
+    "MATHEMATICAL_DISCREPANCY_IS_NOT_CAUSAL_EXPLANATION",
+    "RECONSTRUCTION_IS_NOT_ORIGINAL_PROVENANCE",
+    "REPOSITORY_RECOGNITION_IS_NOT_FRAMEWORK_VALIDATION",
+    "ABSENCE_OF_LOCATED_EVIDENCE_IS_NOT_PROOF_OF_NONEXISTENCE",
+    "SAME_SYMBOL_IS_NOT_SAME_OPERATIONAL_VARIABLE",
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION"
+  ],
+
+  "meta": {
+    "repository": "https://github.com/billyvelasquezmendez-pixel/web-hiteration",
+    "target_variable": "DELTA_PRIME",
+    "published_value": 0.228,
+    "reproduced_value": 0.025134,
+    "formula": "delta_prime = sigma * (1 - P1)",
+    "known_inputs": {
+      "sigma": 0.142,
+      "P1": 0.823
+    },
+    "repository_modified": false,
+    "files_written": false,
+    "canonical_replacement_performed": false,
+    "audit_mode": "READ_ONLY"
+  },
+
+  "executive_diagnostic": {
+    "arithmetic_discrepancy": "CONFIRMED",
+    "original_calculation": "NOT_RECONSTRUCTED",
+    "historical_origin": "UNRESOLVED",
+    "primary_source": "NOT_RECOVERED",
+    "formula_status": "PROVISIONAL",
+    "empirical_validation": "NOT_ESTABLISHED",
+    "canonical_promotion": "NOT_AUTHORIZED",
+    "overall_assessment": "PARTIAL_DOCUMENTARY_TRACE_WITH_UNRESOLVED_ORIGIN"
+  },
+
+  "diagnostic_dimensions": {
+    "D1_ARITHMETIC": {
+      "status": "REPRODUCED",
+      "calculation": "0.142 * (1 - 0.823)",
+      "intermediate_value": 0.177,
+      "result": 0.025134,
+      "published_value": 0.228,
+      "absolute_difference": 0.202866,
+      "published_to_reproduced_ratio": 9.072225,
+      "interpretation": "La formula y los operandos conocidos no reproducen el valor publicado.",
+      "causal_explanation": "NOT_ESTABLISHED"
+    },
+    "D2_REPOSITORY_TRACE": {
+      "status": "PARTIALLY_DOCUMENTED",
+      "earliest_located_artifact": {
+        "path": "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+        "commit": "70b3c5283244622328e31f084f7453fab0be87df",
+        "timestamp_utc": "2026-10-12T00:01:51Z",
+        "url": "https://github.com/billyvelasquezmendez-pixel/web-hiteration/commit/70b3c5283244622328e31f084f7453fab0be87df"
+      },
+      "related_artifact": {
+        "path": "matrix/wh-cross-motor-variable-contract.json",
+        "commit": "2ccd00a3d9ce1e0f23583134b53b38b173dd63fd",
+        "timestamp_utc": "2026-10-12T00:02:58Z",
+        "url": "https://github.com/billyvelasquezmendez-pixel/web-hiteration/blob/2ccd00a3d9ce1e0f23583134b53b38b173dd63fd/matrix/wh-cross-motor-variable-contract.json"
+      },
+      "scope_limit": "La primera aparicion localizada en los artefactos examinados no demuestra la primera aparicion historica absoluta."
+    },
+    "D3_HISTORICAL_PRECURSOR": {
+      "status": "UNVERIFIED_CLAIM",
+      "claimed_artifact": "hyper-ratio/diagnostics/delta-prime-meta-execution-state.json",
+      "claimed_commit": "6e9d9a758188960f868ebbd48b730cd506ab6978",
+      "claimed_precursor": "CONI_FORMAL_STATE_DECLARATION_v1",
+      "claimed_origin_period": "2026-03",
+      "claimed_migration": "D2_TO_D1_WITHOUT_FORMULA_MODIFICATION",
+      "verification_gaps": [
+        "Original precursor artifact not recovered.",
+        "Original input values not established.",
+        "Original calculation trace not established.",
+        "Semantic continuity between historical and current uses not established."
+      ]
+    },
+    "D4_FORMULA_IDENTITY": {
+      "status": "PROVISIONAL",
+      "known_formula": "delta_prime = sigma * (1 - P1)",
+      "cross_motor_constraint": "Motor A and Motor B definitions must not be treated as interchangeable without an explicit operational mapping.",
+      "sigma_constraint": "SIGMA_DISPERSION, VARIANCE and SIGMA_COHERENCE require distinct definitions and units.",
+      "alternative_historical_formula": "NOT_FOUND_IN_INSPECTED_EVIDENCE",
+      "historical_formula_identity": "NOT_ESTABLISHED"
+    },
+    "D5_INPUT_PROVENANCE": {
+      "status": "INCOMPLETE",
+      "sigma_0_142": "DOCUMENTED_IN_CURRENT_DIAGNOSTIC_CONTEXT",
+      "P1_0_823": "DOCUMENTED_IN_CURRENT_DIAGNOSTIC_CONTEXT",
+      "same_original_execution": "NOT_VERIFIED",
+      "original_execution_id": "NOT_FOUND",
+      "original_intermediate_operations": "NOT_FOUND"
+    },
+    "D6_VALUE_CLASSIFICATION": {
+      "status": "PROVISIONAL",
+      "classification": "HISTORICAL_VALUE_WITH_UNVERIFIED_PROVENANCE",
+      "possible_categories": [
+        "MEASURED_RESULT",
+        "CALCULATED_RESULT",
+        "ESTIMATE",
+        "ILLUSTRATIVE_MARKER",
+        "IMPORTED_EXTERNAL_VALUE",
+        "DOCUMENTATION_ERROR"
+      ],
+      "selected_category": "UNDETERMINED",
+      "reason": "La evidencia disponible no permite seleccionar una categoria sin inferir el origen."
+    }
+  },
+
+  "hypothesis_register": [
+    {
+      "id": "H1",
+      "hypothesis": "Se utilizo una formula diferente.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Formula historica explicita y calculo reproducible."
+    },
+    {
+      "id": "H2",
+      "hypothesis": "Se aplicaron transformaciones o agregaciones intermedias.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Secuencia operacional original con entradas y salidas intermedias."
+    },
+    {
+      "id": "H3",
+      "hypothesis": "0.228 era un marcador visual o ilustrativo.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Manifiesto o artefacto visual original y contexto de presentacion."
+    },
+    {
+      "id": "H4",
+      "hypothesis": "Los operandos originales eran diferentes.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Registro de ejecucion que vincule el valor con sus parametros originales."
+    },
+    {
+      "id": "H5",
+      "hypothesis": "El valor y la formula proceden de versiones diferentes.",
+      "status": "PLAUSIBLE_NOT_CONFIRMED",
+      "evidence_required": "Versiones historicas comparables que demuestren el cambio."
+    },
+    {
+      "id": "H6",
+      "hypothesis": "Se produjo un error de calculo, transcripcion o documentacion.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Fuente primaria o historial de cambios que permita identificar el error."
+    },
+    {
+      "id": "H7",
+      "hypothesis": "El valor fue importado desde un sistema externo.",
+      "status": "UNVERIFIED",
+      "evidence_required": "Fuente externa identificable y registro de importacion o transferencia."
+    }
+  ],
+
+  "pending_tasks": [
+    {
+      "id": "P0-01",
+      "priority": "P0",
+      "task": "Recuperar el artefacto original que muestra 0.228.",
+      "target": [
+        "WH-CEB-2026-003",
+        "Manifiesto visual",
+        "Captura o documento original"
+      ],
+      "completion_criterion": "Artefacto identificado con procedencia, version y contexto verificables.",
+      "status": "PENDING"
+    },
+    {
+      "id": "P0-02",
+      "priority": "P0",
+      "task": "Recuperar la traza del calculo original.",
+      "target": [
+        "Formula",
+        "Operandos",
+        "Operaciones intermedias",
+        "Regla de redondeo",
+        "Identificador de ejecucion"
+      ],
+      "completion_criterion": "Calculo original reproducible o ausencia documental delimitada.",
+      "status": "PENDING"
+    },
+    {
+      "id": "P0-03",
+      "priority": "P0",
+      "task": "Verificar el supuesto precursor historico.",
+      "target": [
+        "CONI_FORMAL_STATE_DECLARATION_v1",
+        "delta-prime-meta-execution-state.json",
+        "Historial de commits asociado"
+      ],
+      "completion_criterion": "Precursor recuperado y comparado con el modelo actual, o inaccesibilidad documentada.",
+      "status": "PENDING"
+    },
+    {
+      "id": "P1-01",
+      "priority": "P1",
+      "task": "Reconstruir la evolucion de formula, valores y significado operacional.",
+      "target": [
+        "Historial de versiones",
+        "Cambios de ruta",
+        "Definiciones de Motor A y Motor B"
+      ],
+      "completion_criterion": "Cronologia con distincion entre hechos documentados e inferencias.",
+      "status": "PENDING"
+    },
+    {
+      "id": "P1-02",
+      "priority": "P1",
+      "task": "Clasificar definitivamente la funcion documental de 0.228.",
+      "target": [
+        "Fuente primaria",
+        "Traza de calculo",
+        "Contexto de publicacion"
+      ],
+      "completion_criterion": "Clasificacion sustentada en evidencia, sin inferencia causal no respaldada.",
+      "status": "BLOCKED_BY_P0"
+    }
+  ],
+
+  "execution_policy": {
+    "mode": "READ_ONLY",
+    "allowed_operations": [
+      "Search repository",
+      "Read files",
+      "Inspect commit history",
+      "Compare retrieved versions",
+      "Recalculate explicit formulas"
+    ],
+    "prohibited_operations": [
+      "Modify repository",
+      "Create commits",
+      "Replace canonical artifacts",
+      "Promote provisional formula to canonical",
+      "Infer missing historical values",
+      "Treat absence of search results as proof of nonexistence"
+    ]
+  },
+
+  "closure_conditions": {
+    "arithmetic_discrepancy": "CONFIRMED",
+    "primary_source": "RECOVERED_OR_SEARCH_LIMITS_DOCUMENTED",
+    "original_inputs": "RECOVERED_OR_UNAVAILABLE_WITH_EVIDENCE",
+    "original_calculation": "REPRODUCED_OR_UNRECONSTRUCTABLE_WITH_DOCUMENTED_REASON",
+    "historical_continuity": "SUPPORTED_OR_UNVERIFIED",
+    "empirical_validity": "ASSESSED_SEPARATELY_FROM_ARITHMETIC",
+    "canonical_change": "REQUIRES_EXPLICIT_AUTHORIZATION"
+  },
+
+  "final_determination": {
+    "current_state": "ORIGIN_UNRESOLVED",
+    "published_value": 0.228,
+    "reproduced_value": 0.025134,
+    "root_cause": "UNRESOLVED",
+    "recommended_disposition": "PRESERVE_AS_HISTORICAL_VALUE_WITH_UNVERIFIED_PROVENANCE",
+    "next_action": "EXECUTE_P0-01_THEN_P0-02_AND_P0-03",
+    "canonical_replacement_authorized": false
+  },
+
+  "final_classification": {
+    "type": "GENERAL_STATE_ASSESSMENT_AND_PENDING_VERIFICATION_REGISTER",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento consolida el estado del caso delta_prime = 0.228. Registra la discrepancia aritmetica confirmada, el origen no resuelto, las 7 hipotesis evaluables, y las 5 tareas pendientes. No declara validacion. No promueve el valor recalculado a canon. No autoriza reemplazo del valor publicado."
+  }
+}
