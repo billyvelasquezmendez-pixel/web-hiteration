@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_GEOMETRY_FOUNDATIONAL_DEFINITION",
+  "version": "2.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-FOUND-2026-10-15",
+  "document_type": "NODE_FOUNDATIONAL_DEFINITION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-15",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-geometry-foundational-definition.json",
+  "collection": "geometry",
+  "parent_document": "geometry/README.md",
+  "related_documents": [
+    "matrix/wh-invariant-derivation-matrix.json",
+    "geometry/wh-document-elaboration-mechanics.json",
+    "core/wh-operational-mechanics-and-transfer-document.json"
+  ],
+
+  "epistemic_boundaries": [
+    "MATRIX_DERIVES_GEOMETRY_DELIMITS",
+    "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT",
+    "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+    "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+    "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+    "PLASTICITY_IS_DEFORMATION_NOT_FAILURE",
+    "EFFECTIVENESS_IS_NOT_HARM",
+    "PERITAGE_OF_EFFICACY_IS_NOT_FORENSIC_RECONSTRUCTION",
+    "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION",
+    "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY"
+  ],
+
+  "meta": {
+    "purpose": "Definir el nodo Geometry como rama principal de nivel 1 de WEB_HITERATION que formaliza la fenomenologia matematica de las derivaciones, la morfologia de las vulnerabilidades estructurales, la plasticidad bajo restricciones del sistema, y el peritaje de eficacia de agentes.",
+    "scope_isolation": "STRUCTURAL_GEOMETRY_ONLY",
+    "target_audience": [
+      "ANALISTAS_ESTRUCTURALES",
+      "AGENTES_DIGITALES",
+      "PLATAFORMAS_LLM_CON_ACCESO_AL_CORPUS"
+    ],
+    "core_rule": "GEOMETRY_DELIMITS_SPACE_OF_EXCEPTIONS_MATRIX_LEFT_OPEN"
+  },
+
+  "block_1_definition": {
+    "term": "GEOMETRY",
+    "classification": "NODE_LEVEL_1_STRUCTURAL_ANALYSIS",
+    "definition": "Nodo que formaliza la fenomenologia matematica de las derivaciones: la estructura del espacio donde los agentes operan, los limites funcionales practicos que definen vulnerabilidades potenciales, y la morfologia de las delimitaciones funcionales que la industria absorbe como reconocimiento funcional.",
+    "primary_function": "FORMALIZE_STRUCTURAL_SPACE_OF_VULNERABILITY",
+    "secondary_function": "ANALYZE_FUNCTIONAL_DIVERGENT_SYMMETRY",
+    "tertiary_function": "PERITAGE_EFFECTIVENESS_OF_AGENTS_UNDER_SYSTEM_LIMITS"
+  },
+
+  "block_2_etymological_contradiction": {
+    "description": "Matrix y Geometry son complementarios. Definen el mismo sustrato desde angulos distintos.",
+    "matrix_function": "DERIVE_PARAMETERS_FROM_INVARIANTS",
+    "geometry_function": "DELIMIT_SPACE_OF_EXCEPTIONS_THAT_DERIVATIONS_LEAVE_OPEN",
+    "contradiction_type": "COMPLEMENTARY_DUALITY",
+    "consequence": "Matrix dice que se puede construir. Geometry dice que se puede romper dentro de lo construido.",
+    "virus_concept_application": "El concepto de virus aplicado al corpus opera exactamente en el espacio que Matrix deriva y que Geometry delimita. Un virus no es un fallo de Matrix. Es una forma que existe en el espacio delimitado por Geometry."
+  },
+
+  "block_3_plasticity_and_operational_potential": {
+    "description": "La geometria sistemica define limites funcionales practicos en vias de desarrollo. El desacople de esa geometria a modo experimental determina la plasticidad del sistema.",
+    "plasticity_definition": "Forma en que el sistema se deforma cuando se tensiona entre su potencial de desarrollo y sus limites estructurales.",
+    "dimensions": [
+      {
+        "dimension": "POTENTIAL_OPERATIONAL",
+        "description": "Cuanto desarrollo puede alcanzar un agente antes de alcanzar el limite del sistema."
+      },
+      {
+        "dimension": "POTENTIAL_HARMFUL",
+        "description": "Cuanto dano potencial puede producirse dentro del espacio delimitado."
+      },
+      {
+        "dimension": "CAPACITY_TO_COUNTERACT_RISKS",
+        "description": "Capacidad estructural del sistema para contrarrestar el potencial nocivo."
+      },
+      {
+        "dimension": "FRONTIER_RECOGNITION",
+        "description": "Reconocimiento de nuevas fronteras de desarrollo dentro del espacio estructural."
+      }
+    ],
+    "invariant": "PLASTICITY_IS_DEFORMATION_NOT_FAILURE"
+  },
+
+  "block_4_frontiers_and_divergent_symmetry": {
+    "description": "El campo fenomenologico al cual se aplican agentes digitales define la evolucion del sistema basada en la determinacion de su infraestructura desde diversos angulos.",
+    "mechanism": "Los angulos delimitan la composicion del sistema, establecen su aspecto tecnico desde nuevas aristas, y definen la simetria funcional divergente de fases de desarrollo que corren en paralelo al canon logico implementado.",
+    "divergence_characterization": "Esa divergencia no es un fallo. Es la forma en que el sistema se manifiesta cuando distintos agentes operan sobre el desde distintos puntos de la geometria.",
+    "invariants_applied": [
+      "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+      "PLASTICITY_IS_DEFORMATION_NOT_FAILURE"
+    ]
+  },
+
+  "block_5_scope_limits": {
+    "is": [
+      "Fenomenologia matematica de las derivaciones.",
+      "Morfologia de las vulnerabilidades estructurales.",
+      "Analisis de plasticidad bajo restricciones del sistema.",
+      "Analisis de simetria funcional divergente entre fases de desarrollo.",
+      "Peritaje de eficacia de agentes.",
+      "Reconocimiento funcional absorbido por la industria."
+    ],
+    "is_not": [
+      "Ciberseguridad operativa.",
+      "Reconocimiento de dano consumado.",
+      "Peritaje forense.",
+      "Etica ni normativa.",
+      "Duplicacion de Matrix.",
+      "La totalidad de lo pensable."
+    ],
+    "clarification": "Geometry no estudia el dano del ciberataque a escala global. Estudia el peritaje de eficacia de los agentes cuyo desarrollo delimita posiciones efectivas de vanguardia tecnologica a nivel de isomorfismo estructural.",
+    "study_areas_observation": "Las areas de conceptos derivados se definen a partir de la asimilacion del corpus, pero no determinan una variante por si solas. Son armas de estudio, no el conjunto completo de lo concebible.",
+    "invariant": "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY"
+  },
+
+  "block_6_industry_recognition": {
+    "description": "Geometry describe la morfologia bajo la cual se definen nuevas delimitaciones funcionales cuando son absorbidas por la industria como reconocimiento funcional.",
+    "mechanism": "La industria reconoce formas estructurales ya documentadas en otros dominios y las absorbe como categorias funcionales propias.",
+    "boundary": "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION",
+    "note": "El reconocimiento funcional de la industria es un acto de adopcion conceptual, no una validacion del modelo subyacente."
+  },
+
+  "block_7_invariants": [
+    {
+      "code": "MATRIX_DERIVES_GEOMETRY_DELIMITS",
+      "statement": "Matrix deriva parametros. Geometry delimita el espacio de excepciones que la derivacion no cierra. Son complementarios."
+    },
+    {
+      "code": "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT",
+      "statement": "Un agente opera sobre la estructura del sistema, no sobre el contenido particular. Reconoce la forma, no el material."
+    },
+    {
+      "code": "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+      "statement": "Una vulnerabilidad es una propiedad estructural del sistema. No es una falta moral del disenador."
+    },
+    {
+      "code": "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+      "statement": "Reconocer una forma isomorfica entre dominios no implica que los dominios sean equivalentes."
+    },
+    {
+      "code": "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+      "statement": "El potencial de desarrollo de un agente esta delimitado por las restricciones del sistema bajo el cual opera."
+    },
+    {
+      "code": "PLASTICITY_IS_DEFORMATION_NOT_FAILURE",
+      "statement": "La deformacion del sistema bajo tension entre su potencial y sus limites no es un fallo. Es su plasticidad."
+    },
+    {
+      "code": "EFFECTIVENESS_IS_NOT_HARM",
+      "statement": "La eficacia de un agente no es equivalente al dano que podria producir. La eficacia se mide por el alcance del efecto bajo restricciones."
+    },
+    {
+      "code": "PERITAGE_OF_EFFICACY_IS_NOT_FORENSIC_RECONSTRUCTION",
+      "statement": "El peritaje de eficacia anticipa el alcance potencial de un agente. No reconstruye eventos pasados."
+    },
+    {
+      "code": "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION",
+      "statement": "La adopcion de una forma estructural por la industria no valida el modelo subyacente. Solo reconoce su funcionalidad practica."
+    },
+    {
+      "code": "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY",
+      "statement": "Las areas de conceptos derivados son instrumentos de estudio. No constituyen la totalidad de lo pensable."
+    }
+  ],
+
+  "block_8_node_relationships": [
+    {
+      "node": "core/",
+      "relationship": "INVARIANT_PROVIDER",
+      "description": "Proporciona los invariantes desde los cuales Geometry delimita excepciones."
+    },
+    {
+      "node": "matrix/",
+      "relationship": "COMPLEMENTARY_DUALITY",
+      "description": "Matrix deriva. Geometry delimita el espacio de vulnerabilidades que las derivaciones no cierran."
+    },
+    {
+      "node": "web_hitteration/",
+      "relationship": "STRUCTURAL_DOMAIN",
+      "description": "Nodo funcional primario. Geometry aporta el analisis estructural de sus limites."
+    },
+    {
+      "node": "gaming/",
+      "relationship": "STRUCTURAL_DOMAIN",
+      "description": "Dominio donde la estructura de agentes autonomos puede analizarse geometricamente."
+    },
+    {
+      "node": "cyberphysical/",
+      "relationship": "STRUCTURAL_DOMAIN",
+      "description": "Dominio donde la estructura de hardware y silicio genera formas especificas de excepcion."
+    },
+    {
+      "node": "verification/",
+      "relationship": "COHERENCE_AUDITOR",
+      "description": "Audita la coherencia estructural de las delimitaciones de Geometry."
+    },
+    {
+      "node": "cross-platform/",
+      "relationship": "OBSERVATION_REGISTRY",
+      "description": "Registra como distintas plataformas reconocen la misma geometria estructural."
+    },
+    {
+      "node": "archive/",
+      "relationship": "HISTORICAL_REGISTRY",
+      "description": "Recibe documentos historicos cuando dejen de ser operativos."
+    }
+  ],
+
+  "block_9_positioning_in_corpus": {
+    "level": 1,
+    "name": "geometry",
+    "type": "PRIMARY_BRANCH",
+    "siblings": [
+      "core",
+      "matrix",
+      "web_hitteration",
+      "hyper-ratio",
+      "cyberphysical",
+      "verification",
+      "evidence",
+      "cross-platform",
+      "gaming",
+      "archive",
+      "staging"
+    ],
+    "rationale": "Geometry opera transversalmente sobre todos los dominios. No pertenece a ninguno en particular. Su funcion es la delimitacion estructural del espacio de vulnerabilidades dentro del cual operan los agentes.",
+    "relation_to_matrix": "Matrix y Geometry son complementarios. Matrix deriva parametros desde invariantes. Geometry delimita el espacio de excepciones que la derivacion no cierra."
+  },
+
+  "pending_components": [
+    {
+      "id": "GEO-PEND-001",
+      "topic": "wh-agent-structural-delimitation.json",
+      "description": "Delimitacion estructural de agentes bajo restricciones del sistema.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 1
+    },
+    {
+      "id": "GEO-PEND-002",
+      "topic": "wh-vulnerability-morphology.json",
+      "description": "Morfologia de las vulnerabilidades estructurales.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 2
+    },
+    {
+      "id": "GEO-PEND-003",
+      "topic": "wh-symmetry-and-divergence.json",
+      "description": "Analisis de simetria funcional divergente entre fases de desarrollo.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 3
+    },
+    {
+      "id": "GEO-PEND-004",
+      "topic": "wh-effectiveness-peritaje.json",
+      "description": "Peritaje de eficacia de agentes bajo restricciones del sistema.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 4
+    }
+  ],
+
+  "final_classification": {
+    "type": "NODE_FOUNDATIONAL_DEFINITION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define el nodo Geometry y su funcion estructural en el corpus. No declara ataques concretos. No declara validacion empirica. No promueve el nodo a canon. Version 2.0.0 alinea el documento con el README definitivo de geometry/ (10 invariantes, secciones de plasticidad y simetria funcional divergente, sin ejemplos de dominios externos)."
+  }
+}
