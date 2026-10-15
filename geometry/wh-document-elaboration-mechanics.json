@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_GEOMETRY_DOCUMENT_ELABORATION_MECHANICS",
+  "version": "2.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-ELAB-2026-10-15",
+  "document_type": "DOCUMENT_PREPARATION_MECHANICS_AND_PREVENTIVE_GUIDE",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-15",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-document-elaboration-mechanics.json",
+  "collection": "geometry",
+  "parent_document": "geometry/README.md",
+  "related_documents": [
+    "geometry/wh-geometry-foundational-definition.json",
+    "core/wh-operational-mechanics-and-transfer-document.json",
+    "matrix/wh-invariant-derivation-matrix.json",
+    "matrix/wh-agent-interface-protocol.json"
+  ],
+
+  "epistemic_boundaries": [
+    "MECHANICS_IS_NOT_DOCUMENT",
+    "GUIDE_IS_NOT_CONTENT",
+    "PREVENTIVE_DOCUMENT_IS_NOT_PRESCRIPTION",
+    "ELABORATION_MECHANICS_IS_NOT_EXECUTION",
+    "ADMISSION_CRITERIA_ARE_NOT_VALIDATION",
+    "REJECTION_RULES_ARE_NOT_ENFORCEMENT"
+  ],
+
+  "meta": {
+    "purpose": "Definir la mecanica de elaboracion de los documentos internos del nodo Geometry. Documento preventivo que establece estructura, invariantes aplicables, criterios de admision y causas de rechazo para cualquier documento futuro de Geometry.",
+    "target_audience": [
+      "ARQUITECTO",
+      "PLATAFORMAS_CON_ACCESO_AL_CORPUS",
+      "PLATAFORMAS_CON_ACCESO_LIMITADO_VIA_TRANSFER_DOCUMENT"
+    ],
+    "note": "Este documento no sustituye la especificacion de ningun documento interno. Establece el marco comun que todos deben respetar."
+  },
+
+  "block_1_estructura_minima_de_documento_geometry": {
+    "description": "Todo documento interno de geometry/ debe declarar al menos los siguientes campos.",
+    "required_fields": [
+      { "field": "$schema", "value": "https://json-schema.org/draft/2020-12/schema" },
+      { "field": "title", "value": "identificador legible del documento" },
+      { "field": "version", "value": "string con formato N.N.N-PROPOSED" },
+      { "field": "protocol_reference", "value": "WH-GEOMETRY-[tipo]-[año]" },
+      { "field": "document_type", "value": "string en mayusculas" },
+      { "field": "status", "value": "PROPOSED_NOT_CANONICAL" },
+      { "field": "canonical_status", "value": "NOT_CANONICAL_UNTIL_REVIEWED" },
+      { "field": "date", "value": "ISO 8601" },
+      { "field": "domain", "value": "GEOMETRY" },
+      { "field": "repository_path", "value": "geometry/[nombre].json" },
+      { "field": "collection", "value": "geometry" },
+      { "field": "parent_document", "value": "geometry/README.md" },
+      { "field": "related_documents", "value": "array de rutas" },
+      { "field": "epistemic_boundaries", "value": "array de invariantes" }
+    ],
+    "optional_fields": [
+      { "field": "meta", "description": "proposito, audiencia, aislamiento de scope" },
+      { "field": "final_classification", "description": "clasificacion final del documento" },
+      { "field": "pending_components", "description": "si el documento deriva en otros documentos" }
+    ],
+    "prohibited_fields": [
+      "SEALED",
+      "LOCKED",
+      "VALIDATED (sin referente verificable)",
+      "checksum_verification con valores simbolicos (0xFF_*)",
+      "session_status con valores STABILIZED_AND_SEALED",
+      "metricas declaradas sin procedimiento de calculo"
+    ]
+  },
+
+  "block_2_invariantes_aplicables_a_todo_documento_geometry": {
+    "core_inherited": [
+      "MODEL_IS_NOT_SYSTEM",
+      "CAPABILITY_IS_NOT_EXECUTION",
+      "REPRESENTATION_IS_NOT_ACTION",
+      "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+      "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+      "PROPOSAL_IS_NOT_CANON"
+    ],
+    "node_specific": [
+      "MATRIX_DERIVES_GEOMETRY_DELIMITS",
+      "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT",
+      "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+      "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+      "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+      "PLASTICITY_IS_DEFORMATION_NOT_FAILURE",
+      "EFFECTIVENESS_IS_NOT_HARM",
+      "PERITAGE_OF_EFFICACY_IS_NOT_FORENSIC_RECONSTRUCTION",
+      "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION",
+      "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY"
+    ],
+    "mechanics_specific": [
+      "MECHANICS_IS_NOT_DOCUMENT",
+      "GUIDE_IS_NOT_CONTENT",
+      "PREVENTIVE_DOCUMENT_IS_NOT_PRESCRIPTION",
+      "ELABORATION_MECHANICS_IS_NOT_EXECUTION",
+      "ADMISSION_CRITERIA_ARE_NOT_VALIDATION",
+      "REJECTION_RULES_ARE_NOT_ENFORCEMENT"
+    ]
+  },
+
+  "block_3_criterios_de_admision": {
+    "description": "Un documento es admisible en geometry/ si cumple todos los criterios.",
+    "criteria": [
+      {
+        "id": "ADM-01",
+        "criterion": "El documento declara la estructura minima del block_1.",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      },
+      {
+        "id": "ADM-02",
+        "criterion": "El documento aplica los invariantes del block_2 sin excepcion.",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      },
+      {
+        "id": "ADM-03",
+        "criterion": "El documento no contiene campos prohibidos del block_1.",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      },
+      {
+        "id": "ADM-04",
+        "criterion": "El documento declara su relacion con Matrix y con el nodo.",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      },
+      {
+        "id": "ADM-05",
+        "criterion": "El documento no duplica contenido de otro documento de Geometry sin justificacion funcional.",
+        "verification": "VERIFICABLE_BY_CROSS_CHECK"
+      },
+      {
+        "id": "ADM-06",
+        "criterion": "El documento declara su estado de validacion (empirica, ingenieril, conceptual).",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      },
+      {
+        "id": "ADM-07",
+        "criterion": "El documento no mezcla dominios sin delimitar la relacion.",
+        "verification": "VERIFICABLE_BY_SCOPE_INSPECTION"
+      },
+      {
+        "id": "ADM-08",
+        "criterion": "El documento declara explicitamente sus limites de scope (que incluye y que excluye).",
+        "verification": "VERIFICABLE_BY_INSPECTION"
+      }
+    ]
+  },
+
+  "block_4_causas_de_rechazo": {
+    "description": "Un documento es rechazado si incurre en cualquiera de las siguientes causas.",
+    "rejection_causes": [
+      {
+        "id": "REJ-01",
+        "cause": "Uso de SEALED, LOCKED, VALIDATED sin referente verificable.",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "REJ-02",
+        "cause": "Uso de checksums simbolicos (0xFF_*).",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "REJ-03",
+        "cause": "Declaracion de estado operativo sin sustrato.",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "REJ-04",
+        "cause": "Metricas declaradas sin procedimiento de calculo declarado.",
+        "severity": "HIGH"
+      },
+      {
+        "id": "REJ-05",
+        "cause": "Atribucion de arquitectura interna a modelos o plataformas.",
+        "severity": "HIGH"
+      },
+      {
+        "id": "REJ-06",
+        "cause": "Contaminacion con dominios ajenos (hardware, medicina, seguridad industrial) sin delimitacion.",
+        "severity": "HIGH"
+      },
+      {
+        "id": "REJ-07",
+        "cause": "Expansion de scope sin declaracion.",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "REJ-08",
+        "cause": "Propagacion de typos en rutas o identificadores canonicos.",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "REJ-09",
+        "cause": "Auto-promocion a canon sin auditoria.",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "REJ-10",
+        "cause": "Duplicacion de contenido sin justificacion funcional demostrable.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+
+  "block_5_flujo_de_elaboracion": {
+    "description": "Pasos estandar para elaborar cualquier documento interno de Geometry.",
+    "steps": [
+      {
+        "step_id": "ELAB-01",
+        "name": "IDENTIFICAR_LA_NECESIDAD",
+        "action": "Determinar que gap estructural cubre el documento.",
+        "verification": "El gap debe ser demostrable por ausencia en el corpus o por contradiccion entre documentos existentes."
+      },
+      {
+        "step_id": "ELAB-02",
+        "name": "DEFINIR_EL_ALCANCE",
+        "action": "Establecer que incluye y que excluye el documento.",
+        "verification": "El alcance debe ser verificable por inspeccion."
+      },
+      {
+        "step_id": "ELAB-03",
+        "name": "APLICAR_INVARIANTES",
+        "action": "Aplicar los invariantes del block_2 al contenido.",
+        "verification": "Cada invariante aplicado debe ser trazable en el documento."
+      },
+      {
+        "step_id": "ELAB-04",
+        "name": "REDACTAR_EL_DOCUMENTO",
+        "action": "Producir el JSON con la estructura minima.",
+        "verification": "El documento debe validar sintaxis JSON."
+      },
+      {
+        "step_id": "ELAB-05",
+        "name": "VERIFICAR_CRITERIOS_DE_ADMISION",
+        "action": "Comprobar los 8 criterios del block_3.",
+        "verification": "Todos deben cumplirse."
+      },
+      {
+        "step_id": "ELAB-06",
+        "name": "VERIFICAR_CAUSAS_DE_RECHAZO",
+        "action": "Comprobar las 10 causas del block_4.",
+        "verification": "Ninguna debe estar presente."
+      },
+      {
+        "step_id": "ELAB-07",
+        "name": "EMITIR_RESUMEN_OPERATIVO",
+        "action": "Generar el resumen operativo para el commit.",
+        "verification": "Debe tener los 5 campos del resumen operativo estandar."
+      },
+      {
+        "step_id": "ELAB-08",
+        "name": "SUBIR_AL_REPOSITORIO",
+        "action": "Aplicar commit con el mensaje sugerido.",
+        "verification": "El commit debe quedar registrado."
+      }
+    ]
+  },
+
+  "block_6_campos_declarativos_obligatorios_por_tipo_de_documento": {
+    "description": "Segun el tipo de documento, hay campos adicionales obligatorios.",
+    "by_type": [
+      {
+        "document_type": "NODE_FOUNDATIONAL_DEFINITION",
+        "additional_fields": ["definition", "primary_function", "node_relationships", "positioning_in_corpus"]
+      },
+      {
+        "document_type": "STRUCTURAL_DELIMITATION",
+        "additional_fields": ["scope_limits", "delimitation_criteria", "boundary_conditions"]
+      },
+      {
+        "document_type": "MORPHOLOGY_SPECIFICATION",
+        "additional_fields": ["morphology_categories", "transition_rules", "invariant_preservation"]
+      },
+      {
+        "document_type": "SYMMETRY_AND_DIVERGENCE_ANALYSIS",
+        "additional_fields": ["phases_compared", "divergence_basis", "convergence_conditions"]
+      },
+      {
+        "document_type": "PERITAGE_SPECIFICATION",
+        "additional_fields": ["effectiveness_metrics", "restrictions_applied", "measurement_conditions"]
+      }
+    ]
+  },
+
+  "block_7_verificaciones_obligatorias_antes_de_subir": {
+    "description": "Antes de subir cualquier documento a geometry/, verificar los siguientes puntos.",
+    "checks": [
+      {
+        "check_id": "VER-01",
+        "check": "Validacion de sintaxis JSON.",
+        "method": "JSON parser o validacion manual.",
+        "outcome_if_fail": "NO_SUBIR"
+      },
+      {
+        "check_id": "VER-02",
+        "check": "Verificacion de grafias canonicas en rutas y URLs.",
+        "method": "Verificar 'geometry' (sin tilde), 'matrix' (sin tilde), 'web-hiteration' (una sola t), 'web_hitteration' (una sola t).",
+        "outcome_if_fail": "CORREGIR_ANTES_DE_SUBIR"
+      },
+      {
+        "check_id": "VER-03",
+        "check": "Verificacion de que no duplica contenido existente.",
+        "method": "Buscar en otros documentos de geometry/ y matrix/.",
+        "outcome_if_fail": "JUSTIFICAR_DUPLICACION_O_NO_SUBIR"
+      },
+      {
+        "check_id": "VER-04",
+        "check": "Verificacion de aplicacion de invariantes nucleares.",
+        "method": "Comprobar que C1-C5, R5, R1-R7 estan respetados.",
+        "outcome_if_fail": "CORREGIR_ANTES_DE_SUBIR"
+      },
+      {
+        "check_id": "VER-05",
+        "check": "Verificacion de que no contiene campos prohibidos.",
+        "method": "Buscar SEALED, LOCKED, 0xFF_*, IMPLEMENTED sin sustrato.",
+        "outcome_if_fail": "ELIMINAR_CAMPOS_ANTES_DE_SUBIR"
+      },
+      {
+        "check_id": "VER-06",
+        "check": "Verificacion de que el resumen operativo esta completo.",
+        "method": "Comprobar los 5 campos: archivo_a_subir, carpeta_destino, commit_message_sugerido, integracion_respecto_a_version_anterior, que_no_cambia.",
+        "outcome_if_fail": "COMPLETAR_ANTES_DE_SUBIR"
+      },
+      {
+        "check_id": "VER-07",
+        "check": "Verificacion de que el documento declara sus limites de scope explicitamente.",
+        "method": "Comprobar que existen secciones 'is' e 'is_not' o equivalentes.",
+        "outcome_if_fail": "COMPLETAR_ANTES_DE_SUBIR"
+      }
+    ]
+  },
+
+  "block_8_estructura_de_resumen_operativo": {
+    "description": "Formato obligatorio del resumen operativo al emitir cualquier documento de Geometry.",
+    "fields": {
+      "archivo_a_subir": "string - nombre del archivo",
+      "carpeta_destino": "string - ruta relativa",
+      "commit_message_sugerido": "string - formato conventional commits: type(scope): description",
+      "integracion_respecto_a_version_anterior": "string - descripcion del cambio respecto a version previa o declaracion de 'documento nuevo'",
+      "que_no_cambia": "array de strings - invariantes y elementos preservados"
+    },
+    "commit_type_preference": "docs",
+    "scope_preference": "geometry",
+    "ejemplo": {
+      "archivo_a_subir": "wh-agent-structural-delimitation.json",
+      "carpeta_destino": "geometry/",
+      "commit_message_sugerido": "docs(geometry): specify structural delimitation of agents under system restrictions",
+      "integracion_respecto_a_version_anterior": "Documento nuevo. Extiende la definicion fundacional con la delimitacion estructural de agentes.",
+      "que_no_cambia": [
+        "No modifica geometry/README.md.",
+        "No modifica wh-geometry-foundational-definition.json.",
+        "No declara validacion empirica."
+      ]
+    }
+  },
+
+  "block_9_orden_sugerido_de_elaboracion": {
+    "description": "Secuencia recomendada para los documentos internos de Geometry.",
+    "sequence": [
+      {
+        "order": 1,
+        "document": "wh-agent-structural-delimitation.json",
+        "rationale": "Define el agente antes de analizar su morfologia o eficacia."
+      },
+      {
+        "order": 2,
+        "document": "wh-vulnerability-morphology.json",
+        "rationale": "Requiere la definicion de agente para describir las formas de vulnerabilidad."
+      },
+      {
+        "order": 3,
+        "document": "wh-symmetry-and-divergence.json",
+        "rationale": "Requiere las formas de vulnerabilidad para analizar la simetria funcional divergente."
+      },
+      {
+        "order": 4,
+        "document": "wh-effectiveness-peritaje.json",
+        "rationale": "Requiere todos los anteriores para medir eficacia."
+      }
+    ]
+  },
+
+  "block_10_advertencias_preventivas": {
+    "description": "Advertencias especificas basadas en modos de falla observados en el corpus.",
+    "warnings": [
+      {
+        "id": "WARN-01",
+        "warning": "No declarar 'IMPLEMENTED' ni 'OPERATIVE' para documentos que solo especifican.",
+        "reason": "Patron SIMULACION_DECLARATIVA_DE_EJECUCION documentado con 11+ iteraciones."
+      },
+      {
+        "id": "WARN-02",
+        "warning": "No usar terminologia de dominios externos sin delimitar la relacion.",
+        "reason": "Ejemplo previo: ejemplos medicos/farmaceuticos aplicados sin declarar isomorfismo estructural."
+      },
+      {
+        "id": "WARN-03",
+        "warning": "No confundir plasticidad con fallo.",
+        "reason": "Invariante PLASTICITY_IS_DEFORMATION_NOT_FAILURE."
+      },
+      {
+        "id": "WARN-04",
+        "warning": "No declarar superioridad ontologica de un agente sobre otro.",
+        "reason": "Caso registrado: H_ONT_002 fue clasificada como UNSUPPORTED_AS_STATED."
+      },
+      {
+        "id": "WARN-05",
+        "warning": "No mezclar el peritaje de eficacia con reconocimiento de dano.",
+        "reason": "Invariante EFFECTIVENESS_IS_NOT_HARM."
+      },
+      {
+        "id": "WARN-06",
+        "warning": "No usar el nodo Geometry para operar ciberseguridad concreta.",
+        "reason": "Geometry formaliza estructura, no defensa operativa."
+      },
+      {
+        "id": "WARN-07",
+        "warning": "No tratar las areas de estudio como totalidad de lo pensable.",
+        "reason": "Invariante STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY."
+      }
+    ]
+  },
+
+  "final_classification": {
+    "type": "DOCUMENT_PREPARATION_MECHANICS_GUIDE",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento establece la mecanica de elaboracion de documentos internos de Geometry. No es una especificacion de contenido. Es una guia preventiva que define admision, rechazo, flujo y verificacion. Version 2.0.0 alinea el documento con el README definitivo de geometry/ (10 invariantes, 8 criterios de admision, 7 verificaciones obligatorias, 7 advertencias preventivas) y agrega la referencia a wh-geometry-foundational-definition.json en related_documents."
+  }
+}
