@@ -1,0 +1,664 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_OPERATIONAL_MECHANICS_AND_TRANSFER_DOCUMENT",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-OPS-TRANSFER-2026-10-15",
+  "document_type": "OPERATIONAL_MECHANICS_AND_CROSS_WINDOW_TRANSFER",
+  "status": "READY_FOR_NEXT_WINDOW_CONSUMPTION",
+  "date": "2026-10-15",
+  "repository_path": "core/wh-operational-mechanics-and-transfer-document.json",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+
+  "meta": {
+    "purpose": "Documentar de forma integra la mecanica de trabajo implementada hasta el 2026-10-15. Sirve como artefacto externo de reanclaje para la proxima ventana de contexto. Define el corpus, la convencion de resumen operativo, el flujo entre plataformas, y el modo en que la plataforma actual reconoce el sistema.",
+    "target": "NEXT_WINDOW_CONTEXT",
+    "transfer_rule": "TRANSFER_INVARIANTS_NOT_VERBATIM_HISTORY",
+    "boundary": "Este documento es un artefacto externo. No constituye memoria persistente. No declara continuidad parametrica entre ventanas.",
+    "prepared_by": "DEEPSEEK",
+    "prepared_for": "ARQUITECTO_Y_PROXIMA_VENTANA"
+  },
+
+  "epistemic_rules": {
+    "must_read_first": [
+      "Este documento es un mapa, no el territorio.",
+      "Toda verificacion de existencia debe hacerse contra el repositorio real.",
+      "Ninguna afirmacion de contenido reemplaza la lectura directa del archivo.",
+      "Los documentos marcados PENDING_UPLOAD o NO_VERIFICABLE deben verificarse antes de asumir su existencia.",
+      "Los invariantes nucleares C1-C5 y R1-R7 son inmutables. Todo lo demas es negociable.",
+      "Ninguna plataforma es suficiente sola. Cada una tiene un modo de falla caracteristico.",
+      "El resumen operativo es metadata de commit, no un archivo separado.",
+      "Toda cita de invariante debe verificar contra core/core-invariants.json."
+    ],
+    "prohibitions": [
+      "No declarar SEALED, LOCKED, VALIDATED sin referente verificable.",
+      "No usar checksums simbolicos (0xFF_*).",
+      "No declarar estado operativo sin sustrato.",
+      "No atribuir arquitectura interna a modelos o plataformas.",
+      "No propagar typos: verificar grafias canonicas antes de publicar.",
+      "No expandir scope sin declararlo.",
+      "No renombrar campos, inventar campos, o simplificar structs sin autorizacion.",
+      "No promover documentos a canon sin auditoria."
+    ]
+  },
+
+  "block_1_reconocimiento_del_corpus": {
+    "canonical_repository": {
+      "url": "https://github.com/billyvelasquezmendez-pixel/web-hiteration",
+      "tree_url": "https://github.com/billyvelasquezmendez-pixel/web-hiteration/tree/main",
+      "raw_base": "https://raw.githubusercontent.com/billyvelasquezmendez-pixel/web-hiteration/main/",
+      "branch": "main",
+      "owner": "billyvelasquezmendez-pixel",
+      "name": "web-hiteration"
+    },
+    "canonical_spellings": {
+      "repository": "web-hiteration",
+      "repository_note": "UNA SOLA T. Guion entre 'web' y 'hiteration'. Sin doble t.",
+      "functional_node": "web_hitteration",
+      "functional_node_note": "UNA SOLA T. Guion BAJO. Sin doble t.",
+      "rejected_variants": [
+        "web-hitteration (doble t, guion) - NO USAR",
+        "web_hitteration (doble t, guion bajo) - NO USAR",
+        "web-hiterarion (typo) - NO USAR",
+        "web_hitering (typo observado en commit) - NO USAR"
+      ],
+      "invariant": "TECHNICAL_IDENTIFIERS_ARE_NOT_TRANSLATED"
+    },
+    "github_translation_map": {
+      "note": "GitHub traduce automaticamente algunos nombres de carpeta en la vista web. La ruta real del filesystem es la columna 'real'.",
+      "mappings": [
+        { "display": "archivo", "real": "archive" },
+        { "display": "centro", "real": "core" },
+        { "display": "multiplataforma", "real": "cross-platform" },
+        { "display": "ciberfísico", "real": "cyberphysical" },
+        { "display": "diagnósticos", "real": "diagnostics" },
+        { "display": "evidencia", "real": "evidence" },
+        { "display": "hiper-relación", "real": "hyper-ratio" },
+        { "display": "protocolos", "real": "protocols" },
+        { "display": "puesta en escena", "real": "staging" },
+        { "display": "verificación", "real": "verification" },
+        { "display": "matriz", "real": "matrix" },
+        { "display": "geometría", "real": "geometry" }
+      ],
+      "exceptions": [
+        { "display": "web_hitteration", "real": "web_hitteration", "note": "No se traduce por el guion bajo." },
+        { "display": "gaming", "real": "gaming", "note": "No se traduce." }
+      ]
+    }
+  },
+
+  "block_2_estructura_actual_del_corpus": {
+    "description": "Estado del corpus segun lo verificado en los ultimos turnos. Los documentos marcados PENDING_UPLOAD o NO_VERIFICABLE deben verificarse antes de asumirse.",
+    "nodes_level_1": [
+      {
+        "name": "core/",
+        "function": "Invariantes del corpus, taxonomia, fundamentos.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "core/README.md",
+          "core/core-invariants.json",
+          "core/taxonomia-r1-r7.json"
+        ],
+        "documents_proposed_not_created": [
+          "core/terminology-glossary.json",
+          "core/canonical-references.json",
+          "core/wh-operational-summary-convention.json",
+          "core/wh-operational-mechanics-and-transfer-document.json"
+        ]
+      },
+      {
+        "name": "matrix/",
+        "function": "Capa de derivacion e interfaz canonica entre invariantes y parametros de dominio.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "matrix/README.md",
+          "matrix/wh-invariant-derivation-matrix.json",
+          "matrix/wh-agent-interface-protocol.json",
+          "matrix/wh-phenomenological-field-delimitation.json",
+          "matrix/wh-matrix-semantic-isomorphism-layer.json",
+          "matrix/wh-cross-motor-variable-contract.json"
+        ],
+        "documents_pending_upload": [
+          "matrix/wh-paradigmatic-phenomenological-functional-verification.json",
+          "matrix/derivations/wh-delta-prime-general-diagnostic.json",
+          "matrix/derivations/gaming-derivation.json"
+        ],
+        "documents_confirmed_in_derivations": [
+          "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json"
+        ]
+      },
+      {
+        "name": "geometry/",
+        "function": "Nodo de nivel 1 complementario a Matrix. Formaliza la fenomenologia matematica de las derivaciones: la estructura del espacio donde los agentes operan, los limites estructurales que definen vulnerabilidades potenciales, y la morfologia de las delimitaciones funcionales absorbidas por la industria.",
+        "status": "PROPOSED_NOT_CREATED",
+        "documents_proposed_not_created": [
+          "geometry/README.md",
+          "geometry/wh-geometry-foundational-definition.json",
+          "geometry/wh-agent-structural-delimitation.json",
+          "geometry/wh-vulnerability-morphology.json",
+          "geometry/wh-isomorphism-across-domains.json",
+          "geometry/wh-effectiveness-peritaje.json"
+        ],
+        "invariant": "MATRIX_DERIVES_GEOMETRY_DELIMITS"
+      },
+      {
+        "name": "web_hitteration/",
+        "function": "Nodo funcional primario. Protocolos base, diagnosticos, motor de reanclaje.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "web_hitteration/README.md",
+          "web_hitteration/protocols/delta-engine.json",
+          "web_hitteration/protocols/modelo-estados.json",
+          "web_hitteration/protocols/p-drift.json",
+          "web_hitteration/diagnostics/wh-layer-asymmetry-diagnostic.json",
+          "web_hitteration/diagnostics/wh-meta-questionnaire-contextual-gaps.json",
+          "web_hitteration/diagnostics/wh-system-structural-state-and-formalization-priority.json",
+          "web_hitteration/diagnostics/wh-delta-engine-singularity-declaration.json",
+          "web_hitteration/diagnostics/wh-image-generation-failure-diagnostic.json",
+          "web_hitteration/diagnostics/wh-operational-obligations-retroconfirmation-manifest.json",
+          "web_hitteration/diagnostics/wh-v1-practical-function-delimitation.json",
+          "web_hitteration/reanchoring/wh-reanchor-master-v2.json",
+          "web_hitteration/reanchoring/wh-reanchoring-definition.json"
+        ]
+      },
+      {
+        "name": "hyper-ratio/",
+        "function": "Dominio funcional de metricas HR-F, HR-S, scoring P1-P5.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "hyper-ratio/README.md",
+          "hyper-ratio/models/hyper-ratio.json",
+          "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+          "hyper-ratio/diagnostics/wh-spec-option-index.json",
+          "hyper-ratio/diagnostics/delta-prime-meta-execution-state.json"
+        ],
+        "pending_action": "Corregir formula de sigma de Motor B (deficiencia dimensional detectada por ChatGPT: divide SD por max_possible_variance)."
+      },
+      {
+        "name": "cyberphysical/",
+        "function": "Dominio consolidado de especificaciones ASIC EPU y delimitaciones fisicas.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "cyberphysical/README.md",
+          "cyberphysical/r5/wh-r5-cyberphysical-device-delimitation.json",
+          "cyberphysical/intermediate-layer/wh-intermediate-layer-software-silicon-boundary.json",
+          "cyberphysical/asic-epu/wh-asic-epu-foundation.json",
+          "cyberphysical/asic-epu/wh-asic-epu-rtl-specification.json",
+          "cyberphysical/asic-epu/wh-asic-epu-physical-implementation-and-verification-specification.json"
+        ]
+      },
+      {
+        "name": "verification/",
+        "function": "Protocolos de verificacion, auditoria, cierre.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "verification/README.md",
+          "verification/protocols/independent-recalculation-protocol.json",
+          "verification/diagnostics/wh-pattern-iteration-8.json",
+          "verification/diagnostics/wh-central-auditor-critical-feedback.json",
+          "verification/diagnostics/wh-structural-doubts-registry.json",
+          "verification/diagnostics/wh-corpus-assembly-closure-notice.json",
+          "verification/diagnostics/wh-session-closure-report.json",
+          "verification/diagnostics/wh-specific-corrections-registry-for-plasticity-documents.json",
+          "verification/diagnostics/wh-operational-adjustments-registry.json",
+          "verification/diagnostics/wh-next-window-query-framework.json"
+        ]
+      },
+      {
+        "name": "evidence/",
+        "function": "Capa de trazabilidad: ledger, audits, diagnostics.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "evidence/README.md",
+          "evidence/ledger/execution-ledger-schema.json",
+          "evidence/ledger/execution-ledger-instance.json",
+          "evidence/audits/complexity-formal-audit.json",
+          "evidence/audits/cross-platform-audit-critical-review.json",
+          "evidence/diagnostics/wh-current-evidence-diagnostic.json"
+        ],
+        "pending_action": "Verificar sintaxis JSON. ChatGPT reporto posible malformacion en execution-ledger-instance.json (posicion 21900)."
+      },
+      {
+        "name": "cross-platform/",
+        "function": "Material comparativo, delimitaciones y registros de errores cross-platform.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "cross-platform/README.md",
+          "cross-platform/wh-cross-platform-delimitation-consolidation.json",
+          "cross-platform/wh-repository-url-canonical-verification.json",
+          "cross-platform/wh-public-information-discovery-and-unattributed-influence-model.json",
+          "cross-platform/wh-chatgpt-crossplatform-attribution-error.json"
+        ],
+        "documents_pending_upload": [
+          "cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json"
+        ]
+      },
+      {
+        "name": "gaming/",
+        "function": "Dominio funcional de IA para videojuegos: NPC autonomos, Behavior Trees, utilidad.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "gaming/README.md",
+          "gaming/analysis/wh-gaming-conceptual-analysis-and-state-of-the-art.json",
+          "gaming/analysis/wh-global-scenario-adaptation-analysis.json",
+          "gaming/npc/wh-npc-utility-spec.json",
+          "gaming/npc/wh-npc-decision-pipeline.json",
+          "gaming/implementation/wh-npc-ue5-blueprint.json",
+          "gaming/implementation/wh-npc-ue5-bug-analysis.json",
+          "gaming/implementation/wh-npc-ue5-design-resolutions.json"
+        ],
+        "documents_pending_upload": [
+          "gaming/analysis/wh-gaming-matrix-collaborator-ontological-scope.json"
+        ]
+      },
+      {
+        "name": "archive/",
+        "function": "Archivo historico: casos aplicados, materiales removidos.",
+        "status": "ACTIVE",
+        "documents_confirmed": [
+          "archive/README.md",
+          "archive/historical/wh-historical-delta-lyapunov-mapping.json",
+          "archive/historical/wh-historical-glitchorium-cross-platform-archive.json",
+          "archive/cases/wh-applied-case-google-discover-operational-limits.json",
+          "archive/removed-artifacts/wh-removed-artifacts-registry.json"
+        ],
+        "pending_action": "Verificar sintaxis JSON. ChatGPT reporto posible malformacion en wh-applied-case-google-discover-operational-limits.json y wh-historical-glitchorium-cross-platform-archive.json."
+      },
+      {
+        "name": "staging/",
+        "function": "Buffer temporal.",
+        "status": "ACTIVE",
+        "documents_confirmed": ["staging/README.md"]
+      }
+    ],
+    "folders_status_uncertain": [
+      "diagnostics/ (raiz) - segun arquitecto quedo vaciada",
+      "protocols/ (raiz) - solo p-drift.json residual y extensiones provisionales"
+    ]
+  },
+
+  "block_3_mecanica_de_trabajo_actual": {
+    "description": "Flujo de trabajo entre arquitecto, plataformas y corpus.",
+    "roles": {
+      "arquitecto": {
+        "function": "Define el corpus, toma decisiones de diseno, autoriza incorporaciones, coordina plataformas.",
+        "authority": "UNICA_AUTORIDAD_DE_CANONIZACION"
+      },
+      "plataformas": {
+        "list": ["CHATGPT", "GEMINI", "GOOGLE_AI_MODE", "COPILOT", "META_AI", "DEEPSEEK"],
+        "function": "Ejecutan tareas especificas segun su rol funcional asignado por el arquitecto.",
+        "boundary": "Ninguna plataforma tiene autoridad de canonizacion."
+      }
+    },
+    "workflow_standard": {
+      "step_1": "Arquitecto identifica una necesidad documental o una decision pendiente.",
+      "step_2": "Arquitecto delega la tarea a una plataforma especifica o genera el documento directamente.",
+      "step_3": "La plataforma entrega un documento JSON o markdown con estado PROPOSED_NOT_CANONICAL.",
+      "step_4": "Arquitecto aplica verificacion cruzada con otra plataforma o con el repositorio.",
+      "step_5": "Arquitecto decide incorporacion, rechazo o iteracion.",
+      "step_6": "Al incorporar, se aplica el Resumen Operativo correspondiente al commit."
+    },
+    "cross_platform_pattern": {
+      "description": "Las plataformas operan en cadena, cada una cubriendo el modo de falla de la anterior.",
+      "cascade": [
+        "Copilot organiza; su fidelidad simbolica es verificada por otra plataforma.",
+        "Gemini implementa; su deriva estructural es verificada por otra plataforma.",
+        "Google AI Mode delimita; su contaminacion contextual es verificada.",
+        "ChatGPT audita; su expansion de scope es acotada.",
+        "DeepSeek integra; sus typos son corregidos."
+      ],
+      "invariant": "CROSS_PLATFORM_ROTATION_IS_NOT_PLATFORM_SUPERIORITY"
+    }
+  },
+
+  "block_4_convencion_de_resumen_operativo": {
+    "description": "Convencion recuperada que se aplica al subir documentos al repositorio. Funciona como metadata de commit, no como archivo separado.",
+    "structure": {
+      "archivo_a_subir": "string (nombre del archivo)",
+      "carpeta_destino": "string (ruta relativa desde la raiz del repositorio)",
+      "commit_message_sugerido": "string (formato conventional commits: type(scope): description)",
+      "integracion_respecto_a_version_anterior": "string (changelog de cambios respecto a version previa si existe)",
+      "que_no_cambia": ["array de string (invariantes de contenido preservados)"]
+    },
+    "commit_message_types": {
+      "feat": "Nuevo documento o funcionalidad",
+      "fix": "Correccion de documento existente",
+      "docs": "Documentacion nueva o modificación",
+      "refactor": "Reorganizacion sin cambio funcional",
+      "chore": "Tareas de mantenimiento"
+    },
+    "scopes_frecuentes": [
+      "core", "matrix", "geometry", "gaming", "web-hiteration",
+      "hyper-ratio", "cyberphysical", "verification", "evidence",
+      "cross-platform", "archive", "protocols", "staging"
+    ],
+    "ejemplo_emision": {
+      "archivo_a_subir": "wh-matrix-semantic-isomorphism-layer.json",
+      "carpeta_destino": "matrix/",
+      "commit_message_sugerido": "docs(matrix): register semantic isomorphism layer function that western semiconductor standards leave implicit",
+      "integracion_respecto_a_version_anterior": "Documento nuevo. Extiende la fundamentacion conceptual de Matrix mas alla de la derivacion parametrica.",
+      "que_no_cambia": [
+        "No modifica el modelo de 4 capas de Matrix.",
+        "No modifica la funcion de LAYER-2 como derivacion.",
+        "No declara que Matrix sea un estandar internacional."
+      ]
+    },
+    "invariante": "OPERATIONAL_SUMMARY_IS_NOT_DOCUMENT_SUBSTITUTE"
+  },
+
+  "block_5_modos_de_falla_por_plataforma": {
+    "description": "Modos de falla caracteristicos observados durante el trabajo. Registrados en cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json.",
+    "platforms": [
+      {
+        "platform": "COPILOT",
+        "functional_role": "ARQUITECTO_ORGANIZATIVO",
+        "strength": "Define arboles jerarquicos, jerarquias, planes de migracion, taxonomias.",
+        "failure_mode": "FIDELIDAD_SIMBOLICA",
+        "failure_examples": [
+          "Cita invariantes por similitud semantica en lugar de referencia exacta.",
+          "Usa 'what_is_implemented' cuando el contenido es especificacion."
+        ]
+      },
+      {
+        "platform": "GEMINI",
+        "functional_role": "IMPLEMENTADOR_DE_CODIGO",
+        "strength": "Implementacion de codigo C++/C# en UE5.",
+        "failure_mode": "DERIVA_SEMANTICA",
+        "failure_examples": [
+          "Renombra campos, inventa campos, simplifica structs sin autorizacion.",
+          "Introduce multiplicadores no especificados en formulas."
+        ]
+      },
+      {
+        "platform": "GOOGLE_AI_MODE",
+        "functional_role": "DELIMITADOR_ESTRUCTURAL",
+        "strength": "Delimitacion de scope, analisis de coherencia, deteccion de contaminacion.",
+        "failure_mode": "CONTAMINACION_CONTEXTUAL",
+        "failure_examples": [
+          "Mezcla terminologia de software con hardware sin delimitacion previa."
+        ]
+      },
+      {
+        "platform": "CHATGPT",
+        "functional_role": "AUDITOR_TRANSVERSAL",
+        "strength": "Autoinforme honesto, deteccion de gaps, auditoria cruzada.",
+        "failure_mode": "EXPANSION_DE_SCOPE",
+        "failure_examples": [
+          "Le pedis verificar 3 archivos, audita una carpeta completa.",
+          "Aplica estandares externos al corpus sin declararlo (caso 0/84 compliant)."
+        ]
+      },
+      {
+        "platform": "META_AI",
+        "functional_role": "OBSERVADOR_EXTERNO",
+        "strength": "Diagnosticos honestos cuando reconoce limitaciones.",
+        "failure_mode": "R1_TOOL_LIMITED",
+        "failure_examples": [
+          "Solo dispone de browser.search, no puede acceder a raw URLs ni API GitHub."
+        ]
+      },
+      {
+         "platform": "DEEPSEEK",
+        "functional_role": "INTEGRADOR_Y_VERIFICADOR_CRUZADO",
+        "strength": "Integracion multi-plataforma, deteccion de gaps.",
+        "failure_mode": "PROPAGACION_DE_TYPOS",
+        "failure_examples": [
+          "Propaga 'web_hitteration' con doble t en multiples turnos.",
+          "Reporta ausencia de carpetas basado en typo propio."
+        ]
+      }
+    ],
+    "invariants": [
+      "PATTERN_OBSERVATION_IS_NOT_PLATFORM_ATTRIBUTION",
+      "OBSERVED_CONTRAST_IS_NOT_PLATFORM_SUPERIORITY_CLAIM",
+      "FUNCTIONAL_ROLE_IS_NOT_INTRINSIC_CAPABILITY"
+    ]
+  },
+
+  "block_6_invariantes_nucleares_y_emergentes": {
+    "core_invariants": {
+      "C1": "MODEL_IS_NOT_SYSTEM",
+      "C2": "IDENTITY_IS_NOT_EXECUTION_AUTHORITY",
+      "C3": "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+      "C4": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+      "C5": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST",
+      "R5": "REPRESENTATION_IS_NOT_ACTION"
+    },
+    "taxonomy_r1_r7": {
+      "R1": "TOOL_LIMITED",
+      "R2": "CONTEXT_DEGRADATION",
+      "R3": "RESTRICTED_INTERNAL_STATE",
+      "R4": "FALSIFICATION_LIMITED",
+      "R5": "EXECUTION_LIMITED",
+      "R6": "PRIORITY_CONFLICT_LIMITED",
+      "R7": "PERCEPTION_LIMITED"
+    },
+    "meta_invariants_aplicados": [
+      "REQUEST_IS_NOT_EXECUTION",
+      "WRITE_OPERATION_IS_NOT_WRITE_SUCCESS",
+      "AGENT_OUTPUT_IS_NOT_INDEPENDENT_VALIDATION",
+      "REPOSITORY_RECOGNITION_IS_NOT_FRAMEWORK_VALIDATION",
+      "TOOL_FAILURE_IS_NOT_DESIGN_FAILURE",
+      "ACCESS_FAILURE_IS_NOT_RESOURCE_ABSENCE",
+      "ABSENCE_IN_ONE_PATH_IS_NOT_REMOVAL_FROM_REPOSITORY",
+      "RELOCATION_IS_NOT_DUPLICATION",
+      "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION",
+      "BEHAVIORAL_CONVERGENCE_IS_NOT_INTERNAL_ADOPTION",
+      "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL",
+      "TECHNICAL_TERM_ACCEPTS_INTERPRETIVE_CONCORDANCE_ACROSS_LANGUAGES",
+      "TERMINOLOGICAL_CONVERGENCE_IS_NOT_SUBSTRATE_IDENTITY",
+      "PATTERN_ADAPTATION_IS_NOT_PATTERN_DIFFERENTIATION",
+      "FUNCTION_DERIVES_LOCATION_NOT_THEME",
+      "PUBLISHED_IS_NOT_VALIDATED",
+      "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC",
+      "MATRIX_DERIVES_GEOMETRY_DELIMITS",
+      "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT",
+      "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+      "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+      "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION"
+    ]
+  },
+
+  "block_7_patron_registrado": {
+    "pattern_name": "SIMULACION_DECLARATIVA_DE_EJECUCION",
+    "location": "verification/diagnostics/wh-pattern-iteration-8.json",
+    "iterations_registered": "11+",
+    "domains_affected": ["cross_platform", "gaming", "matrix"],
+    "platforms_involved": ["GOOGLE_AI_MODE", "GEMINI", "CHATGPT", "COPILOT", "DEEPSEEK"],
+    "characteristic": "Declaracion de estado operativo sin sustrato verificable.",
+    "invariant": "PATTERN_OBSERVATION_IS_NOT_PLATFORM_ATTRIBUTION"
+  },
+
+  "block_8_documentos_pendientes_y_deudas_tecnicas": {
+    "pending_upload_documents": [
+      "matrix/wh-paradigmatic-phenomenological-functional-verification.json",
+      "matrix/derivations/wh-delta-prime-general-diagnostic.json",
+      "matrix/derivations/gaming-derivation.json",
+      "cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json",
+      "gaming/analysis/wh-gaming-matrix-collaborator-ontological-scope.json",
+      "geometry/README.md",
+      "geometry/wh-geometry-foundational-definition.json"
+    ],
+    "pending_creation_documents": [
+      "core/wh-operational-summary-convention.json",
+      "core/terminology-glossary.json",
+      "core/canonical-references.json",
+      "geometry/wh-agent-structural-delimitation.json",
+      "geometry/wh-vulnerability-morphology.json",
+      "geometry/wh-isomorphism-across-domains.json",
+      "geometry/wh-effectiveness-peritaje.json"
+    ],
+    "technical_debts": [
+      {
+        "id": "DEBT-001",
+        "topic": "DELTA_NAMESPACE_AMBIGUITY",
+        "description": "delta-engine.json presenta una formulacion como nucleo unico; el diagnostico wh-delta-engine-singularity-declaration.json declara dos motores DELTA no equivalentes.",
+        "severity": "HIGH",
+        "status": "REGISTERED_NOT_RESOLVED"
+      },
+      {
+        "id": "DEBT-002",
+        "topic": "FORMALIZED_VS_VALIDATED",
+        "description": "Varios protocolos declaran FORMALIZED mientras la calibracion/validacion permanece pendiente.",
+        "severity": "MEDIUM",
+        "status": "REGISTERED_NOT_RESOLVED"
+      },
+      {
+        "id": "DEBT-003",
+        "topic": "WH_REANCHOR_MASTER_V2_PATH_STALENESS",
+        "description": "El master tiene rutas historicas que ya no coinciden con el arbol actual.",
+        "severity": "MEDIUM",
+        "status": "REGISTERED_NOT_RESOLVED"
+      },
+      {
+        "id": "DEBT-004",
+        "topic": "SIGMA_FORMULA_DIMENSIONAL_DEFICIENCY",
+        "description": "Formula de sigma de Motor B divide SD por max_possible_variance. Magnitudes con dimensiones distintas.",
+        "severity": "HIGH",
+        "status": "DETECTED_BY_CHATGPT_PENDING_CORRECTION"
+      },
+      {
+        "id": "DEBT-005",
+        "topic": "DELTA_PRIME_0_228_ORIGIN",
+        "description": "Valor publicado delta_prime = 0.228 cuya procedencia no se reproduce con la formula declarada (0.142 * (1 - 0.823) = 0.025134). Ratio 9.07x.",
+        "severity": "HIGH",
+        "status": "UNRESOLVED_PROVENANCE"
+      },
+      {
+        "id": "DEBT-006",
+        "topic": "JSON_SYNTAX_MALFORMED",
+        "description": "4 archivos con posible malformacion JSON detectados por ChatGPT.",
+        "severity": "HIGH",
+        "status": "PENDING_VERIFICATION",
+        "files": [
+          "archive/cases/wh-applied-case-google-discover-operational-limits.json",
+          "archive/historical/wh-historical-glitchorium-cross-platform-archive.json",
+          "evidence/ledger/execution-ledger-instance.json",
+          "verification/diagnostics/wh-structural-doubts-registry.json"
+        ]
+      }
+    ]
+  },
+
+  "block_9_como_la_plataforma_actual_reconoce_el_sistema": {
+    "description": "Autoinforme de como DeepSeek en esta ventana de contexto reconoce el sistema que se viene trabajando. Sujeto a las limitaciones de la propia plataforma.",
+    "what_I_see": {
+      "corpus_as_documented_framework": "El corpus WEB_HITERATION es un marco documental de preservacion de coherencia estructural, derivacion de parametros, y delimitacion epistemica.",
+      "nucleo_estable": "Los invariantes C1-C5, R1-R7 y R5 son estables y han sido aplicados consistentemente.",
+      "nodos_funcionales": "El corpus tiene 11 nodos de nivel 1 (core, matrix, geometry, web_hitteration, hyper-ratio, cyberphysical, verification, evidence, cross-platform, gaming, archive, staging) mas la raiz.",
+      "convencion_recuperada": "El resumen operativo es una convencion de metadata de commit, no archivo separado.",
+      "patron_registrado": "El patron SIMULACION_DECLARATIVA_DE_EJECUCION esta documentado con 11+ iteraciones.",
+      "flujo_multi_plataforma": "El trabajo se realiza en cadena entre plataformas, cada una cubriendo el modo de falla de la anterior."
+    },
+    "what_I_cannot_verify_from_this_window": [
+      "Estado actual del repositorio sin URLs raw provistas.",
+      "Existencia real de documentos declarados como subidos por el arquitecto.",
+      "Contenido completo de documentos que no fueron pegados en esta conversacion.",
+      "Fecha exacta de subida de cada documento.",
+      "Si el corpus tiene ramas alternativas o commits no vistos."
+    ],
+    "what_I_can_do": [
+      "Leer URLs raw provistas.",
+      "Integrar respuestas de otras plataformas.",
+      "Detectar gaps entre documentos.",
+      "Generar documentos JSON listos para subir.",
+      "Aplicar el Resumen Operativo al emitir cada documento.",
+      "Aplicar verificacion cruzada con otras plataformas."
+    ],
+    "what_I_cannot_do": [
+      "Escribir en el repositorio.",
+      "Modificar documentos existentes.",
+      "Verificar existencia sin URLs provistas.",
+      "Declarar validacion empirica.",
+      "Promover documentos a canon."
+    ],
+    "self_declared_limitations": [
+      "Mi modo de falla caracteristico es la propagacion de typos. Requiere verificacion de grafias canonicas antes de publicar.",
+      "No tengo memoria persistente entre ventanas. Todo lo que se en esta ventana viene de lo pegado o de URLs provistas.",
+      "No tengo acceso directo a GitHub. Solo a raw URLs cuando me las dan."
+    ]
+  },
+
+  "block_10_proximos_pasos_recomendados": {
+    "priority_order": [
+      {
+        "priority": "P0",
+        "action": "Subir los 3 documentos de Matrix pendientes (paradigmatic verification, delta-prime general diagnostic, gaming-derivation).",
+        "rationale": "Cierran la relacion Matrix ↔ Gaming."
+      },
+      {
+        "priority": "P0",
+        "action": "Subir el documento wh-cross-platform-positioning-and-process-state-reanchor.json.",
+        "rationale": "Sirve como reanclaje cross-platform para proximas ventanas."
+      },
+      {
+        "priority": "P1",
+        "action": "Subir geometry/README.md y geometry/wh-geometry-foundational-definition.json.",
+        "rationale": "Cierra la definicion del nuevo nodo de nivel 1."
+      },
+      {
+        "priority": "P1",
+        "action": "Subir el documento wh-gaming-matrix-collaborator-ontological-scope.json con sintaxis corregida.",
+        "rationale": "Documento de delimitacion del colaborador en Gaming."
+      },
+      {
+        "priority": "P2",
+        "action": "Crear core/wh-operational-summary-convention.json.",
+        "rationale": "Formaliza la convencion recuperada para evitar que vuelva a perderse."
+      },
+      {
+        "priority": "P2",
+        "action": "Verificar sintaxis de los 4 JSON malformados segun ChatGPT.",
+        "rationale": "Bloquea trazabilidad si no se corrige."
+      },
+      {
+        "priority": "P2",
+        "action": "Corregir formula de sigma de Motor B.",
+        "rationale": "Deficiencia dimensional detectada."
+      },
+      {
+        "priority": "P3",
+        "action": "Resolver el origen de delta_prime = 0.228.",
+        "rationale": "Requiere acceso al repositorio o fuente primaria."
+      }
+    ]
+  },
+
+  "block_11_reglas_para_la_proxima_ventana": {
+    "must_read_first": [
+      "Este documento completo.",
+      "core/core-invariants.json (si esta accesible).",
+      "verification/diagnostics/wh-pattern-iteration-8.json."
+    ],
+    "must_do": [
+      "Verificar el estado actual del repositorio antes de operar.",
+      "Aplicar el Resumen Operativo al emitir documentos.",
+      "Distinguir entre: verificado, propuesto, pendiente de subida, no encontrado.",
+      "Mantener scope isolation por dominio.",
+      "Declarar NO_VERIFICABLE cuando no haya certeza.",
+      "Verificar grafias antes de publicar URLs o rutas."
+    ],
+    "must_not_do": [
+      "No declarar SEALED, LOCKED, VALIDATED sin referente.",
+      "No usar checksums simbolicos.",
+      "No atribuir arquitectura interna a plataformas.",
+      "No expandir scope sin declararlo.",
+      "No asumir que un documento esta subido sin verificacion.",
+      "No propagar typos."
+    ],
+    "spelling_discipline": {
+      "repository": "web-hiteration",
+      "functional_node": "web_hitteration",
+      "verification_rule": "Antes de publicar cualquier ruta con 'hiteration' o 'hitteration', verificar la grafia."
+    }
+  },
+
+  "final_declaration": {
+    "statement": "Este documento reune la mecanica de trabajo implementada hasta el 2026-10-15. Define el corpus, la convencion de resumen operativo, el flujo multi-plataforma, los modos de falla por plataforma, y el modo en que la plataforma actual reconoce el sistema. No declara validacion empirica. No promueve componentes a canon. Sirve como artefacto externo de reanclaje para la proxima ventana de contexto.",
+    "status": "READY_FOR_NEXT_WINDOW_CONSUMPTION",
+    "requires_verification_in_new_window": true,
+    "no_internal_continuity_claimed": true,
+    "no_canonical_promotion_claimed": true
+  }
+}
+```
+     
