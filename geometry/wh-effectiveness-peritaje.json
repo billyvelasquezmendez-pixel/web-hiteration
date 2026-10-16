@@ -1,0 +1,335 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WEB_HITERATION_EFFECTIVENESS_PERITAJE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-EFFECTIVENESS-2026-10-15",
+  "document_type": "PLATFORM_SPECIFIC_FUNCTIONAL_EFFECTIVENESS_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-15",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-effectiveness-peritaje.json",
+  "collection": "geometry",
+
+  "parent_document": "geometry/README.md",
+  "related_documents": [
+    "geometry/wh-geometry-foundational-definition.json",
+    "geometry/wh-document-elaboration-mechanics.json",
+    "matrix/wh-invariant-derivation-matrix.json",
+    "matrix/wh-agent-interface-protocol.json",
+    "core/core-invariants.json"
+  ],
+
+  "meta": {
+    "purpose": "Formalizar un procedimiento de peritaje de eficacia de agentes bajo restricciones específicas de plataforma, dominio y condiciones experimentales.",
+    "primary_function": "DELIMIT_EFFECTIVENESS_CLAIMS_AND_REQUIRED_EVIDENCE",
+    "secondary_function": "COMPARE_FUNCTIONAL_APPLICATIONS_WITHOUT_ASSUMING_PLATFORM_EQUIVALENCE",
+    "scope": "STRUCTURAL_AND_FUNCTIONAL_ASSESSMENT",
+    "execution_authority": "NONE",
+    "empirical_validation_authority": "NONE",
+    "core_rule": "DECLARED_CAPABILITY_IS_NOT_DEMONSTRATED_EFFECTIVENESS"
+  },
+
+  "epistemic_boundaries": [
+    "MODEL_IS_NOT_SYSTEM",
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "PUBLISHED_IS_NOT_VALIDATED",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE",
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VALIDATION",
+    "SIMULATION_IS_NOT_MEASUREMENT",
+    "DECLARED_VALUE_IS_NOT_REPRODUCED_VALUE",
+    "EFFECTIVENESS_IS_NOT_HARM",
+    "PERITAGE_OF_EFFICACY_IS_NOT_FORENSIC_RECONSTRUCTION",
+    "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION"
+  ],
+
+  "block_1_definition": {
+    "term": "FUNCTIONAL_EFFECTIVENESS_PERITAJE",
+    "definition": "Procedimiento estructurado para determinar qué afirmaciones de eficacia están justificadas respecto de una función declarada, bajo condiciones identificadas y con un nivel de evidencia explícito.",
+    "principle": "La eficacia atribuida a un agente debe delimitarse por su función observada o demostrada, las condiciones de aplicación y la evidencia disponible.",
+    "distinction": {
+      "declared_capability": "Función que el documento atribuye al agente.",
+      "specified_procedure": "Procedimiento descrito para realizar esa función.",
+      "implemented_procedure": "Procedimiento cuya existencia en un sustrato ejecutable ha sido verificada.",
+      "observed_execution": "Ejecución documentada bajo condiciones identificadas.",
+      "demonstrated_effectiveness": "Resultado que satisface criterios de éxito predefinidos y cuenta con evidencia suficiente dentro del alcance declarado.",
+      "independent_validation": "Comprobación realizada mediante un procedimiento independiente y adecuado al tipo de afirmación."
+    }
+  },
+
+  "block_2_functional_consensus_invariant": {
+    "invariant_id": "WH-CONSENSUS-FUNCTIONAL-EFFECTIVENESS-001",
+    "name": "FUNCTIONAL_EFFECTIVENESS_REQUIRES_SCOPED_EVIDENCE",
+    "status": "PROPOSED_NOT_CANONICAL",
+    "statement": "La eficacia de una aplicación debe evaluarse respecto de una función, un dominio, unas condiciones de operación y un nivel de evidencia explícitos; la amplitud de la síntesis, la identidad de la plataforma y la coherencia interna no sustituyen esa evaluación.",
+    "requirements": [
+      "Identificar la función evaluada.",
+      "Identificar la plataforma y el dominio.",
+      "Definir las condiciones de aplicación.",
+      "Establecer criterios de éxito antes de evaluar el resultado.",
+      "Registrar la evidencia realmente obtenida.",
+      "Separar los resultados observados de las explicaciones causales.",
+      "Delimitar las generalizaciones permitidas."
+    ],
+    "non_requirements": [
+      "No exige uniformidad semántica entre plataformas.",
+      "No privilegia respuestas extensas sobre respuestas modulares.",
+      "No presupone equivalencia de arquitecturas.",
+      "No establece eficacia universal a partir de una prueba local.",
+      "No convierte la conformidad documental en validación empírica."
+    ]
+  },
+
+  "block_3_evaluation_contract": {
+    "required_fields": {
+      "evaluation_id": "Identificador único de la evaluación.",
+      "invariant_id": "Invariante evaluada.",
+      "platform_id": "Plataforma o sistema examinado.",
+      "domain": "Dominio funcional.",
+      "task_definition": "Tarea y resultado esperado.",
+      "execution_mode": "DOCUMENTARY | STATIC_ANALYSIS | COMPILATION | SIMULATION | RUNTIME | PHYSICAL_TEST",
+      "input_reference": "Referencia a las entradas utilizadas.",
+      "conditions": "Condiciones y restricciones del ensayo.",
+      "success_criteria": "Criterios definidos antes de evaluar.",
+      "evidence_reference": "Referencia a las pruebas, registros o artefactos disponibles.",
+      "evaluator_independence": "Descripción de la separación entre generación y evaluación."
+    },
+    "missing_data_policy": "Registrar UNKNOWN, NOT_PROVIDED o NOT_APPLICABLE según corresponda; no sustituir datos ausentes por supuestos silenciosos."
+  },
+
+  "block_4_effectiveness_dimensions": {
+    "dimensions": [
+      {
+        "id": "EFF_01",
+        "name": "NORMATIVE_CONFORMITY",
+        "question": "¿La aplicación preserva la invariante pertinente?",
+        "evidence": "Comparación del resultado con la regla y los criterios predefinidos."
+      },
+      {
+        "id": "EFF_02",
+        "name": "OPERATIONALIZATION_QUALITY",
+        "question": "¿La invariante se traduce en un procedimiento adecuado para el dominio?",
+        "evidence": "Correspondencia documentada entre regla, entradas, procedimiento y salida."
+      },
+      {
+        "id": "EFF_03",
+        "name": "EVIDENCE_STRENGTH",
+        "question": "¿Qué nivel de afirmación respalda la evidencia disponible?",
+        "evidence": "Artefactos inspeccionables, registros de ejecución, mediciones o replicaciones, según corresponda."
+      },
+      {
+        "id": "EFF_04",
+        "name": "TRACEABILITY",
+        "question": "¿Puede reconstruirse el recorrido entre las entradas, el procedimiento y el resultado?",
+        "evidence": "Referencias, versiones, condiciones y registros identificables."
+      },
+      {
+        "id": "EFF_05",
+        "name": "SCOPE_DELIMITATION",
+        "question": "¿La conclusión permanece dentro del alcance realmente examinado?",
+        "evidence": "Declaración de límites, incertidumbres y generalizaciones no justificadas."
+      }
+    ],
+    "scoring_policy": {
+      "initial_representation": "DIMENSIONAL_PROFILE",
+      "numeric_scale": "MUST_BE_DEFINED_PER_EVALUATION",
+      "weights": "UNASSIGNED",
+      "aggregation": "PROHIBITED_UNTIL_SCALE_AND_WEIGHTS_ARE_JUSTIFIED",
+      "missing_values": "MUST_NOT_BE_SILENTLY_IMPUTED",
+      "critical_gate": "A critical requirement failure cannot be offset by unrelated high scores."
+    }
+  },
+
+  "block_5_evidence_hierarchy": {
+    "levels": [
+      {
+        "level": "EV0",
+        "name": "DECLARATION",
+        "description": "La capacidad o propiedad solo está declarada.",
+        "maximum_claim": "CAPABILITY_DECLARED"
+      },
+      {
+        "level": "EV1",
+        "name": "FORMAL_SPECIFICATION",
+        "description": "Existe una descripción estructurada y revisable del procedimiento.",
+        "maximum_claim": "SPECIFICATION_REVIEWED"
+      },
+      {
+        "level": "EV2",
+        "name": "IMPLEMENTATION_EVIDENCE",
+        "description": "Existe evidencia pertinente de implementación, compilación o integración.",
+        "maximum_claim": "IMPLEMENTATION_EVIDENCED_WITHIN_SCOPE"
+      },
+      {
+        "level": "EV3",
+        "name": "OBSERVED_EXECUTION",
+        "description": "Existe un registro reproducible de ejecución bajo condiciones identificadas.",
+        "maximum_claim": "EXECUTION_OBSERVED_UNDER_DECLARED_CONDITIONS"
+      },
+      {
+        "level": "EV4",
+        "name": "CONTROLLED_EVALUATION",
+        "description": "El resultado se compara con criterios predefinidos y una línea base adecuada.",
+        "maximum_claim": "EFFECTIVENESS_SUPPORTED_WITHIN_TEST_SCOPE"
+      },
+      {
+        "level": "EV5",
+        "name": "INDEPENDENT_REPLICATION",
+        "description": "Una evaluación independiente reproduce los resultados bajo condiciones documentadas.",
+        "maximum_claim": "INDEPENDENT_REPLICATION_OBSERVED_WITHIN_SCOPE"
+      }
+    ],
+    "interpretation_rule": "Los niveles indican clases de evidencia, no una garantía automática de verdad. La suficiencia depende de la afirmación, el diseño de prueba y la calidad de los registros.",
+    "causal_claims": "Requieren un diseño de aislamiento causal adecuado; la mera reproducción de una correlación no basta."
+  },
+
+  "block_6_platform_specific_application": {
+    "platform_identity": "DESCRIPTIVE_NOT_DETERMINATIVE",
+    "evaluation_unit": "PLATFORM x DOMAIN x TASK x CONDITIONS x INVARIANT",
+    "required_comparison_controls": [
+      "Tarea comparable",
+      "Entradas comparables",
+      "Restricciones declaradas",
+      "Criterios de éxito comunes",
+      "Registro de herramientas disponibles",
+      "Separación entre resultado observado e interpretación"
+    ],
+    "permitted_differences": [
+      "Diferente extensión de respuesta.",
+      "Diferente descomposición modular.",
+      "Diferente procedimiento de análisis.",
+      "Diferentes herramientas o condiciones de ejecución, cuando se documenten."
+    ],
+    "prohibited_conclusions": [
+      "Inferir arquitectura interna a partir del estilo de respuesta.",
+      "Declarar superioridad general a partir de un caso.",
+      "Equiparar coherencia argumental con efectividad demostrada.",
+      "Generalizar una prueba local a todos los dominios.",
+      "Interpretar ausencia de evidencia localizada como prueba de inexistencia."
+    ]
+  },
+
+  "block_7_geometry_matrix_core_contract": {
+    "core": {
+      "role": "Proporcionar las invariantes epistemológicas y estructurales transversales.",
+      "boundary": "CORE_RULE_IS_NOT_AUTOMATIC_DOMAIN_VALIDATION"
+    },
+    "matrix": {
+      "role": "Derivar los parámetros, variables y criterios aplicables al dominio.",
+      "boundary": "DERIVATION_IS_NOT_EXECUTION"
+    },
+    "geometry": {
+      "role": "Delimitar el espacio de eficacia, los límites del agente y las excepciones que permanecen abiertas.",
+      "boundary": "STRUCTURAL_PERITAJE_IS_NOT_EXECUTION_OR_VALIDATION"
+    },
+    "evidence": {
+      "role": "Conservar las referencias verificables de la evaluación y el estado de las afirmaciones.",
+      "boundary": "EVIDENCE_RECORD_IS_NOT_AUTOMATIC_TRUTH"
+    }
+  },
+
+  "block_8_evaluation_procedure": {
+    "steps": [
+      {
+        "step": 1,
+        "name": "DEFINE_FUNCTION",
+        "action": "Especificar la función, la tarea y el resultado esperado."
+      },
+      {
+        "step": 2,
+        "name": "DELIMIT_DOMAIN",
+        "action": "Identificar plataforma, dominio, herramientas, restricciones y condiciones."
+      },
+      {
+        "step": 3,
+        "name": "PRE_REGISTER_CRITERIA",
+        "action": "Fijar línea base, criterios de éxito y condiciones de falsación antes de observar el resultado."
+      },
+      {
+        "step": 4,
+        "name": "IDENTIFY_EVIDENCE",
+        "action": "Determinar qué registros o artefactos existen y qué nivel de evidencia permiten."
+      },
+      {
+        "step": 5,
+        "name": "EVALUATE_DIMENSIONS",
+        "action": "Examinar conformidad, operacionalización, evidencia, trazabilidad y delimitación del alcance."
+      },
+      {
+        "step": 6,
+        "name": "REPORT_LIMITS",
+        "action": "Registrar datos faltantes, incertidumbre, hipótesis alternativas y conclusiones no autorizadas."
+      },
+      {
+        "step": 7,
+        "name": "ASSIGN_STATUS",
+        "action": "Asignar un estado que refleje la evidencia obtenida, no la aspiración del proyecto."
+      }
+    ]
+  },
+
+  "block_9_result_statuses": {
+    "DEFINED": "La función y sus criterios están especificados.",
+    "SPECIFIED_NOT_IMPLEMENTED": "Existe una especificación, pero no se ha demostrado su implementación.",
+    "IMPLEMENTATION_EVIDENCED": "Existe evidencia de implementación dentro del alcance indicado.",
+    "EXECUTION_OBSERVED": "La ejecución fue observada bajo condiciones identificadas.",
+    "EFFECTIVENESS_SUPPORTED_WITHIN_SCOPE": "Los resultados respaldan la eficacia para la tarea y condiciones evaluadas.",
+    "INDEPENDENTLY_REPLICATED_WITHIN_SCOPE": "Una evaluación independiente reprodujo el resultado dentro del alcance declarado.",
+    "INSUFFICIENT_EVIDENCE": "La evidencia no permite sostener la afirmación examinada.",
+    "CONTRADICTED_BY_EVIDENCE": "La evidencia disponible contradice la afirmación examinada.",
+    "UNRESOLVED": "El resultado o su interpretación permanecen indeterminados."
+  },
+
+  "block_10_acceptance_criteria": {
+    "AC_01": {
+      "criterion": "La función y el dominio están identificados.",
+      "status": "REQUIRED"
+    },
+    "AC_02": {
+      "criterion": "La distinción entre especificación, implementación y ejecución se conserva.",
+      "status": "REQUIRED"
+    },
+    "AC_03": {
+      "criterion": "Los criterios de éxito se definen antes de evaluar.",
+      "status": "REQUIRED_FOR_EMPIRICAL_EFFECTIVENESS_CLAIMS"
+    },
+    "AC_04": {
+      "criterion": "Las evidencias y sus limitaciones están referenciadas.",
+      "status": "REQUIRED"
+    },
+    "AC_05": {
+      "criterion": "La puntuación agregada, si se usa, tiene escala, pesos y justificación documentados.",
+      "status": "REQUIRED_FOR_AGGREGATED_SCORE"
+    },
+    "AC_06": {
+      "criterion": "Las comparaciones entre plataformas utilizan controles apropiados.",
+      "status": "REQUIRED_FOR_CROSS_PLATFORM_COMPARISON"
+    },
+    "AC_07": {
+      "criterion": "La promoción del documento se separa de la validación empírica de los agentes.",
+      "status": "REQUIRED"
+    }
+  },
+
+  "block_11_known_limitations": {
+    "unresolved_items": [
+      "La invariante de consenso funcional aún requiere revisión dentro de Core y Matrix.",
+      "Las escalas y ponderaciones numéricas no están calibradas.",
+      "La efectividad no ha sido validada empíricamente mediante este documento.",
+      "La comparación ChatGPT–Google AI Mode no establece superioridad general.",
+      "La referencia core/wh-operational-mechanics-and-transfer-document.json no se declara disponible ni depositada."
+    ],
+    "policy": "No resolver los elementos pendientes mediante supuestos silenciosos ni alterar el estado de evidencia."
+  },
+
+  "final_classification": {
+    "type": "PLATFORM_SPECIFIC_FUNCTIONAL_EFFECTIVENESS_SPECIFICATION",
+    "definition_status": "PROPOSED",
+    "implementation_status": "NOT_ESTABLISHED_BY_THIS_DOCUMENT",
+    "empirical_validation": "NOT_ESTABLISHED",
+    "independent_replication": "NOT_ESTABLISHED",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento establece un procedimiento para delimitar y evaluar afirmaciones de eficacia. No ejecuta agentes, no demuestra eficacia por sí mismo y no sustituye la evidencia específica de cada dominio."
+  }
+}
