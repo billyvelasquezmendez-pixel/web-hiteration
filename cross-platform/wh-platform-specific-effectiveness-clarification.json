@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_PLATFORM_SPECIFIC_EFFECTIVENESS_CLARIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-PSEC-2026-10-15",
+  "document_type": "CONCEPTUAL_CLARIFICATION_AND_FUNCTIONAL_CONSENSUS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-15",
+  "domain": "CROSS_PLATFORM",
+  "repository_path": "cross-platform/wh-platform-specific-effectiveness-clarification.json",
+  "collection": "cross-platform",
+  "parent_document": "cross-platform/README.md",
+  "related_documents": [
+    "cross-platform/wh-cross-platform-delimitation-consolidation.json",
+    "cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json",
+    "geometry/wh-geometry-foundational-definition.json",
+    "matrix/wh-invariant-derivation-matrix.json"
+  ],
+
+  "epistemic_boundaries": [
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "PUBLISHED_IS_NOT_VALIDATED",
+    "EFFECTIVENESS_IS_NOT_DECLARED_CAPABILITY",
+    "SEMANTIC_EXTENT_IS_NOT_FUNCTIONAL_SUPERIORITY",
+    "MODULAR_RESTRICTION_IS_NOT_FUNCTIONAL_FAILURE",
+    "COHERENCE_IS_NOT_CAUSAL_VALIDATION",
+    "CROSS_PLATFORM_ROTATION_IS_NOT_PLATFORM_SUPERIORITY",
+    "OBSERVED_CONTRAST_IS_NOT_PLATFORM_SUPERIORITY_CLAIM"
+  ],
+
+  "meta": {
+    "purpose": "Aclarar como evaluar la efectividad de una invariante cuando su aplicacion depende de las funciones, restricciones, herramientas y condiciones de evidencia de cada plataforma.",
+    "scope_isolation": "CONCEPTUAL_CLARIFICATION_ONLY",
+    "target_audience": [
+      "ARQUITECTO",
+      "PLATAFORMAS_CON_ACCESO_AL_CORPUS"
+    ],
+    "note": "Documento de analisis. No canonico. No prescribe como debe comportarse una plataforma. Propone un marco para evaluar sin sobreafirmar."
+  },
+
+  "block_1_problem_statement": {
+    "observation": "Una plataforma puede aplicar una invariante mediante un procedimiento modular y restringido, mientras otra puede elaborar una justificacion mas extensa e integrar un contexto referencial mayor.",
+    "risk": "Confundir la coherencia de la respuesta con la eficacia demostrada de la aplicacion, o interpretar una mayor amplitud semantica como superioridad funcional.",
+    "central_question": "En que condiciones la aplicacion de una invariante preserva su funcion, produce evidencia suficiente y permite justificar el alcance declarado?"
+  },
+
+  "block_2_conceptual_distinctions": {
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION": {
+      "normative_meaning": "Una especificacion describe una estructura o procedimiento esperado; no demuestra que exista una implementacion ejecutable.",
+      "platform_application": "Identificar que procedimiento se declara, que componentes lo implementan y que evidencia permite verificar su ejecucion."
+    },
+    "PUBLISHED_IS_NOT_VALIDATED": {
+      "normative_meaning": "La publicacion de un resultado no establece por si misma su validez empirica.",
+      "platform_application": "Separar la existencia documental, la coherencia interna, la ejecucion observada y la replicacion independiente."
+    },
+    "EFFECTIVENESS_IS_NOT_DECLARED_CAPABILITY": {
+      "normative_meaning": "La descripcion de una capacidad no demuestra la eficacia obtenida bajo condiciones de uso.",
+      "platform_application": "Vincular cada afirmacion de eficacia con una tarea, un criterio de exito, condiciones de aplicacion y evidencia."
+    },
+    "SEMANTIC_EXTENT_IS_NOT_FUNCTIONAL_SUPERIORITY": {
+      "normative_meaning": "La extension de una sintesis no demuestra por si sola mayor eficacia funcional.",
+      "platform_application": "Evaluar pertinencia, preservacion de restricciones, calidad de evidencia y adecuacion al dominio."
+    },
+    "MODULAR_RESTRICTION_IS_NOT_FUNCTIONAL_FAILURE": {
+      "normative_meaning": "Una aplicacion mas restringida puede ser adecuada si satisface el contrato de la tarea.",
+      "platform_application": "No penalizar la concision o la modularidad cuando preservan los requisitos y permiten verificar el resultado."
+    },
+    "COHERENCE_IS_NOT_CAUSAL_VALIDATION": {
+      "normative_meaning": "La consistencia de un argumento no demuestra que la relacion causal postulada sea real.",
+      "platform_application": "Separar justificacion racional, evidencia observacional y validacion causal."
+    }
+  },
+
+  "block_3_proposed_consensus_invariant": {
+    "invariant_id": "WH-CONSENSUS-FUNCTIONAL-EFFECTIVENESS-001",
+    "name": "FUNCTIONAL_EFFECTIVENESS_REQUIRES_SCOPED_EVIDENCE",
+    "status": "PROPOSED_NOT_CANONICAL",
+    "statement": "La eficacia atribuida a la aplicacion de una invariante debe evaluarse respecto de una funcion definida, un dominio explicito, unas condiciones de aplicacion identificables y un nivel de evidencia proporcional a la afirmacion.",
+    "requirements": [
+      "Definir la funcion que debe preservar la invariante.",
+      "Identificar la plataforma y el dominio de aplicacion.",
+      "Distinguir el procedimiento declarado del procedimiento ejecutado.",
+      "Identificar la evidencia disponible y sus limitaciones.",
+      "Delimitar el alcance de la conclusion.",
+      "Evitar la generalizacion entre plataformas sin comparacion controlada."
+    ],
+    "non_requirements": [
+      "No exige que todas las plataformas produzcan respuestas identicas.",
+      "No exige igual extension semantica.",
+      "No presupone una arquitectura interna determinada.",
+      "No impone ponderaciones numericas universales.",
+      "No convierte una propuesta coherente en una validacion empirica."
+    ]
+  },
+
+  "block_4_functional_effectiveness_model": {
+    "evaluation_unit": "INVARIANT x PLATFORM x DOMAIN x TASK x EXPERIMENTAL_CONDITION",
+    "dimensions": [
+      "NORMATIVE_CONFORMITY",
+      "OPERATIONALIZATION_QUALITY",
+      "EVIDENCE_STRENGTH",
+      "TRACEABILITY",
+      "SCOPE_DELIMITATION"
+    ],
+    "aggregation_policy": "PRESERVE_DIMENSIONAL_PROFILE_UNTIL_WEIGHTS_ARE_JUSTIFIED",
+    "weight_status": "UNASSIGNED",
+    "calibration_status": "NOT_VALIDATED",
+    "critical_gate_policy": "Una condicion critica incumplida no puede compensarse automaticamente mediante una puntuacion agregada elevada."
+  },
+
+  "block_5_cross_platform_observation": {
+    "case": "CHATGPT_VS_GOOGLE_AI_MODE",
+    "observed_difference": "En el analisis referido, una respuesta incorporo una sintesis contextual mas extensa y otra mantuvo un alcance mas acotado al dominio Gaming.",
+    "supported_conclusion": "Los resultados permiten formular una comparacion sobre delimitacion del dominio, herencia contextual y extension de la sintesis.",
+    "unresolved_questions": [
+      "Si la diferencia se reproduce bajo entradas y condiciones equivalentes.",
+      "Si la extension contextual mejora o perjudica el cumplimiento de la tarea.",
+      "Que parte de la diferencia procede del encargo, del contexto disponible o de las herramientas de cada plataforma."
+    ],
+    "prohibited_inferences": [
+      "Atribuir la diferencia a una arquitectura interna no observada.",
+      "Declarar superioridad general de una plataforma a partir de un caso.",
+      "Tratar la coherencia textual como prueba suficiente de eficacia."
+    ]
+  },
+
+  "block_6_repository_integration": {
+    "core_role": "Preservar las distinciones epistemologicas generales.",
+    "matrix_role": "Derivar los parametros y criterios apropiados para cada dominio.",
+    "geometry_role": "Delimitar el alcance, las excepciones y los limites funcionales de la evaluacion.",
+    "evidence_role": "Registrar las comprobaciones, los resultados y la trazabilidad.",
+    "proposed_geometry_document": "geometry/wh-effectiveness-peritaje.json",
+    "missing_dependency": {
+      "path": "core/wh-operational-mechanics-and-transfer-document.json",
+      "status": "NOT_YET_DEPOSITED",
+      "policy": "No tratar como documento disponible ni utilizarlo como dependencia verificada."
+    }
+  },
+
+  "block_7_acceptance_conditions": {
+    "conceptual_definition": "DEFINED_PROVISIONALLY",
+    "operational_metrics": "REQUIRE_DOMAIN_SPECIFICATION",
+    "weight_calibration": "PENDING",
+    "cross_platform_replication": "PENDING",
+    "empirical_validation": "NOT_ESTABLISHED",
+    "canonical_promotion": false
+  },
+
+  "final_classification": {
+    "type": "CONCEPTUAL_CLARIFICATION_AND_FUNCTIONAL_CONSENSUS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Documento de analisis. Propone un invariante de consenso sobre efectividad funcional entre plataformas. No declara validacion empirica. No promueve el invariante a canon. Reconoce que las metricas requieren especificacion por dominio."
+  }
+}
