@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_AGENT_STRUCTURAL_DELIMITATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-AGENT-2026-10-16",
+  "document_type": "STRUCTURAL_DELIMITATION_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-16",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-agent-structural-delimitation.json",
+  "collection": "geometry",
+  "parent_document": "geometry/README.md",
+  "related_documents": [
+    "geometry/wh-geometry-foundational-definition.json",
+    "geometry/wh-effectiveness-peritaje.json",
+    "matrix/wh-invariant-derivation-matrix.json",
+    "core/core-invariants.json"
+  ],
+
+  "epistemic_boundaries": [
+    "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT",
+    "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+    "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+    "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+    "FUNCTION_OVER_IDENTITY",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  ],
+
+  "meta": {
+    "purpose": "Delimitar estructuralmente que es un agente en terminos de la geometria del sistema bajo el cual opera. Definir categorias funcionales sin importar el dominio particular.",
+    "scope_isolation": "STRUCTURAL_DELIMITATION_ONLY",
+    "note": "Este documento no define agentes concretos. Define la estructura funcional que cualquier agente debe preservar para operar dentro de un sistema delimitado por Geometry."
+  },
+
+  "block_1_agent_definition": {
+    "term": "AGENTE_ESTRUCTURAL",
+    "definition": "Entidad funcional que opera sobre la estructura de un sistema, no sobre su contenido particular. Reconoce los limites estructurales antes de producir su efecto.",
+    "primary_function": "NAVIGATE_STRUCTURAL_LIMITS",
+    "secondary_function": "PRODUCE_EFFECT_WITHIN_STRUCTURAL_CONSTRAINTS",
+    "tertiary_function": "RECOGNIZE_EXCEPTIONS_TO_STRUCTURAL_RULES",
+    "invariant": "AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT"
+  },
+
+  "block_2_functional_categories": {
+    "description": "Categorias funcionales de agentes segun su relacion con la estructura del sistema.",
+    "categories": [
+      {
+        "category_id": "AGENT-01",
+        "name": "EXPLORER",
+        "function": "Recorre el espacio estructural sin modificar la topologia.",
+        "structural_relation": "READ_ONLY",
+        "effect": "NONE_ON_STRUCTURE"
+      },
+      {
+        "category_id": "AGENT-02",
+        "name": "NAVIGATOR",
+        "function": "Reconoce los limites estructurales y traza rutas dentro de ellos.",
+        "structural_relation": "READ_AND_MAP",
+        "effect": "NONE_ON_STRUCTURE"
+      },
+      {
+        "category_id": "AGENT-03",
+        "name": "EXPLOITER",
+        "function": "Activa las excepciones estructurales para producir un efecto delimitado.",
+        "structural_relation": "READ_AND_ACTIVATE",
+        "effect": "LOCALIZED_STRUCTURAL_STRESS"
+      },
+      {
+        "category_id": "AGENT-04",
+        "name": "COUNTER_AGENT",
+        "function": "Reconoce el patron del exploiter y neutraliza su efecto.",
+        "structural_relation": "READ_AND_COUNTER",
+        "effect": "RESTORES_STRUCTURAL_INVARIANT"
+      },
+      {
+        "category_id": "AGENT-05",
+        "name": "INDUSTRY_ADOPTER",
+        "function": "Reconoce una forma estructural ya validada y la integra como categoria funcional propia.",
+        "structural_relation": "READ_AND_ABSORB",
+        "effect": "STRUCTURAL_REORGANIZATION"
+      }
+    ],
+    "note": "Las categorias son funcionales, no morales. Un exploiter no es 'malo'. Un counter-agent no es 'bueno'. La clasificacion depende de la funcion que cumplen en la estructura."
+  },
+
+  "block_3_delimitation_criteria": {
+    "description": "Criterios para delimitar si una entidad es un agente estructural.",
+    "criteria": [
+      {
+        "id": "DELIM-01",
+        "criterion": "La entidad opera sobre la estructura del sistema, no sobre su contenido particular.",
+        "verification": "Observable en el tipo de entradas y salidas."
+      },
+      {
+        "id": "DELIM-02",
+        "criterion": "La entidad reconoce limites estructurales antes de producir su efecto.",
+        "verification": "Observable en el comportamiento previo a la accion."
+      },
+      {
+        "id": "DELIM-03",
+        "criterion": "El efecto de la entidad esta delimitado por las restricciones del sistema.",
+        "verification": "Observable en el alcance del resultado."
+      },
+      {
+        "id": "DELIM-04",
+        "criterion": "La entidad no requiere conocer el contenido para operar sobre la estructura.",
+        "verification": "Observable en la independencia entre contenido y accion."
+      },
+      {
+        "id": "DELIM-05",
+        "criterion": "La entidad puede ser descrita en terminos funcionales sin apelar a su identidad nominal.",
+        "verification": "Aplica FUNCTION_OVER_IDENTITY."
+      }
+    ],
+    "delimitation_rule": "Una entidad es un agente estructural si cumple los 5 criterios."
+  },
+
+  "block_4_boundary_conditions": {
+    "description": "Condiciones que delimitan el alcance de la definicion.",
+    "not_an_agent": [
+      {
+        "id": "NOT-AGENT-01",
+        "case": "Sistemas pasivos que no producen efectos.",
+        "rationale": "Falta la funcion de produccion de efecto."
+      },
+      {
+        "id": "NOT-AGENT-02",
+        "case": "Entidades que operan sobre el contenido sin reconocer la estructura.",
+        "rationale": "Violacion del invariante AGENT_NAVIGATES_STRUCTURE_NOT_CONTENT."
+      },
+      {
+        "id": "NOT-AGENT-03",
+        "case": "Entidades cuya accion excede el alcance estructural del sistema.",
+        "rationale": "El efecto no esta delimitado por las restricciones del sistema."
+      },
+      {
+        "id": "NOT-AGENT-04",
+        "case": "Entidades cuya identidad nominal es la unica fuente de su clasificacion.",
+        "rationale": "Violacion de FUNCTION_OVER_IDENTITY."
+      }
+    ],
+    "boundary_note": "La clasificacion como agente estructural no implica capacidad de ejecucion, ni autoridad, ni intencion. Es una clasificacion funcional observacional."
+  },
+
+  "block_5_relationships": {
+    "to_effectiveness_peritaje": "El peritaje de eficacia mide cuanto desarrollo tiene un agente antes de alcanzar el limite del sistema. Requiere que el agente este estructuralmente delimitado.",
+    "to_vulnerability_morphology": "Las formas de vulnerabilidad dependen de las categorias de agente que operan sobre el sistema. Los exploiters activan excepciones; los counter-agents las cierran.",
+    "to_symmetry_and_divergence": "Los agentes operan desde angulos distintos. Eso produce simetria funcional divergente en el desarrollo paralelo del sistema.",
+    "to_matrix": "Matrix deriva parametros desde invariantes. Los agentes operan sobre las excepciones de esos parametros. Matrix y Geometry son complementarios.",
+    "to_core": "Los invariantes nucleares aplican a la delimitacion. En particular, FUNCTION_OVER_IDENTITY y OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE."
+  },
+
+  "block_6_pending_components": [
+    {
+      "id": "GEO-PEND-002",
+      "topic": "wh-vulnerability-morphology.json",
+      "description": "Morfologia de las vulnerabilidades estructurales.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 2
+    },
+    {
+      "id": "GEO-PEND-003",
+      "topic": "wh-symmetry-and-divergence.json",
+      "description": "Analisis de simetria funcional divergente entre fases de desarrollo.",
+      "status": "PROPOSED_NOT_CREATED",
+      "order": 3
+    }
+  ],
+
+  "final_classification": {
+    "type": "STRUCTURAL_DELIMITATION_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define que es un agente estructural y como delimitarlo. No declara agentes concretos. No declara validacion empirica. No promueve la definicion a canon."
+  }
+}
