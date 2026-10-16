@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_TECHNICAL_DEBT_RELATIONAL_MAP",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-DEBT-MAP-2026-10-16",
+  "document_type": "RELATIONAL_DEBT_MAPPING_AND_INDUCTIVE_COMPLEXITY_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-16",
+  "domain": "CORE",
+  "repository_path": "core/wh-technical-debt-relational-map.json",
+  "collection": "core",
+  "parent_document": "core/README.md",
+  "related_documents": [
+    "core/wh-operational-mechanics-and-transfer-document.json",
+    "verification/diagnostics/wh-structural-doubts-registry.json",
+    "verification/diagnostics/wh-pattern-iteration-8.json"
+  ],
+
+  "epistemic_boundaries": [
+    "DEBT_IS_NOT_FAILURE",
+    "MAPPING_IS_NOT_RESOLUTION",
+    "INDUCTIVE_COMPLEXITY_IS_NOT_PRIORITY_RANKING",
+    "RELATIONAL_ANALYSIS_IS_NOT_CAUSAL_DIAGNOSIS",
+    "REGISTERED_DEBT_IS_NOT_RESOLVED_DEBT"
+  ],
+
+  "meta": {
+    "purpose": "Mapear de forma inductiva y relacional el conjunto completo de deudas tecnicas del corpus. Establecer dependencias entre ellas, estimar complejidad de resolucion, y proponer orden topologico de trabajo.",
+    "scope_isolation": "TECHNICAL_DEBT_ANALYSIS_ONLY",
+    "note": "Este documento no resuelve deudas. Las mapea. Es un mapa, no un plan de ejecucion."
+  },
+
+  "block_1_complexity_scale": {
+    "description": "Escala inductiva para clasificar la complejidad de resolucion de una deuda tecnica.",
+    "scale": [
+      {
+        "level": 1,
+        "name": "TRIVIAL",
+        "criteria": "Resolucion sin dependencias externas. Un solo documento afectado. Cambio localizado."
+      },
+      {
+        "level": 2,
+        "name": "BAJA",
+        "criteria": "Resolucion con acceso al repositorio. Pocos documentos afectados. Sin ambiguedad estructural."
+      },
+      {
+        "level": 3,
+        "name": "MEDIA",
+        "criteria": "Resolucion requiere verificacion cruzada. Multiples documentos afectados. Cambios coordinados."
+      },
+      {
+        "level": 4,
+        "name": "ALTA",
+        "criteria": "Resolucion requiere fuentes primarias no depositadas o reconstruccion historica. Ambiguedad estructural significativa."
+      },
+      {
+        "level": 5,
+        "name": "CRITICA",
+        "criteria": "Resolucion requiere decision arquitectonica no tomada. Dependencias cruzadas con otros dominios. Posible impacto en invariantes nucleares."
+      }
+    ]
+  },
+
+  "block_2_registered_debts": [
+    {
+      "id": "DEBT-001",
+      "name": "DELTA_NAMESPACE_AMBIGUITY",
+      "domain": "web_hitteration",
+      "severity": "HIGH",
+      "complexity_level": 5,
+      "complexity_justification": "Requiere decision arquitectonica sobre namespace de DELTA. Impacta web_hitteration/, hyper-ratio/, diagnostics/. Dependencia cruzada con patron-8.",
+      "documents_affected": [
+        "web_hitteration/protocols/delta-engine.json",
+        "web_hitteration/diagnostics/wh-delta-engine-singularity-declaration.json",
+        "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json"
+      ],
+      "invariants_involved": [
+        "SAME_SYMBOL_IS_NOT_SAME_MEANING",
+        "FUNCTION_OVER_IDENTITY"
+      ],
+      "blocks": ["DEBT-005"],
+      "blocked_by": [],
+      "origin": "CHATGPT_AUDIT_2026_10_08",
+      "status": "REGISTERED_NOT_RESOLVED"
+    },
+    {
+      "id": "DEBT-002",
+      "name": "FORMALIZED_VS_VALIDATED",
+      "domain": "core",
+      "severity": "MEDIUM",
+      "complexity_level": 4,
+      "complexity_justification": "Requiere auditoria de multiples protocolos para distinguir formalizacion de validacion. Ambiguedad entre estados declarados.",
+      "documents_affected": [
+        "core/core-invariants.json",
+        "web_hitteration/protocols/*",
+        "hyper-ratio/models/hyper-ratio.json"
+      ],
+      "invariants_involved": [
+        "PUBLISHED_IS_NOT_VALIDATED",
+        "FORMULA_IS_NOT_MEASUREMENT"
+      ],
+      "blocks": [],
+      "blocked_by": [],
+      "origin": "CHATGPT_AUDIT_2026_10_08",
+      "status": "REGISTERED_NOT_RESOLVED"
+    },
+    {
+      "id": "DEBT-003",
+      "name": "WH_REANCHOR_MASTER_V2_PATH_STALENESS",
+      "domain": "web_hitteration",
+      "severity": "MEDIUM",
+      "complexity_level": 2,
+      "complexity_justification": "Requiere actualizacion de rutas o marcado como snapshot historico. Cambio localizado en un documento.",
+      "documents_affected": [
+        "web_hitteration/reanchoring/wh-reanchor-master-v2.json"
+      ],
+      "invariants_involved": [
+        "ACCESS_FAILURE_IS_NOT_RESOURCE_ABSENCE",
+        "URL_RECONSTRUCTED_FROM_MEMORY_IS_NOT_CANONICAL_URL"
+      ],
+      "blocks": [],
+      "blocked_by": [],
+      "origin": "CHATGPT_AUDIT_2026_10_08",
+      "status": "REGISTERED_NOT_RESOLVED"
+    },
+    {
+      "id": "DEBT-004",
+      "name": "SIGMA_FORMULA_DIMENSIONAL_DEFICIENCY",
+      "domain": "hyper-ratio",
+      "severity": "HIGH",
+      "complexity_level": 3,
+      "complexity_justification": "Requiere correccion de formula. Impacta documentos de scoring y cross-motor. Definicion clara del problema.",
+      "documents_affected": [
+        "hyper-ratio/scoring/p1-p3-p5-scoring-protocol.json",
+        "matrix/wh-cross-motor-variable-contract.json"
+      ],
+      "invariants_involved": [
+        "FORMULA_IS_NOT_MEASUREMENT",
+        "DECLARED_METRIC_IS_NOT_CALCULATED_METRIC"
+      ],
+      "blocks": [],
+      "blocked_by": [],
+      "origin": "CHATGPT_VERIFICATION_2026_10_12",
+      "status": "DETECTED_PENDING_CORRECTION"
+    },
+    {
+      "id": "DEBT-005",
+      "name": "DELTA_PRIME_0_228_ORIGIN",
+      "domain": "matrix",
+      "severity": "HIGH",
+      "complexity_level": 5,
+      "complexity_justification": "Requiere fuente primaria no depositada. Reconstruccion historica. Dependencia con DEBT-001.",
+      "documents_affected": [
+        "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+        "matrix/derivations/wh-delta-prime-general-diagnostic.json"
+      ],
+      "invariants_involved": [
+        "DECLARED_VALUE_IS_NOT_REPRODUCED_VALUE",
+        "RECONSTRUCTION_IS_NOT_ORIGINAL_PROVENANCE"
+      ],
+      "blocks": [],
+      "blocked_by": ["DEBT-001", "DEBT-006"],
+      "origin": "ARQUITECTO_2026_10_11",
+      "status": "UNRESOLVED_PROVENANCE"
+    },
+    {
+      "id": "DEBT-006",
+      "name": "JSON_SYNTAX_MALFORMED",
+      "domain": "multi",
+      "severity": "HIGH",
+      "complexity_level": 2,
+      "complexity_justification": "Requiere verificacion y correccion de sintaxis. 4 archivos afectados. Definicion clara del problema.",
+      "documents_affected": [
+        "archive/cases/wh-applied-case-google-discover-operational-limits.json",
+        "archive/historical/wh-historical-glitchorium-cross-platform-archive.json",
+        "evidence/ledger/execution-ledger-instance.json",
+        "verification/diagnostics/wh-structural-doubts-registry.json"
+      ],
+      "invariants_involved": [
+        "SYNTACTIC_VALIDITY_IS_NOT_METHODOLOGICAL_VALIDITY"
+      ],
+      "blocks": ["DEBT-005"],
+      "blocked_by": [],
+      "origin": "CHATGPT_AUDIT_2026_10_09",
+      "status": "PENDING_VERIFICATION"
+    },
+    {
+      "id": "DEBT-007",
+      "name": "OPERATIONAL_SUMMARY_CONVENTION_NOT_FORMALIZED",
+      "domain": "core",
+      "severity": "MEDIUM",
+      "complexity_level": 1,
+      "complexity_justification": "Requiere redaccion de documento nuevo. Sin dependencias. Contenido ya definido.",
+      "documents_affected": [
+        "core/wh-operational-summary-convention.json (propuesto)"
+      ],
+      "invariants_involved": [
+        "OPERATIONAL_SUMMARY_IS_NOT_DOCUMENT_SUBSTITUTE"
+      ],
+      "blocks": [],
+      "blocked_by": [],
+      "origin": "ARQUITECTO_2026_10_09",
+      "status": "PROPOSED_NOT_CREATED"
+    },
+    {
+      "id": "DEBT-008",
+      "name": "GAMING_COLLABORATOR_SYNTAX_MALFORMED",
+      "domain": "gaming",
+      "severity": "MEDIUM",
+      "complexity_level": 2,
+      "complexity_justification": "Requiere correccion de sintaxis en un documento. Problema localizado.",
+      "documents_affected": [
+        "gaming/analysis/wh-gaming-matrix-collaborator-ontological-scope.json"
+      ],
+      "invariants_involved": [
+        "SYNTACTIC_VALIDITY_IS_NOT_METHODOLOGICAL_VALIDITY"
+      ],
+      "blocks": [],
+      "blocked_by": [],
+      "origin": "DEEPSEEK_2026_10_15",
+      "status": "PENDING_CORRECTION"
+    }
+  ],
+
+  "block_3_relational_graph": {
+    "description": "Grafo de dependencias entre deudas. Una deuda A bloquea a B si la resolucion de B requiere la resolucion de A.",
+    "nodes": ["DEBT-001", "DEBT-002", "DEBT-003", "DEBT-004", "DEBT-005", "DEBT-006", "DEBT-007", "DEBT-008"],
+    "edges": [
+      {
+        "from": "DEBT-001",
+        "to": "DEBT-005",
+        "type": "BLOCKS",
+        "reason": "El namespace de DELTA debe resolverse antes de reconstruir la procedencia de delta_prime."
+      },
+      {
+        "from": "DEBT-006",
+        "to": "DEBT-005",
+        "type": "BLOCKS",
+        "reason": "Los archivos con sintaxis malformada no pueden consultarse como fuentes primarias hasta su correccion."
+      }
+    ],
+    "isolated_debts": [
+      "DEBT-002",
+      "DEBT-003",
+      "DEBT-004",
+      "DEBT-007",
+      "DEBT-008"
+    ],
+    "critical_path": ["DEBT-006", "DEBT-001", "DEBT-005"],
+    "critical_path_note": "DEBT-005 (origen de delta_prime) depende de DEBT-001 (namespace DELTA) y DEBT-006 (sintaxis JSON). Es la deuda terminal del camino critico."
+  },
+
+  "block_4_inductive_complexity_analysis": {
+    "description": "Analisis inductivo de la complejidad agregada. Como se combinan las deudas cuando se abordan en conjunto.",
+    "aggregate_observations": [
+      {
+        "observation_id": "AGG-01",
+        "observation": "DEBT-004 (sigma) y DEBT-001 (namespace DELTA) comparten dominio hyper-ratio/. Resolverlas juntas reduce trabajo.",
+        "complexity_reduction": "APPROXIMATELY_30_PERCENT"
+      },
+      {
+        "observation_id": "AGG-02",
+        "observation": "DEBT-006 (sintaxis JSON) y DEBT-008 (sintaxis Gaming) son de la misma clase. Un procedimiento unico puede resolver ambas.",
+        "complexity_reduction": "APPROXIMATELY_40_PERCENT_FOR_BOTH"
+      },
+      {
+        "observation_id": "AGG-03",
+        "observation": "DEBT-005 (delta_prime origin) no puede resolverse sin acceso al repositorio y sin resolver DEBT-001 y DEBT-006.",
+        "complexity_increase": "DEPENDENCY_CHAIN_EXTENDS_WORK"
+      },
+      {
+        "observation_id": "AGG-04",
+        "observation": "DEBT-007 (convention) es la unica deuda sin dependencias ni bloqueos. Puede resolverse en cualquier momento.",
+        "complexity_level": "TRIVIAL"
+      }
+    ],
+    "aggregate_complexity": {
+      "total_debts": 8,
+      "sum_of_complexity_levels": 24,
+      "maximum_possible": 40,
+      "aggregate_level": 3,
+      "aggregate_name": "MEDIA",
+      "interpretation": "El conjunto de deudas es resoluble en una sesion de trabajo estructurada si se respeta el orden topologico."
+    }
+  },
+
+  "block_5_topological_order": {
+    "description": "Orden sugerido de resolucion segun dependencias y complejidad.",
+    "order": [
+      {
+        "position": 1,
+        "debt": "DEBT-007",
+        "rationale": "Sin dependencias. Trivial. Puede resolverse primero para establecer protocolo.",
+        "estimated_effort": "LOW"
+      },
+      {
+        "position": 2,
+        "debt": "DEBT-008",
+        "rationale": "Correccion localizada. Precede a verificaciones que dependan de documentos con sintaxis valida.",
+        "estimated_effort": "LOW"
+      },
+      {
+        "position": 3,
+        "debt": "DEBT-006",
+        "rationale": "Bloquea a DEBT-005. Requiere acceso al repositorio para verificar y corregir los 4 archivos.",
+        "estimated_effort": "MEDIUM"
+      },
+      {
+        "position": 4,
+        "debt": "DEBT-003",
+        "rationale": "Actualizacion localizada. Independiente.",
+        "estimated_effort": "LOW"
+      },
+      {
+        "position": 5,
+        "debt": "DEBT-004",
+        "rationale": "Correccion clara. Impacta scoring y cross-motor. Coordinar con DEBT-001 si posible.",
+        "estimated_effort": "MEDIUM"
+      },
+      {
+        "position": 6,
+        "debt": "DEBT-002",
+        "rationale": "Auditoria amplia. No bloquea a otras deudas.",
+        "estimated_effort": "MEDIUM"
+      },
+      {
+        "position": 7,
+        "debt": "DEBT-001",
+        "rationale": "Decision arquitectonica. Bloquea a DEBT-005.",
+        "estimated_effort": "HIGH"
+      },
+      {
+        "position": 8,
+        "debt": "DEBT-005",
+        "rationale": "Deuda terminal. Requiere resolucion previa de DEBT-001 y DEBT-006.",
+        "estimated_effort": "HIGH"
+      }
+    ]
+  },
+
+  "block_6_observations": {
+    "structural_observations": [
+      "Ninguna deuda involucra violacion de invariantes nucleares. Todas son deudas de coherencia interna o trazabilidad.",
+      "El camino critico pasa por DEBT-006 → DEBT-001 → DEBT-005. Resolver fuera de orden extiende el trabajo.",
+      "La deuda de mayor complejidad (DEBT-001) es tambien la mas antigua registrada. Eso sugiere postergacion por ambiguedad estructural."
+    ],
+    "pattern_observations": [
+      "3 de 8 deudas involucran el dominio DELTA/sigma. Eso es un punto de concentracion.",
+      "2 de 8 deudas son de sintaxis JSON. Eso sugiere falta de verificacion sistematica al subir.",
+      "Ninguna deuda involucra dominios como gaming/, geometry/, matrix/ (excepto DEBT-005 que es de matrix pero originada en hyper-ratio)."
+    ]
+  },
+
+  "final_classification": {
+    "type": "RELATIONAL_DEBT_MAP",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento mapea deudas tecnicas sin resolverlas. Establece dependencias, complejidad inductiva y orden topologico. No declara validacion. No promueve componentes a canon."
+  }
+}
