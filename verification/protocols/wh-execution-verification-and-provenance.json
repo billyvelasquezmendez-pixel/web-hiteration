@@ -1,0 +1,358 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_EXECUTION_VERIFICATION_AND_PROVENANCE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-EVP-2026-001",
+  "document_type": "CROSS_DOMAIN_EXECUTION_VERIFICATION_AND_PROVENANCE_PROTOCOL",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-16",
+  "domain": "VERIFICATION",
+  "repository_path": "verification/protocols/wh-execution-verification-and-provenance.json",
+  "collection": "verification",
+  "parent_document": "verification/README.md",
+  "related_documents": [
+    "core/wh-technical-debt-relational-map.json",
+    "matrix/wh-invariant-derivation-matrix.json",
+    "geometry/wh-effectiveness-peritaje.json",
+    "verification/protocols/independent-recalculation-protocol.json"
+  ],
+  "related_protocols": ["WH-FCBE-2026-001"],
+  "related_protocols_status": "NOT_CONFIRMED_IN_REPOSITORY",
+  "repository_status": "NOT_DEPOSITED_BY_THIS_RESPONSE",
+
+  "scope": [
+    "GAMING",
+    "MATRIX",
+    "CROSS_PLATFORM",
+    "CYBERPHYSICAL",
+    "HYPER_RATIO",
+    "WEB_HITERATION",
+    "EVIDENCE",
+    "VERIFICATION"
+  ],
+
+  "epistemic_boundaries": [
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION",
+    "DECLARATION_IS_NOT_EXECUTION",
+    "EXECUTION_IS_NOT_VALIDATION",
+    "EXECUTION_COMPLETION_IS_NOT_CORRECTNESS",
+    "REPRODUCIBILITY_IS_NOT_EMPIRICAL_VALIDITY",
+    "HASH_INTEGRITY_IS_NOT_CONTENT_VALIDITY",
+    "HISTORICAL_RECONSTRUCTION_IS_NOT_ORIGINAL_PROVENANCE",
+    "PARAMETER_STABILITY_IS_NOT_SYSTEM_VALIDATION",
+    "LOCAL_OPTIMUM_IS_NOT_GLOBAL_OPTIMUM",
+    "FUNCTIONAL_COMPATIBILITY_IS_NOT_EXECUTION_EQUIVALENCE",
+    "ABSENCE_OF_EVIDENCE_IS_NOT_PROOF_OF_NONEXISTENCE",
+    "SELF_EVALUATION_IS_NOT_INDEPENDENT_VERIFICATION",
+    "REPOSITORY_PUBLICATION_IS_NOT_CANONICAL_APPROVAL"
+  ],
+
+  "meta": {
+    "purpose": "Establecer una hoja de ruta transversal para verificar ejecuciones actuales, reproducir calculos, registrar la procedencia de resultados y reconstruir antecedentes historicos de forma selectiva.",
+    "primary_strategy": "EXPERIMENTAL_VERIFICATION_FIRST_WITH_SELECTIVE_HISTORICAL_RECONSTRUCTION",
+    "architectural_policy": "PRESERVE_EXISTING_FUNCTIONS_UNLESS_TRACEABLE_EVIDENCE_JUSTIFIES_REVISION",
+    "scope_isolation": "VERIFICATION_AND_PROVENANCE",
+    "principle_source": "WH-FCBE-2026-001",
+    "principle_source_status": "CITED_NOT_CONFIRMED_IN_REPOSITORY",
+    "design_rule": "DOCUMENTARY_SUFFICIENCY_IS_NOT_OPERATIONAL_SUFFICIENCY",
+    "historical_policy": "HISTORICAL_RECONSTRUCTION_COMPLEMENTS_BUT_DOES_NOT_REPLACE_EXECUTION_EVIDENCE",
+    "implementation_claim": false,
+    "empirical_validation_claim": false
+  },
+
+  "execution_state_model": {
+    "states": [
+      "SPECIFIED",
+      "IMPLEMENTED",
+      "EXECUTION_ATTEMPTED",
+      "EXECUTED",
+      "REPRODUCED",
+      "INDEPENDENTLY_VERIFIED",
+      "EMPIRICALLY_VALIDATED"
+    ],
+    "transition_policy": {
+      "monotonicity": false,
+      "rule": "Cada estado requiere evidencia propia. Una transicion no se concede unicamente por declaracion ni implica que todos los estados anteriores hayan sido verificados de forma independiente.",
+      "failure_handling": "Registrar fallos, ejecuciones parciales y bloqueos sin convertirlos en resultados positivos.",
+      "historical_preservation": "Conservar estados anteriores y referencias a sus evidencias; no sobrescribir silenciosamente resultados."
+    },
+    "state_definitions": {
+      "SPECIFIED": "Existe una especificacion identificable y versionada.",
+      "IMPLEMENTED": "Existe una implementacion localizable cuya correspondencia con la especificacion puede examinarse.",
+      "EXECUTION_ATTEMPTED": "Existe evidencia de un intento de ejecucion, aunque no haya concluido.",
+      "EXECUTED": "Existe evidencia suficiente de que la operacion se ejecuto bajo una configuracion identificada.",
+      "REPRODUCED": "Una repeticion definida produce un resultado compatible con el criterio de comparacion establecido.",
+      "INDEPENDENTLY_VERIFIED": "Un procedimiento de comprobacion independiente confirma las propiedades especificadas dentro de su alcance.",
+      "EMPIRICALLY_VALIDATED": "Las pruebas definidas aportan evidencia suficiente para las afirmaciones empiricas evaluadas, dentro de los limites del diseno experimental."
+    }
+  },
+
+  "execution_record": {
+    "required_fields": {
+      "run_id": { "type": "string", "required": true, "rule": "Identificador unico e inmutable de la ejecucion." },
+      "protocol_reference": { "type": "string", "required": true },
+      "protocol_version": { "type": "string", "required": true },
+      "repository_commit": { "type": ["string", "null"], "required": true, "rule": "Registrar el commit exacto o null si no puede determinarse." },
+      "executor": { "type": "object", "required": true, "fields": ["executor_id", "executor_type", "platform", "software_version"] },
+      "environment": { "type": "object", "required": true, "fields": ["operating_system", "runtime", "dependency_versions", "hardware_if_relevant", "environment_fingerprint"] },
+      "execution_command_or_entrypoint": { "type": ["string", "null"], "required": true },
+      "input_artifacts": { "type": "array", "required": true, "item_fields": ["artifact_id", "version_or_revision", "uri_or_path", "content_hash", "hash_algorithm", "availability_status"] },
+      "parameter_snapshot": { "type": "object", "required": true, "rule": "Preservar los parametros efectivos utilizados, distinguiendo valores predeterminados, configurados, derivados y medidos." },
+      "randomness": { "type": ["object", "null"], "required": true, "fields": ["seed", "random_generator", "parallel_stream_configuration", "nondeterminism_notes"] },
+      "execution_status": { "type": "string", "required": true, "allowed_values": ["NOT_STARTED", "ATTEMPTED", "RUNNING", "COMPLETED", "PARTIAL", "FAILED", "BLOCKED", "UNKNOWN"] },
+      "raw_output": { "type": ["object", "null"], "required": true, "rule": "Referenciar el resultado original preservado; no sustituirlo por una interpretacion resumida." },
+      "execution_logs": { "type": "array", "required": true, "item_fields": ["log_id", "artifact_uri", "content_hash", "log_type"] },
+      "errors_and_warnings": { "type": "array", "required": true },
+      "verification_status": { "type": "string", "required": true, "allowed_values": ["NOT_ASSESSED", "PENDING", "PARTIALLY_VERIFIED", "VERIFIED_WITHIN_SCOPE", "FAILED", "INCONCLUSIVE"] },
+      "historical_refs": { "type": "array", "required": true, "rule": "Referenciar antecedentes localizados sin atribuirles una continuidad no demostrada." }
+    }
+  },
+
+  "artifact_provenance": {
+    "required_relationships": [
+      "PROTOCOL_TO_EXECUTION",
+      "EXECUTION_TO_INPUTS",
+      "EXECUTION_TO_CONFIGURATION",
+      "EXECUTION_TO_OUTPUTS",
+      "OUTPUT_TO_TRANSFORMATIONS",
+      "RESULT_TO_VERIFICATION",
+      "CURRENT_VERSION_TO_HISTORICAL_REFERENCES"
+    ],
+    "lineage_record": {
+      "source_artifact": "Identificador del artefacto de entrada.",
+      "transformation_id": "Identificador de la transformacion aplicada.",
+      "transformation_version": "Version del procedimiento.",
+      "operator_or_executor": "Agente o sistema que realizo la transformacion.",
+      "input_parameters": "Parametros efectivos.",
+      "intermediate_artifacts": [],
+      "output_artifact": "Identificador del artefacto resultante.",
+      "timestamp": "Marca temporal con zona horaria cuando este disponible.",
+      "evidence_refs": []
+    },
+    "integrity_policy": {
+      "preserve_original_outputs": true,
+      "preserve_intermediate_results_when_feasible": true,
+      "record_hash_algorithm": true,
+      "hash_interpretation": "El hash permite comprobar la integridad de los bytes respecto de una referencia; no valida el significado ni la correccion del contenido."
+    }
+  },
+
+  "independent_recalculation": {
+    "required_for": ["FORMULA_DERIVED_METRICS", "COMPOSITE_SCORES", "PARAMETER_DERIVATIONS", "CROSS_MOTOR_NUMERIC_TRANSFERS"],
+    "required_fields": [
+      "calculation_id",
+      "source_run_id",
+      "formula_version",
+      "original_operands",
+      "units",
+      "normalization_method",
+      "intermediate_values",
+      "rounding_policy",
+      "independent_method",
+      "reproduced_value",
+      "declared_value",
+      "absolute_difference",
+      "relative_difference_if_defined",
+      "tolerance_and_justification",
+      "reviewer_or_independent_executor",
+      "evidence_refs"
+    ],
+    "acceptance_policy": [
+      "No comparar resultados compuestos antes de fijar las escalas y la semantica de sus componentes.",
+      "No declarar equivalencia numerica sin un criterio de tolerancia definido.",
+      "No inferir causalidad a partir de una discrepancia aritmetica.",
+      "Si faltan operandos originales, clasificar la reproduccion como INCONCLUSIVE.",
+      "Separar la reproduccion del calculo de la validacion empirica de la metrica."
+    ]
+  },
+
+  "historical_trace": {
+    "strategy": "SELECTIVE_RECONSTRUCTION",
+    "trigger_conditions": [
+      "UNRESOLVED_RESULT_PROVENANCE",
+      "FORMULA_CHANGE_OR_AMBIGUITY",
+      "CONFLICTING_DOCUMENTARY_DECLARATIONS",
+      "UNEXPLAINED_PARAMETER_ASSIGNMENT",
+      "BREAK_IN_PROTOCOL_CONTINUITY",
+      "VALIDATION_BLOCKED_BY_MISSING_ORIGIN"
+    ],
+    "required_fields": [
+      "historical_claim_id",
+      "claim_description",
+      "earliest_located_artifact",
+      "artifact_revision_or_commit",
+      "timestamp_and_timezone",
+      "source_status",
+      "original_source_recovered",
+      "formula_or_parameter_version",
+      "known_operands",
+      "calculation_trace_recovered",
+      "continuity_evidence",
+      "confidence_classification",
+      "unresolved_gaps"
+    ],
+    "classification_values": [
+      "ORIGINAL_SOURCE_VERIFIED",
+      "HISTORICAL_ARTIFACT_LOCATED",
+      "SECONDARY_DECLARATION_ONLY",
+      "RECONSTRUCTION_PARTIAL",
+      "PROVENANCE_UNRESOLVED"
+    ],
+    "restriction": "La primera aparicion localizada dentro de los artefactos examinados no demuestra que sea la primera aparicion historica absoluta."
+  },
+
+  "roadmap": {
+    "P0": {
+      "name": "CURRENT_EXECUTION_FORMALIZATION",
+      "priority": "CRITICAL",
+      "objective": "Establecer trazabilidad minima de ejecuciones actuales sin esperar a reconstruir todo el historial.",
+      "tasks": [
+        "Inventariar los registros de ejecucion y evidencias ya existentes.",
+        "Identificar duplicaciones, vacios y conflictos de estado documental.",
+        "Definir run_id y convenciones de versionado.",
+        "Registrar commit, entorno, entradas, parametros, outputs y logs.",
+        "Separar los estados de ejecucion y verificacion.",
+        "Seleccionar un conjunto reducido de pruebas representativas."
+      ],
+      "exit_criteria": [
+        "Las pruebas seleccionadas tienen identificadores unicos.",
+        "Sus entradas y parametros efectivos son identificables.",
+        "Los outputs originales estan preservados o su ausencia esta declarada.",
+        "Las ejecuciones no demostradas se mantienen como UNKNOWN o NOT_STARTED."
+      ]
+    },
+    "P1": {
+      "name": "INDEPENDENT_VERIFICATION_AND_RECALCULATION",
+      "priority": "HIGH",
+      "objective": "Determinar que resultados pueden reproducirse y cuales presentan discrepancias.",
+      "tasks": [
+        "Definir escenarios y criterios de aceptacion antes de ejecutar.",
+        "Recalcular independientemente las metricas cuantitativas.",
+        "Verificar unidades, normalizacion, operandos y sensibilidad.",
+        "Registrar resultados parciales, fallos y diferencias.",
+        "Separar reproducibilidad numerica de validacion empirica."
+      ],
+      "exit_criteria": [
+        "Cada prueba tiene un resultado verificable o una clasificacion de inconclusa.",
+        "Las discrepancias tienen magnitud documentada y causa solo cuando existe evidencia.",
+        "Las tolerancias estan justificadas y no se ajustan retrospectivamente para forzar aceptacion."
+      ]
+    },
+    "P2": {
+      "name": "SELECTIVE_HISTORICAL_RECONSTRUCTION",
+      "priority": "HIGH",
+      "objective": "Recuperar antecedentes historicos que condicionan la interpretacion o validacion de los resultados actuales.",
+      "tasks": [
+        "Priorizar protocolos con procedencia no resuelta.",
+        "Recuperar manifiestos, registros visuales, versiones y commits pertinentes.",
+        "Buscar formulas originales, operandos y transformaciones intermedias.",
+        "Distinguir fuentes originales de declaraciones retrospectivas.",
+        "Registrar las discontinuidades que no puedan reconstruirse."
+      ],
+      "exit_criteria": [
+        "Cada afirmacion historica tiene fuente identificada o estado explicito de incertidumbre.",
+        "No se presenta una reconstruccion parcial como fuente original recuperada.",
+        "Las deudas historicas restantes quedan vinculadas a sus dependencias actuales."
+      ]
+    },
+    "P3": {
+      "name": "HISTORICAL_EXPERIMENTAL_INTEGRATION",
+      "priority": "MEDIUM",
+      "objective": "Relacionar la evidencia actual con la evolucion documental de cada componente.",
+      "tasks": [
+        "Vincular ejecuciones verificadas con versiones historicas.",
+        "Registrar hipotesis conservadas, modificadas, descartadas o no verificables.",
+        "Evaluar transferibilidad de parametros entre escenarios y dominios.",
+        "Actualizar los estados documentales sin promover automaticamente a canon."
+      ],
+      "exit_criteria": [
+        "La relacion entre evidencia actual y antecedente historico esta explicita.",
+        "Las hipotesis historicas no verificadas siguen identificadas como tales.",
+        "Toda promocion de estado cuenta con revision y evidencia requeridas."
+      ]
+    }
+  },
+
+  "initial_validation_targets": [
+    {
+      "target": "MOTOR_A_P1_P5",
+      "purpose": "Verificar rubricas, normalizacion y reproducibilidad de puntuaciones.",
+      "dependencies": ["SCORING_PROTOCOL", "INPUT_RECORDS", "PARAMETER_SNAPSHOT"],
+      "status": "PENDING_SELECTION_AND_EXECUTION"
+    },
+    {
+      "target": "HYPER_RATIO_SIGMA_DELTA_PRIME",
+      "purpose": "Resolver definiciones semanticas, procedencia y reproducibilidad matematica antes de nuevas interpretaciones.",
+      "dependencies": ["CROSS_MOTOR_VARIABLE_CONTRACT", "DELTA_PRIME_FORMULA", "ORIGINAL_OPERANDS", "EXECUTION_PROVENANCE"],
+      "known_issue": "DEBT-005: delta_prime = 0.228 no se reproduce con sigma = 0.142 y P1 = 0.823 bajo la formula declarada.",
+      "status": "PROVENANCE_UNRESOLVED"
+    },
+    {
+      "target": "P_DRIFT",
+      "purpose": "Estabilizar definicion, pesos, ventana temporal y procedimiento de calculo antes de comparar resultados.",
+      "status": "PENDING_SPECIFICATION_REVIEW"
+    },
+    {
+      "target": "GAMING_NPC",
+      "purpose": "Contrastar especificaciones C++/C#, ejecutar pruebas del evaluador y registrar divergencias.",
+      "dependencies": ["GAMING_DERIVATION", "NPC_UTILITY_SPEC", "NPC_DECISION_PIPELINE", "UE5_BLUEPRINT"],
+      "status": "PENDING_IMPLEMENTATION_AND_TEST_EVIDENCE"
+    },
+    {
+      "target": "MATRIX",
+      "purpose": "Comprobar consistencia y aplicabilidad de las reglas de derivacion sin clasificar Matrix como motor de medicion.",
+      "status": "PENDING_DERIVATION_TESTS"
+    }
+  ],
+
+  "failure_classification": [
+    "SPECIFICATION_INSUFFICIENCY",
+    "PARAMETER_UNCERTAINTY",
+    "INPUT_PROVENANCE_FAILURE",
+    "INTEGRATION_FAILURE",
+    "EXECUTION_FAILURE",
+    "REPRODUCTION_FAILURE",
+    "ARITHMETIC_DISCREPANCY",
+    "SEMANTIC_VARIABLE_MISMATCH",
+    "HISTORICAL_PROVENANCE_GAP",
+    "INSUFFICIENT_TEST_COVERAGE",
+    "EMPIRICAL_VALIDATION_FAILURE",
+    "INCONCLUSIVE_RESULT"
+  ],
+
+  "cross_domain_transfer": {
+    "principle": "FUNCTIONAL_COMPATIBILITY_DOES_NOT_REQUIRE_IDENTICAL_EXECUTION_MECHANISMS",
+    "required_checks": [
+      "FUNCTIONAL_ROLE_COMPATIBILITY",
+      "PARAMETER_SEMANTIC_COMPATIBILITY",
+      "UNIT_COMPATIBILITY",
+      "INPUT_OUTPUT_CONTRACT_COMPATIBILITY",
+      "PLATFORM_SPECIFIC_CONSTRAINTS",
+      "SCENARIO_TRANSFER_TESTS"
+    ],
+    "rule": "No transferir una ponderacion, umbral o puntuacion compuesta entre dominios sin declarar el contrato de transferencia y evaluar su comportamiento en el dominio receptor."
+  },
+
+  "governance": {
+    "preserve_existing_invariants": true,
+    "architecture_expansion_requires_evidence": true,
+    "duplicate_artifacts_should_be_avoided": true,
+    "existing_artifacts_must_be_audited_before_new_files_are_created": true,
+    "canonical_promotion_requires_review": true,
+    "repository_mutation_performed": false
+  },
+
+  "consolidation_condition": "REQUIRES_EXECUTION_EVIDENCE_INDEPENDENT_RECALCULATION_AND_DOCUMENTED_REVIEW",
+
+  "final_classification": {
+    "type": "CROSS_DOMAIN_EXECUTION_VERIFICATION_PROTOCOL",
+    "protocol_definition": "FORMALIZED_AS_PROPOSAL",
+    "implementation": "NOT_ESTABLISHED",
+    "execution": "NOT_ESTABLISHED",
+    "independent_verification": "NOT_ESTABLISHED",
+    "empirical_validation": "NOT_ESTABLISHED",
+    "canonicalization": "NOT_AUTHORIZED",
+    "note": "Protocolo de verificacion transversal. No declara ejecucion. No declara validacion empirica. No promueve componentes a canon. Cita WH-FCBE-2026-001 pero no confirma su existencia en el repositorio."
+  }
+}
