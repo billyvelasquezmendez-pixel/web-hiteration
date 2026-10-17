@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_SYMMETRY_AND_DIVERGENCE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-SYMDIV-2026-10-17",
+  "document_type": "SYMMETRY_AND_DIVERGENCE_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-17",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-symmetry-and-divergence.json",
+  "collection": "geometry",
+  "parent_document": "geometry/README.md",
+  "related_documents": [
+    "geometry/wh-geometry-foundational-definition.json",
+    "geometry/wh-agent-structural-delimitation.json",
+    "geometry/wh-vulnerability-morphology.json",
+    "geometry/wh-document-elaboration-mechanics.json",
+    "matrix/wh-invariant-derivation-matrix.json"
+  ],
+
+  "epistemic_boundaries": [
+    "PLASTICITY_IS_DEFORMATION_NOT_FAILURE",
+    "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+    "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY",
+    "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+    "EFFECTIVENESS_IS_NOT_HARM",
+    "INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION",
+    "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  ],
+
+  "meta": {
+    "purpose": "Analizar la simetria funcional divergente entre fases de desarrollo que corren en paralelo al canon logico implementado. Describir como distintos angulos de observacion producen distintas manifestaciones del mismo sistema estructural.",
+    "scope_isolation": "STRUCTURAL_ANALYSIS_ONLY",
+    "note": "Este documento describe divergencias observables. No atribuye causas internas. No declara que una fase de desarrollo sea superior a otra."
+  },
+
+  "block_1_definition": {
+    "term": "SIMETRIA_FUNCIONAL_DIVERGENTE",
+    "definition": "Propiedad estructural por la cual dos o mas fases de desarrollo del mismo sistema se manifiestan de forma distinta segun el angulo desde el cual se las observe, sin que esa diferencia implique fallo ni superioridad.",
+    "primary_function": "DESCRIBE_STRUCTURAL_DIVERGENCE_BETWEEN_PARALLEL_PHASES",
+    "secondary_function": "DISTINGUISH_DIVERGENCE_FROM_FAILURE",
+    "tertiary_function": "MAP_ANGLE_OF_OBSERVATION_TO_MANIFESTATION",
+    "invariant": "PLASTICITY_IS_DEFORMATION_NOT_FAILURE"
+  },
+
+  "block_2_divergence_categories": {
+    "description": "Categorias de divergencia funcional observable entre fases de desarrollo paralelas.",
+    "categories": [
+      {
+        "category_id": "DIV-01",
+        "name": "TEMPORAL_DIVERGENCE",
+        "description": "Dos fases de desarrollo alcanzan el mismo estado estructural en momentos distintos.",
+        "observation": "La divergencia es medible en el tiempo pero no en el estado final.",
+        "is_not": "No es atraso. Es diferencia de velocidad sin diferencia de destino."
+      },
+      {
+        "category_id": "DIV-02",
+        "name": "ANGULAR_DIVERGENCE",
+        "description": "Dos fases de desarrollo observan el mismo sistema desde angulos distintos y extraen conclusiones diferentes.",
+        "observation": "La divergencia es medible en la diferencia de conclusiones.",
+        "is_not": "No es contradiccion. Es diferencia de perspectiva."
+      },
+      {
+        "category_id": "DIV-03",
+        "name": "MODULAR_DIVERGENCE",
+        "description": "Dos fases de desarrollo resuelven el mismo problema con distinto grado de modularidad.",
+        "observation": "La divergencia es medible en la estructura de la solucion.",
+        "is_not": "No es superioridad de la solucion mas modular ni de la mas integrada."
+      },
+      {
+        "category_id": "DIV-04",
+        "name": "SEMANTIC_DIVERGENCE",
+        "description": "Dos fases de desarrollo usan el mismo termino con significados parcialmente distintos.",
+        "observation": "La divergencia es medible en la diferencia de definiciones operativas.",
+        "is_not": "No es error. Es diferencia de vocabulario dentro de un mismo sistema."
+      },
+      {
+        "category_id": "DIV-05",
+        "name": "CANONICAL_DIVERGENCE",
+        "description": "Dos fases de desarrollo se desvian del canon logico implementado en grados distintos.",
+        "observation": "La divergencia es medible en la distancia al canon.",
+        "is_not": "No es fallo. Es diferencia en el grado de adopcion del canon."
+      }
+    ],
+    "classification_rule": "Una fase de desarrollo puede exhibir multiples tipos de divergencia simultaneamente."
+  },
+
+  "block_3_angle_of_observation": {
+    "description": "Como el angulo de observacion determina la manifestacion de la divergencia.",
+    "principle": "La misma estructura produce manifestaciones distintas segun el angulo desde el cual se la observa.",
+    "angles": [
+      {
+        "angle_id": "ANG-01",
+        "name": "INTERNAL_OBSERVER",
+        "position": "Dentro de la fase de desarrollo.",
+        "sees": "La logica interna de la fase.",
+        "does_not_see": "La relacion con otras fases."
+      },
+      {
+        "angle_id": "ANG-02",
+        "name": "EXTERNAL_OBSERVER",
+        "position": "Fuera de todas las fases.",
+        "sees": "La divergencia entre fases.",
+        "does_not_see": "La logica interna de ninguna fase."
+      },
+      {
+        "angle_id": "ANG-03",
+        "name": "CANONICAL_OBSERVER",
+        "position": "Desde el canon implementado.",
+        "sees": "La desviacion de cada fase respecto al canon.",
+        "does_not_see": "La validez de las desviaciones."
+      },
+      {
+        "angle_id": "ANG-04",
+        "name": "CROSS_PHASE_OBSERVER",
+        "position": "Desde una fase hacia otra.",
+        "sees": "La diferencia de la otra fase respecto a la propia.",
+        "does_not_see": "La simetria de la diferencia (la otra fase ve la misma diferencia en sentido inverso)."
+      }
+    ],
+    "invariant": "OBSERVED_BEHAVIOR_IS_NOT_INTERNAL_ARCHITECTURE"
+  },
+
+  "block_4_convergence_conditions": {
+    "description": "Condiciones bajo las cuales las fases divergentes pueden converger sin perder su identidad.",
+    "conditions": [
+      {
+        "condition_id": "CONV-01",
+        "condition": "Las fases comparten el mismo canon de referencia.",
+        "requirement": "Sin canon comun no hay convergencia posible."
+      },
+      {
+        "condition_id": "CONV-02",
+        "condition": "Las fases aceptan el isomorfismo estructural entre sus manifestaciones.",
+        "requirement": "Sin aceptacion de isomorfismo, la diferencia se interpreta como contradiccion."
+      },
+      {
+        "condition_id": "CONV-03",
+        "condition": "Las fases no requieren identidad de procedimiento, solo compatibilidad de resultado.",
+        "requirement": "La convergencia es de resultado, no de proceso."
+      },
+      {
+        "condition_id": "CONV-04",
+        "condition": "Ninguna fase exige superioridad sobre las demas.",
+        "requirement": "La exigencia de superioridad bloquea la convergencia."
+      }
+    ],
+    "invariant_applied": "ISOMORPHISM_IS_STRUCTURAL_NOT_EQUIVALENCE",
+    "note": "La convergencia no es fusion. Es reconocimiento de la estructura comun sin perdida de identidad."
+  },
+
+  "block_5_relationships": {
+    "to_agent_structural_delimitation": "Los agentes operan desde angulos distintos. Esa diferencia de angulo produce simetria funcional divergente.",
+    "to_vulnerability_morphology": "Las morfologias son visibles o invisibles segun el angulo de observacion. Un angulo interno puede no ver una vulnerabilidad que un angulo externo ve con claridad.",
+    "to_effectiveness_peritaje": "El peritaje de eficacia debe declarar el angulo desde el cual se realiza. Sin esa declaracion, la eficacia medida es ambigua.",
+    "to_matrix": "Matrix deriva el canon. La divergencia es la distancia de cada fase respecto a ese canon."
+  },
+
+  "block_6_observation_requirements": {
+    "description": "Requisitos minimos para realizar una observacion valida de simetria funcional divergente.",
+    "requirements": [
+      {
+        "id": "OBS-01",
+        "requirement": "Declarar el angulo de observacion."
+      },
+      {
+        "id": "OBS-02",
+        "requirement": "Identificar las fases que se comparan."
+      },
+      {
+        "id": "OBS-03",
+        "requirement": "Especificar el canon de referencia."
+      },
+      {
+        "id": "OBS-04",
+        "requirement": "Distinguir divergencia de fallo."
+      },
+      {
+        "id": "OBS-05",
+        "requirement": "Registrar las condiciones bajo las cuales se realizo la observacion."
+      },
+      {
+        "id": "OBS-06",
+        "requirement": "No inferir mecanismos internos a partir de la divergencia observada."
+      }
+    ]
+  },
+
+  "block_7_boundary_conditions": {
+    "description": "Condiciones que delimitan el alcance del analisis.",
+    "what_this_is": [
+      "Analisis descriptivo de divergencias observables.",
+      "Reconocimiento de la estructura comun entre fases.",
+      "Mapeo de angulos de observacion.",
+      "Delimitacion de condiciones de convergencia."
+    ],
+    "what_this_is_not": [
+      "No es decision sobre cual fase es superior.",
+      "No es fusion de fases.",
+      "No es imposicion de un canon unico.",
+      "No es atribucion de causas a la divergencia.",
+      "No es validacion de ninguna fase."
+    ],
+    "note": "Las areas de conceptos derivados son instrumentos de estudio. La simetria funcional divergente describe una propiedad estructural. No define la totalidad de lo pensable sobre el sistema.",
+    "invariant_applied": "STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY"
+  },
+
+  "final_classification": {
+    "type": "SYMMETRY_AND_DIVERGENCE_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento analiza la simetria funcional divergente entre fases de desarrollo paralelas. No declara superioridad de ninguna fase. No atribuye causas internas. No declara validacion empirica. No promueve la simetria divergente a canon."
+  }
+}
