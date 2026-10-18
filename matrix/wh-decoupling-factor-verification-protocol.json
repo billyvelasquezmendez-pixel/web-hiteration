@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_DECOUPLING_FACTOR_VERIFICATION_PROTOCOL",
+  "version": "0.1.0-PROPOSED",
+  "protocol_reference": "WH-DFVP-2026-10-18",
+  "document_type": "VERIFICATION_AND_SENSITIVITY_PROTOCOL",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-18",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-decoupling-factor-verification-protocol.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-decoupling-factor-mathematical-model.json",
+  "related_documents": [
+    "matrix/wh-decoupling-factor-mathematical-model.json",
+    "core/wh-technical-debt-relational-map.json"
+  ],
+
+  "epistemic_boundaries": [
+    "FORMULA_IS_NOT_VALIDATION",
+    "NUMERIC_THRESHOLD_IS_NOT_METRIC",
+    "MODEL_OUTPUT_IS_NOT_EXECUTION",
+    "SIMULATION_IS_NOT_EMPIRICAL_MEASUREMENT",
+    "REPRODUCIBILITY_IS_NOT_EMPIRICAL_VALIDITY"
+  ],
+
+  "meta": {
+    "purpose": "Definir el protocolo de pruebas de borde, sensibilidad y propagacion de incertidumbre para el modelo matematico f(sigma, P1) = (sigma * (1 - P1)) / 1.99, correspondiente al Paso 3 de la secuencia de consolidacion.",
+    "scope_isolation": "SIMULATION_AND_SENSITIVITY_ONLY",
+    "note": "Este documento no ejecuta el modelo en hardware ni extrae conclusiones empiricas. Define como se debe probar el modelo en un entorno de simulacion analitica."
+  },
+
+  "block_1_mathematical_baseline": {
+    "formula": "f(sigma, P1) = (sigma * (1 - P1)) / 1.99",
+    "domain": {
+      "sigma": "[0.0, 1.0]",
+      "P1": "[0.0, 1.0]"
+    },
+    "codomain": "[0.0, 0.50251256]",
+    "constant_design": 1.99,
+    "notes": "El denominador 1.99 deriva de (1 + CONI_threshold) donde CONI_threshold = 0.99. Se asume como constante de diseno."
+  },
+
+  "block_2_boundary_condition_tests": {
+    "description": "Pruebas para verificar el comportamiento en los limites del dominio.",
+    "tests": [
+      { "test_id": "BND-01", "condition": "sigma = 0.0, P1 = 0.0", "expected_output": 0.0, "rationale": "Cero dispersion atencional implica cero desacoplamiento." },
+      { "test_id": "BND-02", "condition": "sigma = 1.0, P1 = 0.0", "expected_output": 0.50251256, "rationale": "Maxima dispersion y nula alineacion producen el desacoplamiento maximo." },
+      { "test_id": "BND-03", "condition": "sigma = 0.0, P1 = 1.0", "expected_output": 0.0, "rationale": "Alineacion absoluta anula el desacoplamiento independientemente de sigma." },
+      { "test_id": "BND-04", "condition": "sigma = 1.0, P1 = 1.0", "expected_output": 0.0, "rationale": "Alineacion absoluta anula el desacoplamiento." },
+      { "test_id": "BND-05", "condition": "sigma = 0.5, P1 = 0.5", "expected_output": 0.12562814, "rationale": "Punto medio del dominio para verificacion de linealidad." }
+    ]
+  },
+
+  "block_3_sensitivity_analysis": {
+    "description": "Analisis de derivadas parciales y perturbaciones para medir la sensibilidad del modelo.",
+    "partial_derivatives": {
+      "d_sigma": "(1 - P1) / 1.99",
+      "d_P1": "-sigma / 1.99"
+    },
+    "perturbation_tests": [
+      { "test_id": "SEN-01", "variable": "sigma", "baseline": {"sigma": 0.5, "P1": 0.5}, "perturbation": "+0.01", "expected_delta": 0.00251256, "tolerance": 0.00001 },
+      { "test_id": "SEN-02", "variable": "P1", "baseline": {"sigma": 0.5, "P1": 0.5}, "perturbation": "+0.01", "expected_delta": -0.00251256, "tolerance": 0.00001 },
+      { "test_id": "SEN-03", "variable": "sigma", "baseline": {"sigma": 0.99, "P1": 0.01}, "perturbation": "+0.01", "expected_delta": 0.00497487, "tolerance": 0.00001, "note": "Sensibilidad en la region de maxima dispersion y nula alineacion." }
+    ]
+  },
+
+  "block_4_uncertainty_propagation": {
+    "description": "Reglas para calcular como se propaga la incertidumbre de las entradas a la salida.",
+    "method": "LINEAR_PROPAGATION_APPROXIMATION",
+    "formula": "Delta_f = |d_sigma| * Delta_sigma + |d_P1| * Delta_P1",
+    "assumptions": [
+      "Las incertidumbres de entrada son independientes.",
+      "Las perturbaciones son pequenas en relacion con los valores base.",
+      "La funcion es diferenciable en la region evaluada."
+    ],
+    "test_cases": [
+      { "test_id": "UNC-01", "inputs": {"sigma": 0.5, "P1": 0.5, "Delta_sigma": 0.01, "Delta_P1": 0.01}, "expected_output": 0.5, "expected_delta": 0.00502513 }
+    ]
+  },
+
+  "block_5_reproducibility_requirements": {
+    "description": "Requisitos para que las pruebas sean reproducibles por un tercero.",
+    "requirements": [
+      "Registrar la version exacta de la formula utilizada.",
+      "Registrar los valores de entrada y salida con al menos 8 decimales.",
+      "Documentar la herramienta o el procedimiento de calculo.",
+      "Preservar los resultados originales sin redondeo previo al analisis.",
+      "Separar los resultados analiticos de las interpretaciones."
+    ]
+  },
+
+  "block_6_execution_limits": {
+    "exec_level": "EXEC_1_ANALYSIS",
+    "permitted_operations": [
+      "Calculo analitico de derivadas parciales.",
+      "Simulacion de perturbaciones en entornos logicos.",
+      "Analisis de propagacion de incertidumbre."
+    ],
+    "prohibited_operations": [
+      "Declarar validacion empirica del modelo.",
+      "Implementar el modelo en hardware sin evidencia fisica.",
+      "Promover la constante 0.99 a canon metrico.",
+      "Extraer conclusiones causales sobre el comportamiento de sistemas reales."
+    ]
+  },
+
+  "acceptance_gate": {
+    "minimum_conditions": [
+      "Las pruebas de borde BND-01 a BND-05 devuelven los valores esperados.",
+      "Las pruebas de sensibilidad SEN-01 a SEN-03 confirman la monotonia esperada.",
+      "La propagacion de incertidumbre UNC-01 no excede la tolerancia declarada.",
+      "Los resultados son reproducibles por un tercero segun el block_5."
+    ],
+    "final_status": "READY_FOR_SIMULATION_EXECUTION"
+  },
+
+  "final_classification": {
+    "type": "VERIFICATION_AND_SENSITIVITY_PROTOCOL",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define las pruebas analiticas para el modelo matematico f(sigma, P1). No ejecuta las pruebas. No declara validacion empirica. No promueve el modelo a canon."
+  }
+}
