@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_DECOUPLING_FACTOR_MATHEMATICAL_MODEL",
+  "version": "0.1.0-PROPOSED",
+  "protocol_reference": "WH-DFMM-2026-10-18",
+  "document_type": "MATHEMATICAL_FORMALIZATION_AND_VERIFICATION_SPECIFICATION",
+  "status": "FORMALIZATION_PENDING_VALIDATION",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-18",
+  "domain": "MATRIX",
+  "repository_path": "matrix/wh-decoupling-factor-mathematical-model.json",
+  "collection": "matrix",
+  "parent_document": "matrix/wh-cross-motor-variable-contract.json",
+  "related_documents": [
+    "matrix/wh-cross-motor-variable-contract.json",
+    "matrix/derivations/wh-delta-prime-motor-sigma-diagnostic.json",
+    "matrix/derivations/wh-delta-prime-general-diagnostic.json",
+    "core/wh-technical-debt-relational-map.json"
+  ],
+
+  "purpose": {
+    "primary_objective": "Formalizar el factor dinamico de desacoplamiento f(sigma, P1) antes de establecer su implementacion o validar sus efectos.",
+    "secondary_objectives": [
+      "Definir los requisitos matematicos de las variables de entrada.",
+      "Establecer las propiedades que debera satisfacer la funcion.",
+      "Preparar condiciones de verificacion, sensibilidad y reproducibilidad.",
+      "Impedir que supuestos matematicos sean registrados como resultados empiricos."
+    ]
+  },
+
+  "theoretical_basis": {
+    "governing_principle": "GEOMETRIC_SCALE_IS_NOT_SEMANTIC_DIMENSION",
+    "decoupling_hypothesis": {
+      "statement": "El factor f(sigma, P1) podria representar una relacion de control entre coherencia y un parametro primario de alineacion, siempre que ambas variables reciban definiciones operacionales compatibles.",
+      "epistemic_status": "HYPOTHESIS_PENDING_OPERATIONALIZATION"
+    }
+  },
+
+  "variables": {
+    "sigma": {
+      "symbol": "sigma",
+      "provisional_role": "COHERENCE_PARAMETER",
+      "operational_definition": null,
+      "domain": null,
+      "measurement_method": null,
+      "normalization": null,
+      "uncertainty_model": null,
+      "status": "UNDEFINED"
+    },
+    "P1": {
+      "symbol": "P1",
+      "provisional_role": "PRIMARY_ALIGNMENT_PARAMETER",
+      "operational_definition": null,
+      "domain": null,
+      "measurement_method": null,
+      "normalization": null,
+      "uncertainty_model": null,
+      "status": "UNDEFINED"
+    }
+  },
+
+  "function_specification": {
+    "symbol": "f(sigma, P1)",
+    "formula": null,
+    "codomain": null,
+    "interpretation": "DYNAMIC_DECOUPLING_FACTOR",
+    "output_unit": null,
+    "required_properties": [
+      { "property": "DOMAIN_COMPATIBILITY", "requirement": "La funcion solo podra evaluarse cuando sigma y P1 tengan dominios y escalas definidos.", "status": "PENDING" },
+      { "property": "DETERMINISM_OR_STOCHASTICITY", "requirement": "Debe declararse si la funcion es determinista o incorpora componentes estocasticos.", "status": "PENDING" },
+      { "property": "BOUNDARY_BEHAVIOR", "requirement": "Debe especificarse el comportamiento de la funcion en los limites de su dominio.", "status": "PENDING" },
+      { "property": "CONTINUITY_OR_DISCONTINUITY", "requirement": "Debe justificarse si la continuidad es necesaria para el uso previsto.", "status": "PENDING" },
+      { "property": "SENSITIVITY", "requirement": "Debe evaluarse la variacion de la salida ante cambios de sigma y P1.", "status": "PENDING" },
+      { "property": "STABILITY", "requirement": "Debe definirse que significa estabilidad para el sistema modelado y bajo que condiciones puede verificarse.", "status": "PENDING" }
+    ],
+    "monotonicity_constraints": {
+      "with_respect_to_sigma": "UNDETERMINED",
+      "with_respect_to_P1": "UNDETERMINED",
+      "justification": "No se impondra monotonicidad hasta que se definan operacionalmente las variables y el efecto esperado."
+    },
+    "validation_status": "NOT_VALIDATED"
+  },
+
+  "structural_weighting": {
+    "source_node": "node_gamma_decoupling_factor",
+    "weight_id": "W_DEC_03",
+    "declared_expression": "f(sigma, P1)",
+    "numerical_weight": null,
+    "interpretation": "El nodo define una dependencia funcional propuesta, no una formula matematica ya establecida.",
+    "implementation_status": "NOT_IMPLEMENTED"
+  },
+
+  "verification_requirements": {
+    "boundary_conditions": {
+      "status": "PENDING",
+      "required_evidence": [
+        "Definicion explicita del dominio.",
+        "Evaluacion de los limites relevantes.",
+        "Tratamiento de entradas invalidas o indefinidas."
+      ]
+    },
+    "sensitivity_analysis": {
+      "status": "PENDING",
+      "required_evidence": [
+        "Variacion individual de sigma.",
+        "Variacion individual de P1.",
+        "Analisis conjunto de las variables.",
+        "Identificacion de regiones sensibles o inestables."
+      ]
+    },
+    "reproducibility": {
+      "status": "PENDING",
+      "required_evidence": [
+        "Definicion reproducible de las entradas.",
+        "Procedimiento de calculo documentado.",
+        "Registro de parametros y resultados.",
+        "Repeticion independiente de las pruebas."
+      ]
+    },
+    "empirical_calibration": {
+      "status": "PENDING",
+      "required_evidence": [
+        "Datos de referencia identificables.",
+        "Metodo de calibracion documentado.",
+        "Estimacion de incertidumbre.",
+        "Separacion entre datos de calibracion y validacion."
+      ]
+    }
+  },
+
+  "coherence_threshold": {
+    "source_node": "node_delta_coherence_threshold",
+    "weight_id": "W_CONI_04",
+    "proposed_value": 0.99,
+    "semantic_label": "PURITY_THRESHOLD",
+    "operational_metric": null,
+    "measurement_procedure": null,
+    "tolerance": null,
+    "acceptance_criteria": null,
+    "status": "NUMERIC_THRESHOLD_UNVALIDATED",
+    "constraint": "El valor 0.99 no constituye por si solo una metrica, una probabilidad ni una demostracion de pureza."
+  },
+
+  "execution_boundaries": {
+    "EXEC_1_ANALYSIS": {
+      "status": "DEFAULT_ACTIVE",
+      "permitted_operations": [
+        "Formalizacion conceptual.",
+        "Analisis matematico.",
+        "Simulacion declarada como tal.",
+        "Diseno de pruebas."
+      ]
+    },
+    "EXEC_3_AUTHORIZED_INTERFACE": {
+      "status": "RESTRICTED",
+      "permitted_operations": [
+        "Implementacion mediante interfaz autorizada.",
+        "Modificacion sujeta a verificacion posterior."
+      ],
+      "execution_evidence_required": true
+    },
+    "capability_execution_invariant": "CAPABILITY_IS_NOT_EXECUTION"
+  },
+
+  "epistemic_boundaries": [
+    "FORMULA_IS_NOT_VALIDATION",
+    "NUMERIC_THRESHOLD_IS_NOT_METRIC",
+    "MODEL_OUTPUT_IS_NOT_EXECUTION",
+    "STRUCTURAL_CORRESPONDENCE_IS_NOT_EQUIVALENCE",
+    "MODEL_IS_NOT_SYSTEM",
+    "CAPABILITY_IS_NOT_EXECUTION",
+    "REPRESENTATION_IS_NOT_ACTION",
+    "ALIGNMENT_IS_NOT_VALIDITY",
+    "PUBLISHED_IS_NOT_VALIDATED"
+  ],
+
+  "consolidation_sequence": [
+    { "step": 1, "action": "DEFINE_INPUT_VARIABLES", "deliverable": "Operational definitions and valid domains for sigma and P1.", "status": "PENDING" },
+    { "step": 2, "action": "SPECIFY_FUNCTION", "deliverable": "Explicit mathematical expression for f(sigma, P1), with justified properties.", "status": "PENDING" },
+    { "step": 3, "action": "DESIGN_VERIFICATION_PROTOCOL", "deliverable": "Tests for boundary behavior, sensitivity, stability and reproducibility.", "status": "PENDING" },
+    { "step": 4, "action": "VALIDATE_PURITY_THRESHOLD", "deliverable": "Operational metric and acceptance criteria for the proposed threshold 0.99.", "status": "PENDING" },
+    { "step": 5, "action": "MAP_GEOMETRY_CORRESPONDENCES", "deliverable": "Cross-semantic mapping with explicit distinction between analogy and mathematical equivalence.", "status": "PENDING" }
+  ],
+
+  "acceptance_gate": {
+    "minimum_conditions": [
+      "Both input variables have operational definitions.",
+      "The function has an explicit formula and codomain.",
+      "Required properties have mathematical justifications.",
+      "Verification procedures are reproducible.",
+      "Empirical claims are supported by documented evidence."
+    ],
+    "final_status": "BLOCKED_PENDING_DEFINITION_AND_VALIDATION"
+  },
+
+  "change_control": {
+    "parent_document_modification": false,
+    "repository_write_performed": false,
+    "version_increment_policy": "Increment the version when the formal specification changes materially.",
+    "validation_policy": "Do not change to VALIDATED without reproducible verification evidence."
+  },
+
+  "final_classification": {
+    "type": "MATHEMATICAL_FORMALIZATION_AND_VERIFICATION_SPECIFICATION",
+    "model_status": "NOT_FORMALIZED",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento registra el estado de formalizacion pendiente del factor de desacoplamiento. No es el modelo matematico. Es la especificacion de requisitos para construirlo. El modelo no existe todavia."
+  }
+}
