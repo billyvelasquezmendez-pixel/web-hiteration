@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "WH_DECOUPLING_FACTOR_VERIFICATION_PROTOCOL",
-  "version": "0.1.0-PROPOSED",
+  "version": "0.1.2-PROPOSED",
   "protocol_reference": "WH-DFVP-2026-10-18",
   "document_type": "VERIFICATION_AND_SENSITIVITY_PROTOCOL",
   "status": "PROPOSED_NOT_CANONICAL",
@@ -25,16 +25,21 @@
   ],
 
   "meta": {
-    "purpose": "Definir el protocolo de pruebas de borde, sensibilidad y propagacion de incertidumbre para el modelo matematico f(sigma, P1) = (sigma * (1 - P1)) / 1.99, correspondiente al Paso 3 de la secuencia de consolidacion.",
+    "purpose": "Definir el protocolo de pruebas de borde, sensibilidad y propagacion de incertidumbre para una formula candidata del factor f(sigma, P1).",
     "scope_isolation": "SIMULATION_AND_SENSITIVITY_ONLY",
-    "note": "Este documento no ejecuta el modelo en hardware ni extrae conclusiones empiricas. Define como se debe probar el modelo en un entorno de simulacion analitica."
+    "note": "Este documento define pruebas analiticas. No ejecuta el modelo en hardware ni extrae conclusiones empiricas. Prueba una formula candidata, no la formula canonica."
   },
 
   "block_1_mathematical_baseline": {
     "formula": "f(sigma, P1) = (sigma * (1 - P1)) / 1.99",
+    "formula_status": "PROPOSED_CANDIDATE_NOT_YET_ADOPTED_BY_MODEL",
+    "formula_source": "Propuesta externa pendiente de validacion",
+    "model_reference": "matrix/wh-decoupling-factor-mathematical-model.json",
+    "model_formula_status": "NULL_PENDING_FORMALIZATION",
     "domain": {
       "sigma": "[0.0, 1.0]",
-      "P1": "[0.0, 1.0]"
+      "P1": "[0.0, 1.0]",
+      "domain_status": "PROPOSED_FOR_TESTING_NOT_YET_ADOPTED_BY_MODEL"
     },
     "codomain": "[0.0, 0.50251256]",
     "constant_design": 1.99,
@@ -79,7 +84,19 @@
     ]
   },
 
-  "block_5_reproducibility_requirements": {
+  "block_5_property_coverage": {
+    "description": "Mapeo de las 6 propiedades requeridas por el modelo matematico contra las pruebas incluidas en este protocolo.",
+    "coverage": {
+      "DOMAIN_COMPATIBILITY": "IMPLICIT_IN_BLOCK_1",
+      "DETERMINISM_OR_STOCHASTICITY": "NOT_TESTED_IN_THIS_PROTOCOL",
+      "BOUNDARY_BEHAVIOR": "TESTED_BND_01_TO_BND_05",
+      "CONTINUITY_OR_DISCONTINUITY": "NOT_TESTED_IN_THIS_PROTOCOL",
+      "SENSITIVITY": "TESTED_SEN_01_TO_SEN_03",
+      "STABILITY": "NOT_TESTED_IN_THIS_PROTOCOL"
+    }
+  },
+
+  "block_6_reproducibility_requirements": {
     "description": "Requisitos para que las pruebas sean reproducibles por un tercero.",
     "requirements": [
       "Registrar la version exacta de la formula utilizada.",
@@ -90,7 +107,7 @@
     ]
   },
 
-  "block_6_execution_limits": {
+  "block_7_execution_limits": {
     "exec_level": "EXEC_1_ANALYSIS",
     "permitted_operations": [
       "Calculo analitico de derivadas parciales.",
@@ -105,12 +122,34 @@
     ]
   },
 
+  "block_8_relational_integration": {
+    "description": "Mapa de integracion estructural entre este protocolo y el modelo matematico que evalua, traduciendo el andamiaje conceptual a mecanica operacional.",
+    "governing_invariant": "GEOMETRIC_SCALE_IS_NOT_SEMANTIC_DIMENSION",
+    "integrated_components": {
+      "mathematical_model": {
+        "path": "matrix/wh-decoupling-factor-mathematical-model.json",
+        "role": "FORMAL_DEFINITION",
+        "scope": "Establece dominios, codominio, derivadas y modelo de incertidumbre."
+      },
+      "verification_protocol": {
+        "path": "matrix/wh-decoupling-factor-verification-protocol.json",
+        "role": "EPISTEMIC_SHIELD_AND_CONTROL",
+        "scope": "Define pruebas de borde, sensibilidad y confinamiento en EXEC_1."
+      }
+    },
+    "operational_synergy": "El modelo define como se calcula analiticamente, el protocolo regula bajo que condiciones controladas se evalua, impidiendo falacias de categoria y mimesis de ejecucion."
+  },
+
   "acceptance_gate": {
+    "preconditions": [
+      "Las variables sigma y P1 deben tener definiciones operacionales adoptadas por el modelo.",
+      "La formula candidata debe ser formalmente adoptada por el modelo antes de declarar resultados canonicos."
+    ],
     "minimum_conditions": [
       "Las pruebas de borde BND-01 a BND-05 devuelven los valores esperados.",
       "Las pruebas de sensibilidad SEN-01 a SEN-03 confirman la monotonia esperada.",
       "La propagacion de incertidumbre UNC-01 no excede la tolerancia declarada.",
-      "Los resultados son reproducibles por un tercero segun el block_5."
+      "Los resultados son reproducibles por un tercero segun el block_6."
     ],
     "final_status": "READY_FOR_SIMULATION_EXECUTION"
   },
@@ -120,6 +159,6 @@
     "empirical_validation": "NOT_APPLICABLE",
     "engineering_validation": "NOT_APPLICABLE",
     "canonicalization": "PENDING_REVIEW",
-    "note": "Este documento define las pruebas analiticas para el modelo matematico f(sigma, P1). No ejecuta las pruebas. No declara validacion empirica. No promueve el modelo a canon."
+    "note": "Este documento define las pruebas analiticas para una formula candidata de f(sigma, P1). No ejecuta las pruebas. No declara validacion empirica. No promueve el modelo a canon."
   }
 }
