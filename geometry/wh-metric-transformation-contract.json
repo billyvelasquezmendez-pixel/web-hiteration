@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_METRIC_TRANSFORMATION_CONTRACT",
+  "version": "1.0.1-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-METRIC-TRANSFORM-2026-10-20",
+  "document_type": "ANALYTICAL_METRIC_TRANSFORMATION_CONTRACT",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-20",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/wh-metric-transformation-contract.json",
+  "repository_write_status": "NOT_PERFORMED",
+  "related_documents": [
+    "geometry/wh-geometry-foundational-definition.json",
+    "geometry/wh-geometric-perturbation-audit.json"
+  ],
+  "epistemic_boundaries": [
+    "FORMULA_IS_NOT_VALIDATION",
+    "STRUCTURAL_CORRESPONDENCE_IS_NOT_EQUIVALENCE",
+    "SIMULATION_IS_NOT_EMPIRICAL_MEASUREMENT",
+    "DERIVATION_IS_NOT_PHYSICAL_REALIZATION",
+    "NUMERIC_THRESHOLD_IS_NOT_METRIC",
+    "DOCUMENTED_IS_NOT_EXECUTED"
+  ],
+  "objective": "Formalizar la métrica conforme candidata y la perturbación métrica derivada, estableciendo una separación estricta entre los dominios donde la positividad ha sido demostrada analíticamente, los límites donde la fórmula es indefinida, y los parámetros que carecen de justificación matemática.",
+  
+  "block_1_base_metric": {
+    "coordinates": ["sigma", "P1"],
+    "domain": {
+      "sigma": "[0,1]",
+      "P1": "[0,1]",
+      "joint_domain": "[0,1]^2"
+    },
+    "scalar_function": {
+      "symbol": "f(sigma, P1)",
+      "expression": "sigma * (1 - P1) / 1.99",
+      "denominator": 1.99,
+      "denominator_status": "PROVISIONAL_UNJUSTIFIED",
+      "range": "[0, 1/1.99]",
+      "minimum": 0,
+      "maximum_exact": "1/1.99",
+      "maximum_approx": 0.5025125628
+    },
+    "reference_metric": {
+      "symbol": "g0",
+      "matrix": [["1", "0"], ["0", "1"]],
+      "interpretation": "Métrica euclidiana plana de referencia sobre las coordenadas declaradas."
+    },
+    "conformal_candidate": {
+      "expression": "g = (1 + f) * g0",
+      "matrix": [["1+f", "0"], ["0", "1+f"]],
+      "conformal_factor": "1+f",
+      "factor_range": "[1, 1 + 1/1.99]",
+      "line_element": "ds^2 = (1+f)(d_sigma^2 + d_P1^2)",
+      "status": "ANALYTICAL_CANDIDATE"
+    },
+    "analytical_results": {
+      "positive_definiteness": {
+        "status": "PROVEN",
+        "reason": "Dado que f >= 0 en todo el dominio, los autovalores de g son lambda_1 = lambda_2 = 1+f >= 1 > 0."
+      },
+      "length_bounds": {
+        "inequality": "L0(gamma) <= Lg(gamma) <= sqrt(1+1/1.99) * L0(gamma)",
+        "upper_factor_approx": 1.22577,
+        "conditions": [
+          "La misma curva suave por tramos es evaluada bajo ambas métricas.",
+          "La curva reside dentro del dominio declarado."
+        ]
+      },
+      "distance_bounds": {
+        "inequality": "d0(x,y) <= dg(x,y) <= sqrt(1+1/1.99) * d0(x,y)",
+        "conditions": [
+          "Las distancias utilizan el mismo dominio y par de puntos finales.",
+          "La clase de curvas admisibles es idéntica para ambas métricas.",
+          "La distancia se define como el ínfimo de las longitudes de curva en esa clase."
+        ]
+      },
+      "geometric_setting_note": "Las cotas de longitud y distancia aplican a la misma clase de curvas admisibles y puntos finales. En el cuadrado cerrado [0,1]^2, la métrica se interpreta como una métrica riemanniana en un dominio con frontera; no se implica ninguna estructura de variedad sin frontera ni completitud geodésica."
+    }
+  },
+
+  "block_2_perturbation_tensor": {
+    "status": "INCOMPLETE_AND_PARTIALLY_INVALID",
+    "provenance": "Fórmula transcrita de una propuesta previa; requiere cotejo con su fuente original antes de tratarse como especificación normativa.",
+    "delta_Q": {
+      "symbol": "delta_Q",
+      "candidate_value": 0.000015258,
+      "status": "UNSPECIFIED_NUMERIC_SEMANTICS",
+      "unresolved": [
+        "Formato de punto fijo.",
+        "Número de bits fraccionarios y enteros.",
+        "Regla de redondeo o truncamiento.",
+        "Rango representable y política de overflow."
+      ]
+    },
+    "components": {
+      "a": "a = f * delta_Q / (1 - sigma)^2",
+      "b": "b = f * delta_Q / (1 - P1)^2",
+      "c": "c = -a * b"
+    },
+    "perturbation_matrix": [["a", "-ab"], ["-ab", "b"]],
+    "perturbed_metric": [["1+f+a", "-ab"], ["-ab", "1+f+b"]],
+    "full_domain_analysis": {
+      "status": "FAILS_POSITIVE_DEFINITENESS",
+      "scope": "Resultado condicional para el tensor candidato y delta_Q > 0.",
+      "determinant": "det(g_pert) = (1+f+a)(1+f+b) - (ab)^2",
+      "boundary_analysis": [
+        "Considérese P1 = 0 y sigma tendiendo a 1 por debajo.",
+        "En esa trayectoria, f tiende a 1/1.99. Si delta_Q > 0, a crece sin límite y b tiende a un valor positivo finito.",
+        "El término -(ab)^2 crece en magnitud cuadrática con a, mientras que el producto diagonal crece como máximo lineal en a.",
+        "Por tanto, el determinante se vuelve negativo para valores de sigma suficientemente próximos a 1.",
+        "Una matriz simétrica de 2x2 con determinante negativo es indefinida y no puede ser una métrica riemanniana positiva definida."
+      ],
+      "conclusion": "La propuesta no define una métrica positiva definida en todo el dominio declarado [0,1]^2."
+    },
+    "restricted_domain_proof": {
+      "candidate_domain": "[0, c]^2",
+      "assumptions": [
+        "delta_Q es finito y no negativo.",
+        "0 <= sigma <= c < 1.",
+        "0 <= P1 <= c < 1.",
+        "Las expresiones declaradas para f, a, b y g_pert permanecen sin cambios."
+      ],
+      "argument": [
+        "Bajo estos supuestos, f >= 0, a >= 0, y b >= 0.",
+        "La entrada diagonal principal 1+f+a es estrictamente positiva.",
+        "El determinante es det(g_pert) = (1+f)^2 + (1+f)(a+b) + ab - (ab)^2.",
+        "Si ab < 1, entonces (ab)^2 < 1 <= (1+f)^2. Los términos restantes (1+f)(a+b) y ab son no negativos, por lo que det(g_pert) > 0.",
+        "Una matriz simétrica de 2x2 con una entrada diagonal principal positiva y un determinante positivo es definida positiva.",
+        "Dado que ab = [sigma * delta_Q / (1.99 * (1 - sigma))]^2, la condición de dominio suficiente c < 1.99 / (1.99 + delta_Q) garantiza que ab < 1 en todo [0,c]^2."
+      ],
+      "result": "ANALYTICALLY_ESTABLISHED_CONDITIONALLY_POSITIVE_DEFINITE",
+      "provisional_selection": {
+        "value": 0.99,
+        "status": "PROVISIONAL_ENGINEERING_CHOICE",
+        "justification": "Para delta_Q = 1.5258e-5, el límite teórico es c < 0.999992. Elegir c = 0.99 es una decisión de diseño conservadora que satisface holgadamente la condición analítica, no un valor derivado de forma única por la teoría."
+      }
+    },
+    "boundary_singularities": {
+      "sigma_1_P1_0": {
+        "a_status": "UNDEFINED",
+        "reason": "(1-sigma)^2 = 0.",
+        "b_status": "FINITE",
+        "b_value": "delta_Q / 1.99",
+        "classification": "SINGULAR_FORMULA"
+      },
+      "sigma_0_P1_1": {
+        "classification": "PATH_DEPENDENT_CORNER_LIMIT",
+        "reason": "El límite de b depende de la tasa relativa a la que sigma se aproxima a 0 y P1 a 1. No existe una extensión continua única."
+      },
+      "mitigation": "El dominio restringido [0, c]^2 con c < 1 excluye inherentemente ambas aristas singulares y la esquina patológica."
+    }
+  },
+
+  "block_3_parameter_provenance": {
+    "denominator_1_99": {
+      "status": "PROVISIONAL_UNJUSTIFIED",
+      "action_required": "Demostrar derivación matemática o clasificar explícitamente como elección de diseño arbitraria."
+    },
+    "delta_Q_0_000015258": {
+      "status": "UNVERIFIED_SEMANTICS",
+      "action_required": "Especificar formato numérico, ancho de bits y si representa un paso de cuantización (LSB) o un límite de error."
+    },
+    "w_coni_04_0_99": {
+      "status": "NUMERIC_THRESHOLD_UNVALIDATED",
+      "action_required": "Definir métrica operacional y derivación antes de usarlo como un umbral con significado matemático."
+    }
+  },
+
+  "block_4_fisher_rao": {
+    "status": "UNRESOLVED",
+    "required_before_derivation": [
+      "Definir la familia de distribuciones de probabilidad.",
+      "Definir los parámetros estadísticos y el soporte.",
+      "Establecer las condiciones de regularidad aplicables.",
+      "Derivar la matriz de información de Fisher y comprobar su rango."
+    ],
+    "prohibited_inference": "El factor conforme (1+f) no implica una métrica de Fisher-Rao sin la derivación estadística explícita."
+  },
+
+  "validation_and_documentation_status": {
+    "draft_consolidation": "COMPLETE",
+    "mathematical_review": "ANALYTICAL_ARGUMENTS_REPORTED; MINOR_CLARIFICATIONS_APPLIED",
+    "cas_execution": "NOT_RUN",
+    "numerical_tests": "NOT_RUN",
+    "empirical_validation": "NOT_PERFORMED",
+    "repository_inspection": "NOT_VERIFIED",
+    "repository_write_status": "NOT_PERFORMED",
+    "repository_reconciliation": "PENDING",
+    "canonicalization": "NOT_AUTHORIZED",
+    "recommended_status": "PROPOSED_READY_FOR_REVIEW",
+    "note": "La consolidación documental de este contrato no resuelve los problemas abiertos de procedencia de parámetros, aplicabilidad de Fisher-Rao ni validación empírica."
+  },
+
+  "final_classification": {
+    "type": "ANALYTICAL_METRIC_TRANSFORMATION_CONTRACT",
+    "result": "DOCUMENTATION_CLOSURE_READY",
+    "next_step": "Este documento está listo para ser revisado y, si se autoriza, subido al repositorio como PROPOSED_NOT_CANONICAL. No modifica la definición fundacional; actúa como una extensión técnica dependiente de ella."
+  }
+}
