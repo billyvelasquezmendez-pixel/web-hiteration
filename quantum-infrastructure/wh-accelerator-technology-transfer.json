@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ACCELERATOR_TECHNOLOGY_TRANSFER",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-QINFRA-ACCEL-2026-10-22",
+  "document_type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-22",
+  "domain": "QUANTUM_INFRASTRUCTURE",
+  "repository_path": "quantum-infrastructure/wh-accelerator-technology-transfer.json",
+  "collection": "quantum-infrastructure",
+  "parent_document": "quantum-infrastructure/README.md",
+  "related_documents": [
+    "quantum-infrastructure/wh-quantum-infrastructure-foundational-definition.json"
+  ],
+  "epistemic_boundaries": [
+    "INFRASTRUCTURE_IS_NOT_PRODUCT",
+    "FUNDAMENTAL_RESEARCH_IS_NOT_ENGINEERING_READINESS",
+    "SIMULATION_IS_NOT_FABRICATION"
+  ],
+  "objective": "Analizar los aceleradores de partículas (colisionadores y no colisionadores) como plataformas de transferencia tecnológica para la industria de semiconductores y la computación cuántica.",
+  "block_1_colliders_vs_non_colliders": {
+    "distinction": "Los colisionadores (ej. LHC) buscan física fundamental mediante alta energía. Los no colisionadores (ej. sincrotrones, FEL) operan a alta corriente y menor energía para aplicaciones industriales.",
+    "industrial_role": "Los no colisionadores funcionan como fábricas de luz, haces de iones y herramientas de metrología, no como instrumentos de descubrimiento teórico."
+  },
+  "block_2_semiconductor_applications": {
+    "ion_implantation": "Uso de aceleradores para dopar obleas de silicio con iones específicos (boro, fósforo) a profundidades controladas, esencial para la fabricación de transistores.",
+    "lithography_and_metrology": "Generación de luz EUV (13.5 nm) mediante FEL para litografía de próxima generación, y uso de luz de sincrotrón para inspección de chips 3D con resolución nanométrica.",
+    "radiation_testing": "Instalaciones como HEARTS@CERN utilizan haces de iones pesados para probar la tolerancia a la radiación de chips comerciales sin necesidad de abrir el encapsulado."
+  },
+  "block_3_quantum_computing_transfer": {
+    "superconductivity": "El desarrollo de imanes superconductores y sistemas criogénicos para aceleradores se transfiere directamente al diseño de qubits superconductores.",
+    "surface_science": "Las técnicas de vacío extremo y recubrimientos getter (para evitar la adsorción de moléculas) son aplicables a la preservación de la coherencia en qubits."
+  },
+  "final_classification": {
+    "type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento describe transferencia tecnológica documentada. No promete viabilidad comercial de litografía por FEL ni despliegue masivo de estas tecnologías."
+  }
+}
