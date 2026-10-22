@@ -60,6 +60,17 @@ Esa divergencia no es un fallo. Es la forma en que el sistema se manifiesta cuan
 
 ---
 
+## Capa Métrico-Geométrica (Subcapa Analítica)
+
+Como extensión analítica de su alcance estructural, Geometry alberga una subcapa métrica formalizada en `wh-metric-transformation-contract.json`.
+
+- **Métrica Base:** Se define la función escalar \(f(\sigma, P_1) = \frac{\sigma(1-P_1)}{1.99}\) sobre el dominio \([0,1]^2\). La métrica conforme \(g = (1+f)I_2\) ha sido **analíticamente demostrada como definida positiva** en todo su dominio.
+- **Tensor de Perturbación:** Se ha auditado un tensor candidato. La auditoría demuestra que la métrica perturbada \(g_{pert} = g + H\) **falla la definición positiva en el dominio completo** (el determinante se vuelve negativo cerca de la frontera \(\sigma=1\)). Sin embargo, se ha demostrado que es **condicionalmente definida positiva** en el dominio restringido \([0, 0.99]^2\).
+- **Límites Actuales:** El parámetro \(\delta_Q\) carece de semántica numérica definida. La aplicabilidad de la métrica de Fisher-Rao permanece **no resuelta**. La procedencia matemática del denominador \(1.99\) está marcada como **provisional y no justificada**.
+- **Frontera de Ejecución:** Toda esta capa opera estrictamente bajo el nivel `EXEC_1_ANALYSIS` (análisis puro). No declara validación empírica ni física.
+
+---
+
 ## Qué NO es Geometry
 
 - **No es ciberseguridad operativa.** Ciberseguridad resuelve defensa técnica. Geometry formaliza estructura estructural.
@@ -97,6 +108,8 @@ Geometry **no ejecuta**. Geometry **no valida**. Geometry **no sella**. No decla
 - `PERITAGE_OF_EFFICACY_IS_NOT_FORENSIC_RECONSTRUCTION`
 - `INDUSTRY_RECOGNITION_IS_NOT_EMPIRICAL_VALIDATION`
 - `STUDY_AREAS_ARE_INSTRUMENTS_NOT_TOTALITY`
+- `FORMULA_IS_NOT_VALIDATION`
+- `DOCUMENTED_IS_NOT_EXECUTED`
 
 ---
 
@@ -117,17 +130,19 @@ Geometry no es una extensión de Matrix. Es la cara complementaria del mismo sus
 
 ---
 
-## Contenido previsto
-
-**Documentos previstos:**
+## Contenido del Nodo
 
 | Documento | Función | Estado |
 |---|---|---|
-| `wh-geometry-foundational-definition.json` | Definición fundacional del nodo | PROPUESTO |
+| `README.md` | Índice y delimitación del nodo | PROPUESTO |
+| `wh-geometry-foundational-definition.json` | Definición fundacional y conceptual | PROPUESTO (v2.1.0) |
+| `wh-document-elaboration-mechanics.json` | Mecánica de elaboración documental | PROPUESTO |
 | `wh-agent-structural-delimitation.json` | Delimitación estructural de agentes | PROPUESTO |
 | `wh-vulnerability-morphology.json` | Morfología de las vulnerabilidades estructurales | PROPUESTO |
-| `wh-symmetry-and-divergence.json` | Análisis de simetría funcional divergente entre fases de desarrollo | PROPUESTO |
-| `wh-effectiveness-peritaje.json` | Peritaje de eficacia de agentes bajo restricciones del sistema | PROPUESTO |
+| `wh-symmetry-and-divergence.json` | Análisis de simetría funcional divergente | PROPUESTO |
+| `wh-effectiveness-peritaje.json` | Peritaje de eficacia de agentes | PROPUESTO |
+| `wh-metric-transformation-contract.json` | Contrato métrico y prueba de positividad restringida | PROPUESTO |
+| `wh-geometric-perturbation-audit.json` | Auditoría del tensor de perturbación | PROPUESTO |
 
 ---
 
@@ -139,15 +154,19 @@ Geometry no es una extensión de Matrix. Es la cara complementaria del mismo sus
 
 ---
 
-## Estado del nodo
+## Estado del Nodo
 
 | Componente | Estado |
 |---|---|
 | Definición fundacional | PROPUESTO |
-| Delimitación de agentes | PROPUESTO_NOT_CREATED |
-| Morfología de vulnerabilidades | PROPUESTO_NOT_CREATED |
-| Análisis de simetría funcional | PROPUESTO_NOT_CREATED |
-| Peritaje de eficacia | PROPUESTO_NOT_CREATED |
+| Delimitación de agentes | PROPUESTO |
+| Morfología de vulnerabilidades | PROPUESTO |
+| Análisis de simetría funcional | PROPUESTO |
+| Peritaje de eficacia | PROPUESTO |
+| Capa métrico-geométrica (base) | ANALÍTICAMENTE PROBADA |
+| Capa métrico-geométrica (perturbación) | BLOQUEADA / RESTRINGIDA A [0,0.99]^2 |
+| Procedencia de parámetros (\(\delta_Q\), 1.99) | NO RESUELTA |
+| Aplicabilidad Fisher-Rao | NO RESUELTA |
 | Canonicalización | PENDING_REVIEW |
 
-Este README describe la estructura funcional del nodo y su frontera epistémica. No declara ejecución. No declara validación. No promueve ningún componente a canon. No sella el nodo.
+Este README describe la estructura funcional del nodo y su frontera epistémica. No declara ejecución. No declara validación empírica. No promueve ningún componente a canon. No sella el nodo. Las afirmaciones matemáticas se limitan al análisis simbólico y no constituyen validación de hardware o sistemas físicos.
