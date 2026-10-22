@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_SEMICONDUCTOR_FOUNDRY_SCALING",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-QINFRA-SEMI-2026-10-22",
+  "document_type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-22",
+  "domain": "QUANTUM_INFRASTRUCTURE",
+  "repository_path": "quantum-infrastructure/wh-semiconductor-foundry-scaling.json",
+  "collection": "quantum-infrastructure",
+  "parent_document": "quantum-infrastructure/README.md",
+  "related_documents": [
+    "quantum-infrastructure/wh-accelerator-technology-transfer.json"
+  ],
+  "epistemic_boundaries": [
+    "SCALE_IS_NOT_CAPABILITY",
+    "INDUSTRIAL_SCALE_IS_NOT_DOMESTIC_ACCESS"
+  ],
+  "objective": "Analizar la infraestructura de las foundries de semiconductores (litografía EUV, obleas de 300 mm) y su relación con la fabricación de chips cuánticos.",
+  "block_1_foundry_scaling": {
+    "euv_lithography": "La litografía EUV (13.5 nm) es el cuello de botella para nodos de 3 nm y 2 nm. Requiere vacío extremo y ópticas multicapa, limitando su acceso a grandes consorcios.",
+    "wafer_size": "Las obleas de 300 mm maximizan el rendimiento y reducen el costo por chip, pero requieren salas limpias de clase 1 y una inversión de miles de millones de dólares."
+  },
+  "block_2_quantum_chip_fabrication": {
+    "cmos_compatibility": "Las foundries de silicio (como GlobalFoundries) están adaptando procesos CMOS maduros (FD-SOI) para fabricar chips cuánticos de silicio, aprovechando la infraestructura existente.",
+    "metrology_challenge": "La inspección de chips 3D apilados requiere técnicas de metrología de rayos X o luz de sincrotrón, ya que la microscopía óptica no penetra las capas."
+  },
+  "final_classification": {
+    "type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento describe la infraestructura de fabricación. No afirma que una foundry doméstica sea posible ni que la brecha tecnológica sea fácil de cerrar."
+  }
+}
