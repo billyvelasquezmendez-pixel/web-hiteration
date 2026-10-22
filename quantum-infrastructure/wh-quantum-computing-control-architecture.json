@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_QUANTUM_COMPUTING_CONTROL_ARCHITECTURE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-QINFRA-QUANTUM-2026-10-22",
+  "document_type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-22",
+  "domain": "QUANTUM_INFRASTRUCTURE",
+  "repository_path": "quantum-infrastructure/wh-quantum-computing-control-architecture.json",
+  "collection": "quantum-infrastructure",
+  "parent_document": "quantum-infrastructure/README.md",
+  "related_documents": [
+    "quantum-infrastructure/wh-semiconductor-foundry-scaling.json"
+  ],
+  "epistemic_boundaries": [
+    "QUANTUM_ADVANTAGE_IS_NOT_UNIVERSAL_ADVANTAGE",
+    "INDUSTRIAL_SCALE_IS_NOT_DOMESTIC_ACCESS"
+  ],
+  "objective": "Comparar las arquitecturas de control de procesadores cuánticos a escala industrial frente a los prototipos de escritorio o de bajo costo.",
+  "block_1_qubit_technologies": {
+    "superconducting": "Requieren temperaturas de ~10 mK (criogenia de dilución). Son los más escalables actualmente (IBM, Google, Fujitsu) pero dependen de infraestructura masiva.",
+    "trapped_ions": "Operan a temperatura ambiente en cámaras de vacío, pero su escalabilidad a miles de qubits es compleja por el control láser.",
+    "spin_qubits": "Los qubits de espín en diamante (NV centers) o silicio pueden operar a temperaturas más altas (1-4 K o incluso ambiente), lo que facilita prototipos de escritorio (ej. SpinQ)."
+  },
+  "block_2_control_and_access": {
+    "industrial_scale": "Los sistemas industriales (1000+ qubits) se ofrecen vía nube (IBM Quantum, AWS Braket). El usuario no posee el hardware.",
+    "domestic_scale": "Los prototipos de escritorio (2-10 qubits) usan FPGA y electrónica compacta. Su limitación es el ruido y la falta de corrección de errores, no la potencia bruta."
+  },
+  "final_classification": {
+    "type": "INFRASTRUCTURE_CAPABILITY_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento describe las diferencias de arquitectura. No promete supremacía cuántica universal ni afirma que la computación doméstica igualará a la industrial."
+  }
+}
