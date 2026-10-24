@@ -1,278 +1,100 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "WH_QUANTUM_INFRASTRUCTURE_DEVELOPMENT_PHASE_AND_TRANSFER_DOCUMENT",
-  "version": "1.0.0-PROPOSED",
-  "protocol_reference": "WH-QINFRA-PHASE-TRANSFER-2026-10-21",
-  "document_type": "NODE_DEVELOPMENT_PHASE_ASSIGNMENT_AND_CROSS_WINDOW_TRANSFER",
+  "title": "WH_QUANTUM_INFRASTRUCTURE_DEVELOPMENT_PHASE_AND_TRANSFER",
+  "version": "1.2.0-PROPOSED",
+  "protocol_reference": "WH-QINFRA-TRANSFER-2026-10-23",
+  "document_type": "PHASE_TRANSITION_AND_GOVERNANCE_SPECIFICATION",
   "status": "PROPOSED_NOT_CANONICAL",
   "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
-  "date": "2026-10-21",
+  "date": "2026-10-23",
   "domain": "QUANTUM_INFRASTRUCTURE",
   "repository_path": "quantum-infrastructure/wh-development-phase-and-transfer.json",
   "collection": "quantum-infrastructure",
-  "parent_document": "quantum-infrastructure/README.md",
+  "parent_document": "quantum-infrastructure/wh-quantum-infrastructure-axioms.json",
   "related_documents": [
-    "quantum-infrastructure/wh-quantum-infrastructure-foundational-definition.json",
-    "core/core-invariants.json"
+    "quantum-infrastructure/wh-quantum-semantic-model.json",
+    "quantum-infrastructure/wh-exponential-progress-model.json"
   ],
-  "purpose": {
-    "primary": "Registrar el estado exacto del nodo Quantum-Infrastructure en el momento de su creacion y definir las fases de desarrollo que guiaran la elaboracion de los documentos internos restantes.",
-    "secondary": "Servir como artefacto de transferencia para que cualquier plataforma o ventana de contexto nueva pueda retomar el trabajo sin reconstruir historia desde cero.",
-    "boundary": "Este documento es un artefacto externo de reanclaje. No constituye memoria persistente. No declara validacion empirica. No promueve componentes a canon."
+
+  "epistemic_boundaries": [
+    "PLANNING_IS_NOT_EXECUTION",
+    "PROPOSED_IS_NOT_CANON",
+    "THEORIZATION_IS_NOT_IMPLEMENTATION",
+    "GATE_APPROVAL_REQUIRES_INDEPENDENT_EVIDENCE",
+    "QUANTUM_SEMANTIC_MODEL_IS_NOT_PHYSICAL_HARDWARE"
+  ],
+
+  "meta": {
+    "purpose": "Definir los criterios lógicos y las compuertas de transición requeridas para promover el estado epistémico de los componentes abstractos del nodo Quantum-Infrastructure a través de las fases de desarrollo tecnológico.",
+    "supersedes": "quantum-infrastructure/wh-development-phase-and-transfer.json (v1.1.0, 2026-10-23)",
+    "scope_isolation": "GOVERNANCE_AND_TRANSITION_ONLY"
   },
-  "epistemic_rules_for_next_window": {
-    "must_read_first": [
-      "Este documento completo.",
-      "quantum-infrastructure/README.md.",
-      "quantum-infrastructure/wh-quantum-infrastructure-foundational-definition.json."
-    ],
-    "must_do": [
-      "Verificar el estado real del repositorio antes de generar nuevos documentos.",
-      "Distinguir entre documentos PROPUESTOS (listos para subir), SUBIDOS (verificados) y PENDIENTES (por generar).",
-      "Mantener la separacion entre infraestructura industrial y tecnologia domestica.",
-      "Preservar los 7 invariantes del nodo sin excepcion.",
-      "Declarar NO_VERIFICABLE cuando no haya acceso al repositorio.",
-      "Registrar cada documento con su Resumen Operativo antes de proponerlo."
-    ],
-    "must_not_do": [
-      "No declarar validacion empirica de ninguna tecnologia.",
-      "No prometer resultados comerciales de fusion o computacion cuantica.",
-      "No afirmar superioridad de una plataforma sobre otra.",
-      "No inventar capacidades de infraestructura que no esten documentadas publicamente.",
-      "No expandir el scope del nodo hacia dominios que no fueron definidos en el README.",
-      "No crear documentos redundantes con el nodo cyberphysical/."
-    ]
-  },
-  "node_identity_snapshot": {
-    "name": "quantum-infrastructure",
-    "level": 1,
-    "siblings": [
-      "core", "matrix", "geometry", "web_hitteration", "hyper-ratio", "cyberphysical", "verification", "evidence", "cross-platform", "gaming", "archive", "staging"
-    ],
-    "protocol_reference": "WH-QINFRA-2026",
-    "governing_invariant": "INFRASTRUCTURE_IS_NOT_PRODUCT",
-    "target_audience": [
-      "INVESTIGADORES_DE_INFRAESTRUCTURA",
-      "INGENIEROS_DE_SEMICONDUCTORES",
-      "ANALISTAS_DE_TRANSFERENCIA_TECNOLOGICA"
-    ]
-  },
-  "current_state_at_creation": {
-    "documents_ready_to_upload": [
+
+  "block_1_transfer_framework": {
+    "description": "Fases de desarrollo tecnológico del nodo, transitando desde la teorización abstracta hacia la planificación industrial.",
+    "phases_definition": [
       {
-        "path": "quantum-infrastructure/README.md",
-        "function": "Definicion del nodo, alcance, frontera epistemica, inventario previsto.",
-        "status": "PROPOSED_READY",
-        "version": "1.0.0"
+        "phase_id": "PHASE_E1_ABSTRACT_THEORIZATION",
+        "status": "ACTIVE_CURRENT",
+        "description": "Modelado matemático y planteamiento axiomático en el espacio semántico latente. Capa analítica pura. Incluye los 8 axiomas y los modelos matemáticos preparatorios (ecuación diferencial de progreso exponencial y modelo semántico de Hilbert).",
+        "allowed_execution_level": "EXEC_1_ANALYSIS"
       },
       {
-        "path": "quantum-infrastructure/wh-quantum-infrastructure-foundational-definition.json",
-        "function": "Definicion fundacional, 7 invariantes, 5 componentes pendientes, relacion con otros nodos.",
-        "status": "PROPOSED_READY",
-        "version": "1.0.0-PROPOSED"
+        "phase_id": "PHASE_E2_SIMULATION_SANDBOX",
+        "status": "PROPOSED_NOT_STARTED",
+        "description": "Evaluación estocástica y pruebas de propagación de ruido numérico en entornos simulados aislados.",
+        "allowed_execution_level": "EXEC_1_ANALYSIS"
       },
       {
-        "path": "quantum-infrastructure/wh-development-phase-and-transfer.json",
-        "function": "Este documento. Estado de fase y transferencia.",
-        "status": "PROPOSED_READY",
-        "version": "1.0.0-PROPOSED"
-      }
-    ],
-    "documents_pending_creation": [
-      { "order": 1, "path": "quantum-infrastructure/wh-accelerator-technology-transfer.json", "function": "Aceleradores de particulas como plataformas de litografia, metrologia e implantacion ionica.", "phase": "PHASE_1_ACCELERATORS" },
-      { "order": 2, "path": "quantum-infrastructure/wh-fusion-infrastructure-readiness.json", "function": "Estado operativo de ITER y reactores de fusion. Bancos de prueba de imanes HTS y criogenia.", "phase": "PHASE_2_FUSION" },
-      { "order": 3, "path": "quantum-infrastructure/wh-semiconductor-foundry-scaling.json", "function": "Foundries, litografia EUV y limites de fabricacion a escala nanometrica.", "phase": "PHASE_3_SEMICONDUCTORS" },
-      { "order": 4, "path": "quantum-infrastructure/wh-quantum-computing-control-architecture.json", "function": "Arquitecturas de control de qubits, criogenia y modelos de acceso a hardware cuantico.", "phase": "PHASE_4_QUANTUM_COMPUTING" },
-      { "order": 5, "path": "quantum-infrastructure/wh-industrial-vs-domestic-gap.json", "function": "Analisis de la brecha operativa entre infraestructura industrial y tecnologia domestica. Cierre del nodo.", "phase": "PHASE_5_GAP_CLOSURE" }
-    ],
-    "documents_not_created_and_not_planned_yet": [],
-    "readme_status": "PROPOSED_READY",
-    "canonical_status": "PENDING_REVIEW"
-  },
-  "development_phases": {
-    "description": "Secuencia logica de elaboracion de los documentos internos del nodo. Cada fase produce un documento autonomo que puede leerse independientemente, pero que se apoya en las anteriores.",
-    "phases": [
-      {
-        "phase_id": "PHASE_0_FOUNDATION",
-        "name": "FUNDACION_DEL_NODO",
-        "status": "READY_TO_UPLOAD",
-        "documents": [
-          "quantum-infrastructure/README.md",
-          "quantum-infrastructure/wh-quantum-infrastructure-foundational-definition.json",
-          "quantum-infrastructure/wh-development-phase-and-transfer.json"
-        ],
-        "completion_criteria": [
-          "Los 3 documentos estan subidos y verificados en el repositorio.",
-          "El nodo aparece en el arbol de la rama main.",
-          "El README referencia correctamente la definicion fundacional."
-        ]
-      },
-      {
-        "phase_id": "PHASE_1_ACCELERATORS",
-        "name": "ACELERADORES_DE_PARTICULAS",
-        "status": "PENDING",
-        "document_to_create": "quantum-infrastructure/wh-accelerator-technology-transfer.json",
-        "scope": [
-          "Colisionadores vs. aceleradores no colisionadores (diferencia operativa).",
-          "Aplicaciones en semiconductores: implantacion ionica, litografia, metrologia.",
-          "Instalaciones tipo HEARTS@CERN y testeo de radiacion.",
-          "Transferencia de tecnologia de criogenia y superconductividad a computacion cuantica."
-        ],
-        "epistemic_limits": [
-          "No declarar viabilidad comercial de litografia por FEL.",
-          "No afirmar que aceleradores domesticos son posibles con tecnologia actual.",
-          "Distinguir entre instalaciones operativas y propuestas teoricas."
-        ],
-        "depends_on": ["PHASE_0_FOUNDATION"],
-        "completion_criteria": [
-          "El documento esta subido y verificado.",
-          "Contiene al menos 4 aplicaciones concretas documentadas con fuentes publicas verificables.",
-          "Declara explicitamente los limites epistemicos del tema."
-        ]
-      },
-      {
-        "phase_id": "PHASE_2_FUSION",
-        "name": "REACTORES_DE_FUSION",
-        "status": "PENDING",
-        "document_to_create": "quantum-infrastructure/wh-fusion-infrastructure-readiness.json",
-        "scope": [
-          "Estado operativo de ITER (Baseline 2024, criogenia, pruebas de imanes).",
-          "Reactores de confinamiento magnetico vs. inercial.",
-          "Transferencia tecnologica: imanes HTS, control en tiempo real, algoritmos cuanticos para plasmas.",
-          "Aplicaciones de fusion a infraestructura de semiconductores y qubits."
-        ],
-        "epistemic_limits": [
-          "No declarar viabilidad comercial de fusion a corto plazo.",
-          "Distinguir entre hitos de construccion e hitos de operacion.",
-          "No afirmar que la fusion es una fuente de energia desplegada."
-        ],
-        "depends_on": ["PHASE_0_FOUNDATION", "PHASE_1_ACCELERATORS"],
-        "completion_criteria": [
-          "El documento esta subido y verificado.",
-          "Contiene estado actual de al menos 2 proyectos de fusion (ITER y uno mas).",
-          "Declara explicitamente que el estado es de investigacion, no de despliegue."
-        ]
-      },
-      {
-        "phase_id": "PHASE_3_SEMICONDUCTORS",
-        "name": "SEMICONDUCTORES_Y_FOUNDRIES",
-        "status": "PENDING",
-        "document_to_create": "quantum-infrastructure/wh-semiconductor-foundry-scaling.json",
-        "scope": [
-          "Foundries de 300 mm, procesos CMOS, FD-SOI.",
-          "Litografia EUV y sus limites fisicos.",
-          "Metrologia de chips 3D a escala nanometrica.",
-          "Conexion con fabricacion de chips cuanticos (arquitecturas de control)."
-        ],
-        "epistemic_limits": [
-          "No declarar capacidades de foundries sin fuente verificable.",
-          "Distinguir entre tecnologia en produccion y tecnologia en investigacion.",
-          "No afirmar que una foundry domestica es posible con la tecnologia actual."
-        ],
-        "depends_on": ["PHASE_0_FOUNDATION", "PHASE_1_ACCELERATORS"],
-        "completion_criteria": [
-          "El documento esta subido y verificado.",
-          "Contiene referencias a al menos 2 nodos tecnologicos (nm) y sus limitaciones fisicas.",
-          "Declara la brecha entre foundries de investigacion y foundries domesticas."
-        ]
-      },
-      {
-        "phase_id": "PHASE_4_QUANTUM_COMPUTING",
-        "name": "COMPUTACION_CUANTICA",
-        "status": "PENDING",
-        "document_to_create": "quantum-infrastructure/wh-quantum-computing-control-architecture.json",
-        "scope": [
-          "Tipos de qubits: superconductores, iones atrapados, espin en diamante.",
-          "Arquitecturas de control: criogenia, control en tiempo real, correccion de errores.",
-          "Modelos de acceso: nube cuantica, HPC integrado.",
-          "Escalabilidad: limites actuales y proyecciones (sin promesas comerciales)."
-        ],
-        "epistemic_limits": [
-          "No declarar supremacía cuantica universal.",
-          "Distinguir entre ventaja cuantica demostrada y ventaja cuantica general.",
-          "No afirmar que la computacion cuantica doméstica es viable hoy."
-        ],
-        "depends_on": ["PHASE_0_FOUNDATION", "PHASE_3_SEMICONDUCTORS"],
-        "completion_criteria": [
-          "El documento esta subido y verificado.",
-          "Contiene al menos 3 tipos de qubits con sus limitaciones.",
-          "Declara explicitamente la diferencia entre escala industrial y escala doméstica."
-        ]
-      },
-      {
-        "phase_id": "PHASE_5_GAP_CLOSURE",
-        "name": "CIERRE_DE_BRECHA_Y_CONSOLIDACION",
-        "status": "PENDING",
-        "document_to_create": "quantum-infrastructure/wh-industrial-vs-domestic-gap.json",
-        "scope": [
-          "Analisis comparativo de infraestructura industrial vs. tecnologia doméstica.",
-          "Tabla de dimensiones: temperatura, escala de qubits, infraestructura de fabricacion, modelo de acceso.",
-          "Vias de transferencia tecnologica futuras.",
-          "Declaracion de cierre del nodo."
-        ],
-        "epistemic_limits": [
-          "No prometer que la brecha se cerrara en un plazo definido.",
-          "No afirmar que la tecnologia domestica alcanzara a la industrial.",
-          "Distinguir entre transferencia de conocimiento y transferencia de infraestructura."
-        ],
-        "depends_on": ["PHASE_1_ACCELERATORS", "PHASE_2_FUSION", "PHASE_3_SEMICONDUCTORS", "PHASE_4_QUANTUM_COMPUTING"],
-        "completion_criteria": [
-          "El documento esta subido y verificado.",
-          "Contiene tabla comparativa con al menos 5 dimensiones.",
-          "Cierra el nodo como PROPOSED_NOT_CANONICAL sin promover a canon."
-        ]
+        "phase_id": "PHASE_I1_INDUSTRIAL_PLANNING",
+        "status": "PROPOSED_NOT_STARTED",
+        "description": "Asimilación y diseño de herramientas de próxima generación basadas en estimaciones de coherencia predictiva.",
+        "allowed_execution_level": "EXEC_3_AUTHORIZED_INTERFACE"
       }
     ]
   },
-  "cross_window_transfer_protocol": {
-    "description": "Instrucciones para la proxima ventana de contexto o plataforma que reciba este documento.",
-    "step_1_verify_state": [
-      "Abrir https://github.com/billyvelasquezmendez-pixel/web-hiteration/tree/main/quantum-infrastructure.",
-      "Confirmar que existen: README.md, wh-quantum-infrastructure-foundational-definition.json, wh-development-phase-and-transfer.json.",
-      "Si alguno falta, reportar NO_VERIFICABLE y no asumir que esta subido."
+
+  "block_2_phase_transition_gates": {
+    "description": "Condiciones estrictas que deben cumplirse antes de avanzar a la siguiente fase. Si una compuerta falla, el proceso se bloquea.",
+    "gates": [
+      {
+        "gate_id": "GATE_QINFRA_01_TO_02",
+        "source_phase": "PHASE_E1_ABSTRACT_THEORIZATION",
+        "target_phase": "PHASE_E2_SIMULATION_SANDBOX",
+        "required_criteria": [
+          "Axiomas acotados sin contradicciones tautológicas internas (completado: 8 axiomas consolidados).",
+          "Modelos de incertidumbre de variables de entrada formalizados en JSON (completado: wh-exponential-progress-model.json).",
+          "Aprobación explícita del informe de revisión del Arquitecto."
+        ],
+        "verification_evidence": "Ausencia de alucinaciones cruzadas y unificación de criterios en un solo documento base."
+      },
+      {
+        "gate_id": "GATE_QINFRA_02_TO_I1",
+        "source_phase": "PHASE_E2_SIMULATION_SANDBOX",
+        "target_phase": "PHASE_I1_INDUSTRIAL_PLANNING",
+        "required_criteria": [
+          "Estabilidad analítica demostrada ante ruidos estocásticos inducidos de hasta un +/-2%.",
+          "Derivadas parciales y comportamiento asintótico geodésico consistentes.",
+          "Firmware de control o pasarela de interfaz formalmente autorizada."
+        ],
+        "verification_evidence": "Registro formal de desviación (Delta_f) por debajo de la cota analítica calculada."
+      }
     ],
-    "step_2_determine_phase": [
-      "Revisar las fases del bloque development_phases.",
-      "Identificar cual es la primera fase PENDING.",
-      "Verificar que todas las fases anteriores esten completadas."
-    ],
-    "step_3_generate_next_document": [
-      "Generar el documento correspondiente a la primera fase PENDING.",
-      "Aplicar los epistemic_limits declarados para esa fase.",
-      "Incluir un Resumen Operativo al final (archivo, carpeta, commit_message, integracion, que_no_cambia).",
-      "No generar mas de un documento por turno para mantener trazabilidad."
-    ],
-    "step_4_await_authorization": [
-      "Presentar el documento generado al arquitecto.",
-      "Esperar autorizacion explicita antes de proponer la subida.",
-      "No declarar el documento como subido hasta confirmacion."
-    ],
-    "step_5_update_transfer_document": [
-      "Cuando un documento se suba, actualizar este documento de transferencia.",
-      "Cambiar el status de la fase de PENDING a COMPLETED.",
-      "Registrar la fecha de subida y cualquier observacion."
-    ]
+    "hard_gate_policy": "Ninguna fase puede avanzar sin la evidencia explícita de la compuerta anterior."
   },
-  "invariants_to_preserve": [
-    { "code": "INFRASTRUCTURE_IS_NOT_PRODUCT", "application": "Las instalaciones de investigacion no son productos comerciales. La existencia de un prototipo no implica disponibilidad masiva." },
-    { "code": "SCALE_IS_NOT_CAPABILITY", "application": "Mayor escala no implica mayor capacidad resolutiva. La capacidad depende del diseno." },
-    { "code": "SIMULATION_IS_NOT_FABRICATION", "application": "Simular un chip o un plasma no es fabricarlo ni confinarlo." },
-    { "code": "QUANTUM_ADVANTAGE_IS_NOT_UNIVERSAL_ADVANTAGE", "application": "Ventaja cuantica demostrada en un problema especifico no implica ventaja universal." },
-    { "code": "INDUSTRIAL_SCALE_IS_NOT_DOMESTIC_ACCESS", "application": "La infraestructura de escala industrial no es reproducible a escala domestica." },
-    { "code": "FUNDAMENTAL_RESEARCH_IS_NOT_ENGINEERING_READINESS", "application": "Un descubrimiento en fisica fundamental no implica ingenieria lista para desplegar." },
-    { "code": "PUBLISHED_BREAKTHROUGH_IS_NOT_DEPLOYED_INFRASTRUCTURE", "application": "Un articulo publicado no implica que la infraestructura para producirlo este desplegada." }
-  ],
-  "expected_next_window_behavior": {
-    "if_all_3_foundation_documents_uploaded": "Proceder con PHASE_1_ACCELERATORS. Generar wh-accelerator-technology-transfer.json.",
-    "if_some_foundation_documents_missing": "Reportar cuales faltan y esperar instruccion del arquitecto antes de generar nuevos documentos.",
-    "if_repository_unverifiable": "Reportar NO_VERIFICABLE y no asumir estado del repositorio. Generar documentos solo si el arquitecto lo autoriza explicitamente.",
-    "if_phase_1_already_completed": "Proceder con PHASE_2_FUSION.",
-    "in_all_cases": "Mantener el rigor epistémico. No prometer resultados. No declarar validacion empirica. No promover a canon."
+
+  "block_3_cross_window_transfer_protocol": {
+    "description": "Instrucciones para la próxima ventana de contexto o plataforma.",
+    "current_active_phase": "PHASE_E1_ABSTRACT_THEORIZATION",
+    "next_action": "Los axiomas (v1.4.0) y el modelo matemático (wh-exponential-progress-model.json) están definidos. La GATE_QINFRA_01_TO_02 se encuentra parcialmente satisfecha. El siguiente paso operativo es escribir el script de simulación en Python para ejecutar la PHASE_E2, probando la ecuación diferencial con los parámetros propuestos.",
+    "rule": "No generar documentos de la PHASE_E2 sin autorización explícita del arquitecto. El script de Python debe adherirse estrictamente a las ecuaciones del wh-exponential-progress-model.json."
   },
-  "final_declaration": {
-    "statement": "Este documento registra el estado del nodo Quantum-Infrastructure al momento de su creacion y define las 5 fases de desarrollo que guiaran la elaboracion de los documentos internos restantes. Sirve como artefacto de transferencia para ventanas futuras. No declara validacion empirica. No promueve componentes a canon. No constituye memoria persistente.",
-    "status": "READY_FOR_UPLOAD",
-    "requires_next_window_verification": true,
-    "no_internal_continuity_claimed": true
+
+  "final_classification": {
+    "type": "PHASE_TRANSITION_AND_GOVERNANCE_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define la gobernanza y las compuertas de transición. No declara la ejecución de las fases, sino las condiciones requeridas para que ocurran."
   }
 }
