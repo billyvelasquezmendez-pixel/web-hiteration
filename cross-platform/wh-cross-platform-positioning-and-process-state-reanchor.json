@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_CROSS_PLATFORM_POSITIONING_AND_PROCESS_STATE_REANCHOR",
+  "version": "1.0.2-PROPOSED",
+  "protocol_reference": "WH-REANCHOR-2026-10-25",
+  "document_type": "CROSS_PLATFORM_ALIGNMENT_AND_REANCHOR_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "operational_status": "NOT_EXECUTED",
+  "date": "2026-10-25",
+  "domain": "CROSS_PLATFORM",
+  "repository_path": "cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json",
+  "governing_invariant": "CONTEXTUAL_REANCHORING_IS_NOT_PERSISTENT_MEMORY",
+
+  "multi_model_matrix_alignment": {
+    "verified_participants": {
+      "ChatGPT": {
+        "role": "STRUCTURE_AND_SYNTHESIS",
+        "anti_failure_gate": "Exigir referencias literales exactas para limitar la expansión del alcance."
+      },
+      "DeepSeek": {
+        "role": "LOGIC_AND_INTERPRETATION",
+        "anti_failure_gate": "Validar sintaxis y estructura antes de propagar resultados."
+      },
+      "Gemini": {
+        "role": "VISUAL_AND_PARAMETRIC",
+        "anti_failure_gate": "Detectar multiplicadores y parámetros no autorizados."
+      }
+    },
+    "unverified_participants_in_visual": {
+      "Claude": {
+        "status": "NON_PARTICIPANT_IN_PROJECT",
+        "anomaly_note": "Incluido en el dashboard visual sin registro de ejecución en el repositorio."
+      },
+      "Perplexity": {
+        "status": "NON_PARTICIPANT_IN_PROJECT",
+        "anomaly_note": "Incluido en el dashboard visual sin registro de ejecución en el repositorio."
+      }
+    }
+  },
+
+  "reanchoring_protocol_steps": [
+    {
+      "step": 1,
+      "action": "LOAD_INVARIANTS",
+      "target": "core/core-invariants.json",
+      "execution_status": "PENDING"
+    },
+    {
+      "step": 2,
+      "action": "CALCULATE_STATISTICAL_ASSIMILATION",
+      "target": "cross-platform/assimilation_calculator.py",
+      "description": "Medir estadísticamente la asimilación real de WEB_HITERATION por parte de los modelos verificados, contrastándolo con el potencial de cálculo estimado.",
+      "execution_status": "PENDING"
+    },
+    {
+      "step": 3,
+      "action": "VALIDATE_VISUAL_VS_REALITY",
+      "target": "cross-platform/wh-milestone-multimodel-convergence.json",
+      "description": "Contrastar las métricas ilustrativas de la imagen con los resultados reales del script de asimilación.",
+      "execution_status": "PENDING"
+    }
+  ],
+
+  "statistical_assimilation_requirements": {
+    "objective": "Determinar el grado de asimilación del corpus por parte de los modelos participantes frente a su potencial de cálculo estimado.",
+    "required_metrics": [
+      "tasa_de_retencion_de_invariantes",
+      "fidelidad_de_reproduccion_de_formulas",
+      "porcentaje_de_alucinacion_visual (detectado en la imagen)"
+    ],
+    "calculation_formula": "TO_BE_DEFINED_IN_SCRIPT"
+  },
+
+  "visual_reference": {
+    "displayed_global_convergence_percent": 92.6,
+    "values_status": "VISUALLY_REPRESENTED_NOT_INDEPENDENTLY_VALIDATED",
+    "data_provenance": "IMAGE_GENERATION_ARTIFACT",
+    "interpretation_constraint": "La convergencia global incluye modelos no participantes. El valor real debe ser recalculado solo con modelos verificados."
+  },
+
+  "epistemic_boundaries": [
+    "REANCHOR_IS_NOT_PERMANENT_PERSISTENCE",
+    "CONVERGENCE_REQUIRES_NUMERICAL_PROVENANCE",
+    "VISUAL_METRIC_IS_NOT_REPRODUCIBLE_RESULT",
+    "VISUAL_CONSENSUS_IS_NOT_PROJECT_PARTICIPATION"
+  ],
+
+  "next_actions": [
+    "Desarrollar el script cross-platform/assimilation_calculator.py para calcular la asimilación estadística real.",
+    "Reemplazar las métricas ilustrativas del hito visual por las métricas calculadas empíricamente."
+  ]
+}
