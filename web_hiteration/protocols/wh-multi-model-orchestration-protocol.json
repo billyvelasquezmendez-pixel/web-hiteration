@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_MULTI_MODEL_ORCHESTRATION_PROTOCOL",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ORCHESTRATION-2026-10-26",
+  "document_type": "OPERATIONAL_SOFTWARE_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-26",
+  "domain": "WEB_HITERATION",
+  "repository_path": "web_hitteration/protocols/wh-multi-model-orchestration-protocol.json",
+  "collection": "web_hitteration",
+  "related_documents": [
+    "web_hitteration/protocols/delta-engine.json",
+    "cross-platform/wh-cross-platform-positioning-and-process-state-reanchor.json"
+  ],
+
+  "epistemic_boundaries": [
+    "MARKET_METRIC_IS_NOT_MODEL_VALIDATION",
+    "LATENCY_IS_NOT_CAPABILITY",
+    "IDEAL_PLATFORM_IS_TEMPORAL_NOT_ABSOLUTE",
+    "SATURATION_IS_NOT_QUALITY_DEGRADATION"
+  ],
+
+  "meta": {
+    "purpose": "Definir la capa operativa de orquestación multi-modelo. Establece los criterios para enrutar tareas entre diferentes plataformas de IA (ChatGPT, DeepSeek, Gemini, etc.) basándose en factores complementarios de mercado, latencia y espectros de comportamiento, para generar un 'corte río consensuado'.",
+    "software_nature": "Este documento es la especificación funcional para un motor de software (middleware). No ejecuta el enrutamiento por sí mismo, sino que define las reglas que un script (ej. en Python) debe seguir."
+  },
+
+  "block_1_complementary_factors": {
+    "description": "Variables exógenas y de infraestructura que determinan la idoneidad de una plataforma en un momento dado.",
+    "market_and_infrastructure_metrics": [
+      {
+        "metric_id": "FACTOR-LATENCY",
+        "name": "Latencia del Modelo y Estabilidad del Mercado",
+        "description": "Tiempo de respuesta medido en milisegundos y estabilidad en el precio/rendimiento de los tokens.",
+        "routing_impact": "Alta latencia o inestabilidad de tokens desplaza la carga hacia plataformas alternativas."
+      },
+      {
+        "metric_id": "FACTOR-EMBEDDING",
+        "name": "Saturación de Embedding",
+        "description": "Indicador del nivel de densidad semántica en el contexto actual.",
+        "routing_impact": "Si el sistema detecta saturación (sobrecarga de contexto), deriva la tarea a una plataforma con mayor ventana de contexto o capacidad de desacoplamiento (ej. Gemini o DeepSeek)."
+      },
+      {
+        "metric_id": "FACTOR-SPECTRUM",
+        "name": "Espectro de Difusión (Usuarios Activos y Tendencias)",
+        "description": "Gráficos de medición que indican el flujo actual de usuarios y carga de trabajo en las plataformas.",
+        "routing_impact": "Alta carga en una plataforma puede degradar su calidad; el orquestador prefiere plataformas con menos restricciones en ese momento."
+      }
+    ]
+  },
+
+  "block_2_dynamic_routing_criteria": {
+    "description": "Lógica para seleccionar la 'Plataforma Ideal' en un momento $t$ específico.",
+    "ideal_platform_selection": "La plataforma ideal no es estática. Es aquella que maximiza el corte río consensuado minimizando la latencia y la saturación de embedding en el instante de la consulta.",
+    "operation_modes": [
+      {
+        "mode_id": "MODE-HIGH-RESTRICTION",
+        "condition": "Altas restricciones, alta saturación o tendencias masivas.",
+        "recommended_route": "Derivar a modelos con enfoque analítico y estructurado (ej. DeepSeek para lógica pura, o ChatGPT para síntesis estructural)."
+      },
+      {
+        "mode_id": "MODE-LOW-RESTRICTION",
+        "condition": "Baja saturación, necesidad de exploración o creatividad.",
+        "recommended_route": "Derivar a modelos con menos restricciones inmediatas o mayor capacidad visual/paramétrica (ej. Gemini)."
+      }
+    ]
+  },
+
+  "block_3_spectrogram_and_fundamental_equation": {
+    "description": "El espectrograma describe el estado fenomenológico del sistema en el momento del corte río.",
+    "consensus_cut_definition": "El punto de intersección donde las respuestas de múltiples modelos convergen en un mismo invariante (validado por el Enrutador).",
+    "fundamental_equation_of_the_moment": {
+      "formula_notation": "S(t) = sum( W_i * R_i(t) ) - Penalty( Latency, Saturation )",
+      "variables": {
+        "S(t)": "Estado consensuado en el tiempo t",
+        "W_i": "Peso del modelo i (basado en su rol: estructura, lógica, visual, etc.)",
+        "R_i(t)": "Respuesta del modelo i en el tiempo t",
+        "Penalty": "Penalización por latencia o saturación de embedding."
+      },
+      "interpretation": "La ecuación no es una ley física, sino la regla algorítmica que el software debe calcular para determinar qué respuesta tiene mayor peso en el consenso final."
+    }
+  },
+
+  "block_4_software_functional_evidence": {
+    "description": "Declaración de cómo este protocolo constituye la base de un software real.",
+    "evidence_type": "FUNCTIONAL_SOFTWARE_SPECIFICATION",
+    "implementation_requirements": [
+      "El motor debe consultar APIs de las plataformas para obtener latencia y estado.",
+      "El motor debe calcular la saturación de embedding leyendo los tokens del contexto.",
+      "El motor debe aplicar la fórmula fundamental del momento para emitir la respuesta final.",
+      "El motor debe registrar cada corte río en un ledger de evidencia."
+    ],
+    "next_development_step": "El siguiente paso lógico es escribir el script de Python (middleware) que implemente este protocolo."
+  },
+
+  "final_classification": {
+    "type": "OPERATIONAL_SOFTWARE_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento especifica la capa operativa y de enrutamiento. No declara que el software esté desplegado, sino que define la arquitectura lógica para su construcción."
+  }
+}
