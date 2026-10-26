@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_DELTA_CONTRACT",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-DELTA-CONTRACT-2026-10-26",
+  "document_type": "IMPLEMENTATION_CONTRACT",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "date": "2026-10-26",
+  "domain": "WEB_HITERATION",
+  "repository_path": "web_hitteration/implementation/wh-delta-contract.json",
+  "epistemic_boundaries": [
+    "FORMULA_IS_NOT_VALIDATION",
+    "CANONICAL_FORMULA_REQUIRES_EXPLICIT_AUTHORIZATION"
+  ],
+  "formula_policy": {
+    "engine_A": {
+      "identifier": "DELTA_ENGINE_A_WEIGHTED_COMPLEMENT",
+      "formula_delta": "1 - sum(weight_i * Pn_norm_i)",
+      "formula_delta_prime": "0.4*(1-P1) + 0.4*(1-P3) + 0.2*(1-P5)",
+      "formula_score": "1 - delta",
+      "status": "DOCUMENTED_NOT_SELECTED_AS_CANONICAL"
+    },
+    "engine_B": {
+      "identifier": "DELTA_ENGINE_B_COHERENCE_ADJUSTED",
+      "formula_delta": "(1/N) * sum(delta_i)",
+      "formula_delta_prime": "sigma*(1-P1)",
+      "formula_score": "(P1+P3+P5)/3 - delta_prime",
+      "status": "DOCUMENTED_NOT_SELECTED_AS_CANONICAL"
+    }
+  },
+  "required_controls": [
+    "Do not combine formula families.",
+    "Require explicit input ranges and normalization rules.",
+    "Document missing values and invalid-input behavior."
+  ]
+}
