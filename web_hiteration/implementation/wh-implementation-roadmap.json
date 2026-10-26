@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_IMPLEMENTATION_ROADMAP",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-IMPL-ROADMAP-2026-10-26",
+  "status": "IN_PROGRESS",
+  "segments": [
+    {
+      "segment_id": "WH-IMPL-01",
+      "name": "DELTA_NAMESPACE_AND_EXECUTABLE_BASELINE",
+      "priority": "P0",
+      "status": "IMPLEMENTED_PENDING_COLAB_TEST",
+      "deliverables": [
+        "wh-delta-contract.json",
+        "test_delta_contract.py",
+        "wh-baseline-demo.py"
+      ]
+    },
+    {
+      "segment_id": "WH-IMPL-02",
+      "name": "STATE_AND_TEMPORAL_MEASUREMENT",
+      "priority": "P1",
+      "status": "PLANNED",
+      "depends_on": ["WH-IMPL-01"]
+    },
+    {
+      "segment_id": "WH-IMPL-03",
+      "name": "P_DRIFT_CALIBRATION_AND_METRICS",
+      "priority": "P1",
+      "status": "PLANNED",
+      "depends_on": ["WH-IMPL-02"]
+    },
+    {
+      "segment_id": "WH-IMPL-04",
+      "name": "MULTI_MODEL_ORCHESTRATION",
+      "priority": "P2",
+      "status": "PLANNED",
+      "depends_on": ["WH-IMPL-01", "WH-IMPL-02"]
+    }
+  ]
+}
