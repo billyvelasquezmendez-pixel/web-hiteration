@@ -1,36 +1,73 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "WH_DELTA_CONTRACT",
-  "version": "1.0.0-PROPOSED",
-  "protocol_reference": "WH-DELTA-CONTRACT-2026-10-26",
-  "document_type": "IMPLEMENTATION_CONTRACT",
+  "title": "WEB_HITERATION Delta Contract",
+  "description": "Contrato de datos para la separación estricta de namespaces entre el Motor DELTA A y el Motor DELTA B.",
+  "version": "1.0.0",
   "status": "PROPOSED_NOT_CANONICAL",
-  "date": "2026-10-26",
-  "domain": "WEB_HITERATION",
-  "repository_path": "web_hitteration/implementation/wh-delta-contract.json",
-  "epistemic_boundaries": [
-    "FORMULA_IS_NOT_VALIDATION",
-    "CANONICAL_FORMULA_REQUIRES_EXPLICIT_AUTHORIZATION"
+  "protocol": "WH-IMPLEMENTATION-TRACE-2026-10-26",
+  "type": "object",
+  "required": [
+    "engine_a",
+    "engine_b"
   ],
-  "formula_policy": {
-    "engine_A": {
-      "identifier": "DELTA_ENGINE_A_WEIGHTED_COMPLEMENT",
-      "formula_delta": "1 - sum(weight_i * Pn_norm_i)",
-      "formula_delta_prime": "0.4*(1-P1) + 0.4*(1-P3) + 0.2*(1-P5)",
-      "formula_score": "1 - delta",
-      "status": "DOCUMENTED_NOT_SELECTED_AS_CANONICAL"
+  "properties": {
+    "engine_a": {
+      "type": "object",
+      "description": "Especificaciones y namespace asignado al Motor DELTA A.",
+      "required": [
+        "namespace",
+        "inputs",
+        "outputs"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "enum": [
+            "web_hitteration.delta_a"
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "engine_B": {
-      "identifier": "DELTA_ENGINE_B_COHERENCE_ADJUSTED",
-      "formula_delta": "(1/N) * sum(delta_i)",
-      "formula_delta_prime": "sigma*(1-P1)",
-      "formula_score": "(P1+P3+P5)/3 - delta_prime",
-      "status": "DOCUMENTED_NOT_SELECTED_AS_CANONICAL"
+    "engine_b": {
+      "type": "object",
+      "description": "Especificaciones y namespace asignado al Motor DELTA B.",
+      "required": [
+        "namespace",
+        "inputs",
+        "outputs"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "enum": [
+            "web_hitteration.delta_b"
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
-  },
-  "required_controls": [
-    "Do not combine formula families.",
-    "Require explicit input ranges and normalization rules.",
-    "Document missing values and invalid-input behavior."
-  ]
+  }
 }
