@@ -1,31 +1,39 @@
-# WH-BASELINE-DEMO: DELTA ENGINE IMPLEMENTATION
-# Protocol: WH-IMPLEMENTATION-TRACE-2026-10-26
-# Status: PROPOSED_NOT_CANONICAL
+import json
 
-def validate_input(value, name):
-    if not (0 <= value <= 1):
-        raise ValueError(f"{name} must be between 0 and 1. Received: {value}")
+class DeltaEngineA:
+    def __init__(self):
+        self.namespace = "web_hitteration.delta_a"
 
-def engine_a_delta_prime(p1, p3, p5):
-    """DELTA_ENGINE_A_WEIGHTED_COMPLEMENT"""
-    validate_input(p1, "P1")
-    validate_input(p3, "P3")
-    validate_input(p5, "P5")
-    return 0.4 * (1 - p1) + 0.4 * (1 - p3) + 0.2 * (1 - p5)
+    def process(self, data_input):
+        # Aislamiento lógico para el Motor A
+        result = f"[{self.namespace.upper()}] Procesando: {data_input} -> Delta_A_OK"
+        return {"engine": self.namespace, "output": result}
 
-def engine_b_delta_prime(p1, sigma):
-    """DELTA_ENGINE_B_COHERENCE_ADJUSTED"""
-    validate_input(p1, "P1")
-    validate_input(sigma, "sigma")
-    return sigma * (1 - p1)
+class DeltaEngineB:
+    def __init__(self):
+        self.namespace = "web_hitteration.delta_b"
+
+    def process(self, data_input):
+        # Aislamiento lógico para el Motor B
+        result = f"[{self.namespace.upper()}] Procesando: {data_input} -> Delta_B_OK"
+        return {"engine": self.namespace, "output": result}
+
+def run_demo():
+    print("=== WEB_HITERATION: EJECUCIÓN DE LÍNEA BASE ===")
+
+    # Simulación de datos de entrada separados por contrato
+    payload_a = "Métrica_Alfa_2026"
+    payload_b = "Métrica_Beta_2026"
+
+    engine_a = DeltaEngineA()
+    engine_b = DeltaEngineB()
+
+    res_a = engine_a.process(payload_a)
+    res_b = engine_b.process(payload_b)
+
+    print(json.dumps(res_a, indent=2))
+    print(json.dumps(res_b, indent=2))
+    print("==============================================")
 
 if __name__ == "__main__":
-    print("--- WH BASELINE DEMO ---")
-    p1, p3, p5 = 0.85, 0.75, 0.65
-    sigma = 0.12
-    
-    print(f"Inputs: P1={p1}, P3={p3}, P5={p5}, sigma={sigma}")
-    print(f"Engine A (Weighted Complement): {engine_a_delta_prime(p1, p3, p5):.4f}")
-    print(f"Engine B (Coherence Adjusted): {engine_b_delta_prime(p1, sigma):.4f}")
-    
-    print("\n[NOTA EPISTEMICA] Ambos motores están implementados. Ninguno es canónico aún.")
+    run_demo()
