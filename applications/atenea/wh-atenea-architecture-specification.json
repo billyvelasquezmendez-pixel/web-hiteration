@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_ARCHITECTURE_SPECIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-ARCH-2026-10-28",
+  "document_type": "EMBODIED_COGNITION_APPLICATION_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-28",
+  "domain": "APPLICATIONS / ROBOTICS",
+  "repository_path": "applications/atenea/wh-atenea-architecture-specification.json",
+  "collection": "applications",
+  "parent_document": "web_hitteration/implementation/wh-multi-model-orchestration-protocol.json",
+  
+  "epistemic_boundaries": [
+    "MODEL_IS_NOT_SYSTEM",
+    "CAPABILITY_IS_NOT_EXECUTION",
+    "SOFTWARE_IS_NOT_PHYSICAL_HARDWARE",
+    "CLOUD_LATENCY_IS_NOT_MOTOR_REFLEX"
+  ],
+
+  "meta": {
+    "project_name": "ATENEA",
+    "purpose": "Definir la arquitectura de hardware y software para un asistente didáctico con embodiment físico, superando las limitaciones de los chatbots tradicionales.",
+    "epistemic_status": "PROPOSED_HARDWARE_SPECIFICATION"
+  },
+
+  "block_1_cognitive_architecture": {
+    "description": "División de cómputo entre Edge (Local) y Cloud (Nube) para maximizar la eficiencia.",
+    "local_edge": {
+      "hardware": "Raspberry Pi (4 u 5)",
+      "responsibilities": [
+        "Procesamiento de visión artificial (MediaPipe / OpenCV)",
+        "Reconocimiento de voz local (Whisper)",
+        "Filtrado de ruido de sensores"
+      ],
+      "justification": "Baja latencia requerida para que el robot reaccione a gestos humanos en tiempo real (Time to First Action < 200ms)."
+    },
+    "cloud_cognition": {
+      "hardware": "LLMs (vía API)",
+      "responsibilities": [
+        "Razonamiento complejo",
+        "Generación de rutinas didácticas adaptativas",
+        "Consulta al repositorio de conocimiento (GitHub)"
+      ],
+      "justification": "Alta capacidad de cómputo sin sobrecargar la batería y el procesador local."
+    }
+  },
+
+  "block_2_motor_architecture": {
+    "description": "Control físico independiente de la red.",
+    "microcontroller": "ESP32",
+    "responsibilities": [
+      "Control PWM de servomotores (cabeza, brazos)",
+      "Lectura de IMU (acelerómetro/giroscopio) para equilibrio",
+      "Evitación de caídas"
+    ],
+    "justification": "El ESP32 garantiza que los reflejos físicos funcionen incluso si la conexión Wi-Fi cae o la Raspberry Pi se congela."
+  },
+
+  "block_3_electrical_engineering_sec": {
+    "description": "Aplicación de formación técnica para la seguridad del prototipo.",
+    "power_management": "Cálculo de conductores y distribución para servos de alto torque (LiPo o fuente DC).",
+    "isolation": "Etapa de potencia para aislar la Raspberry Pi de los picos de corriente de los motores, protegiendo los pines lógicos de la GPIO."
+  },
+
+  "block_4_interaction_loop": {
+    "description": "El bucle didáctico de entrada visual y salida física.",
+    "steps": [
+      "1. ENTRADA: Usuario señala un objeto (Visión Pi).",
+      "2. PROCESAMIENTO: La Pi consulta al LLM (Cloud).",
+      "3. PLANIFICACIÓN: El LLM devuelve una rutina (ej. 'mueve el brazo 45 grados y di X').",
+      "4. EJECUCIÓN: La Pi envía el comando MQTT al ESP32.",
+      "5. SALIDA FÍSICA: El ESP32 mueve los servos."
+    ],
+    "protocol": "MQTT o WebSockets (para comunicación Pi <-> ESP32)."
+  },
+
+  "next_implementation_steps": [
+    "Paso 1: Diseño del chasis (Fusion 360 / AutoCAD).",
+    "Paso 2: Configuración de Raspberry Pi (OpenCV/MediaPipe).",
+    "Paso 3: Programación ESP32 (PWM y lectura IMU).",
+    "Paso 4: Implementación del puente MQTT.",
+    "Paso 5: Configuración del repositorio GitHub para ATENEA."
+  ],
+
+  "final_classification": {
+    "type": "EMBODIED_COGNITION_APPLICATION_SPECIFICATION",
+    "implementation_status": "PROPOSED_NOT_STARTED",
+    "hardware_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define la arquitectura del proyecto ATENEA. No declara que el hardware haya sido ensamblado o validado."
+  }
+}
