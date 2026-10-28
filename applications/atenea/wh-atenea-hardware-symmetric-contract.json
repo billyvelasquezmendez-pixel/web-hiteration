@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_HARDWARE_SYMMETRIC_CONTRACT",
+  "version": "1.0.0-PROPOSED",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "protocol_reference": "WH-AHSC-2026-10-28",
+  "hardware_bounds": {
+    "engine_a_allocation": {
+      "target_environment": "GOOGLE_COLAB_STANDARD",
+      "required_ram_gb": 12.0,
+      "max_threads": 2,
+      "cuda_acceleration_required": false
+    },
+    "engine_b_allocation": {
+      "target_environment": "GOOGLE_COLAB_STANDARD",
+      "required_ram_gb": 12.0,
+      "max_threads": 4,
+      "cuda_acceleration_required": true
+    }
+  },
+  "symmetry_constraints": {
+    "ALLOW_RESOURCE_SHARING": false,
+    "CORE_PINNING_POLICY": "STRICT_ISOLATION",
+    "CONTEXT_WINDOW_RESERVE_MB": 512
+  },
+  "verification_metrics": {
+    "metric_name": "HARDWARE_TO_TOPOLOGY_CONCORDANCE",
+    "minimum_acceptance_threshold": 0.95
+  }
+}
