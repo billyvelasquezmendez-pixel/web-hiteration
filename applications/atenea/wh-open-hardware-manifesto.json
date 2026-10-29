@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_OPEN_HARDWARE_MANIFESTO",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-MANIFESTO-2026-10-29",
+  "document_type": "HARDWARE_GOVERNANCE_MANIFESTO",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-29",
+  "domain": "APPLICATIONS / HARDWARE_GOVERNANCE",
+  "repository_path": "applications/atenea/wh-open-hardware-manifesto.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-atenea-architecture-specification.json",
+  "related_documents": [
+    "geometry/analysis/wh-consumer-robotics-peripheral-limit.json"
+  ],
+
+  "epistemic_boundaries": [
+    "HARDWARE_CAPABILITY_IS_NOT_SOFTWARE_PERMISSION",
+    "SOFTWARE_RESTRICTION_IS_NOT_HARDWARE_LIMIT",
+    "MARKET_SECURITY_MODEL_IS_NOT_TECHNICAL_LIMIT",
+    "USER_RESPONSIBILITY_IS_NOT_OS_GUARDIANSHIP"
+  ],
+
+  "meta": {
+    "title": "Open Hardware Revolution",
+    "author": "billyvelasquezmendez",
+    "purpose": "Establecer la postura filosófica y técnica de ATENEA frente a las restricciones impuestas por los sistemas operativos móviles comerciales, justificando la arquitectura abierta (DIY) como única vía para la verdadera experimentación en robótica y radiofrecuencia.",
+    "core_issue": "El hardware es capaz, pero la jerarquía del software comercial (Android/iOS) bloquea el acceso directo a periféricos y estandariza solo inputs HID básicos, forzando a los usuarios a depender de capas de virtualización (ADB/Shizuku)."
+  },
+
+  "block_1_peripheral_taxonomy": {
+    "description": "Clasificación de hardware según su nivel de acceso y restricción en sistemas comerciales.",
+    "category_1_standard_hid": {
+      "description": "Dispositivos HID estándar (mandos Bluetooth, teclados).",
+      "status": "Reconocidos por el sistema, pero a menudo bloqueados por desarrolladores de juegos/apps.",
+      "workaround": "Requiere ADB/Shizuku y apps de simulación táctil (ej. K2er)."
+    },
+    "category_2_specialized_hardware": {
+      "description": "Hardware avanzado (antenas RTL-SDR, receptores satelitales NOAA, microcontroladores ESP32/Raspberry Pi).",
+      "status": "El hardware existe y es barato, pero carece de soporte nativo de drivers y protocolos abiertos en el OS móvil.",
+      "workaround": "Requiere apps personalizadas, adaptadores OTG y saltar restricciones de energía/acceso."
+    }
+  },
+
+  "block_2_manifesto_demands": {
+    "principle": "Acceso Legal al Armamento (metáfora de acceso sin restricciones al hardware).",
+    "demands": [
+      "Un 'Modo Beta' con invariantes sustanciales para usuarios avanzados.",
+      "Acceso directo al bus USB sin capas de abstracción del OS.",
+      "Inyección nativa de inputs sin bloqueos de seguridad artificiales.",
+      "Estandarización de periféricos SDR (Software Defined Radio) e IoT para dispositivos móviles."
+    ]
+  },
+
+  "block_3_project_atenea_application": {
+    "philosophy": "Si el OS no lo permite, construye un sistema que sí lo haga.",
+    "architecture": {
+      "cognitive_brain": "Raspberry Pi (Linux/Open Source)",
+      "physical_brain": "ESP32 (Control motriz en tiempo real)",
+      "bridge": "Dispositivo Android (ej. A55) utilizado como pantalla e interfaz de sensores visuales, pero NO como limitante."
+    },
+    "goal": "Crear un asistente didáctico y hub de comunicaciones que opere libremente en frecuencias abiertas y hardware personalizado."
+  },
+
+  "block_4_invariant_preservation": {
+    "invariant_applied": "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+    "explanation": "El sistema comercial (Android/iOS) delimita el potencial del hardware. El manifiesto propone romper esa delimitación mediante una arquitectura de sistema abierto (Linux + ESP32)."
+  },
+
+  "final_classification": {
+    "type": "HARDWARE_GOVERNANCE_MANIFESTO",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento establece la filosofía de hardware abierto que guía el desarrollo de ATENEA. No declara que el hardware comercial haya sido modificado, sino que define la vía de desarrollo elegida."
+  }
+}
