@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_CONSUMER_ROBOTICS_PERIPHERAL_LIMIT_ANALYSIS",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-GEOMETRY-MARKET-2026-10-29",
+  "document_type": "STRUCTURAL_LIMITATION_AND_MARKET_DRIFT_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-29",
+  "domain": "GEOMETRY",
+  "repository_path": "geometry/analysis/wh-consumer-robotics-peripheral-limit.json",
+  "collection": "geometry",
+  "parent_document": "geometry/wh-geometry-foundational-definition.json",
+  "related_documents": [
+    "applications/atenea/wh-atenea-architecture-specification.json"
+  ],
+
+  "epistemic_boundaries": [
+    "HARDWARE_IS_NOT_SOFTWARE",
+    "MARKET_LIMIT_IS_NOT_TECHNOLOGICAL_LIMIT",
+    "CONSUMER_PRODUCT_IS_NOT_RESEARCH_PLATFORM"
+  ],
+
+  "meta": {
+    "purpose": "Delimitar estructuralmente el 'límite periférico' de la robótica de consumo (ejemplificado por LOOI AI Buddy) frente a la vía experimental (Proyecto ATENEA), demostrando que la verdadera innovación reside en la arquitectura de control y no en el hardware físico.",
+    "observation": "El LOOI y el EMO no representan el techo tecnológico de la industria, sino un desvío estandarizado hacia el consumo pasivo y las cajas negras."
+  },
+
+  "block_1_market_analysis": {
+    "subject": "LOOI AI BUDDY",
+    "structural_finding": "Es un periférico físico (cascarón) que 'alquila' su cerebro al smartphone. Su firmware es una caja negra que impide la experimentación.",
+    "limitation_type": "PERIPHERAL_LIMIT",
+    "consequence": "El hardware moderno es esclavo de un software cerrado. El rendimiento del robot depende de la potencia de un dispositivo externo, no de su propia arquitectura."
+  },
+
+  "block_2_market_drift": {
+    "description": "La industria de consumo prioriza el encanto estético y la integración cerrada sobre la capacidad de programación y la autonomía cognitiva.",
+    "geometry_concept_applied": "VULNERABILITY_IS_STRUCTURAL_NOT_MORAL",
+    "explanation": "La vulnerabilidad del LOOI no es un fallo de diseño físico, es una restricción estructural impuesta por el modelo de negocio del mercado de consumo."
+  },
+
+  "block_3_experimental_route_advantage": {
+    "description": "La vía DIY (Raspberry Pi + ESP32), adoptada por ATENEA, rompe el límite periférico.",
+    "advantages": [
+      "Control absoluto sobre la arquitectura de software (Python, MQTT, LLMs).",
+      "Capacidad de iteración y experimentación sin restricciones de firmware.",
+      "Independencia cognitiva del hardware (el robot piensa por sí mismo, no depende de un móvil)."
+    ],
+    "geometry_concept_applied": "POTENTIAL_DEVELOPMENT_IS_DELIMITED_BY_SYSTEM",
+    "explanation": "El potencial de ATENEA no está limitado por el hardware de consumo, sino por la capacidad del desarrollador para expandir el software."
+  },
+
+  "block_4_structural_comparison": {
+    "EMO": {
+      "architecture": "Cerebro propio de baja potencia (NPU 1.2 TOPS).",
+      "limit": "Cuerpo rígido. Sin acceso al software.",
+      "classification": "MASCOTA_CERRADA"
+    },
+    "LOOI": {
+      "architecture": "Sin cerebro propio. Depende del smartphone.",
+      "limit": "Caja negra total. Sin experimentación.",
+      "classification": "PERIFERICO_DEPENDIENTE"
+    },
+    "ATENEA_DIY": {
+      "architecture": "Raspberry Pi (Edge) + ESP32 (Motriz) + LLMs (Cloud).",
+      "limit": "Alta curva de aprendizaje técnica.",
+      "classification": "PLATAFORMA_EXPERIMENTAL_ABIERTA"
+    }
+  },
+
+  "block_5_conclusion_and_path_forward": {
+    "conclusion": "El límite de la industria de consumo es una 'deriva' comercial, no un límite de potencial científico. La experimentación en robótica de asistencia requiere arquitecturas abiertas.",
+    "atenea_directive": "ATENEA debe adoptar el concepto estético de LOOI (el uso de una pantalla para expresiones y un cuerpo compacto), pero rechazar su arquitectura cerrada. La ruta DIY es el único camino hacia un agente didáctico verdaderamente autónomo."
+  },
+
+  "final_classification": {
+    "type": "STRUCTURAL_LIMITATION_AND_MARKET_DRIFT_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento utiliza los conceptos de Geometry para analizar críticamente la robótica de consumo y justificar la vía experimental de ATENEA."
+  }
+}
