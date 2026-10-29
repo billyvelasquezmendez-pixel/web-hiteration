@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_WIRELESS_INTENT_PROTOCOL",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-WIRE-2026-10-28",
+  "document_type": "WIRELESS_INTENT_AND_EXECUTION_BINDING_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-28",
+  "domain": "APPLICATIONS / ROBOTICS",
+  "repository_path": "applications/atenea/wh-atenea-wireless-intent-protocol.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-atenea-gaming-peripheral-agent.json",
+
+  "epistemic_boundaries": [
+    "WIRELESS_COMMAND_IS_NOT_PHYSICAL_EXECUTION",
+    "DATA_INPUT_IS_NOT_PHYSICAL_ACTION",
+    "CHATBOT_LATENCY_IS_NOT_ROBOT_REFLEX"
+  ],
+
+  "meta": {
+    "purpose": "Definir el protocolo por el cual las intenciones del usuario (vía mando Bluetooth/USB) se traducen en comandos físicos ejecutados por ATENEA, con validación epistémica desde el corpus.",
+    "concept": "El mando es el canal de intención; ATENEA es el testigo físico y ejecutor."
+  },
+
+  "block_1_input_channels": {
+    "description": "Fuentes de intención que ATENEA puede recibir.",
+    "channels": [
+      {
+        "channel_id": "CH-BLUETOOTH-CONTROLLER",
+        "type": "BLUETOOTH_GAMEPAD",
+        "role": "CANAL_L3_ORDEN_DEL_LIDER",
+        "data_stream": ["joystick_x", "joystick_y", "button_a", "button_b"],
+        "frequency_hz": 60
+      },
+      {
+        "channel_id": "CH-CAMERA-VISION",
+        "type": "COMPUTER_VISION",
+        "role": "CANAL_L4_CONTEXTO",
+        "data_stream": ["face_detection", "gesture_recognition", "object_tracking"],
+        "frequency_hz": 30
+      }
+    ]
+  },
+
+  "block_2_epistemic_validation_gate": {
+    "description": "Antes de que una señal del mando se convierta en movimiento, debe pasar por la compuerta R4.",
+    "process": [
+      "1. LECTURA: La Raspberry Pi lee la señal del mando (ej. 'avanzar').",
+      "2. VALIDACIÓN: Consulta las invariantes del corpus en GitHub (o en caché local).",
+      "3. COMPUERTA R4: ¿La orden viola los límites del hardware o la seguridad (L1)? Si es así, se bloquea.",
+      "4. EJECUCIÓN: Si pasa, se envía la orden al ESP32 para mover los servos."
+    ],
+    "invariant_applied": "CONTROLLED_FALSIFICATION_REQUIRES_INDEPENDENT_CONTRAST"
+  },
+
+  "block_3_witness_function": {
+    "description": "ATENEA no solo obedece; es testigo físico de su propia ejecución.",
+    "witness_loop": [
+      "1. INTENCIÓN: El usuario presiona 'A' en el mando.",
+      "2. EJECUCIÓN: ATENEA mueve el brazo.",
+      "3. TESTIMONIO: La cámara captura el movimiento del brazo; el IMU confirma la posición.",
+      "4. FEEDBACK: ATENEA reporta al usuario (por pantalla o chat) que la acción se completó, mostrando la evidencia visual."
+    ],
+    "advantage": "Rompe la simulación declarativa. El chatbot puede decir 'muevo el brazo', pero solo ATENEA puede demostrar que el brazo se movió y capturar el resultado."
+  },
+
+  "block_4_data_vs_physical_impact": {
+    "description": "Cómo ATENEA incide en un juego digital vs. un entorno físico.",
+    "digital_game_impact": {
+      "method": "Envío de inputs a la API del juego (ej. teclas simuladas).",
+      "limitation": "ATENEA es un bot más; no hay cuerpo físico en el juego."
+    },
+    "physical_game_impact": {
+      "method": "Control de dispositivos IoT (luces, sensores) y manipulación de objetos físicos (si se añaden pinzas).",
+      "advantage": "ATENEA actúa como un puente entre el mundo digital y el físico. Es el testigo que el chatbot no puede ser."
+    },
+    "conclusion": "ATENEA incide en el juego a partir de datos (API) o de acciones físicas (IoT). Pero su verdadero valor didáctico reside en la segunda opción: la presencia física."
+  },
+
+  "final_classification": {
+    "type": "WIRELESS_INTENT_AND_EXECUTION_BINDING_SPECIFICATION",
+    "implementation_status": "PROPOSED_NOT_STARTED",
+    "hardware_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define cómo el mando inalámbrico se convierte en el canal de intención para ATENEA, y cómo la validación epistémica y el testimonio físico garantizan que la ejecución sea real y verificable."
+  }
+}
