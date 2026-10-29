@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_HARDWARE_RECONCILIATION_MANIFEST",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-HARDWARE-RECONCILIATION-2026",
+  "document_type": "HARDWARE_CONTRACT_RECONCILIATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-29",
+  "domain": "APPLICATIONS / HARDWARE",
+  "repository_path": "applications/atenea/wh-atenea-hardware-reconciliation-manifest.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-atenea-hardware-symmetric-contract.json",
+
+  "epistemic_boundaries": [
+    "STRUCTURAL_TRANSFER_IS_NOT_PHYSICAL_VALIDATION",
+    "CONTRACT_RECONCILIATION_IS_NOT_HARDWARE_EXECUTION",
+    "UNVERIFIED_SOURCE_IS_NOT_INVALID_SOURCE"
+  ],
+
+  "meta": {
+    "purpose": "Establecer las reglas de reconciliación entre el contrato lógico de hardware de ATENEA y su implementación física, garantizando que ninguna inferencia estructural se confunda con validación empírica.",
+    "status": "RECONCILIATION_CANDIDATE"
+  },
+
+  "source": {
+    "document": "applications/atenea/wh-atenea-hardware-symmetric-contract.json",
+    "version": "UNVERIFIED",
+    "integrity": "PENDING"
+  },
+
+  "hardware_allocation": {
+    "engine_a_allocation": {
+      "target_environment": "GOOGLE_COLAB_STANDARD",
+      "required_ram_gb": 12.0,
+      "max_threads": 2,
+      "cuda_acceleration_required": false
+    },
+    "engine_b_allocation": {
+      "target_environment": "GOOGLE_COLAB_STANDARD",
+      "required_ram_gb": 12.0,
+      "max_threads": 4,
+      "cuda_acceleration_required": true
+    }
+  },
+
+  "symmetry_constraints": {
+    "allow_resource_sharing": false,
+    "core_pinning_policy": "STRICT_ISOLATION",
+    "context_window_reserve_mb": 512
+  },
+
+  "verification": {
+    "minimum_acceptance_threshold": 0.95,
+    "structural_transfer": "PENDING",
+    "semantic_reconciliation": "NOT_VERIFIED",
+    "physical_validation": "NOT_PERFORMED"
+  },
+
+  "reconciliation_rules": {
+    "preserve_source_values": true,
+    "reject_undefined_fields": true,
+    "require_source_integrity": true,
+    "fail_on_missing_contract": true
+  },
+
+  "final_determination": {
+    "status": "NOT_VALIDATED",
+    "permitted_claim": "STRUCTURAL_RECONCILIATION_CANDIDATE",
+    "prohibited_claims": [
+      "HARDWARE_VALIDATED",
+      "PHYSICAL_SYMMETRY_CONFIRMED",
+      "EXECUTION_VERIFIED"
+    ]
+  },
+
+  "final_classification": {
+    "type": "HARDWARE_CONTRACT_RECONCILIATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento establece las reglas para reconciliar el contrato lógico con la realidad física. No declara que el hardware haya sido validado ni que la simetría física esté confirmada."
+  }
+}
