@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_INTERACTION_PRIORITY_SPECIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-INTERACT-2026-10-28",
+  "document_type": "COGNITIVE_EXPRESSIVE_PRIORITY_MANIFEST",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-28",
+  "domain": "APPLICATIONS / ROBOTICS",
+  "repository_path": "applications/atenea/wh-atenea-interaction-priority-specification.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-atenea-architecture-specification.json",
+
+  "epistemic_boundaries": [
+    "SOFTWARE_IS_NOT_PHYSICAL_HARDWARE",
+    "REPRESENTATION_IS_NOT_ACTION",
+    "EXPRESSIVE_INTERFACE_IS_NOT_MANIPULATION_CAPABILITY",
+    "COGNITIVE_LOAD_IS_NOT_MECHANICAL_LOAD"
+  ],
+
+  "meta": {
+    "purpose": "Reorientar el desarrollo de ATENEA, priorizando la interacción cognitiva, expresiva y sensorial sobre la manipulación física compleja, maximizando el impacto didáctico y minimizando la inversión en hardware mecánico.",
+    "core_principle": "El hardware es el cuerpo; el software es la mente. El valor didáctico reside en la capacidad de la mente para percibir, procesar y expresarse, no en la fuerza o destreza del cuerpo."
+  },
+
+  "block_1_hardware_priorities": {
+    "description": "Selección de componentes físicos basada en el retorno de inversión didáctico.",
+    "high_priority_hardware": [
+      "Cámara de alta resolución (para visión artificial, reconocimiento facial y lectura de gestos).",
+      "Micrófono y altavoz (interfaz de audio bidireccional).",
+      "Pantalla o matriz de LEDs (interfaz gráfica expresiva, como ojos o rostro digital).",
+      "Sensores de proximidad e IMU (seguridad y orientación).",
+      "Servomotores básicos (movimiento de cabeza, gestos de brazos)."
+    ],
+    "low_priority_hardware": [
+      "Manos robóticas articuladas (dedos, pinzas).",
+      "Sistemas de locomoción complejos (piernas bípedas avanzadas).",
+      "Actuadores de alta precisión para manipulación de objetos pesados."
+    ],
+    "justification": "La capacidad de leer un gesto o expresar una emoción con los ojos digitales es mucho más valiosa para la conducta humana que la capacidad de agarrar un objeto."
+  },
+
+  "block_2_software_interaction_loop": {
+    "description": "El bucle principal de interacción, priorizando el procesamiento en el Edge.",
+    "primary_focus": "INTERACCIÓN_MULTIMODAL",
+    "steps": [
+      "1. PERCEPCIÓN: La cámara detecta rostros, gestos o miradas. Los sensores leen el entorno.",
+      "2. PROCESAMIENTO COGNITIVO: La Raspberry Pi procesa la información visual y consulta al LLM.",
+      "3. GENERACIÓN EXPRESIVA: El sistema genera una respuesta (voz, texto o gesto).",
+      "4. REPRESENTACIÓN GRÁFICA: La pantalla del robot muestra una expresión (ojos parpadeando, mirada enfocada, alegría) que complementa la voz.",
+      "5. MOVIMIENTO SUTIL: El ESP32 mueve la cabeza o los brazos ligeramente para reforzar la expresión."
+    ],
+    "secondary_focus": "DOMINIO_DEL_HABLA_PERIFÉRICO",
+    "secondary_note": "El reconocimiento de voz local (Whisper) se mantiene en segundo plano, activado por wake-words o gestos de atención, para no sobrecargar el procesador local."
+  },
+
+  "block_3_expressive_interface_as_action": {
+    "description": "Cómo una expresión gráfica constituye una acción física válida y valiosa.",
+    "principle": "La expresión facial o gráfica es una acción intencionada de la interfaz.",
+    "example": "Si el usuario pregunta '¿Qué es esto?' y señala un objeto, el robot no necesita levantar el objeto. Basta con que mueva la cámara, enfoque el objeto y muestre una expresión de 'comprensión' (ojos enfocados, luz azul) mientras responde con voz.",
+    "advantage": "Reduce la complejidad mecánica y el gasto energético, a la vez que genera una sensación de presencia y empatía con el usuario."
+  },
+
+  "block_4_axioms_applied": {
+    "axiom_reference": "AXIOM_QINFRA_008 (Logística de asistencia vs Ejecución nuclear)",
+    "application": "La manipulación física (sostener un vaso) es una ejecución nuclear costosa. La expresión y la interacción (gestos, miradas) son la logística de asistencia que facilita la cognición y el aprendizaje."
+  },
+
+  "final_classification": {
+    "type": "COGNITIVE_EXPRESSIVE_PRIORITY_MANIFEST",
+    "implementation_status": "PROPOSED_NOT_STARTED",
+    "hardware_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento reorienta la arquitectura de ATENEA hacia la interacción cognitiva y expresiva, priorizando el software y los sensores de percepción sobre la mecánica de manipulación compleja."
+  }
+}
