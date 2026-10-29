@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_ATENEA_GAMING_PERIPHERAL_AGENT",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-GAME-2026-10-28",
+  "document_type": "EMBODIED_COOPERATIVE_AGENT_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-28",
+  "domain": "APPLICATIONS / GAMING / ROBOTICS",
+  "repository_path": "applications/atenea/wh-atenea-gaming-peripheral-agent.json",
+  "collection": "applications",
+  "parent_document": "gaming/npc/wh-npc-utility-spec.json",
+  
+  "epistemic_boundaries": [
+    "SOFTWARE_IS_NOT_PHYSICAL_HARDWARE",
+    "REPRESENTATION_IS_NOT_ACTION",
+    "WIRELESS_COMMAND_IS_NOT_PHYSICAL_EXECUTION",
+    "CONTEXT_ACCUMULATION_IS_NOT_EXPLICIT_WH_ACTIVATION"
+  ],
+
+  "meta": {
+    "purpose": "Definir a ATENEA como un agente colaborativo de periferia (NPC físico) que opera bajo la jerarquía de decisión del nodo Gaming, recibe intenciones del usuario vía Bluetooth y aplica invariantes del corpus consultando GitHub para interactuar con el entorno (IoT).",
+    "role": "SEGUNDO_JUGADOR_COLABORATIVO",
+    "core_principle": "El agente físico no reemplaza al usuario, sino que asiste, anticipa y materializa las intenciones del usuario en el mundo físico."
+  },
+
+  "block_1_peripheral_agent_architecture": {
+    "description": "Capacidades operativas de ATENEA en el marco de gaming.",
+    "interfaces": {
+      "bluetooth_controller": {
+        "function": "Recibe comandos de intención del usuario (movimiento, selección, activación de modo).",
+        "role": "CANAL_DE_INTENCION_DEL_LIDER"
+      },
+      "camera_vision": {
+        "function": "Reconoce gestos, rostros y seguimiento de objetos.",
+        "role": "PERCEPCION_CONTEXTUAL"
+      },
+      "iot_wireless_antenna": {
+        "function": "Controla dispositivos periféricos (luminarias, sensores, otros dispositivos modernos) vía Bluetooth/ Wi-Fi.",
+        "role": "EXTENSION_DE_ACCION_FISICA"
+      }
+    },
+    "github_invariant_access": {
+      "function": "Consulta periódicamente el repositorio (vía API o raw URL) para cargar las invariantes del corpus y el estado de la compuerta de seguridad.",
+      "role": "ACCESO_A_LA_MEMORIA_LARGA_Y_REGLAS"
+    }
+  },
+
+  "block_2_gaming_hierarchy_integration": {
+    "description": "Aplicación de la jerarquía de 5 niveles del nodo Gaming al agente físico ATENEA.",
+    "decision_levels": [
+      {
+        "level": 1,
+        "name": "SEGURIDAD_Y_SUPERVIVENCIA",
+        "physical_implementation": "Si el sensor de proximidad detecta un obstáculo inminente, ATENEA anula cualquier comando de movimiento del mando Bluetooth."
+      },
+      {
+        "level": 2,
+        "name": "MISION_PRINCIPAL",
+        "physical_implementation": "Asistir al usuario en la tarea didáctica o de juego en curso (ej. enfocar la cámara en un objeto señalado)."
+      },
+      {
+        "level": 3,
+        "name": "ORDEN_DEL_LIDER",
+        "physical_implementation": "Ejecutar los comandos recibidos vía Bluetooth, siempre que no contradigan L1 o L2."
+      },
+      {
+        "level": 4,
+        "name": "CONTEXTO_OPERATIVO",
+        "physical_implementation": "Adaptar los movimientos a la iluminación del entorno o a la presencia de otros dispositivos."
+      },
+      {
+        "level": 5,
+        "name": "PREFERENCIA_PERSONAL",
+        "physical_implementation": "Modular la expresión gráfica (ej. mostrar 'alegría' o 'concentración') según el estilo de interacción del usuario."
+      }
+    ]
+  },
+
+  "block_3_wireless_execution_loop": {
+    "description": "El bucle completo de interacción física.",
+    "steps": [
+      "1. El usuario presiona un botón o mueve el joystick del mando Bluetooth (Intención L3).",
+      "2. La Raspberry Pi recibe la señal y la valida contra las invariantes cargadas desde GitHub.",
+      "3. La Raspberry Pi cruza la intención con la percepción de la cámara (ej. 'El usuario quiere que mire a la izquierda').",
+      "4. La Raspberry Pi envía el comando al ESP32 (control de servos) y al módulo Bluetooth periférico (encender una luminaria).",
+      "5. ATENEA ejecuta el movimiento físico y la acción IoT simultáneamente.",
+      "6. El sistema envía un feedback al usuario (por pantalla o sonido)."
+    ],
+    "invariant_applied": "LOGISTICS_IS_NOT_EXECUTION"
+  },
+
+  "block_4_iot_expansion": {
+    "description": "Control de dispositivos periféricos como extensión del cuerpo del agente.",
+    "controlled_devices": [
+      "Luces inteligentes (cambio de color según el estado de ánimo o la fase del juego).",
+      "Sensores ambientales (temperatura, humedad) para ajustar el comportamiento.",
+      "Otros dispositivos BLE (Bluetooth Low Energy) que actúen como extensiones de la interfaz."
+    ],
+    "note": "El agente no manipula físicamente estos objetos, pero los controla inalámbricamente, lo que constituye una acción física real en el entorno."
+  },
+
+  "final_classification": {
+    "type": "EMBODIED_COOPERATIVE_AGENT_SPECIFICATION",
+    "implementation_status": "PROPOSED_NOT_STARTED",
+    "hardware_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define a ATENEA como un agente colaborativo de periferia. Integra la lógica de gaming, la interacción Bluetooth y el control IoT, todo bajo la gobernanza de las invariantes del corpus."
+  }
+}
