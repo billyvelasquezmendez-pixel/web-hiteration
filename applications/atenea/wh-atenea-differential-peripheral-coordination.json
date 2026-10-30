@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ATENEA_DIFFERENTIAL_PERIPHERAL_COORDINATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-COORDINATION-2026-10-30",
+  "document_type": "PERIPHERAL_COORDINATION_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-30",
+  "domain": "APPLICATIONS / HARDWARE_COORDINATION",
+  "repository_path": "applications/atenea/wh-atenea-differential-peripheral-coordination.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-open-hardware-manifesto.json",
+  "related_documents": [
+    "applications/atenea/wh-atenea-gaming-peripheral-agent.json"
+  ],
+
+  "epistemic_boundaries": [
+    "GENERIC_INTERFACE_IS_NOT_UNIVERSAL_COMPATIBILITY",
+    "PERIPHERAL_CAPABILITY_IS_NOT_SYSTEM_AUTHORIZATION",
+    "NON_CANONICAL_PROCESS_CAN_BE_OPERATIONALLY_VALID",
+    "COORDINATION_IS_NOT_NATIVE_INTEGRATION",
+    "PHYSICAL_SAFETY_REMAINS_LOCALLY_ENFORCED"
+  ],
+
+  "meta": {
+    "purpose": "Definir el modelo operativo para la integración de capacidades externas heterogéneas a través de interfaces diferenciadas, garantizando la seguridad y la abstracción del hardware en el ecosistema ATENEA.",
+    "system_object": {
+      "type": "HETEROGENEOUS_PERIPHERAL_COORDINATION",
+      "purpose": "Integrate generic external capabilities through differentiated interfaces."
+    }
+  },
+
+  "block_1_operational_model": {
+    "description": "Fases lógicas para la gestión de periféricos.",
+    "discovery": true,
+    "capability_identification": true,
+    "interface_abstraction": true,
+    "differential_routing": true,
+    "conflict_management": true
+  },
+
+  "block_2_interface_classes": {
+    "description": "Clases de interfaces soportadas por el sistema de coordinación.",
+    "supported_interfaces": [
+      "BLUETOOTH",
+      "USB",
+      "WIFI",
+      "SERIAL",
+      "GPIO",
+      "NETWORK_PROTOCOLS"
+    ]
+  },
+
+  "block_3_invariants_explained": {
+    "GENERIC_INTERFACE_IS_NOT_UNIVERSAL_COMPATIBILITY": "Que un dispositivo use Bluetooth no significa que ATENEA pueda controlarlo sin un perfil específico.",
+    "PERIPHERAL_CAPABILITY_IS_NOT_SYSTEM_AUTHORIZATION": "Que una antena SDR pueda captar señales no significa que el sistema tenga la autorización lógica o ética para procesarlas.",
+    "NON_CANONICAL_PROCESS_CAN_BE_OPERATIONALLY_VALID": "Un periférico puede no estar en el estándar del corpus (ej. un mando genérico) pero ser perfectamente útil en la operación.",
+    "COORDINATION_IS_NOT_NATIVE_INTEGRATION": "El orquestador coordina periféricos, pero no los integra a nivel de kernel (eso lo hace el OS).",
+    "PHYSICAL_SAFETY_REMAINS_LOCALLY_ENFORCED": "El ESP32 debe seguir teniendo su propio cortocircuito de seguridad física (Safe State) independientemente de lo que ordene el orquestador."
+  },
+
+  "validation": {
+    "architecture": "PROPOSED",
+    "software_implementation": "NOT_ESTABLISHED",
+    "hardware_validation": "NOT_PERFORMED"
+  },
+
+  "final_classification": {
+    "type": "PERIPHERAL_COORDINATION_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "engineering_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define el modelo de coordinación de periféricos. No declara que los drivers o el software de abstracción hayan sido implementados o validados en hardware real."
+  }
+}
