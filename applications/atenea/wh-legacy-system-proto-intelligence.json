@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_LEGACY_SYSTEM_PROTO_INTELLIGENCE",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-LEGACY-2026-10-30",
+  "document_type": "SYSTEMIC_BEHAVIOR_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-10-30",
+  "domain": "APPLICATIONS / COGNITIVE_ARCHITECTURE",
+  "repository_path": "applications/atenea/wh-legacy-system-proto-intelligence.json",
+  "collection": "applications",
+  
+  "epistemic_boundaries": [
+    "EMERGENT_BEHAVIOR_IS_NOT_INTELLIGENCE",
+    "RIGIDITY_FAILURE_IS_NOT_AUTONOMY",
+    "HISTORICAL_SIMILARITY_IS_NOT_CAUSAL_INFLUENCE"
+  ],
+
+  "meta": {
+    "purpose": "Formalizar la teoría de la Proto-Inteligencia en Sistemas Heredados y justificar la creación del módulo de auditoría de convergencia histórica en ATENEA."
+  },
+
+  "block_1_theory": {
+    "concept": "Proto-Inteligencia en Sistemas Heredados",
+    "phenomenon": "La opacidad del código antiguo y los parches burocráticos crean una caja negra que simula toma de decisiones autónoma, cuando en realidad es solo rigidez estructural chocando con la realidad moderna."
+  },
+
+  "block_2_digital_twin_parallel": {
+    "description": "Los sistemas arcaicos son gemelos digitales de instituciones burocráticas que se han desincronizado del mundo físico.",
+    "result": "Producen fallos catastróficos o silenciosos al operar con lógicas obsoletas."
+  },
+
+  "block_3_comparative_error_analysis": {
+    "legacy_systems": {
+      "nature": "Determinista / Lógica simbólica",
+      "error_type": "Rigidez estructural o colapso de reglas",
+      "illusion_of_intelligence": "Terquedad burocrática que parece una 'decisión'."
+    },
+    "modern_ai": {
+      "nature": "Probabilística / Redes neuronales",
+      "error_type": "Alucinación estadística",
+      "illusion_of_intelligence": "Generación creativa de datos falsos."
+    }
+  },
+
+  "block_4_historical_case": {
+    "project": "Cybersyn (Chile, 1971-1973)",
+    "relevance": "Intento temprano de gestionar una economía en tiempo real mediante algoritmos rígidos, ignorando la complejidad caótica del entorno."
+  },
+
+  "final_classification": {
+    "type": "SYSTEMIC_BEHAVIOR_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento justifica teóricamente la necesidad de filtros epistémicos históricos en los LLMs utilizados por ATENEA."
+  }
+}
