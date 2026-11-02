@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_SDR_PERIPHERAL_BRIDGE_SPECIFICATION",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-SDR-2026-11-02",
+  "document_type": "HARDWARE_PERIPHERAL_ABSTRACTION_SPECIFICATION",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-11-02",
+  "domain": "APPLICATIONS / HARDWARE_BRIDGE",
+  "repository_path": "applications/atenea/wh-sdr-peripheral-bridge-specification.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-open-hardware-manifesto.json",
+
+  "epistemic_boundaries": [
+    "HARDWARE_EXISTS_IS_NOT_STANDARDIZED_PERIPHERAL",
+    "SOFTWARE_LIBRARY_IS_NOT_LOGICAL_OPERATING_SYSTEM",
+    "RF_CAPABILITY_IS_NOT_AUTHORIZATION"
+  ],
+
+  "meta": {
+    "purpose": "Definir la arquitectura de un periférico lógico operativo de SDR para ATENEA, reconociendo que no existe como producto estandarizado en el mercado y estableciendo su diseño desde cero.",
+    "state_of_the_art_gap": "Existen librerías (SoapySDR, SDR-for-Android-lib) y hardware (RTL-SDR, HackRF, USRP) pero no un periférico lógico unificado, abierto y programable para móviles."
+  },
+
+  "block_1_target_architecture": {
+    "peripheral_class": "SDR_LOGICAL_BRIDGE",
+    "interface": "USB_OTG_WIFI_BLUETOOTH",
+    "hardware_backend": ["RTL_SDR", "HACKRF", "PLUTOSDR", "USRP"],
+    "logical_capabilities": [
+      "DISCOVERY_AND_ENUMERATION",
+      "CAPABILITY_ABSTRACTION (frequency, bandwidth, gain, sample_rate)",
+      "COMMAND_ROUTING (tune, start, stop, capture)",
+      "LOCAL_SAFETY_GATE (power_limits, frequency_restrictions)",
+      "IQ_DATA_STREAMING_TO_HOST"
+    ]
+  },
+
+  "block_2_software_stack": {
+    "layer_1_driver": "SoapySDR (abstracción de hardware)",
+    "layer_2_logic": "Python/C++ bridge con API REST/MQTT",
+    "layer_3_atenea_integration": "Registro del SDR como periférico en el sistema de coordinación"
+  },
+
+  "block_3_assembly_requirements": {
+    "compute": "Raspberry Pi (host) o Android (si se usa SDR-for-Android-lib)",
+    "sdr_hardware": "RTL-SDR v4 o HackRF One (bajo costo, open hardware)",
+    "power": "Batería LiPo con regulador",
+    "safety": "Filtro de RF y limitador de potencia local"
+  },
+
+  "final_classification": {
+    "type": "HARDWARE_PERIPHERAL_ABSTRACTION_SPECIFICATION",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define la arquitectura del periférico lógico SDR. No declara que el hardware haya sido ensamblado ni que el software esté implementado."
+  }
+}
