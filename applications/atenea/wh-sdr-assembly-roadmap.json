@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_SDR_ASSEMBLY_ROADMAP",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-SDR-ROAD-2026-11-02",
+  "document_type": "HARDWARE_ASSEMBLY_ROADMAP",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-11-02",
+  "domain": "APPLICATIONS / HARDWARE_BRIDGE",
+  "repository_path": "applications/atenea/wh-sdr-assembly-roadmap.json",
+  "collection": "applications",
+  "parent_document": "applications/atenea/wh-sdr-peripheral-bridge-specification.json",
+
+  "epistemic_boundaries": [
+    "PLANNING_IS_NOT_EXECUTION",
+    "SPECIFICATION_IS_NOT_IMPLEMENTATION"
+  ],
+
+  "meta": {
+    "purpose": "Establecer los pasos de ensamblaje del periférico lógico SDR para ATENEA, reconociendo la brecha de mercado y definiendo la ruta de implementación experimental."
+  },
+
+  "block_1_steps": [
+    {
+      "step": 1,
+      "action": "SELECCIONAR_HARDWARE_BASE",
+      "options": ["RTL-SDR v4", "HackRF One"],
+      "criterion": "Bajo costo, soporte open-source, comunidad activa"
+    },
+    {
+      "step": 2,
+      "action": "INSTALAR_SOAPYSDR",
+      "target": "Raspberry Pi (Linux) o Android (via SDR-for-Android-lib)",
+      "dependency": "SoapySDR + drivers específicos"
+    },
+    {
+      "step": 3,
+      "action": "DESARROLLAR_BRIDGE_LOGICO",
+      "language": "Python o C++",
+      "api": "REST/MQTT para ATENEA"
+    },
+    {
+      "step": 4,
+      "action": "IMPLEMENTAR_COMPUERTA_DE_SEGURIDAD",
+      "function": "Limitar frecuencia y potencia; detener emisión si no hay autorización"
+    },
+    {
+      "step": 5,
+      "action": "INTEGRAR_EN_ATENEA",
+      "target": "Orquestador de periféricos",
+      "test": "Descubrimiento y captura de IQ"
+    }
+  ],
+
+  "block_2_acceptance_criteria": {
+    "hardware": "SDR detectado y enumerado por SoapySDR",
+    "software": "Bridge expone endpoints de control",
+    "safety": "Compuerta R4 activa antes de transmitir",
+    "integration": "ATENEA reconoce el SDR como periférico"
+  },
+
+  "final_classification": {
+    "type": "HARDWARE_ASSEMBLY_ROADMAP",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento define la ruta de ensamblaje. No declara que el hardware haya sido ensamblado ni validado."
+  }
+}
