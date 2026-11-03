@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WH_HACKRF_PORTAPACK_PERIPHERAL_LIMIT_ANALYSIS",
+  "version": "1.0.0-PROPOSED",
+  "protocol_reference": "WH-ATENEA-HACKRF-2026-11-02",
+  "document_type": "HARDWARE_LIMIT_ANALYSIS",
+  "status": "PROPOSED_NOT_CANONICAL",
+  "canonical_status": "NOT_CANONICAL_UNTIL_REVIEWED",
+  "date": "2026-11-02",
+  "domain": "APPLICATIONS / HARDWARE_ANALYSIS",
+  "repository_path": "applications/atenea/wh-hackrf-portapack-peripheral-limit-analysis.json",
+  "collection": "applications",
+
+  "epistemic_boundaries": [
+    "DEDICATED_DEVICE_IS_NOT_GENERAL_COMPUTING_PLATFORM",
+    "OPEN_FIRMWARE_IS_NOT_OPERATING_SYSTEM",
+    "AUDIO_JACK_IS_NOT_RF_CONNECTOR"
+  ],
+
+  "meta": {
+    "subject": "HackRF One R9 + Portapack H2 (Clon)",
+    "purpose": "Evaluar el dispositivo frente al concepto de 'Periférico Lógico Operativo' de ATENEA, determinando su clasificación y rol potencial."
+  },
+
+  "block_1_hardware_profile": {
+    "processor": "Microcontrolador (firmware ChibiOS), no SBC",
+    "rf_frontend": "Transceptor semidúplex 1 MHz - 6 GHz, 20 MS/s, IQ 8 bits",
+    "screen": "3.2 inch TFT touchscreen",
+    "audio": "3.5mm jack (audio, no RF)",
+    "battery": "2000mAh recargable",
+    "classification": "PORTABLE_DEDICATED_SDR_TRANSCEIVER"
+  },
+
+  "block_2_software_status": {
+    "firmware": "Portapack H2 (código abierto, ChibiOS)",
+    "capabilities": "Decodificación y transmisión de radio (FM, AM, SSB, ADS-B, etc.)",
+    "limitation": "No ejecuta Linux, Python, SoapySDR ni ATENEA."
+  },
+
+  "block_3_role_for_atenea": {
+    "is_logical_peripheral": false,
+    "role": "PERIFERICO_SDR_EXTERNO",
+    "integration_path": "Conectar por USB a una Orange Pi/Raspberry Pi que ejecute SoapySDR y ATENEA.",
+    "note": "El dispositivo actúa como front-end de RF; el cerebro cognitivo reside en la SBC."
+  },
+
+  "block_4_axioms_applied": {
+    "axiom": "GENERIC_INTERFACE_IS_NOT_UNIVERSAL_COMPATIBILITY",
+    "application": "El firmware abierto permite modos de radio, pero no lo convierte en una plataforma de cómputo general."
+  },
+
+  "final_classification": {
+    "type": "HARDWARE_LIMIT_ANALYSIS",
+    "empirical_validation": "NOT_APPLICABLE",
+    "canonicalization": "PENDING_REVIEW",
+    "note": "Este documento clasifica el HackRF+Portapack como un periférico SDR externo, útil como front-end de RF pero no como plataforma de ejecución de ATENEA."
+  }
+}
